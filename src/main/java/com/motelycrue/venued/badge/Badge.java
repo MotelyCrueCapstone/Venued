@@ -1,5 +1,6 @@
-package com.motelycrue.venued.venues;
+package com.motelycrue.venued.badge;
 
+import com.motelycrue.venued.users.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Venue {
+public class Badge {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,8 +18,12 @@ public class Venue {
     private Long id;
 
     @Column(nullable = false)
-    private String venueName;
+    private String badge_name;
 
-    @Column(length = 1000)
-    private String venueDescription;
+    @Column(nullable = false)
+    private String badge_img;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name="user_id")
+    private User user;
 }
