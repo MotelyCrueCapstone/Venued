@@ -2,14 +2,9 @@ package com.motelycrue.venued.services;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import com.squareup.okhttp.*;
 import org.springframework.stereotype.Service;
-
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.ProtocolException;
-import java.net.URL;
 
 @Service("eventbriteService")
 public class EventbriteApiService{
