@@ -32,10 +32,15 @@ public class YelpApiService {
                 yelpBaseUrl, autocomplete,query, latitude,longitude);
     }
 
+    private static String makeBusinessUrl(String id){
+        return String.format("%s%s%s",yelpBaseUrl, businesses, id);
+    }
+
+
     //sending test requests to api service
 
 
-    public static String execute(String query) throws IOException {
+    public String execute(String query) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         //creating the api endpoint url
         String requestUrl = makeAutocompleteUrl(query);
@@ -43,9 +48,13 @@ public class YelpApiService {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url(requestUrl)
+                .url("https://api.yelp.com/v3/businesses/search?location=san%20antonio%20&term=music&radius=2000&categories=clubs&sort_by=best_match&limit=20"
+                )
                 .addHeader("Authorization", "Bearer " + "ad95qSYlKKcn-LAdY3BL5y2d6wPKiG028RptoMyqv7IGbVG85KyJINy1MKCm6Zbl-IPxtuv6daqmH8zVF0LYoqGPR6yqMr9sdMuilmweDa4xjY66xfFVL1hb7BCSY3Yx")
+                .addHeader("accept", "application/json")
+                .addHeader("Content-Type", "application/json")
                 .build();
+
 
         String allBusinessesJson = "";
 
@@ -57,10 +66,10 @@ public class YelpApiService {
         //trying to pull the business key from the json object returned fromm the initial api call
         //so i can iterate through them and add them to the allBusinessesJson with api calls to each Id.
 
-            return responseString;
+            return objectNode.toString();
     }
 
-    public static String execute(String query, String latitude, String longitude) throws IOException {
+    public String execute(String query, String latitude, String longitude) throws IOException {
         ObjectMapper objectMapper =  new ObjectMapper();
         //creating the api endpoint url
         String requestUrl = makeAutocompleteUrl(query, latitude, longitude);

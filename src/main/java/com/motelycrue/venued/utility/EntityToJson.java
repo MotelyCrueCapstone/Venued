@@ -44,4 +44,6 @@ public class EntityToJson {
                 .build();
         return ( new ObjectMapper().writeValueAsString(tipsJson));
     }
+
+
 }
