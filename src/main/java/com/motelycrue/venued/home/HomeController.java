@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home")
 public class HomeController {
 
-    private final HomeRepository HomeDao;
+    private HomeRepository HomeDao;
 
-    public HomeController(HomeRepository homeDao) {
-        HomeDao = homeDao;
-    }
 }

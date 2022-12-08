@@ -10,16 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/users")
 public class UserController {
     @Autowired
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
 
-    private final BadgeRepository BadgeDao;
+    private BadgeRepository BadgeDao;
 
-    private final VenueRepository VenueDao;
+    private VenueRepository VenueDao;
 
-
-    public UserController(UserRepository userRepository, BadgeRepository badgeDao, VenueRepository venueDao) {
-        this.userRepository = userRepository;
-        this.BadgeDao = badgeDao;
-        this.VenueDao = venueDao;
-    }
 }

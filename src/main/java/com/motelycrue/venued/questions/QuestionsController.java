@@ -11,12 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class QuestionsController {
 
     @Autowired
-    private final QuestionsRepository questionsDao;
+    private QuestionsRepository questionsDao;
 
-    private final UserRepository UserDao;
-
-    public QuestionsController(QuestionsRepository questionsDao, UserRepository userDao) {
-        this.questionsDao = questionsDao;
-        this.UserDao = userDao;
-    }
+    @Autowired
+    private UserRepository UserDao;
 }

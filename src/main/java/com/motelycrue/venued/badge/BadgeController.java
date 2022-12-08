@@ -11,15 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BadgeController {
 
     @Autowired
-    private final BadgeRepository badgeDao;
+    private BadgeRepository badgeDao;
 
-    private final UserRepository UserDao;
+    @Autowired
+    private UserRepository UserDao;
 
-    private final QuestionsRepository QuestionsDao;
+    @Autowired
+    private QuestionsRepository QuestionsDao;
 
-    public BadgeController(BadgeRepository badgeDao, UserRepository userDao, QuestionsRepository questionsDao) {
-        this.badgeDao = badgeDao;
-        this.UserDao = userDao;
-        this.QuestionsDao = questionsDao;
-    }
 }
