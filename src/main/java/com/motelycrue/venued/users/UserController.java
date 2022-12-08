@@ -12,8 +12,10 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
     private BadgeRepository BadgeDao;
 
+    @Autowired
     private VenueRepository VenueDao;
 
 }
