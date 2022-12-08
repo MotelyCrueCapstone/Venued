@@ -9,5 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TipsController {
 
     @Autowired
-    private TipsRepository tipsDao;
+    private final TipsRepository tipsDao;
+
+
+    public TipsController(TipsRepository tipsDao) {
+        this.tipsDao = tipsDao;
+    }
 }

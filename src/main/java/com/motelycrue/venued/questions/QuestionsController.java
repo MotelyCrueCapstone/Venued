@@ -10,5 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class QuestionsController {
 
     @Autowired
-    private QuestionsRepository questionsDao;
+    private final QuestionsRepository questionsDao;
+
+    public QuestionsController(QuestionsRepository questionsDao) {
+        this.questionsDao = questionsDao;
+    }
 }

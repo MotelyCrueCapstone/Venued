@@ -9,5 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BadgeController {
 
     @Autowired
-    private BadgeRepository badgeDao;
+    private final BadgeRepository badgeDao;
+
+    public BadgeController(BadgeRepository badgeDao) {
+        this.badgeDao = badgeDao;
+    }
 }
