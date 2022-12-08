@@ -22,7 +22,7 @@ public class UserController {
     @Autowired
     private VenueRepository VenueDao;
 
-    private PasswordEncoder passwordEncoder;
+//    private PasswordEncoder passwordEncoder;
 
 
     @GetMapping("/register")
@@ -33,7 +33,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute User user){
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.save(user);
         return "redirect:/posts/create";
     }

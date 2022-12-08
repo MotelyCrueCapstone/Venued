@@ -1,6 +1,7 @@
 package com.motelycrue.venued;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.motelycrue.venued.services.YelpApiService;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -14,7 +15,7 @@ import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 
-//@SpringBootApplication
+@SpringBootApplication
 public class VenuedApplication {
     public static void main(String[] args) throws IOException {
         SpringApplication.run(VenuedApplication.class, args);
