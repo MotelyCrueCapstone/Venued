@@ -33,6 +33,8 @@ public class YelpApiService {
     }
 
     //sending test requests to api service
+
+
     public static String execute(String query) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         //creating the api endpoint url
@@ -42,7 +44,7 @@ public class YelpApiService {
 
         Request request = new Request.Builder()
                 .url(requestUrl)
-                .addHeader("Authorization", "ad95qSYlKKcn-LAdY3BL5y2d6wPKiG028RptoMyqv7IGbVG85KyJINy1MKCm6Zbl-IPxtuv6daqmH8zVF0LYoqGPR6yqMr9sdMuilmweDa4xjY66xfFVL1hb7BCSY3Yx")
+                .addHeader("Authorization", "Bearer " + "ad95qSYlKKcn-LAdY3BL5y2d6wPKiG028RptoMyqv7IGbVG85KyJINy1MKCm6Zbl-IPxtuv6daqmH8zVF0LYoqGPR6yqMr9sdMuilmweDa4xjY66xfFVL1hb7BCSY3Yx")
                 .build();
 
         String allBusinessesJson = "";
@@ -55,11 +57,7 @@ public class YelpApiService {
         //trying to pull the business key from the json object returned fromm the initial api call
         //so i can iterate through them and add them to the allBusinessesJson with api calls to each Id.
 
-        if(objectNode.has("businesses")){
-            return(objectNode.get("businesses").asText());
-        }else{
-            return(responseString);
-        }
+            return responseString;
     }
 
     public static String execute(String query, String latitude, String longitude) throws IOException {
