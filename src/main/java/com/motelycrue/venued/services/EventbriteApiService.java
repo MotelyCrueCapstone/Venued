@@ -8,7 +8,7 @@ import java.io.IOException;
 
 @Service("eventbriteService")
 public class EventbriteApiService{
-
+    private static final  String yelpBaseUrl = "https://api.yelp.com/v3.";
     private static final String baseUrl = "https://www.eventbriteapi.com/v3";
     private static final String test = "https://www.eventbriteapi.com/v3/users/me/?token=HVK7EH42PKKZTOPGDCE6";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
