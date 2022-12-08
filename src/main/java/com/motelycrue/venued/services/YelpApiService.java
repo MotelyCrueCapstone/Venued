@@ -13,11 +13,11 @@ public class YelpApiService {
 
 
     @Value("${yelp_api_key}")
-    private static String yelpApiKey;
+    static String yelpApiKey;
 
-    private static String yelpBaseUrl = "https://api.yelp.com/v3/";
-    private static String autocomplete  = "autocomplete";
-    private static String businesses = "businesses/";
+    private static final String yelpBaseUrl = "https://api.yelp.com/v3/";
+    private static final String autocomplete  = "autocomplete";
+    private static final String businesses = "businesses/";
 
     private static MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
@@ -42,14 +42,15 @@ public class YelpApiService {
 
         Request request = new Request.Builder()
                 .url(requestUrl)
-                .addHeader("Authorization", yelpApiKey)
-                .build(); // defaults to GET
+                .addHeader("Authorization", "ad95qSYlKKcn-LAdY3BL5y2d6wPKiG028RptoMyqv7IGbVG85KyJINy1MKCm6Zbl-IPxtuv6daqmH8zVF0LYoqGPR6yqMr9sdMuilmweDa4xjY66xfFVL1hb7BCSY3Yx")
+                .build();
 
         String allBusinessesJson = "";
 
         Response response = client.newCall(request).execute();
         String responseString  = response.body().string();
         ObjectNode objectNode = objectMapper.readValue(responseString, ObjectNode.class);
+
 
         //trying to pull the business key from the json object returned fromm the initial api call
         //so i can iterate through them and add them to the allBusinessesJson with api calls to each Id.
