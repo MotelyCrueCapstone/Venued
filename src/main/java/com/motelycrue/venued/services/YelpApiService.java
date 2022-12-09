@@ -21,6 +21,7 @@ public class YelpApiService {
 
     private static MediaType JSON = MediaType.parse("application/json; charset=utf-8");
      //example query string for the API call
+    //https://api.yelp.com/v3/businesses/search?location=san%20antonio%20&term=music&radius=2000&categories=clubs&sort_by=best_match&limit=20"
 //    private static HashMap<String, String> endpoints;
     private static String makeAutocompleteUrl(String query){
         return String.format("%s%s?text=%s",yelpBaseUrl, autocomplete, query);
