@@ -40,9 +40,10 @@ public class YelpApiService {
 
         OkHttpClient client = new OkHttpClient();
 
+
         Request request = new Request.Builder()
                 .url(requestUrl)
-                .addHeader("Authorization", "ad95qSYlKKcn-LAdY3BL5y2d6wPKiG028RptoMyqv7IGbVG85KyJINy1MKCm6Zbl-IPxtuv6daqmH8zVF0LYoqGPR6yqMr9sdMuilmweDa4xjY66xfFVL1hb7BCSY3Yx")
+                .addHeader("Authorization", "Bearer " + "ad95qSYlKKcn-LAdY3BL5y2d6wPKiG028RptoMyqv7IGbVG85KyJINy1MKCm6Zbl-IPxtuv6daqmH8zVF0LYoqGPR6yqMr9sdMuilmweDa4xjY66xfFVL1hb7BCSY3Yx")
                 .build();
 
         String allBusinessesJson = "";
