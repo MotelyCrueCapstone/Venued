@@ -20,7 +20,7 @@ public class YelpApiService {
     private static final String businesses = "businesses/";
 
     private static MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
+     //example query string for the API call
 //    private static HashMap<String, String> endpoints;
     private static String makeAutocompleteUrl(String query){
         return String.format("%s%s?text=%s",yelpBaseUrl, autocomplete, query);
