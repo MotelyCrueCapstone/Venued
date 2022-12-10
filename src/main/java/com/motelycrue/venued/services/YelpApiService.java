@@ -12,39 +12,40 @@ import java.io.IOException;
 public class YelpApiService {
 
 
-    @Value("${yelp_api_key}")
+    @Value("${YELP_API_KEY}")
     static String yelpApiKey;
 
     private static final String yelpBaseUrl = "https://api.yelp.com/v3/";
-    private static final String autocomplete  = "autocomplete";
+//    private static final String autocomplete  = "autocomplete";
     private static final String businesses = "businesses/";
 
     private static MediaType JSON = MediaType.parse("application/json; charset=utf-8");
      //example query string for the API call
     //https://api.yelp.com/v3/businesses/search?location=san%20antonio%20&term=music&radius=2000&categories=clubs&sort_by=best_match&limit=20"
 //    private static HashMap<String, String> endpoints;
-    private static String makeAutocompleteUrl(String query){
-        return String.format("%s%s?text=%s",yelpBaseUrl, autocomplete, query);
+    private static String makeAutocompleteUrl(String query, String location){
+        return String.format("%s%ssearch?location=%s&term=%s&radius=2000&categories=club&sort_by=best_match&limit=20",
+                yelpBaseUrl,businesses, location,query);
     }
 
-    private static String makeAutocompleteUrl(String query, String latitude, String longitude){
-        //creating the url with the endpoints based on user data
-        return String.format("%s%s?text=%s&latitude=%s&longitude=%s",
-                yelpBaseUrl, autocomplete,query, latitude,longitude);
-    }
 
     //sending test requests to api service
     public static String execute(String query) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        //creating the api endpoint url
-        String requestUrl = makeAutocompleteUrl(query);
 
         OkHttpClient client = new OkHttpClient();
 
+        //the object that turns POJOS into JSON objects
+        ObjectMapper objectMapper = new ObjectMapper();
 
+        //creating the api endpoint url
+        String requestUrl = makeAutocompleteUrl(query, "San Antonio");
+
+
+        //turns the url into a viable http requestt with the
+        // Bearer token so we can receive the results of our query
         Request request = new Request.Builder()
                 .url(requestUrl)
-                .addHeader("Authorization", "Bearer " + "ad95qSYlKKcn-LAdY3BL5y2d6wPKiG028RptoMyqv7IGbVG85KyJINy1MKCm6Zbl-IPxtuv6daqmH8zVF0LYoqGPR6yqMr9sdMuilmweDa4xjY66xfFVL1hb7BCSY3Yx")
+                .addHeader("Authorization", "Bearer " + yelpApiKey)
                 .build();
 
         String allBusinessesJson = "";
@@ -62,21 +63,5 @@ public class YelpApiService {
         }else{
             return(responseString);
         }
-    }
-
-    public static String execute(String query, String latitude, String longitude) throws IOException {
-        ObjectMapper objectMapper =  new ObjectMapper();
-        //creating the api endpoint url
-        String requestUrl = makeAutocompleteUrl(query, latitude, longitude);
-
-        OkHttpClient client = new OkHttpClient();
-
-        Request request = new Request.Builder()
-                .url(requestUrl)
-                .build();
-        Response response = client.newCall(request).execute();
-
-        //returns businesess and business ids near lat/long values
-        return response.body().string();
     }
 }
