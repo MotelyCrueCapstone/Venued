@@ -54,14 +54,14 @@ public class YelpApiService {
         String responseString  = response.body().string();
         ObjectNode objectNode = objectMapper.readValue(responseString, ObjectNode.class);
 
-
+        return (responseString);
         //trying to pull the business key from the json object returned fromm the initial api call
         //so i can iterate through them and add them to the allBusinessesJson with api calls to each Id.
 
-        if(objectNode.has("businesses")){
-            return(objectNode.get("businesses").asText());
-        }else{
-            return(responseString);
-        }
+//        if(objectNode.has("businesses")){
+//            return(objectNode.get("businesses").asText());
+//        }else{
+//            return(responseString);
+//        }
     }
 }
