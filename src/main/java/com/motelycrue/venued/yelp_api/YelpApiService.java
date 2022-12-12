@@ -1,4 +1,4 @@
-package com.motelycrue.venued.services;
+package com.motelycrue.venued.yelp_api;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -59,7 +59,8 @@ public class YelpApiService {
 
         ObjectNode objectNode = objectMapper.readValue(responseString, ObjectNode.class);
 
-        return (responseString);
+        return objectNode.get("businesses").toString();
+//        return (responseString);
 
         //trying to pull the business key from the json object returned fromm the initial api call
         //so i can iterate through them and add them to the allBusinessesJson with api calls to each Id.

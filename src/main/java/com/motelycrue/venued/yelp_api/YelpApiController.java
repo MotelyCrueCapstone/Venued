@@ -1,8 +1,5 @@
-package com.motelycrue.venued.home;
+package com.motelycrue.venued.yelp_api;
 
-
-import com.motelycrue.venued.yelp_api.YelpApiService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,13 +9,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/home")
-public class HomeController {
+@RequestMapping("/yelp")
+public class YelpApiController {
 
-    @Autowired
-    private YelpApiService yelpApiService;
-
-
-
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String yelp() throws IOException {
+        return YelpApiService.execute("clubs");
+    }
 }
-
