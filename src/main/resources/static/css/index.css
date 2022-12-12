@@ -18,7 +18,6 @@ body {
     font-size: 22px;
     border-color: transparent;
     font-family: "Lantinghei SC", sans-serif;
-
 }
 
 .topTitle {
@@ -30,7 +29,6 @@ body {
 
 *::before, *::after {
     box-sizing: border-box;
-
 }
 
 .carousel {
