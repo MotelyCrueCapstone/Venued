@@ -51,7 +51,6 @@ public class YelpApiService {
                 .addHeader("Content-Type", "application/json")
                 .build();
 
-        String allBusinessesJson = "";
 
         Response response = client.newCall(request).execute();
 
@@ -60,16 +59,6 @@ public class YelpApiService {
         ObjectNode objectNode = objectMapper.readValue(responseString, ObjectNode.class);
 
         return objectNode.get("businesses").toString();
-//        return (responseString);
-
-        //trying to pull the business key from the json object returned fromm the initial api call
-        //so i can iterate through them and add them to the allBusinessesJson with api calls to each Id.
-
-//        if(objectNode.has("businesses")){
-//            return(objectNode.get("businesses").asText());
-//        }else{
-//            return(responseString);
-//        }
     }
 
 }
