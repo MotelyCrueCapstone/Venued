@@ -21,7 +21,7 @@ public class HomeController {
     @GetMapping(value = "/yelp" , produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String yelp() throws IOException {
-        return yelpApiService.execute("clubs");
+        return YelpApiService.execute("clubs");
     }
 
 }

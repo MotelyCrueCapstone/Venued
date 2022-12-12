@@ -33,3 +33,6 @@ build/
 .vscode/
 
 application.properties
+application-dev.properties
+APIAccess.java
+APIAccess*

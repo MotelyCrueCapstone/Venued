@@ -3,6 +3,7 @@ package com.motelycrue.venued.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.motelycrue.venued.utility.APIAccess;
 import com.squareup.okhttp.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -12,8 +13,9 @@ import java.io.IOException;
 public class YelpApiService {
 
 
-    @Value("${YELP_API_KEY}")
-    static String yelpApiKey;
+//    @Value("${apiKey:ad95qSYlKKcn-LAdY3BL5y2d6wPKiG028RptoMyqv7IGbVG85KyJINy1MKCm6Zbl-IPxtuv6daqmH8zVF0LYoqGPR6yqMr9sdMuilmweDa4xjY66xfFVL1hb7BCSY3Yx}")
+    static String yelpApiKey = APIAccess.getApiKey();
+
 
     private static final String yelpBaseUrl = "https://api.yelp.com/v3/";
 //    private static final String autocomplete  = "autocomplete";
@@ -36,11 +38,12 @@ public class YelpApiService {
         ObjectMapper objectMapper = new ObjectMapper();
 
         //creating the api endpoint url
-        String requestUrl = makeAutocompleteUrl(query, "San Antonio");
+        String requestUrl = makeAutocompleteUrl(query, "San antonio");
 
 
         //turns the url into a viable http requestt with the
         // Bearer token so we can receive the results of our query
+
         Request request = new Request.Builder()
                 .url(requestUrl)
                 .addHeader("Authorization", "Bearer " + yelpApiKey)
@@ -48,14 +51,16 @@ public class YelpApiService {
                 .addHeader("Content-Type", "application/json")
                 .build();
 
-
         String allBusinessesJson = "";
 
         Response response = client.newCall(request).execute();
+
         String responseString  = response.body().string();
+
         ObjectNode objectNode = objectMapper.readValue(responseString, ObjectNode.class);
 
         return (responseString);
+
         //trying to pull the business key from the json object returned fromm the initial api call
         //so i can iterate through them and add them to the allBusinessesJson with api calls to each Id.
 
