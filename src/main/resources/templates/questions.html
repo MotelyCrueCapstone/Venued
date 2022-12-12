@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questions</title>
+</head>
+<body>
+    <h3>Questions</h3>
+    <div th:each="question : ${questions}">
+        <p th:text="${question.question}"></p>
+    </div>
+
+    <div th:if="post" class="inputs">
+    <form th:action="@{/questions}" method="post" th:object="${emptyQuestions}">
+        <label for="question">Question Body:</label>
+        <textarea type="text" name="question" id="question" th:field="*{question}" ></textarea>
+        <button type="submit" id="questionButton">Submit Question</button>
+    </form>
+    </div>
+
+
+</body>
+</html>
