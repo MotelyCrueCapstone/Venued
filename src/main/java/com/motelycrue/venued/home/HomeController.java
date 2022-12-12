@@ -12,13 +12,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/")
 public class HomeController {
 
     @Autowired
     private YelpApiService yelpApiService;
 
-
+    @GetMapping
+    public String homepage(){
+        return "index";
+    }
 
 }
 
