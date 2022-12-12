@@ -38,8 +38,6 @@ public class YelpApiService {
         Request request = new Request.Builder()
                 .url(requestUrl)
                 .addHeader("Authorization", "Bearer " + yelpApiKey)
-                .addHeader("accept", "application/json")
-                .addHeader("Content-Type", "application/json")
                 .build();
 
         Response response = client.newCall(request).execute();
