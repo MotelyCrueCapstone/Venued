@@ -21,14 +21,15 @@ public class YelpApiController {
                        @RequestParam Optional<String> longitude)
             throws IOException {
 
-
         //making sure the longitude and latitude are both present in the
         //parameters or the controller will return the default page for the
         //venue or event
+
         if(latitude.isPresent() && longitude.isPresent()){
             return YelpApiService.execute(query, latitude.get(), longitude.get());
         }else{
             return YelpApiService.execute(query);
         }
+
     }
 }
