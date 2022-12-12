@@ -27,13 +27,6 @@ public class YelpApiService {
         return String.format("%s%ssearch?location=%s&term=%s&radius=2000&categories=club&sort_by=best_match&limit=20",
                 yelpBaseUrl,businesses, location,query);
     }
-
-
-    private static String makeBusinessUrl(String id){
-        return String.format("%s%s%s",yelpBaseUrl, businesses, id);
-    }
-
-
     //sending test requests to api service
     public static String execute(String query) throws IOException {
 
