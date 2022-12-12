@@ -1,0 +1,29 @@
+body {
+    background-image: url("/static/imgs/BackgroundImage.jpg");
+    background-size: cover;
+    height: 100%;
+}
+
+.enterLocation, .topTitle {
+    display: flex;
+    justify-content: center;
+}
+
+.enterLocation {
+    border-radius: 50px;
+    padding: 15px 300px;
+    text-align: center;
+    mix-blend-mode: overlay;
+    color: white;
+    font-size: 22px;
+    border-color: transparent;
+    font-family: "Lantinghei SC", sans-serif;
+
+}
+
+.topTitle {
+    color: white;
+    font-family: "Lantinghei SC", sans-serif;
+    font-size: 48px;
+    margin-top: -50px;
+}
