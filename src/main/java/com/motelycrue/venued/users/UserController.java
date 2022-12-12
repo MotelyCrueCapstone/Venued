@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/users")
 public class UserController {
+
     @Autowired
     private UserRepository userDao;
 
@@ -24,7 +25,10 @@ public class UserController {
 
 //    private PasswordEncoder passwordEncoder;
 
-
+    @GetMapping("/login")
+    public String login(){
+        return "users/login";
+    }
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
         model.addAttribute("user", new User());
