@@ -2,6 +2,8 @@
 
 /* Style the navbar */
 .topNav {
+    display: flex;
+    justify-content: space-between;
     overflow: hidden;
     height: 100px;
 }
@@ -9,6 +11,46 @@
     position: relative;
     bottom: 25px;
 }
+
+.searchbar {
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+}
+.search_input {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color: transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    transition-property: left;
+}
+.searchbar:hover > .search_input {
+    padding: 0 10px;
+    width: 320px;
+    transition: width 0.4s linear;
+}
+/*.searchbar:hover > .search_icon {*/
+/*    background: white;*/
+/*}*/
+.search_icon {
+    height: 40px;
+    width: 40px;
+    float: right;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+}
+
 
 /* Navbar links */
 .topNav a {
@@ -34,10 +76,6 @@
     color: black;
 }
 
-/* Active/current link */
-.topNav a.active {
-    color: white;
-}
 
 /* Style the input container */
 .topNav .login-container {
@@ -46,6 +84,7 @@
 
 .login-container {
     display: flex;
+    justify-content: space-between;
     position: relative;
     top: 20px;
 }
@@ -64,18 +103,6 @@
 
 .topNav, .topNav a{
     background-color: #090808;
-}
-.search-data {
-    margin-top: 10px;
-    border-radius: 50px;
-    padding: 15px 300px;
-    height: 50px;
-    text-align: center;
-    mix-blend-mode: overlay;
-    color: white;
-    font-size: 22px;
-    border-color: transparent;
-    font-family: "Lantinghei SC", sans-serif;
 }
 
 /* Add responsiveness - On small screens, display the navbar vertically instead of horizontally */
