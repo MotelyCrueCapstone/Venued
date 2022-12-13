@@ -4,7 +4,6 @@
 .topNav {
     display: flex;
     justify-content: space-between;
-    overflow: hidden;
     height: 100px;
 }
 .logo {
@@ -16,7 +15,6 @@
     margin-bottom: auto;
     margin-top: auto;
     height: 60px;
-    background-color: #353b48;
     border-radius: 30px;
     padding: 10px;
 }
@@ -50,6 +48,9 @@
     color: white;
     text-decoration: none;
 }
+.items-holder{
+    margin-right: 10px;
+}
 
 
 /* Navbar links */
@@ -64,10 +65,20 @@
 }
 
 .login-btn{
+    position: relative;
+    top: 30px;
     background-color: orangered;
+    padding: 1px 30px;
 }
 .signup-btn{
+    position: relative;
+    top: 30px;
     background-color: orange;
+    padding: 1px 30px;
+}
+
+.fas{
+    color: white;
 }
 
 /* Navbar links on mouse-over */
@@ -78,16 +89,16 @@
 
 
 /* Style the input container */
-.topNav .login-container {
-    float: right;
-}
+/*.topNav .login-container {*/
+/*    float: right;*/
+/*}*/
 
-.login-container {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    top: 20px;
-}
+/*.login-container {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    position: relative;*/
+/*    top: 20px;*/
+/*}*/
 
 /* Style the button inside the input container */
 .topNav .login-container button {
