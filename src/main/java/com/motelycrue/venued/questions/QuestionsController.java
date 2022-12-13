@@ -1,7 +1,6 @@
 package com.motelycrue.venued.questions;
 
 
-
 import com.motelycrue.venued.users.User;
 import com.motelycrue.venued.users.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +21,13 @@ public class QuestionsController {
     private QuestionsRepository questionsDao;
 
 
-    @Autowired
-    private UserRepository userDao;
+    private final UserRepository userDao;
+
+    public QuestionsController(UserRepository userDao, QuestionsRepository questionsDao) {
+        this.questionsDao = questionsDao;
+        this.userDao = userDao;
+    }
+
 
     @GetMapping()
     public String createController(Model model){

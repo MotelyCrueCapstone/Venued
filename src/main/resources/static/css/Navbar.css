@@ -1,0 +1,118 @@
+* {box-sizing: border-box;}
+
+/* Style the navbar */
+.topNav {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    background-color: rgba(0,0,0,0.2);
+}
+.logo {
+    position: relative;
+    bottom: 25px;
+}
+
+.searchbar {
+    margin-bottom: auto;
+    margin-top: 25px;
+    margin-right: -25px;
+    height: 60px;
+    border-radius: 30px;
+    padding: 10px;
+}
+.search_input {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color: transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    transition-property: left;
+}
+.searchbar:hover > .search_input {
+    background: white;
+    padding: 0 10px;
+    width: 320px;
+    transition: width 0.4s linear;
+}
+
+.search_icon {
+    height: 40px;
+    width: 40px;
+    float: right;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+}
+.items-holder{
+    margin-right: 10px;
+}
+
+
+/* Navbar links */
+.venued {
+    float: left;
+    display: block;
+    color: black;
+    text-align: left;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.login-btn{
+    position: relative;
+    top: 30px;
+    background: orangered linear-gradient(to right, orangered, orange);
+    font-family: "Lantinghei SC", sans-serif;
+    padding: 1px 30px;
+}
+.signup-btn{
+    position: relative;
+    top: 30px;
+    background-color: black;
+    border-color: orangered;
+    color: orange;
+    font-family: "Lantinghei SC", sans-serif;
+    padding: 1px 30px;
+}
+
+.fas{
+    color: white;
+}
+
+/* Style the button inside the input container */
+.topNav .login-container button {
+    float: right;
+    padding: 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    margin-bottom: 20px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.topNav, .topNav a{
+    background-color: #090808;
+}
+
+/* Add responsiveness - On small screens, display the navbar vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+    .topNav .login-container {
+        float: none;
+    }
+    .topNav a, .topNav input[type=text], .topNav .login-container button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+    .topNav input[type=text] {
+        border: 1px solid #ccc;
+    }
+}
