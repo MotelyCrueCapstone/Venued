@@ -14,13 +14,12 @@ public class YelpApiController {
     @GetMapping(value = "/event/{query}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     // 	latitude: 29.50184
-    // -longitude: 98.49869
+    // longitude: -98.49869
 
     public String yelp(@PathVariable String query,
                        @RequestParam Optional<String> latitude,
                        @RequestParam Optional<String> longitude)
             throws IOException {
-
 
         //making sure the longitude and latitude are both present in the
         //parameters or the controller will return the default page for the

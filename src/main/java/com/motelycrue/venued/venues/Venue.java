@@ -6,13 +6,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+//building entity to save venues and information from the api
+//calls
 @Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Venue {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
