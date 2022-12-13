@@ -1,0 +1,135 @@
+/*html {*/
+/*    scroll-behavior: smooth;*/
+/*}*/
+
+body {
+    background-image: url("../imgs/BackgroundImage.jpg");
+    background-size: cover;
+    height: 100%;
+}
+
+.enterLocation, .topTitle, .midTitle, .latestQuestions {
+    display: flex;
+    justify-content: center;
+}
+
+.enterLocation {
+    border-radius: 50px;
+    padding: 15px 300px;
+    text-align: center;
+    mix-blend-mode: overlay;
+    color: white;
+    font-size: 22px;
+    border-color: transparent;
+    font-family: "Lantinghei SC", sans-serif;
+
+}
+
+.topTitle, .midTitle {
+    color: white;
+    font-family: "Lantinghei SC", sans-serif;
+    font-size: 48px;
+    margin-top: 10px;
+}
+
+*::before, *::after {
+    box-sizing: border-box;
+
+}
+
+.carousel {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.carousel > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    transition: 200ms opacity ease-in-out;
+    transition-delay: 200ms;
+}
+
+.slide > img {
+    display: block;
+    width: 60%;
+    height: 50%;
+/*object-fit maintains the aspect ratio*/
+    object-fit: cover;
+    object-position: center;
+}
+
+
+.slide[data-active] {
+    opacity: 1;
+    transition-delay: 0ms;
+}
+
+.carousel-button {
+    position: absolute;
+    z-index: 2;
+    background: none;
+    border: none;
+    font-size: 4rem;
+    top: 50%;
+    transform: translateY(-300%);
+    color: rgba(255, 255, 255, .5);
+    cursor: pointer;
+    border-radius: .25rem;
+    padding: 0 .5rem;
+    background-color: rgba(0,0,0,.01);
+}
+
+.carousel-button:hover,
+.carousel-button:focus {
+    color: white;
+    background-color: rgba(0,0,0,.2);
+}
+
+.carousel-button:focus {
+    outline: 1px solid black;
+}
+
+.carousel-button.prev {
+    left: 7rem;
+}
+
+.carousel-button.next {
+    right: 7rem;
+}
+
+.midTitle {
+    margin-top: -480px;
+}
+
+.individualQuestion {
+    border: 1px solid white;
+    color: white;
+    width: 1500px;
+    display: block;
+    border-radius: 50px;
+    padding: 20px;
+    font-family: "Lantinghei SC", sans-serif;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.answerButton {
+    border-radius: 50px;
+    mix-blend-mode: overlay;
+    border: none;
+}
+
+.username {
+    font-weight: bold;
+}
+

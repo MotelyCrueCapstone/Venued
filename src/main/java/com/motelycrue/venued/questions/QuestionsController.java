@@ -20,12 +20,18 @@ public class QuestionsController {
     @Autowired
     private QuestionsRepository questionsDao;
 
+
     private final UserRepository userDao;
 
     public QuestionsController(UserRepository userDao, QuestionsRepository questionsDao) {
         this.questionsDao = questionsDao;
         this.userDao = userDao;
     }
+
+
+    @Autowired
+    private UserRepository userDao;
+
 
     @GetMapping()
     public String createController(Model model){

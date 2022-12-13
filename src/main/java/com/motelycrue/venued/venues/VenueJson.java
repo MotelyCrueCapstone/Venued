@@ -5,22 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
+//going to be used to convert
+//Venue entity to JSON pojo without complications
 @Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class Venue {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+public class VenueJson {
     private Long id;
-
-    @Column(nullable = false)
     private String venueName;
-
-    @Column(length = 1000)
     private String venueDescription;
 }

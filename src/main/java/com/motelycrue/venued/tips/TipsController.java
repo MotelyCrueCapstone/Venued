@@ -10,4 +10,7 @@ public class TipsController {
 
     @Autowired
     private TipsRepository tipsDao;
+
+
+
 }
