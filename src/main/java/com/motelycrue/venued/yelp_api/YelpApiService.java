@@ -45,7 +45,8 @@ public class YelpApiService {
         Response response = client.newCall(request).execute();
         String responseString  = response.body().string();
         ObjectNode objectNode = objectMapper.readValue(responseString, ObjectNode.class);
-        return responseString;
+
+        return objectNode.get("businesses").toPrettyString();
     }
 
 
@@ -71,6 +72,6 @@ public class YelpApiService {
         Response response = client.newCall(request).execute();
         String responseString  = response.body().string();
         ObjectNode objectNode = objectMapper.readValue(responseString, ObjectNode.class);
-        return objectNode.get("businesses").toString();
+        return objectNode.get("businesses").toPrettyString();
     }
 }
