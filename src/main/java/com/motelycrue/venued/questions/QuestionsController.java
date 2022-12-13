@@ -29,10 +29,6 @@ public class QuestionsController {
     }
 
 
-    @Autowired
-    private UserRepository userDao;
-
-
     @GetMapping()
     public String createController(Model model){
         List<Questions> questions = questionsDao.findAll();
