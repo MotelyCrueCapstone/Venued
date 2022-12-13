@@ -29,10 +29,11 @@ public class UserController {
     public String login(){
         return "users/login";
     }
+
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
         model.addAttribute("user", new User());
-        return "/registration";
+        return "users/signup";
     }
 
     @PostMapping("/register")
@@ -41,5 +42,6 @@ public class UserController {
         userDao.save(user);
         return "redirect:/posts/create";
     }
+
 
 }

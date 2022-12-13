@@ -1,0 +1,45 @@
+body {
+    height: 100vh;
+}
+#btn {
+    background-color: transparent;
+}
+#form-title {
+    color: #FFFFFF;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    background-image: url('../imgs/BackgroundImage.jpg');
+}
+
+.form-wrapper {
+    background-color: transparent;
+    margin: 0 auto;
+    width: 40%;
+    max-width: 600px;
+    padding: 2.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    border-radius: 10px;
+}
+
+.username-error,
+.password-error {
+    color: #E74E35;
+}
+a {
+    color: #1e90ff;
+}
+form div:last-of-type {
+    margin-top: 2rem;
+    text-align: center;
+    color: #d3d3d3;
+}
+@media screen and (max-width: 700px) {
+    .form-wrapper {
+        width: 90%;
+    }
+}
