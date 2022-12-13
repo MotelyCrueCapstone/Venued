@@ -66,6 +66,8 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+<<<<<<< HEAD
+=======
 
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
         <dependency>
@@ -89,11 +91,15 @@
             <version>2.9.0</version>
         </dependency>
 
+>>>>>>> main
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+<<<<<<< HEAD
+=======
 
+>>>>>>> main
     </dependencies>
 
     <build>
