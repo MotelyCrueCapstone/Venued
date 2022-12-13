@@ -73,5 +73,4 @@ public class YelpApiService {
         ObjectNode objectNode = objectMapper.readValue(responseString, ObjectNode.class);
         return objectNode.get("businesses").toString();
     }
-
 }
