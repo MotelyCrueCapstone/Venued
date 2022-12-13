@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<!--
-    Creator: Deshawn Marquis, Williams
-    Github Profile: https://github.com/MarquisTheCoder
-    Date Created: 12/12/22
-    Time Created: 12:50 PM
-    File Name: login.html
-    -->
 	<head>
-		
 		<title>Venued - login page</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="initial-scale=1, width=device-width">
@@ -19,8 +10,8 @@
 	</head>
 	<body>
 	<main>
-		<h1 class="text-center" id="form-title">Login</h1>
 		<div class="form-wrapper">
+		<h1 class="text-center mb-4" id="form-title">Login</h1>
 			<form th:action="@{/}" th:method="post" class="w-100 mx-auto">
 				<div class="w-100 mb-4">
 					<input id="username" name="username" type="text" class="form-control w-100 shadow-none focus-field" autocomplete="off" placeholder="Username">
@@ -29,7 +20,7 @@
 					<input id="password" name="password" type="password" class="form-control w-100 shadow-none" placeholder="Password">
 				</div>
 				<div class="w-25 mt-4 mx-auto">
-					<input type="submit" value="Login" class="form-control w-100 text-black shadow-none bg-white" id="btn">
+					<input type="submit" value="Login" class="form-control w-100 text-black shadow-none bg-white">
 				</div>
 				<div>Need an account?<a th:href="@{/users/register}">&nbsp;Sign Up</a></div>
 			</form>
