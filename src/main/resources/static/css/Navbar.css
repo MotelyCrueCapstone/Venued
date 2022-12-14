@@ -10,7 +10,6 @@
 }
 
 .searchbar {
-    margin-bottom: auto;
     margin-top: 25px;
     margin-right: -25px;
     height: 60px;
@@ -18,7 +17,10 @@
     padding: 10px;
 }
 .search_input {
-    color: white;
+    position: relative;
+    bottom: 10px;
+    color: black;
+    border-radius: 10px;
     border: 0;
     outline: 0;
     background: none;
