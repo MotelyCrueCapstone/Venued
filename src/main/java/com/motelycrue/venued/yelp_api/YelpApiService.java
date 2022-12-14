@@ -16,7 +16,7 @@ import java.io.IOException;
 public class YelpApiService {
     static String yelpApiKey = APIAccess.getApiKey();
 
-    private static final String yelpBaseUrl = "https://api.yelp.com/v3/";
+    private static final String yelpBaseUrl = "api.yelp.com/v3";
     private static final String businesses = "businesses/";
     //https://api.yelp.com/v3/businesses/search?location=san%20antonio%20&term=music&radius=2000&categories=clubs&sort_by=best_match&limit=20"
     private static String makeAutoCompleteUrl(String query, String location){
@@ -28,24 +28,24 @@ public class YelpApiService {
     private static String makeAutoCompleteUrl(String query, String latitude, String longitude){
 
         //making the uri adjustable by using the UriComponentsBuilder for the request
-//        String uriComponents = UriComponentsBuilder.newInstance()
-//                .scheme("https").host(yelpBaseUrl).path("/search")
-//                    .queryParam("term", query)
-//                    .queryParam("latitude", latitude)
-//                    .queryParam("longitude", longitude)
-//                    .queryParam("radius", "2000")
-//                    .queryParam("categories", "club")
-//                    .queryParam("categories", "concert")
-//                    .queryParam("sort_by", "rating")
-//                    .queryParam("limit", "20")
-//                    .build()
-//                .toString();
-//
-//          System.out.println(uriComponents);
-//          return uriComponents;
+        String uriComponents = UriComponentsBuilder.newInstance()
+                .scheme("https").host(yelpBaseUrl).path("/search")
+                    .queryParam("term", query)
+                    .queryParam("latitude", latitude)
+                    .queryParam("longitude", longitude)
+                    .queryParam("radius", "2000")
+                    .queryParam("categories", "club")
+                    .queryParam("categories", "concert")
+                    .queryParam("sort_by", "rating")
+                    .queryParam("limit", "20")
+                    .build()
+                .toString();
 
-        return String.format("%s%ssearch?latitude=%s&longitude=%s&term=%s&radius=2000&categories=club&categories=sports&categories=concert&categories=wedding&sort_by=rating&limit=20",
-                yelpBaseUrl,businesses, latitude, longitude, query);
+          System.out.println(uriComponents);
+          return uriComponents;
+
+//        return String.format("%s%ssearch?latitude=%s&longitude=%s&term=%s&radius=2000&categories=club&categories=sports&categories=concert&categories=wedding&sort_by=rating&limit=20",
+//                yelpBaseUrl,businesses, latitude, longitude, query);
     }
 
     public static String execute(String query, String latitude, String longitude) throws IOException {
