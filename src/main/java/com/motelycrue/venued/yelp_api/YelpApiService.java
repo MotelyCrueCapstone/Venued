@@ -34,7 +34,7 @@ public class YelpApiService {
         //creating the api endpoint url
         String requestUrl = makeAutoCompleteUrl(query, latitude, longitude );
 
-        //turns the url into a viable http requestt with the
+        //turns the url into a viable http request with the
         // Bearer token so we can receive the results of our query
 
         Request request = new Request.Builder()
