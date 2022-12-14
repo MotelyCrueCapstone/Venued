@@ -25,7 +25,7 @@ public class PredictHqController {
                 return PredictHqApiService.execute(latitude.get(), longitude.get());
             }else{
                 //reminding frontend you need to add the longitude latitude to the request
-                return "{\"result\" : \"requires longitude/latitude combination\"}";
+                return "{\"result\" : \"requires longitude and latitude parameters\"}";
             }
     }
 
