@@ -4,12 +4,15 @@
     <link rel="stylesheet" href="../static/css/about_us.css">
 </head>
 <body>
-<nav th:replace="~{partials/venued_partials.html :: mynav}"></nav>
+<div class="page-wrapper">
+    <nav th:replace="~{partials/venued_partials.html :: mynav}"></nav>
     <div class="flex-content">
-    <div class="center-text">
-    <h1>About Us</h1>
-    <p>Here is some information about us.</p>
+        <div class="center-text">
+            <h1>About Us</h1>
+            <p>Here is some information about us.</p>
+        </div>
     </div>
+    <footer th:replace="~{partials/venued_partials.html :: footer}"></footer>
 </div>
 </body>
 </html>
