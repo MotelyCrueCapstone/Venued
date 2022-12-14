@@ -21,7 +21,7 @@ public class YelpApiService {
                 yelpBaseUrl,businesses, location,query);
     }
     private static String makeAutoCompleteUrl(String query, String latitude, String longitude){
-        return String.format("%s%ssearch?latitude=%s&longitude=%s&term=%s&radius=2000&categories=club&sort_by=best_match&limit=20",
+        return String.format("%s%ssearch?latitude=%s&longitude=%s&term=%s&radius=2000&categories=club&sort_by=rating&limit=20",
                 yelpBaseUrl,businesses, latitude, longitude, query);
     }
     public static String execute(String query, String latitude, String longitude) throws IOException {
