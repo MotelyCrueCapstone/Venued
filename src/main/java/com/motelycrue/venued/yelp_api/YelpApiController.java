@@ -11,14 +11,13 @@ import java.util.Optional;
 @Controller
 public class YelpApiController {
     @ResponseBody
-    @GetMapping(value = "/event/{query}", produces = MediaType.APPLICATION_JSON_VALUE)
-    // 	latitude: 29.50184
-    // longitude: -98.49869
+    @GetMapping(value = "/yelp/{query}", produces = MediaType.APPLICATION_JSON_VALUE)
 
+    //optional parameter gives you the ability to omit paramaters so
+    //if they don't have these parameters the request won't fail off the bat
     public String yelp(@PathVariable String query,
                        @RequestParam Optional<String> latitude,
-                       @RequestParam Optional<String> longitude)
-            throws IOException {
+                       @RequestParam Optional<String> longitude)throws IOException {
 
         //making sure the longitude and latitude are both present in the
         //parameters or the controller will return the default page for the

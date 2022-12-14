@@ -19,9 +19,8 @@ public class YelpApiService {
     private static final String yelpBaseUrl = "api.yelp.com/v3";
     //https://api.yelp.com/v3/businesses/search?location=san%20antonio%20&term=music&radius=2000&categories=clubs&sort_by=best_match&limit=20"
     private static String makeAutoCompleteUrl(String query, String latitude, String longitude){
-
         //making the uri adjustable by using the UriComponentsBuilder for the request
-        String uriComponents = UriComponentsBuilder.newInstance()
+        return UriComponentsBuilder.newInstance()
                 .scheme("https").host(yelpBaseUrl).path("/businesses/search")
                     .queryParam("term", query)
                     .queryParam("latitude", latitude)
@@ -35,21 +34,12 @@ public class YelpApiService {
                     .queryParam("limit", "20")
                     .build()
                 .toUriString();
-
-          System.out.println(uriComponents);
-          return uriComponents;
-
-//        return String.format("%s%ssearch?latitude=%s&longitude=%s&term=%s&radius=2000&categories=club&categories=sports&categories=concert&categories=wedding&sort_by=rating&limit=20",
-//                yelpBaseUrl,businesses, latitude, longitude, query);
     }
 
     public static String execute(String query, String latitude, String longitude) throws IOException {
-
         OkHttpClient client = new OkHttpClient();
-
         //creating the api endpoint url
         String requestUri = makeAutoCompleteUrl(query, latitude, longitude );
-
         Request request = new Request.Builder()
                 .url(requestUri)
                 .addHeader("Authorization", "Bearer " + yelpApiKey)
@@ -59,7 +49,6 @@ public class YelpApiService {
         String responseString  = response.body().string();
         ObjectNode objectNode = new ObjectMapper()
                 .readValue(responseString, ObjectNode.class);
-
         return objectNode.get("businesses").toPrettyString();
     }
 
