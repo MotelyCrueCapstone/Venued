@@ -11,8 +11,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <script src="/js/index.js" defer></script>
     </div>
-
-</head>
 <body>
 <nav th:fragment="mynav" class="topNav">
     <a class="venued" href="#home"><img src="/imgs/venuedImage.png" class="logo"></a>
@@ -27,6 +25,48 @@
         </form>
     </div>
 </nav>
+<footer style="border: 1px solid black" th:fragment="footer" class="footer">
+    <div class="footer_content">
 
+        <div class="venuedblack">
+            <img src="/imgs/blacklogo.png" class="blacklogo">
+        </div>
+
+        <div class="socials">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin-in"></i>
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+
+    </div>
+</footer>
+        <footer style="border: 1px solid black" th:fragment="footer" class="footer">
+            <div class="footer_content">
+                <div class="leftSide">
+                    <div class="venuedBlack">
+                        <img src="/imgs/blacklogo.png" class="blacklogo">
+                    </div>
+                    <div class="socials">
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-linkedin-in"></i>
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <div class="address">
+                        <p>600 Navarro Street,<br> San Antonio, TX 78209</p>
+                    </div>
+                </div>
+                <div class="rightSide">
+                    <div class="subscribe">
+                        <form class="form-group">
+                            <label for="email">Subscribe</label>
+                            <input type="text" placeholder="Email Address" id="email" class="email" size="40">
+                            <button type="submit" class="btn subscribe_btn">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
 </body>
 </html>

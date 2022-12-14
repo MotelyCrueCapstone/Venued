@@ -1,0 +1,53 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.socials{
+    display: flex;
+    position: relative;
+    left: 25px;
+    gap: 10px;
+    max-width: 200px!important;
+}
+.venuedblack{
+    display: flex!important;
+    max-width: 400px!important;
+
+}
+.address{
+    position: relative;
+    top: 20px;
+    left: 25px;
+    max-width: 400px!important;
+    color: grey;
+}
+
+.email{
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 5px;
+    font-family: "Lantinghei SC", sans-serif;
+}
+
+.rightSide{
+    position: relative;
+    right: 25px;
+}
+.subscribe{
+    position: relative;
+    top: 10px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+.subscribe_btn{
+    background: orangered linear-gradient(to right, orangered, orange);
+    font-family: "Lantinghei SC", sans-serif;
+}
