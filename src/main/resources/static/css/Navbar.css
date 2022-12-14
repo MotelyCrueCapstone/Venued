@@ -4,12 +4,9 @@
 .topNav {
     display: flex;
     justify-content: space-between;
+    align-content: center;
     height: 80px;
     background-color: rgba(0,0,0,0.2);
-}
-.logo {
-    position: relative;
-    bottom: 25px;
 }
 
 .searchbar {
@@ -53,8 +50,8 @@
 
 /* Navbar links */
 .venued {
+    display: flex;
     float: left;
-    display: block;
     color: black;
     text-align: left;
     padding: 14px 16px;
