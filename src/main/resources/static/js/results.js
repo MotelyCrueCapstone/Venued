@@ -73,7 +73,8 @@
              search($(searchInput).val());
           }
     });
-    
+   
+    //on search input click
     $(searchInput).one("click", ()=>{
          toggleResults();
     })
