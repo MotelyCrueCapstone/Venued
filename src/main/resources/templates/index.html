@@ -11,6 +11,7 @@
 	<link rel="stylesheet" th:href="@{/css/homepage/banner.css}">
 	<link rel="stylesheet" th:href="@{/css/homepage/body.css}">
 	<link rel="stylesheet" th:href="@{/css/homepage/recentSubmissions.css}">
+	<link rel="stylesheet" th:href="@{/css/homepage/recentSubmissions_responsiveness.css}">
 	<link rel="stylesheet" th:href="@{/css/universalStyle.css}">
 	<!--		<link rel="stylesheet" th:href="@{/css/venue_pages/venue.css}">-->
 
@@ -44,6 +45,23 @@
 
 
 				<div class="slide first">
+
+					<video autoplay muted loop class="banner">
+						<source src="/imgs/womenDancing.mp4">
+					</video>
+
+					<div class="centered">
+						<div class="description">
+							<p class="slogan">Don't Miss the Main Act.</p>
+							<p class="topDescription">
+								Venued is a platform that provides tips
+								and advice for finding the best venues, as
+								well as<br>helping people plan their nights out.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="slide">
 					<video autoplay muted loop class="banner">
 						<source src="/imgs/footballStadium.mp4">
 					</video>
@@ -70,22 +88,7 @@
 					</div>
 				</div>
 
-				<div class="slide">
 
-					<video autoplay muted loop class="banner">
-						<source src="/imgs/womenDancing.mp4">
-					</video>
-
-					<div class="centered">
-						<div class="description">
-							<p class="slogan">Don't Miss the Main Act.</p>
-							<p class="topDescription">
-								Venued is a platform that provides tips
-								and advice for finding the best venues, as
-								well as<br>helping people plan their nights out.</p>
-						</div>
-					</div>
-				</div>
 
 				<!--VIDEO 2-->
 
@@ -133,23 +136,30 @@
 
 	<section class="main">
 		<div class="main-body">
+			<div class="title">What is Venued?</div>
 			<div class="subsection reveal1">
 				<img th:src="@{imgs/homepage/body/confetti.png}" alt="">
-				<p>Concerts and all</p>
+				<p>Have you ever driven to another city to see a band and found out that the cheapest
+					parking near the venue ends up costing you $25? Or have you ever Ubered to a stadium
+					 with a handbag, only to find out that the venue only allows clear bags?
+				</p>
 			</div>
+
 			<div class="subsection city reveal2 ">
-				<p>City Sections</p>
+				<p>Venued is a venue-focused website, aimed at helping users submit tips about their favorite places to help out other venue-explorers (or 'Venueders' as we like to call them!)</p>
 				<img th:src="@{imgs/homepage/body/city-down.png}" alt="">
 			</div>
 
-			<div class="subsection reveal3">
+			<div class="subsection reveal1">
 				<img th:src="@{imgs/homepage/body/venue.png}" alt="">
-				<p>Venues of all types</p>
+				<p>Users can tell other people where the best place to park is, how early to get to the venue if an
+					event is super popular, best restaurants to eat at after the concert is over, and much more!</p>
 			</div>
 		</div>
 
 	</section>
 </div>
+
 <div class="bar-divider"></div>
 
 <section class="wrapper recents-wrapper reveal">
@@ -162,14 +172,33 @@
 				</div>
 				<div>
 					<small>username</small>
-					<small>venuename</small>
+					<small>Alamodome</small>
 					<small>San Antonio, TX</small>
 				</div>
 			</figure>
 			<div>
-				<p>Does this venue have free parking</p>
+				<p>What is the best section to sit in to get a free shirt from the shirt launcher?</p>
 				<div>
-					<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
+					<img th:class="recentimg" src="/imgs/shirtLauncher.jpeg" alt="restaurant image" class="image">
+				</div>
+				<button>Answer Question</button>
+			</div>
+		</div>
+		<div class="recent-card">
+			<figure>
+				<div>
+					<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
+				</div>
+				<div>
+					<small>username</small>
+					<small>Paper Tiger</small>
+					<small>San Antonio, TX</small>
+				</div>
+			</figure>
+			<div>
+				<p>Does this place have a clear-bag policy??</p>
+				<div>
+					<img th:class="recentimg" src="/imgs/inLine.jpeg" alt="restaurant image" class="image">
 				</div>
 				<button>Answer Question</button>
 			</div>
@@ -186,28 +215,9 @@
 				</div>
 			</figure>
 			<div>
-				<p>Does this venue have free parking</p>
+				<p>Does this venue have free parking?</p>
 				<div>
-					<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-				</div>
-				<button>Answer Question</button>
-			</div>
-		</div>
-		<div class="recent-card">
-			<figure>
-				<div>
-					<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-				</div>
-				<div>
-					<small>username</small>
-					<small>venuename</small>
-					<small>San Antonio, TX</small>
-				</div>
-			</figure>
-			<div>
-				<p>Does this venue have free parking</p>
-				<div>
-					<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
+					<img th:class="recentimg" src="/imgs/parking.webp" alt="restaurant image" class="image">
 				</div>
 				<button>Answer Question</button>
 			</div>
