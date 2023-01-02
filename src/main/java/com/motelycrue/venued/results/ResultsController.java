@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ResultsController {
     @GetMapping
     public String resultsPage(){
-        return "results";
+        return "results_page";
     }
 
 }
