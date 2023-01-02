@@ -135,13 +135,18 @@ $('#contact-input').on('submit', function(event) {
 
 //Show Dialog
 $(document).ready(function() {
-    $('#showDialog').click(function() {
-        $('#deshawnDialog').show();
-    });
-    $('.close-button').click(function() {
-        $('#deshawnDialog').hide();
+    $('.showDialog').on("click", function (e) {
+        $(this).parents(".img_overlay").siblings(".dialog").show();
     });
 
+    $('.showDialog').on("click", function (e) {
+        $(this).parents(".img_overlay_bottom").siblings(".dialog").show();
+    });
+
+    $('.close-button').click(function () {
+        $(this).parents('.dialog').hide();
+
+    });
 });
 
 

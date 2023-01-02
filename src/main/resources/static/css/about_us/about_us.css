@@ -1,9 +1,5 @@
 body {
-    background-image: url("../../imgs/BackgroundImage.jpg");
-    background-size: cover;
-    height: 100%;
     color: white;
-    font-family: "Lantinghei SC", sans-serif;
 }
 
 .img {
@@ -12,10 +8,15 @@ body {
 
 /*Circles with images*/
 .dot{
+    height: auto;
+    width: 150px;
+    box-shadow: 5px 10px #090808;
+}
+.img_holder{
     height: 150px;
     width: 150px;
     border-radius: 50%;
-    box-shadow: 5px 10px #090808;
+    overflow: hidden;
 }
 /*Places the circles in the center of page*/
 .row.circles{

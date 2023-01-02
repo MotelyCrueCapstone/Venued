@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/about_us")
 public class AboutUsController {
 
-    @Autowired
-    private final EmailService emailService;
-
-    public AboutUsController(EmailService emailService) {
-        this.emailService = emailService;
-    }
+//    @Autowired
+//    private final EmailService emailService;
+//
+//    public AboutUsController(EmailService emailService) {
+//        this.emailService = emailService;
+//    }
 
 
     @GetMapping
