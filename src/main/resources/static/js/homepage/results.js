@@ -11,10 +11,12 @@
 
 
 (function () {
+    
     let input = $(".search_input")
     let searchButton = $(".search_icon")
     
     function search(query){
     
     }
+    
 })();
