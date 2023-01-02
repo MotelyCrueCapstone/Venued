@@ -53,10 +53,10 @@
                                         <h1 class="modal-title fs-5" id="exampleModalLabel1">Add a tip</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body" th:each="tip : ${tips}">
-                                        <form th:action="@{/tips}" th:method="post" th:object="${tip}">
+                                    <div class="modal-body">
+                                        <form>
                                             <div class="mb-3">
-                                                <textarea th:field="*{tipContent}" class="form-control shadow-none" id="exampleFormControlTextarea1" rows="3" cols="30" placeholder="Add a tip here..."></textarea>
+                                                <textarea class="form-control shadow-none" id="exampleFormControlTextarea1" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -133,10 +133,10 @@
                                         <h1 class="modal-title fs-5" id="exampleModalLabel2">Ask Questions</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body" th:each="question : ${questions}">
-                                        <form th:action="@{/questions}" th:method="post" th:object="${question}">
+                                    <div class="modal-body">
+                                        <form>
                                             <div class="mb-3">
-                                                <textarea th:field="*{question}" class="form-control shadow-none" id="question" rows="3" cols="30" placeholder="question goes here..."></textarea>
+                                                <textarea class="form-control shadow-none" id="question" rows="10" cols="30" placeholder="question goes here..."></textarea>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -267,11 +267,11 @@
                             </div>
                         </figure>
                         <div>
-                            <p>Does this venue have free parking</p>
+                            <p>Re</p>
                             <div>
                                 <img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
                             </div>
-                            <button>Answer Question</button>
+<!--                            <button>Answer Question</button>-->
                         </div>
                     </div>
                     <div class="restaurant-card">
@@ -290,7 +290,7 @@
                             <div>
                                 <img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
                             </div>
-                            <button>Answer Question</button>
+<!--                            <button>Answer Question</button>-->
                         </div>
                     </div>
                     <div class="restaurant-card">
@@ -309,7 +309,7 @@
                             <div>
                                 <img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
                             </div>
-                            <button>Answer Question</button>
+<!--                            <button>Answer Question</button>-->
                         </div>
                     </div>
                     <div class="restaurant-card">
@@ -328,7 +328,7 @@
                             <div>
                                 <img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
                             </div>
-                            <button>Answer Question</button>
+<!--                            <button>Answer Question</button>-->
                         </div>
                     </div>
 
