@@ -22,7 +22,7 @@ public class EmailService {
     public void prepareAndSend(String subject, String message, String email) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom(email);
-        mailMessage.setTo("venued2023@gmail.com");
+        mailMessage.setTo();
         mailMessage.setSubject(subject);
         mailMessage.setText(message);
         try {
