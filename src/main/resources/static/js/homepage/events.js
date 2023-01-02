@@ -18,7 +18,6 @@
      //card blueprint
      function makeEventCard(eventName, imageUrl){
           let randomImageApiCall = "https://source.unsplash.com/random/?concert"
-          
           //making each generated cards html template
           let cardHtml = `
           `
@@ -36,5 +35,5 @@
           fetch(`http://localhost:8085/event?latitude=${latitude}&longitude=${longitude}`, {method: "GET"})
                .then(response  => response.json())
                .then(json => (console.log(json)))
-     })
+          })
      })();
