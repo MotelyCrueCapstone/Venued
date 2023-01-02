@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="partials/venued_partials :: myheader('Venue Page')" th:remove="tag"></div>
+    <link rel="stylesheet" th:href="@{/css/venue_pages/venue.css}">
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <!---- nav bar ---->
+        <nav th:replace="partials/venued_partials :: mynav"></nav>
+
+        <!--------- header section ------->
+        <header class="wrapper header-wrapper">
+
+            <div class="hero-card">
+                <img src="/imgs/venue_placeholder.jpg" alt="" class="image">
+            </div>
+
+            <div class="event-card">
+                <h1 class="title">Alamadome</h1>
+
+                <div class="event-container">
+                    <div class="#">
+                        <h3 class="title">Event</h3>
+                        <p class="desc event-desc">This is a section for event description</p>
+                    </div>
+
+                    <div class="#">
+                        <img src="/imgs/venue_placeholder.jpg" alt="" class="image">
+                    </div>
+                </div>
+
+                <p class="desc venue-address">Venue Address</p>
+            </div>
+
+        </header>
+        <!-- main section -->
+        <main id="main-section">
+            <!----- tip and question section starts here --->
+            <section class="wrapper cards-wrapper">
+
+                <!--------- tips card ---------->
+                <div class="tip-card">
+                    <div class="card-wrapper">
+                        <h2 class="title card-heading">Tips</h2>
+                        <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#exampleModal1">Add a Tip</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content tip-modal">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel1">Add a tip</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <textarea class="form-control shadow-none" id="exampleFormControlTextarea1" rows="3" cols="30" placeholder="Add a tip here..."></textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="Submit" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!---- modal end here --->
+                    </div>
+                    <ul class="list-tips">
+                        <li>
+                            <div class="user-wrapper">
+                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
+                                <p class="">username</p>
+                            </div>
+                            <div class="thumbs-icon-wrapper">
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                                <a href="#"><span class="fa-solid fa-thumbs-up text-primary"></span></a>
+                                <a href="#"><span class="fa-solid fa-thumbs-down text-primary"></span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="user-wrapper">
+                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
+                                <p>username</p>
+                            </div>
+                            <div class="thumbs-icon-wrapper">
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                                <a href="#"><span class="fa-solid fa-thumbs-up text-primary"></span></a>
+                                <a href="#"><span class="fa-solid fa-thumbs-down text-primary"></span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="user-wrapper">
+                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
+                                <p>username</p>
+                            </div>
+                            <div class="thumbs-icon-wrapper">
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                                <a href="#"><span class="fa-solid fa-thumbs-up text-primary"></span></a>
+                                <a href="#"><span class="fa-solid fa-thumbs-down text-primary"></span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="user-wrapper">
+                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
+                                <p>username</p>
+                            </div>
+                            <div class="thumbs-icon-wrapper">
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                                <a href="#"><span class="fa-solid fa-thumbs-up text-primary"></span></a>
+                                <a href="#"><span class="fa-solid fa-thumbs-down text-primary"></span></a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+                <!------ Answers and question card ------->
+                <div class="question-card">
+                    <div class="card-wrapper">
+                        <h2 class="title card-heading">Questions</h2>
+                        <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#exampleModal2">Ask a Question</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content question-modal">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel2">Ask Questions</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <textarea class="form-control shadow-none" id="question" rows="3" cols="30" placeholder="question goes here..."></textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="Submit" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---- modal end here --->
+                    </div>
+                    <ul class="list-questions">
+                        <li>
+                            <div class="user-wrapper">
+                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
+                                <p>username</p>
+                            </div>
+                            <div class="question-wrapper">
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                                <button class="button">Answer</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="user-wrapper">
+                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
+                                <p>username</p>
+                            </div>
+                            <div class="question-wrapper">
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                                <button class="button">Answer</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="user-wrapper">
+                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
+                                <p>username</p>
+                            </div>
+                            <div class="question-wrapper">
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                               <button class="button">Answer</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="user-wrapper">
+                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
+                                <p>username</p>
+                            </div>
+                            <div class="question-wrapper">
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                               <button class="button">Answer</button>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </section>
+
+            <!------- answered questions section -------->
+            <section class="wrapper answered-questions">
+                <h2 class="title">Answered Questions</h2>
+                <div class="answered-question-wrapper">
+                    <ul class="list-answered-questions">
+                        <li>
+                            <div class="user-wrapper">
+                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
+                                <p>username</p>
+                            </div>
+                            <div class="answer-wrapper">
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                                <a href="#"><span class="fa-solid fa-thumbs-up text-primary"></span></a>
+                                <a href="#"><span class="fa-solid fa-thumbs-down text-primary"></span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="user-wrapper">
+                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
+                                <p>username</p>
+                            </div>
+                            <div class="answer-wrapper">
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                                <a href="#"><span class="fa-solid fa-thumbs-up text-primary"></span></a>
+                                <a href="#"><span class="fa-solid fa-thumbs-down text-primary"></span></a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-answered-questions">
+                        <li>
+                            <div class="user-wrapper">
+                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
+                                <p>username</p>
+                            </div>
+                            <div class="answer-wrapper">
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                                <a href="#"><span class="fa-solid fa-thumbs-up text-primary"></span></a>
+                                <a href="#"><span class="fa-solid fa-thumbs-down text-primary"></span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="user-wrapper">
+                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
+                                <p>username</p>
+                            </div>
+                            <div class="answer-wrapper">
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                                <a href="#"><span class="fa-solid fa-thumbs-up text-primary"></span></a>
+                                <a href="#"><span class="fa-solid fa-thumbs-down text-primary"></span></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <!---- Restaurant cards section ----->
+            <section class="wrapper restaurants-wrapper">
+                <h2 class="title">Restaurants Near You</h2>
+                <div class="restaurant-cards">
+                    <div class="restaurant-card">
+                        <figure>
+                            <div>
+                                <img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
+                            </div>
+                            <div>
+                                <small>username</small>
+                                <small>venuename</small>
+                                <small>San Antonio, TX</small>
+                            </div>
+                        </figure>
+                        <div>
+                            <p>Does this venue have free parking</p>
+                            <div>
+                                <img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
+                            </div>
+                            <button>Answer Question</button>
+                        </div>
+                    </div>
+                    <div class="restaurant-card">
+                        <figure>
+                            <div>
+                                <img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
+                            </div>
+                            <div>
+                                <small>username</small>
+                                <small>venuename</small>
+                                <small>San Antonio, TX</small>
+                            </div>
+                        </figure>
+                        <div>
+                            <p>Does this venue have free parking</p>
+                            <div>
+                                <img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
+                            </div>
+                            <button>Answer Question</button>
+                        </div>
+                    </div>
+                    <div class="restaurant-card">
+                        <figure>
+                            <div>
+                                <img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
+                            </div>
+                            <div>
+                                <small>username</small>
+                                <small>venuename</small>
+                                <small>San Antonio, TX</small>
+                            </div>
+                        </figure>
+                        <div>
+                            <p>Does this venue have free parking</p>
+                            <div>
+                                <img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
+                            </div>
+                            <button>Answer Question</button>
+                        </div>
+                    </div>
+                    <div class="restaurant-card">
+                        <figure>
+                            <div>
+                                <img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
+                            </div>
+                            <div>
+                                <small>username</small>
+                                <small>venuename</small>
+                                <small>San Antonio, TX</small>
+                            </div>
+                        </figure>
+                        <div>
+                            <p>Does this venue have free parking</p>
+                            <div>
+                                <img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
+                            </div>
+                            <button>Answer Question</button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <!-- footer section -->
+        <footer th:replace="partials/venued_partials :: footer"></footer>
+    </div>
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>

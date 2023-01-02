@@ -1,0 +1,350 @@
+body {
+    background-image: url("../../imgs/BackgroundImage.jpg");
+    background-size: cover;
+    height: 100%;
+    color: white;
+    font-family: "Lantinghei SC", sans-serif;
+}
+
+.img {
+    max-width: 100%;
+}
+
+/*Circles with images*/
+.dot{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    box-shadow: 5px 10px #090808;
+}
+/*Places the circles in the center of page*/
+.row.circles{
+    flex-direction: row;
+    justify-content: center;
+}
+/*Positions circles in a offset and adds border bottom*/
+.row.circles .col-sm{
+    display: flex;
+    flex-shrink: 1;
+    flex: unset;
+    width: 250px;
+    height: 350px;
+    margin-left: -20px;
+    margin-right: -20px;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 50px;
+}
+.arrow-one{
+    position: absolute;
+    transform: rotate(-29deg) scaleX(1);
+    height: 225px;
+    top: 111px;
+    left: 69px;
+}
+.arrow-two{
+    position: absolute;
+    transform: rotate(211deg) scaleX(-1);
+    height: 200px;
+    top: -7px;
+    left: 77px;
+}
+.arrow-three{
+    position: absolute;
+    /* rotate: rotate image position 360degree, scaleX mirror image. */
+    transform: rotate(279deg) scaleX(-1);
+    height: 196px;
+    top: -14px;
+    left: 177px;
+}
+.col-sm{
+    position: relative;
+}
+/*Positions the text in the center of the circles*/
+.img_overlay, .img_overlay_bottom{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+.img_overlay{
+    position: absolute;
+    top:0;
+    bottom: 0;
+}
+
+.img_overlay_bottom{
+    position: absolute;
+    right: 88px;
+    bottom: 50px;
+}
+.img_overlay:hover, .img_overlay_bottom:hover{
+    opacity: 1;
+}
+/*Targets the paragraphs under hero classes*/
+.hero-p{
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+/*Reduces top margin of the paragraph "Venued provides..."*/
+.col-sm.text-center p{
+    margin-top: -20px;
+}
+
+.col-sm.align-circle-bottom{
+    align-items: end;
+}
+
+.col-sm.p{
+    text-indent: 15px;
+}
+.col-sm-12 p{
+    font-size: 40px;
+}
+
+.silhouettes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 40px 0;
+}
+
+.silhouettes .col-sm {
+    flex: unset;
+    flex-shrink: 1;
+}
+
+.silhouettes .col-sm img{
+    height: 150px;
+    mix-blend-mode: overlay;
+}
+.main-act{
+    border-bottom: 1px solid #fff;
+}
+.contact_us{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+.row input{
+    border-radius: 15px;
+    width: unset;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.contact-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    opacity: .5;
+    margin-bottom: 20px;
+}
+.contact_btn{
+    border-radius: 15px;
+    width: 200px;
+    height: 50px;
+    margin-top: 1px;
+}
+.input-container label{
+    align-self: first baseline;
+}
+.input-container input{
+    height: 50px;
+    width: 80%;
+}
+.input-container #subject::placeholder, #email::placeholder{
+   color: transparent;
+}
+textarea{
+    border-radius: 20px;
+    width: 350px;
+    height: 200px;
+}
+#mobile_changes{
+    display: none;
+}
+.mobile_contact_btn{
+    display: none;
+}
+.slider-container{
+    display: none;
+}
+dialog {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    padding: 10px;
+    z-index: 99;
+}
+.dialog-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+@media (max-width: 810px){
+    .row.circles{
+        display: inline-flex;
+        width: max-content;
+        margin-left: -25px;
+    }
+    .user-container{
+        gap: .313rem;
+        margin-right: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container.hero{
+        max-width: 100vw;
+        margin-left: 25px;
+    }
+
+    .row.circles .col-sm{
+        border-bottom: none;
+    }
+    .main-act{
+        border-bottom: none;
+    }
+    .row{
+        flex-wrap: unset;
+    }
+    .silhouettes{
+        flex-direction: column;
+    }
+    .silhouettes .col-sm{
+        margin-bottom: 20px;
+    }
+    .contact_us{
+        display: flex;
+        flex-direction: column;
+    }
+    .contact_us form{
+        box-shadow: 0 0 20px 1px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+    .contact-input{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: .5;
+        margin: auto;
+    }
+    .row input{
+        width: 300px;
+        margin-left: 50px;
+    }
+    .col-sm-4.input-container{
+        width: unset;
+        margin-right: 20px;
+    }
+    .input-container{
+        display: grid;
+    }
+    .input-container label{
+        display: none;
+    }
+    .input-container #subject::placeholder, #email::placeholder{
+        color: black;
+    }
+    textarea{
+        margin-left: 25px;
+    }
+    .contact_btn{
+        display: none;
+    }
+    #mobile_changes{
+        display: flex;
+        justify-content: center;
+    }
+    .mobile_contact_btn{
+        display:block;
+        opacity: .5;
+        border-radius: 15px;
+        width: 200px;
+        height: 50px;
+        margin: auto;
+    }
+    .row.circles{
+        width: 100vw;
+    }
+    .img_overlay_bottom{
+        right: 70px;
+    }
+}
+@media (max-width: 428px){
+    :root {
+        --shadow: rgba(0, 0, 0, 0.8)
+    }
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    .row.circles{
+        display: none;
+    }
+    html, body{
+        height: 100%;
+        width: 100%;
+        /*overflow: hidden;*/
+        line-height: 1.7;
+    }
+    .container.hero{
+        width: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+    .slider-container{
+        display: inline-flex;
+        overflow: hidden;
+        transform: translateX(0);
+        will-change: transform;
+        transition: transform 0.3s ease-out;
+        cursor: grab;
+    }
+    .slider-container::-webkit-scrollbar{
+        display: none;
+    }
+    .slide {
+        overflow: hidden;
+        max-width: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        user-select: none;
+    }
+    .slide img{
+        max-width: 100%;
+        max-height: 100%;
+        transition: transform 0.3s ease-in-out;
+        /*var(--shadow), specifies the color of the shadow.*/
+        box-shadow: 0.313rem 0.313rem 3.125rem -0.063 var(--shadow);
+        border-radius: 0.25rem;
+        user-select: none;
+    }
+    .grabbing{
+        cursor: grabbing;
+    }
+    .grabbing .slide img{
+        transform: scale(0.9);
+        box-shadow: 0.313rem 0.313rem 2.5rem -0.063 var(--shadow);
+    }
+
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <div th:replace="~{partials/venued_partials.html :: myheader('About Us')}"></div>
+    <link rel="stylesheet" href="/css/about_us/about_us.css">
+</head>
+<body>
+<div class="page-wrapper">
+	
+    <nav th:replace="~{partials/venued_partials.html :: mynav}"></nav>
+    <div class="container hero">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <p class="hero-p">About Us</p>
+            </div>
+        </div>
+	    
+        <div class="row circles">
+	        
+            <div class="col-sm">
+                <img src="/imgs/deshawn.jpg" class="dot deshawn" alt="image of deshawn">
+                <img src="/imgs/arrow.png" alt="arrow" class="arrow-one">
+                <div class="img_overlay">
+                    <div class="text"><a href="#" id="showDialog">Deshawn</a></div>
+                    <p class="text-center mt-1">
+                        Click for more information.
+                    </p>
+                </div>
+                <dialog id="deshawnDialog">
+                    <div class="dialog-content">
+                        <div class="dialog-header">
+                            <h2>Deshawn</h2>
+                            <button class="close-button" aria-label="Close dialog">X</button>
+                        </div>
+                        <div class="dialog-body">
+                            <p>
+                                Deshawn is a full stack developer with a passion for creating
+                                applications that are both functional and beautiful. He has a
+                                background in graphic design and has worked with many
+                                technologies. He is currently working on his Bachelors in Computer
+                                Science at the University of Texas at Austin.
+                            </p>
+                        </div>
+                    </div>
+                </dialog>
+            </div>
+	        
+            <div class="col-sm align-circle-bottom">
+                <img src="/imgs/rodrigo.jpg" class="dot rodrigo" alt="image of rodrigo">
+                <img src="/imgs/arrow.png" alt="arrow" class="arrow-two">
+                <div class="img_overlay_bottom">
+                    <div class="text">Rodrigo</div>
+                    <p class="text-center mt-1">
+                        a full stack &nbsp developer with a passion for web development.
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm">
+                <img src="/imgs/tesfalem.jpg" class="dot tesfalem" alt="image of tesfalem">
+                <img src="/imgs/arrow.png" alt="arrow" class="arrow-three">
+                <div class="img_overlay">
+                    <div class="text">Tesfalem</div>
+                    <p class="text-center mt-1">
+                        a full stack &nbsp developer with a passion for web development.
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm align-circle-bottom">
+                <img src="/imgs/frances.jpg" class="dot frances" alt="image of frances">
+                <div class="img_overlay_bottom">
+                    <div class="text">Frances</div>
+                    <p class="text-center mt-1">
+                        a full stack &nbsp developer with a passion for web development.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--        Mobile Slider Container                   -->
+        <div class="slider-container">
+                <div class="slide">
+                        <h2>Slide 1</h2>
+                        <img src="/imgs/deshawn.jpg" class="deshawn" alt="image of deshawn">
+                </div>
+                <div class="slide">
+                        <h2>Slide 2</h2>
+                        <img src="/imgs/rodrigo.jpg" class="rodrigo" alt="image of rodrigo">
+                </div>
+                <div class="slide">
+                        <h2>Slide 3</h2>
+                        <img src="/imgs/tesfalem.jpg" class="tesfalem" alt="image of tesfalem">
+                </div>
+                <div class="slide">
+                        <h2>Slide 4</h2>
+                        <img src="/imgs/frances.jpg" class="frances" alt="image of frances">
+                </div>
+        </div>
+        <!--        End Of Mobile Slider Container                   -->
+    </div>
+    <div class="container hero main-act">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <p>Don't Miss the Main Act</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm text-center">
+                <p>Venued provides the most intuitive and enjoyable venue suggestion platform —<br>
+                    from adding venue tips to asking questions. Venued is here to ensure each event-goer has the best<br>
+                    experience.</p>
+                <div class="silhouettes">
+                    <div class="col-sm text-center">
+                        <h3>Ask Questions</h3>
+                        <img src="/imgs/homepage/questions-answered.png" class="img" alt="silhouette of hand submitting a ballot">
+                    </div>
+                    <div class="col-sm text-center">
+                        <h3>Search Venues</h3>
+                        <img src="/imgs/homepage/venues-listed.png" class="img" alt="silhouette of rock band">
+                    </div>
+                    <div class="col-sm text-center">
+                        <h3>Leave Tips</h3>
+                        <img src="/imgs/homepage/tips-added.png" class="img" alt="silhouette of a plus sign">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row contact_us">
+            <div class="col-sm-12 text-center">
+                <p>Contact Us!</p>
+            </div>
+            <form class="contact-input" id="contact-input" method="POST">
+                <div class="col-sm-4 input-container">
+                    <label id="subject-label" for="subject">Subject:</label>
+                    <input type="text" id="subject" size="30" class="mb-1" placeholder="Subject:" required>
+                    <label id="email-label" for="email">Email:</label>
+                    <input type="email" id="email" size="30" placeholder="Email:" required>
+                    <button type="submit" role="button" class="contact_btn">Submit</button>
+                </div>
+                <div class="text-area">
+                    <label for="message"></label>
+                    <textarea id="message" cols="30" rows="10" placeholder="Message:" required></textarea>
+                </div>
+            </form>
+            <form>
+                <div id="mobile_changes">
+                    <input type="checkbox" id="mobile_subscribe" name="mobile_subscribe" value="mobile_subscribe" checked>
+                    <label for="mobile_subscribe">Check here to subscribe!</label><br>
+                </div>
+                    <button type="submit" role="button" class="mobile_contact_btn">Submit</button>
+            </form>
+        </div>
+    </div>
+    <footer th:replace="~{partials/venued_partials.html :: footer}"></footer>
+</div>
+<script src="/js/about_us.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function() {
+        emailjs.init('mVyb1RsOCWEHrXom1');
+    })();
+</script>
+</body>
+</html>

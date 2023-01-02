@@ -1,0 +1,47 @@
+.bar-divider{
+    /*background: linear-gradient(#000000a3, #00000066, #00000055, #00000033, #00000000);*/
+    background-color: transparent;
+    display: flex;
+    width: 100vw;
+    height: 50px;
+    min-width: 100vw;
+    min-height: 40px;
+}
+
+.main{
+    border-radius: 40px 40px;
+    backdrop-filter: blur(10px);
+    background-color: #00000099;
+    padding: 75px;
+    color: white;
+}
+/*gi*/
+.main-body{
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.subsection{
+    display: flex;
+    gap: 50px;
+    margin-top: 160px;
+    align-content: center;
+    align-items: center;
+}
+
+.subsection img{
+    height: 300px;
+    width: auto;
+    border-radius: 10px;
+}
+
+.subsection p{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 80px;
+}

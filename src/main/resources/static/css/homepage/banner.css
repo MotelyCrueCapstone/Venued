@@ -1,0 +1,177 @@
+.page-wrapper {
+    scroll-behavior: smooth;
+}
+
+.overlay{
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    background: linear-gradient(#00000031,#28338623, #28338611);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.slogan, .topDescription, .image, .recentActivity, .centered{
+    font-family: "Lantinghei SC", sans-serif;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+/*.slogan-main{*/
+/*   background-color: #B3466988;*/
+/*}*/
+
+.slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.slides {
+    z-index: 7;
+}
+
+.slides {
+    width: 500%;
+    height: calc(100vh - 80px);
+    display: flex;
+}
+
+.slides input {
+    display: none;
+}
+
+.slide {
+    position: relative;
+    width: 20%;
+    transition: 2s;
+}
+
+.centered{
+    padding: 0;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+}
+
+.description {
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-top: -800px;
+    width: 100vw;
+    overflow-wrap: break-word;
+    height: calc(100vh - 80px);
+}
+
+.slogan {
+    font-family: "Lantinghei SC", sans-serif;
+    font-size: 68px;
+    text-align: center;
+}
+
+.topDescription {
+    font-family: "Lantinghei SC", sans-serif;
+    text-align: center;
+}
+
+.banner {
+    z-index: -2;
+    left:0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    object-fit: cover;
+}
+
+.navigation-manual {
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    position: absolute;
+    bottom: 100px;
+    width: 100vw;
+}
+
+.navigation-manual div{
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.manual-btn {
+    background-color: transparent;
+    border: none;
+    mix-blend-mode: overlay;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    width: 40px;
+}
+
+.manual-btn:hover {
+    background: #680086;
+    mix-blend-mode: overlay;
+}
+
+.navigation-auto {
+    position: absolute;
+    bottom: 100px;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+}
+
+.navigation-auto div{
+    padding: 0;
+    margin: 0;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation-auto .auto-btn{
+    background-color: #E2DAF1d3;
+    border: none;
+    width: 40px;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1 {
+    background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
+}
+#radio2:checked ~ .navigation-auto .auto-btn2 {
+    background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
+}
+
+#radio3:checked ~ .navigation-auto .auto-btn3 {
+    background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
+}
+
+#radio4:checked ~ .navigation-auto .auto-btn4 {
+    background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
+}
+
+#radio1:checked ~ .first {
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first {
+    margin-left: -20%;
+}
+
+#radio3:checked ~ .first {
+    margin-left: -40%;
+}
+
+#radio4:checked ~ .first {
+    margin-left: -60%;
+}

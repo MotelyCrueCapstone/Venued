@@ -1,0 +1,110 @@
+.footer {
+    width: 100%;
+    height: 200px;
+    background-color: rgb(34, 10, 10,0.5)
+}
+
+.socials{
+    gap: 10px;
+    max-width: 200px!important;
+    margin-left: 35px;
+}
+
+.address{
+    max-width: 400px!important;
+    color: grey;
+}
+
+.email{
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 5px;
+    font-family: "Lantinghei SC", sans-serif;
+}
+
+.rightSide{
+}
+.subscribe{
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    font-family: "Lantinghei SC", sans-serif;
+}
+.subscribe_btn{
+    background: orangered linear-gradient(to right, orangered, orange);
+}
+
+.footer_content{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.about_us{
+    text-decoration: none;
+    color: grey;
+    margin-right: 5px;
+    /*justify-content: center;*/
+    /*align-items: flex-end;*/
+}
+
+.contact_us_link{
+    text-decoration: none !important;
+    color: grey !important;
+    /*display: flex;*/
+    /*justify-content: flex-end;*/
+}
+.about_us_container{
+    display: flex;
+    align-self: end;
+    /*display: flex;*/
+    /*align-items: flex-end;*/
+    /*flex-direction: row;*/
+    /*gap: 10px;*/
+}
+textarea{
+    padding: 5px;
+}
+#mobile_subscribe{
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .black-logo{
+        margin-bottom: -10px
+    }
+    .topNav .nav-btn{
+        background: #090808;
+    }
+    .footer{
+        justify-content: center;
+    }
+    .footer_content{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .socials{
+        margin-left: 0;
+    }
+    .about_us_container{
+        margin-top: 20px;
+    }
+    .rightSide{
+       display: none;
+    }
+    #mobile_subscribe{
+        display: unset;
+        margin: 0;
+        width: unset;
+    }
+
+}
+
+@media (max-width: 400px){
+    #mobile_subscribe    {
+            vertical-align:middle;
+        }
+
+}

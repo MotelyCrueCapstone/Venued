@@ -1,0 +1,46 @@
+<head>
+    <div th:replace="partials/venued_partials :: myheader('Homepage')"></div>
+    <link rel="stylesheet" th:href="@{/css/universalStyle.css}">
+    <link rel="stylesheet" th:href="@{/css/results_page.css}">
+
+</head>
+
+<body>
+<div class="page-wrapper">
+    <div>
+        <nav th:replace="partials/venued_partials :: mynav"></nav>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <!--^^^RESPONSIVENESS^^^-->
+                <p class="title">Results</p>
+                <hr class="smallLine">
+                <!--RESULTS CARDS-->
+                <div class="card">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col col-lg-auto col-md-auto image">
+                                <img class="imagePlaceholder" src="/imgs/paperTiger.jpeg">
+                            </div>
+                            <div class="col col-sm venueInfo">
+                                <p>Alamodome</p>
+                                <p>Venue City, State</p>
+                            </div>
+                            <div class="row">
+                                <button class="gotoPage">Go to Venue</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--END OF RESPONSIVENESS-->
+
+<!--ONLY SHOW IF SEARCH NOT FOUND-->
+            <p class="title">Search for "Insert Searched Term" not found.</p>
+            <hr class="smallLine">
+            <p class="tryAgain">Please search for something again.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
