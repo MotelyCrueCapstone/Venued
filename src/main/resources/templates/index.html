@@ -10,240 +10,231 @@
 		<link rel="stylesheet" th:href="@{/css/homepage/body_responsiveness.css}">
 		<link rel="stylesheet" th:href="@{/css/homepage/banner.css}">
 		<link rel="stylesheet" th:href="@{/css/homepage/body.css}">
-		<link rel="stylesheet" th:href="@{/css/venue_pages/universalStyle.css}">
-		<link rel="stylesheet" th:href="@{/css/venue_pages/venue.css}">
-
-
+		<link rel="stylesheet" th:href="@{/css/homepage/recentSubmissions.css}">
+		<link rel="stylesheet" th:href="@{/css/universalStyle.css}">
+		<!--		<link rel="stylesheet" th:href="@{/css/venue_pages/venue.css}">-->
+	
+		<!--importing javascript files-->
+		<script src="https://unpkg.com/scrollreveal"></script>
+		
 		<!--custom javascript files-->
 		<script th:src="@{/js/carousel.js}" defer></script>
 		<script th:src="@{/js/navbar.js}"></script>
-		<script src="https://unpkg.com/scrollreveal"></script>
+
 	</head>
 
 	<body>
-		<div class="page-wrapper">
+			<div class="page-wrapper">
 
-			<section class="navSection">
-				<nav th:replace="~{partials/venued_partials :: mynav}"></nav>
-			</section>
+				<section class="navSection">
+					<nav th:replace="~{partials/venued_partials :: mynav}"></nav>
+				</section>
 
-			<section class="topSection">
-				<!--image slider start-->
+				<section class="topSection">
+					<!--image slider start-->
 					<div class="slider">
 
 						<div class="overlay"></div>
 						<div class="slides">
 
 							<!--radio buttons start-->
-						<input type="radio" name="radio-btn" id="radio1" checked>
-						<input type="radio" name="radio-btn" id="radio2">
-						<input type="radio" name="radio-btn" id="radio3">
-						<input type="radio" name="radio-btn" id="radio4">
+							<input type="radio" name="radio-btn" id="radio1" checked>
+							<input type="radio" name="radio-btn" id="radio2">
+							<input type="radio" name="radio-btn" id="radio3">
+							<input type="radio" name="radio-btn" id="radio4">
 
 
 							<div class="slide first">
-						<video autoplay muted loop class="banner">
-							<source src="/imgs/footballStadium.mp4">
-						</video>
+								<video autoplay muted loop class="banner">
+									<source src="/imgs/footballStadium.mp4">
+								</video>
 
-						<div class="centered">
-							<div class="description">
-								<p class="slogan">Venued has it all.</p>
-								<p class="topDescription">Venue relies on its users
-									to post tips, ask or answer questions, and
-									like other user's posts.
-								</p>
+								<div class="centered">
+									<div class="description">
+										<p class="slogan">Venued has it all.</p>
+										<p class="topDescription">Venue relies on its users
+											to post tips, ask or answer questions, and
+											like other user's posts.
+										</p>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
 							<div class="slide">
-							<video autoplay muted loop class="banner">
-								<source src="/imgs/iceSkating.mp4">
-							</video>
-							<div class="centered">
-								<div class="description">
-									<p class="slogan slogan-main">Not just another concert website.</p>
-									<p class="topDescription">Here, venue veterans can post tips to help the rookies out.</p>
+								<video autoplay muted loop class="banner">
+									<source src="/imgs/iceSkating.mp4">
+								</video>
+								<div class="centered">
+									<div class="description">
+										<p class="slogan slogan-main">Not just another concert website.</p>
+										<p class="topDescription">Here, venue veterans can post tips to help the rookies out.</p>
+									</div>
 								</div>
-						</div>
-					</div>
+							</div>
 
-						<div class="slide">
+							<div class="slide">
 
-							<video autoplay muted loop class="banner">
-								<source src="/imgs/womenDancing.mp4">
-							</video>
+								<video autoplay muted loop class="banner">
+									<source src="/imgs/womenDancing.mp4">
+								</video>
 
-							<div class="centered">
-								<div class="description">
-									<p class="slogan">Don't Miss the Main Act.</p>
-									<p class="topDescription">
-										Venued is a platform that provides tips
-										and advice for finding the best venues, as
-										well as<br>helping people plan their nights out.</p>
+								<div class="centered">
+									<div class="description">
+										<p class="slogan">Don't Miss the Main Act.</p>
+										<p class="topDescription">
+											Venued is a platform that provides tips
+											and advice for finding the best venues, as
+											well as<br>helping people plan their nights out.</p>
+									</div>
+								</div>
+							</div>
+
+							<!--VIDEO 2-->
+
+							<!--VIDEO 3-->
+
+
+							<!--VIDEO 4-->
+							<div class="slide">
+								<video autoplay muted loop class="banner">
+									<source src="/imgs/weddingVenue.mp4">
+								</video>
+
+								<div class="centered">
+									<div class="description">
+										<p class="slogan">Each venue is Unique.</p>
+
+										<p class="topDescription">Each venue page shows
+											the closest events and restaurants
+											that users may not know about.</p>
+									</div>
+								</div>
+							</div>
+							<!--automatic navigation start-->
+							<div class="navigation-auto">
+								<div>
+									<div class="auto-btn auto-btn1"></div>
+									<div class="auto-btn auto-btn2"></div>
+									<div class="auto-btn auto-btn3"></div>
+									<div class="auto-btn auto-btn4"></div>
+								</div>
+							</div>
+							<div class="navigation-manual">
+								<div>
+									<label for="radio1" class="manual-btn"></label>
+									<label for="radio2" class="manual-btn"></label>
+									<label for="radio3" class="manual-btn"></label>
+									<label for="radio4" class="manual-btn"></label>
 								</div>
 							</div>
 						</div>
+					</div>
+				</section>
+				</section>
+				<div class="bar-divider"></div>
 
-						<!--VIDEO 2-->
+				<section class="main">
+					<div class="main-body">
+						<div class="subsection reveal1">
+							<img th:src="@{imgs/homepage/body/confetti.png}" alt="">
+							<p>Concerts and all</p>
+						</div>
+						<div class="subsection city reveal2 ">
+							<p>City Sections</p>
+							<img th:src="@{imgs/homepage/body/city-down.png}" alt="">
+						</div>
 
-					<!--VIDEO 3-->
-
-
-					<!--VIDEO 4-->
-					<div class="slide">
-						<video autoplay muted loop class="banner">
-							<source src="/imgs/weddingVenue.mp4">
-						</video>
-
-						<div class="centered">
-							<div class="description">
-								<p class="slogan">Each venue is Unique.</p>
-
-								<p class="topDescription">Each venue page shows
-									the closest events and restaurants
-									that users may not know about.</p>
-							</div>
+						<div class="subsection reveal3">
+							<img th:src="@{imgs/homepage/body/venue.png}" alt="">
+							<p>Venues of all types</p>
 						</div>
 					</div>
-					<!--automatic navigation start-->
-					<div class="navigation-auto">
-						<div>
-							<div class="auto-btn auto-btn1"></div>
-							<div class="auto-btn auto-btn2"></div>
-							<div class="auto-btn auto-btn3"></div>
-							<div class="auto-btn auto-btn4"></div>
-						</div>
-					</div>
-					<div class="navigation-manual">
-						<div>
-							<label for="radio1" class="manual-btn"></label>
-							<label for="radio2" class="manual-btn"></label>
-							<label for="radio3" class="manual-btn"></label>
-							<label for="radio4" class="manual-btn"></label>
-						</div>
-					</div>
-				</div>
+
+				</section>
 			</div>
-			</section>
-			</section>
 			<div class="bar-divider"></div>
 
-			<section class="main">
-				<div class="main-body">
-					<div class="subsection reveal1">
-						<img th:src="@{imgs/homepage/body/confetti.png}" alt="">
-						<p>Concerts and all</p>
+			<section class="wrapper recents-wrapper reveal">]
+				
+				<p class="title">Most Recent User Submissions<p>
+				<div class="recent-cards" id="recent-cards">
+					<div class="recent-card">
+						<figure>
+							<div>
+								<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
+							</div>
+							<div>
+								<small>username</small>
+								<small>venuename</small>
+								<small>San Antonio, TX</small>
+							</div>
+						</figure>
+						<div>
+							<p>Does this venue have free parking</p>
+							<div>
+								<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
+							</div>
+							<button>Answer Question</button>
+						</div>
 					</div>
-					<div class="subsection city reveal2 ">
-						<p>City Sections</p>
-						<img th:src="@{imgs/homepage/body/city-down.png}" alt="">
+					<div class="recent-card">
+						<figure>
+							<div>
+								<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
+							</div>
+							<div>
+								<small>username</small>
+								<small>venuename</small>
+								<small>San Antonio, TX</small>
+							</div>
+						</figure>
+						<div>
+							<p>Does this venue have free parking</p>
+							<div>
+								<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
+							</div>
+							<button>Answer Question</button>
+						</div>
+					</div>
+				
+					<div class="recent-card">
+						<figure>
+							<div>
+								<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
+							</div>
+							<div>
+								<small>username</small>
+								<small>venuename</small>
+								<small>San Antonio, TX</small>
+							</div>
+						</figure>
+						<div>
+							<p>Does this venue have free parking</p>
+							<div>
+								<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
+							</div>
+							<button>Answer Question</button>
+						</div>
 					</div>
 
-					<div class="subsection reveal3">
-						<img th:src="@{imgs/homepage/body/venue.png}" alt="">
-						<p>Venues of all types</p>
-					</div>
 				</div>
-
+				
+				<div class="centerbutton">
+					<button id="load-more-button">Load More</button>
+				</div>
+				
 			</section>
-		</div>
-		<div class="bar-divider"></div>
-		<section class="wrapper restaurants-wrapper reveal">
-			<p class="title">Most Recent User Submissions<p>
-			<div class="restaurant-cards">
-				<div class="restaurant-card">
-					<figure>
-						<div>
-							<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-						</div>
-						<div>
-							<small>username</small>
-							<small>venuename</small>
-							<small>San Antonio, TX</small>
-						</div>
-					</figure>
-					<div>
-						<p>Does this venue have free parking</p>
-						<div>
-							<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-						</div>
-						<button>Answer Question</button>
-					</div>
-				</div>
-				<div class="restaurant-card">
-					<figure>
-						<div>
-							<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-						</div>
-						<div>
-							<small>username</small>
-							<small>venuename</small>
-							<small>San Antonio, TX</small>
-						</div>
-					</figure>
-					<div>
-						<p>Does this venue have free parking</p>
-						<div>
-							<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-						</div>
-						<button>Answer Question</button>
-					</div>
-				</div>
-				<div class="restaurant-card">
-					<figure>
-						<div>
-							<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-						</div>
-						<div>
-							<small>username</small>
-							<small>venuename</small>
-							<small>San Antonio, TX</small>
-						</div>
-					</figure>
-					<div>
-						<p>Does this venue have free parking</p>
-						<div>
-							<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-						</div>
-						<button>Answer Question</button>
-					</div>
-				</div>
-				<div class="restaurant-card">
-					
-					<figure>
-						<div>
-							<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-						</div>
-						<div>
-							<small>username</small>
-							<small>venuename</small>
-							<small>San Antonio, TX</small>
-						</div>
-					</figure>
-					
-					<div>
-						<p>Does this venue have free parking</p>
-						<div>
-							<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-						</div>
-						<button>Answer Question</button>
-					</div>
-				</div>
-
-			</div>
-			
-		</section>
-		
+	
 		</main>
-		
+
 		<footer th:replace="~{partials/venued_partials.html :: footer}"></footer>
-		
+
 		<script src="/js/homepage/events.js"></script>
+		<script src="/js/homepage/loadMore.js"></script>
 		<script src="/js/homepage/scrolling-reveal.js"></script>
+		<script src="/js/homepage/results.js"></script>
 	
 	</body>
 </html>
-<!--WHAT WE DO-->
+
 
 
