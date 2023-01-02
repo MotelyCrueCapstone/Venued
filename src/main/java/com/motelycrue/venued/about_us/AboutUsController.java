@@ -11,12 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/about_us")
 public class AboutUsController {
 
-//    @Autowired
-//    private final EmailService emailService;
-//
-//    public AboutUsController(EmailService emailService) {
-//        this.emailService = emailService;
-//    }
+    @Autowired
+    private EmailService emailService;
 
 
     @GetMapping
@@ -24,13 +20,14 @@ public class AboutUsController {
         return "/about_us";
     }
 
-//    @PostMapping("/contact")
-//    @ModelAttribute("contact")
-//    public String contactUs(@RequestParam("subject") String subject, @RequestParam("email") String email, @RequestParam("message") String message, Model model){
-//        emailService.prepareAndSend(subject, message, email);
-//        model.addAttribute("subject", subject);
-//        model.addAttribute("email", email);
-//        model.addAttribute("message", message);
-//        return "redirect:/about_us";
-//    }
+    @PostMapping("/subscribe")
+    public String sendMessage(@RequestParam(name = "email") String email){
+        System.out.println(email);
+       emailService.prepareAndSend(
+                email,
+                "Subscription",
+                "Thank you for subscribing to our newsletter! We will keep you updated with the latest news and events."
+       );
+         return "redirect:/about_us";
+    }
 }

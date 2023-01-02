@@ -19,12 +19,12 @@ public class EmailService {
     @Value("${spring.mail.from}")
     private String from;
 
-    public void prepareAndSend(String subject, String message, String email) {
+    public void prepareAndSend(String to, String subject, String body) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setFrom(email);
-        mailMessage.setTo();
+        mailMessage.setFrom(from);
+        mailMessage.setTo(to);
         mailMessage.setSubject(subject);
-        mailMessage.setText(message);
+        mailMessage.setText(body);
         try {
             this.emailSender.send(mailMessage);
         } catch (MailException e) {
