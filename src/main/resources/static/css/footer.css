@@ -24,10 +24,11 @@
 
 .rightSide{
 }
+
 .subscribe{
 }
 
-.form-group{
+.subscribe-form{
     display: flex;
     flex-direction: column;
     font-family: "Lantinghei SC", sans-serif;
