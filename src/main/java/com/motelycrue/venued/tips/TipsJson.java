@@ -15,9 +15,9 @@ public class TipsJson {
 
     private Long id;
 
-    private String tip_Name;
+    private String tipName;
 
-    private String tip_Content;
+    private String tipContent;
 
     private Long upVotes;
 

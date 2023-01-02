@@ -249,8 +249,13 @@ small {
 
 @media screen and (min-width: 700px) {
     .restaurant-cards {
-        display: flex;
-        gap: 30px;
+        /*display: flex;*/
+        /*gap: 30px;*/
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-gap: 3rem 3rem;
+        width: 100%;
+        max-width: 1280px;
     }
 }
 

@@ -20,10 +20,10 @@ public class Tips {
     private Long id;
 
     @Column(nullable = false)
-    private String tip_Name;
+    private String tipName;
 
     @Column(nullable = false)
-    private String tip_Content;
+    private String tipContent;
 
     @Column
     private Long upVotes;
