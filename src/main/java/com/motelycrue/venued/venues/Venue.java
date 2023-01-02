@@ -24,6 +24,18 @@ public class Venue {
     @Column(nullable = false)
     private String venueName;
 
-    @Column(length = 1000)
-    private String venueDescription;
+    @Column(nullable = false)
+    private String venueAlias;
+
+    @Column
+    private String imgPath;
+
+    @Column
+    private String longitude;
+
+    @Column
+    private String latitude;
+
+    @Column String address;
+
 }
