@@ -3,6 +3,7 @@
 <head>
     <div th:replace="~{partials/venued_partials.html :: myheader('About Us')}"></div>
     <link rel="stylesheet" href="/css/about_us/about_us.css">
+    <link rel="stylesheet" href="/css/universalStyle.css">
 </head>
 <body>
 <div class="page-wrapper">
@@ -18,15 +19,17 @@
         <div class="row circles">
 	        
             <div class="col-sm">
-                <img src="/imgs/deshawn.jpg" class="dot deshawn" alt="image of deshawn">
+                <div class="img_holder">
+                    <img src="/imgs/deshawn.jpg" class="dot deshawn" alt="image of deshawn">
+                </div>
                 <img src="/imgs/arrow.png" alt="arrow" class="arrow-one">
                 <div class="img_overlay">
-                    <div class="text"><a href="#" id="showDialog">Deshawn</a></div>
+                    <div class="text"><a href="#" class="showDialog">Deshawn</a></div>
                     <p class="text-center mt-1">
                         Click for more information.
                     </p>
                 </div>
-                <dialog id="deshawnDialog">
+                <dialog id="deshawnDialog" class="dialog">
                     <div class="dialog-content">
                         <div class="dialog-header">
                             <h2>Deshawn</h2>
@@ -46,35 +49,92 @@
             </div>
 	        
             <div class="col-sm align-circle-bottom">
-                <img src="/imgs/rodrigo.jpg" class="dot rodrigo" alt="image of rodrigo">
+                <div class="img_holder">
+                    <img src="/imgs/rodrigo.jpg" class="dot rodrigo" alt="image of rodrigo">
+                </div>
                 <img src="/imgs/arrow.png" alt="arrow" class="arrow-two">
                 <div class="img_overlay_bottom">
-                    <div class="text">Rodrigo</div>
+                    <div class="text"><a href="#" class="showDialog">Rodrigo</a></div>
                     <p class="text-center mt-1">
-                        a full stack &nbsp developer with a passion for web development.
+                        Click for more information.
                     </p>
                 </div>
+                <dialog id="rodrigoDialog" class="dialog">
+                    <div class="dialog-content">
+                        <div class="dialog-header">
+                            <h2>Rodrigo</h2>
+                            <button class="close-button" aria-label="Close dialog">X</button>
+                        </div>
+                        <div class="dialog-body">
+                            <p>
+                                Rodrigo is a full stack developer with a passion for creating
+                                applications that are both functional and beautiful. He has a
+                                background in graphic design and has worked with many
+                                technologies. He is currently working on his Bachelors in Computer
+                                Science at the University of Texas at Austin.
+                            </p>
+                        </div>
+                    </div>
+                </dialog>
             </div>
             <div class="col-sm">
-                <img src="/imgs/tesfalem.jpg" class="dot tesfalem" alt="image of tesfalem">
-                <img src="/imgs/arrow.png" alt="arrow" class="arrow-three">
-                <div class="img_overlay">
-                    <div class="text">Tesfalem</div>
-                    <p class="text-center mt-1">
-                        a full stack &nbsp developer with a passion for web development.
-                    </p>
+                <div class="img_holder">
+                    <img src="/imgs/tesfalem.jpg" class="dot tesfalem" alt="image of tesfalem">
                 </div>
+                <img src="/imgs/arrow.png" alt="arrow" class="arrow-three">
+                    <div class="img_overlay">
+                <div class="text"><a href="#" class="showDialog">Tesfalem</a></div>
+                <p class="text-center mt-1">
+                    Click for more information.
+                </p>
+            </div>
+                <dialog id="tesfalemDialog" class="dialog">
+                    <div class="dialog-content">
+                        <div class="dialog-header">
+                            <h2>Tesfalem</h2>
+                            <button class="close-button" aria-label="Close dialog">X</button>
+                        </div>
+                        <div class="dialog-body">
+                            <p>
+                                Tesfalem is a full stack developer with a passion for creating
+                                applications that are both functional and beautiful. He has a
+                                background in graphic design and has worked with many
+                                technologies. He is currently working on his Bachelors in Computer
+                                Science at the University of Texas at Austin.
+                            </p>
+                        </div>
+                    </div>
+                </dialog>
             </div>
             <div class="col-sm align-circle-bottom">
-                <img src="/imgs/frances.jpg" class="dot frances" alt="image of frances">
+                <div class="img_holder">
+                    <img src="/imgs/frances.png" class="dot frances" alt="image of frances">
+                </div>
                 <div class="img_overlay_bottom">
-                    <div class="text">Frances</div>
+                    <div class="text"><a href="#" class="showDialog">Frances</a></div>
                     <p class="text-center mt-1">
-                        a full stack &nbsp developer with a passion for web development.
+                        Click for more information.
                     </p>
                 </div>
-            </div>
+                <dialog id="francesDialog" class="dialog">
+                    <div class="dialog-content">
+                        <div class="dialog-header">
+                            <h2>Frances</h2>
+                            <button class="close-button" aria-label="Close dialog">X</button>
+                        </div>
+                        <div class="dialog-body">
+                            <p>
+                                Frances is a full stack developer with a passion for creating
+                                applications that are both functional and beautiful. He has a
+                                background in graphic design and has worked with many
+                                technologies. He is currently working on his Bachelors in Computer
+                                Science at the University of Texas at Austin.
+                            </p>
+                        </div>
+                    </div>
+                </dialog>
         </div>
+    </div>
         <!--        Mobile Slider Container                   -->
         <div class="slider-container">
                 <div class="slide">
@@ -91,7 +151,7 @@
                 </div>
                 <div class="slide">
                         <h2>Slide 4</h2>
-                        <img src="/imgs/frances.jpg" class="frances" alt="image of frances">
+                        <img src="/imgs/frances.png" class="frances" alt="image of frances">
                 </div>
         </div>
         <!--        End Of Mobile Slider Container                   -->
