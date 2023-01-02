@@ -24,8 +24,9 @@
               let longitude = position.coords.longitude.toFixed(2);
           
               fetch(`http://localhost:8085/yelp/${query}?latitude=${latitude}&longitude=${longitude}`)
-              .then(response => response.json())
-              .then(json => console.log(json))
+                    .then(response => response.json())
+                    .then(json => {console.log(json)
+              })
           
          });
     }
