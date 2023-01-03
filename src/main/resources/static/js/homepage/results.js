@@ -16,8 +16,9 @@
     let searchButton = $(".search_icon")
     
     function search(query) {
-         
+         //fetching users current location to be used for the yelp apis longitude latitude position
          navigator.geolocation.getCurrentPosition(position => { //getting the latitude longitude from the DOM geolocation api
+              
               //and setting the decimal length to be fixed at 2, so we don't get any
               //super long decimal numbers
               let latitude = position.coords.latitude.toFixed(2);
@@ -32,6 +33,7 @@
                               let currentVenueId = currentVenue.id;
                               let currentVenueAlias = currentVenue.alias;
                               
+                              //automatically creating paramter string for the controller request creation
                               let currentVenueParams = new URLSearchParams({
                                   venueId: currentVenueId,
                                   venueName: currentVenue.name,
@@ -42,7 +44,9 @@
                                     address: currentVenue.location.address1,
                                   rating: currentVenue.rating,
                               })
-
+                              
+                              //sending retrieved data from the api to be sent to the controller backend to be
+                              // checked if venue exist or not if it does it saves it to the database
                               fetch(`http://localhost:8085/venues/${currentVenueId}?${currentVenueParams.toString()}`,{method: "POST"})
                                   .then(response => console.log(response.status))
                          })
@@ -50,4 +54,5 @@
          });
     }
     $(searchButton).on("click", () => search($(input).val()))
+    
 })();
