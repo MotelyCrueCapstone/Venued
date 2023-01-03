@@ -43,18 +43,26 @@
 
 	
 	<nav th:fragment="mynav" class="topNav">
-		<a class="venued" th:href="@{/}">
-			<img  class="venued-logo" src="/imgs/venued-logo.jpg" alt="image of the word venued in white block letters">
-		</a>
-		<a href="#" class="toggle-button">
-			<span class="bar"></span>
-			<span class="bar"></span>
-			<span class="bar"></span>
-		</a>
+		
+			<a class="venued" th:href="@{/}">
+				<img  class="venued-logo" src="/imgs/venued-logo.jpg" alt="image of the word venued in white block letters">
+			</a>
+		
+			<a href="#" class="toggle-button">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</a>
+		
 			<ul class="nav-items">
 				<div class="searchbar">
+					
 					<input class="search_input" type="text" name="" placeholder="Search...">
 					<img th:src="@{imgs/search.svg}" alt="" class="search_icon">
+					
+					<section class="results-container">
+					
+					</section>
 				</div>
 				<div class="user-container">
 					<button type="submit" class="signup-btn nav-btn" onclick="window.location.href='/users/login'">Login</button>

@@ -18,6 +18,7 @@
     function search(query) {
          
          navigator.geolocation.getCurrentPosition(position => { //getting the latitude longitude from the DOM geolocation api
+              
               //and setting the decimal length to be fixed at 2, so we don't get any
               //super long decimal numbers
               let latitude = position.coords.latitude.toFixed(2);
@@ -50,4 +51,5 @@
          });
     }
     $(searchButton).on("click", () => search($(input).val()))
+    
 })();
