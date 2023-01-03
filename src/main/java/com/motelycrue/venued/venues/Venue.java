@@ -21,6 +21,9 @@ public class Venue {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column
+    private String venueId;
+
     @Column(nullable = false)
     private String venueName;
 
@@ -36,6 +39,7 @@ public class Venue {
     @Column
     private String latitude;
 
-    @Column String address;
+    @Column
+    private String address;
 
 }
