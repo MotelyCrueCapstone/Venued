@@ -79,6 +79,40 @@
     transition: width 0.4s linear;
     transition-property: left;
 }
+
+/*DROPDOWN*/
+/*CHATGPT*/
+/*.dropdown-menu {*/
+/*    position: absolute;*/
+/*    top: 100%;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    background-color: #fff;*/
+/*    border: 1px solid #ccc;*/
+/*    display: none;*/
+/*}*/
+
+/*.dropdown-menu option {*/
+/*    display: block;*/
+/*    padding: 12px;*/
+/*    width: 100%;*/
+/*    text-align: left;*/
+/*    white-space: nowrap;*/
+/*    overflow: hidden;*/
+/*    text-overflow: ellipsis;*/
+/*}*/
+
+/*.dropdown-menu option:hover {*/
+/*    background-color: #f5f5f5;*/
+/*    cursor: pointer;*/
+/*}*/
+
+
+
+.hide{
+    display: none;
+}
+
 .nav-items a{
     text-decoration: none;
 }

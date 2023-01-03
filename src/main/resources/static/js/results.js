@@ -12,10 +12,11 @@
 
 (function () {
     
-    let input = $(".search_input")
+    let searchInput = $(".search_input")
     let searchButton = $(".search_icon")
     
     function search(query) {
+         
          //fetching users current location to be used for the yelp apis longitude latitude position
          navigator.geolocation.getCurrentPosition(position => { //getting the latitude longitude from the DOM geolocation api
               
@@ -23,7 +24,8 @@
               //super long decimal numbers
               let latitude = position.coords.latitude.toFixed(2);
               let longitude = position.coords.longitude.toFixed(2);
-          
+              
+              //fetching api data from yelp
               fetch(`http://localhost:8085/yelp/${query}?latitude=${latitude}&longitude=${longitude}`)
                     .then(response => response.json())
                     .then(venuesJson => {
@@ -40,9 +42,9 @@
                                   venueAlias: currentVenue.alias,
                                   imgPath: currentVenue.image_url,
                                   longitude: currentVenue.coordinates.longitude,
-                                   latitude: currentVenue.coordinates.latitude,
-                                    address: currentVenue.location.address1,
-                                  rating: currentVenue.rating,
+                                  latitude: currentVenue.coordinates.latitude,
+                                  address: currentVenue.location.address1,
+                                  rating: currentVenue.rating
                               })
                               
                               //sending retrieved data from the api to be sent to the controller backend to be
@@ -53,6 +55,8 @@
                     })
          });
     }
-    $(searchButton).on("click", () => search($(input).val()))
+    //when user clicks search or presses enter run search from yelp api
+    $(searchInput).on("submit", () => search($searchInput).val());
+    $(searchButton).on("click", () => search($(searchInput).val()));
     
 })();
