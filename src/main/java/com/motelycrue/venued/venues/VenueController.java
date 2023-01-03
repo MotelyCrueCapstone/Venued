@@ -21,7 +21,7 @@ public class VenueController {
 
     @PostMapping ("/${venueId}")
     public String saveVenue(@PathVariable String venueId, @RequestParam String venueName, @RequestParam String venueAlias, @RequestParam String imgPath, @RequestParam String longitude, @RequestParam String latitude, @RequestParam String address) {
-        Optional<Venue> venueRecord = Optional.ofNullable(this.VenueDao.findVenueByVenueId(venuedId));
+        Optional<Venue> venueRecord = Optional.ofNullable(this.VenueDao.findVenueByVenueId(venueId));
         if (venueRecord.isPresent()) {
             return "venue";
         } else {

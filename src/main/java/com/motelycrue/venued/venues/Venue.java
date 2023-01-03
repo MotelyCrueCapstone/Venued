@@ -42,4 +42,13 @@ public class Venue {
     @Column
     private String address;
 
+    public Venue(String venueId, String venueName, String venueAlias, String imgPath, String longitude, String latitude, String address) {
+        this.venueId = venueId;
+        this.venueName = venueName;
+        this.venueAlias = venueAlias;
+        this.imgPath = imgPath;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.address = address;
+    }
 }

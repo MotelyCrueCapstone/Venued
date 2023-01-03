@@ -13,7 +13,16 @@ public class SecurityConfiguration {
     // Bean to configure filter chain and set which pages must be authorized to view
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests();
+        http.authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/", "/index").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .formLogin((form) -> form
+                        .loginPage("/users/login")
+                        .permitAll()
+                )
+                .logout((logout) -> logout.permitAll());
+
         return http.build();
     }
 
