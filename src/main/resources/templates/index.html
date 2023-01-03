@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-	<head>
-		<!--useful global meta data-->
-		<div th:replace="~{partials/venued_partials :: myheader('Venued - number one venue platform')}"></div>
+<head>
+	<!--useful global meta data-->
+	<div th:replace="~{partials/venued_partials :: myheader('Venued - number one venue platform')}"></div>
 
-		<!--homepage custom css-->
-		<link rel="stylesheet" th:href="@{/css/homepage/banner_responsiveness.css}">
-		<link rel="stylesheet" th:href="@{/css/homepage/body_responsiveness.css}">
-		<link rel="stylesheet" th:href="@{/css/homepage/banner.css}">
-		<link rel="stylesheet" th:href="@{/css/homepage/body.css}">
-		<link rel="stylesheet" th:href="@{/css/homepage/recentSubmissions.css}">
-		<link rel="stylesheet" th:href="@{/css/universalStyle.css}">
-		<!--		<link rel="stylesheet" th:href="@{/css/venue_pages/venue.css}">-->
-	
-		<!--importing javascript files-->
-		<script src="https://unpkg.com/scrollreveal"></script>
-		
-		<!--custom javascript files-->
-		<script th:src="@{/js/carousel.js}" defer></script>
-		<script th:src="@{/js/navbar.js}"></script>
+	<!--homepage custom css-->
+	<link rel="stylesheet" th:href="@{/css/homepage/banner_responsiveness.css}">
+	<link rel="stylesheet" th:href="@{/css/homepage/body_responsiveness.css}">
+	<link rel="stylesheet" th:href="@{/css/homepage/banner.css}">
+	<link rel="stylesheet" th:href="@{/css/homepage/body.css}">
+	<link rel="stylesheet" th:href="@{/css/homepage/recentSubmissions.css}">
+	<link rel="stylesheet" th:href="@{/css/homepage/recentSubmissions_responsiveness.css}">
+	<link rel="stylesheet" th:href="@{/css/universalStyle.css}">
+	<!--		<link rel="stylesheet" th:href="@{/css/venue_pages/venue.css}">-->
 
-	</head>
 
+	<!--custom javascript files-->
+	<script th:src="@{/js/carousel.js}" defer></script>
+	<script th:src="@{/js/navbar.js}"></script>
+	<script src="https://unpkg.com/scrollreveal"></script>
+
+</head>
 	<body>
+
 			<div class="page-wrapper">
 
 				<section class="navSection">
 					<nav th:replace="~{partials/venued_partials :: mynav}"></nav>
 				</section>
 
+<!--VIDEO SLIDER-->
 				<section class="topSection">
 					<!--image slider start-->
 					<div class="slider">
@@ -88,12 +89,7 @@
 								</div>
 							</div>
 
-							<!--VIDEO 2-->
 
-							<!--VIDEO 3-->
-
-
-							<!--VIDEO 4-->
 							<div class="slide">
 								<video autoplay muted loop class="banner">
 									<source src="/imgs/weddingVenue.mp4">
@@ -129,32 +125,42 @@
 						</div>
 					</div>
 				</section>
-				</section>
+
 				<div class="bar-divider"></div>
 
+
+<!--BODY-->
 				<section class="main">
 					<div class="main-body">
+						<div class="title">What is Venued?</div>
 						<div class="subsection reveal1">
 							<img th:src="@{imgs/homepage/body/confetti.png}" alt="">
-							<p>Concerts and all</p>
+							<p>Have you ever driven to another city to see a band and found out that the cheapest
+								parking near the venue ends up costing you $25? Or have you ever Ubered to a stadium
+								with a handbag, only to find out that the venue only allows clear bags?
+							</p>
 						</div>
+
 						<div class="subsection city reveal2 ">
-							<p>City Sections</p>
+							<p>Venued is a venue-focused website, aimed at helping users submit tips about their favorite places to help out other venue-explorers (or 'Venueders' as we like to call them!)</p>
 							<img th:src="@{imgs/homepage/body/city-down.png}" alt="">
 						</div>
 
-						<div class="subsection reveal3">
+						<div class="subsection reveal1">
 							<img th:src="@{imgs/homepage/body/venue.png}" alt="">
-							<p>Venues of all types</p>
+							<p>Users can tell other people where the best place to park is, how early to get to the venue if an
+								event is super popular, best restaurants to eat at after the concert is over, and much more!</p>
 						</div>
 					</div>
-
 				</section>
+
 			</div>
+
 			<div class="bar-divider"></div>
 
-			<section class="wrapper recents-wrapper reveal">]
-				
+<!--MOST RECENT-->
+				<section class="wrapper recents-wrapper reveal">
+
 				<p class="title">Most Recent User Submissions<p>
 				<div class="recent-cards" id="recent-cards">
 					<div class="recent-card">
@@ -195,7 +201,7 @@
 							<button>Answer Question</button>
 						</div>
 					</div>
-				
+
 					<div class="recent-card">
 						<figure>
 							<div>
@@ -215,16 +221,16 @@
 							<button>Answer Question</button>
 						</div>
 					</div>
+				</div>
+	</section>
 
-				</div>
-				
-				<div class="centerbutton">
-					<button id="load-more-button">Load More</button>
-				</div>
-				
-			</section>
-	
-		</main>
+				<div class="bar-divider"></div>
+
+
+
+
+
+
 
 		<footer th:replace="~{partials/venued_partials.html :: footer}"></footer>
 
@@ -232,7 +238,7 @@
 		<script src="/js/homepage/loadMore.js"></script>
 		<script src="/js/homepage/scrolling-reveal.js"></script>
 		<script src="/js/homepage/results.js"></script>
-	
+
 	</body>
 </html>
 

@@ -19,20 +19,15 @@ public class VenueController {
         return "venue";
     }
 
-//    @PostMapping ("/${venueId}")
-//    public String saveVenue(@PathVariable String venuedId){
-//
-//        //checking if the
-//        Venue venue = this.VenueDao.findVenueByVenueId(venuedId);
-//        Optional<Venue> venueRecord = Optional.ofNullable(this.VenueDao.findVenueByVenueId(venuedId));
-//
-//
-////        if(venueRecord.isPresent()){
-////
-////        }else{
-////            VenueDao.save();
-////        }
-////
-//        return "";
-//    }
+    @PostMapping ("/${venueId}")
+    public String saveVenue(@PathVariable String venueId, @RequestParam String venueName, @RequestParam String venueAlias, @RequestParam String imgPath, @RequestParam String longitude, @RequestParam String latitude, @RequestParam String address) {
+        Optional<Venue> venueRecord = Optional.ofNullable(this.VenueDao.findVenueByVenueId(venuedId));
+        if (venueRecord.isPresent()) {
+            return "venue";
+        } else {
+            Venue venue = new Venue(venueId, venueName, venueAlias, imgPath, longitude, latitude, address);
+            this.VenueDao.save(venue);
+            return "venue";
+        }
+    }
 }

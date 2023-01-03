@@ -12,24 +12,24 @@
     border-radius: 40px 40px;
     backdrop-filter: blur(10px);
     background-color: #00000099;
-    padding: 75px;
+    padding: 30px 75px;
     color: white;
     overflow: hidden;
 }
 /*gi*/
 .main-body{
     display: flex;
-    padding: 30px;
     flex-direction: column;
-    gap: 10px;
+    /*gap: 10px;*/
 }
 
 .subsection{
     display: flex;
-    gap: 50px;
-    margin-top: 160px;
+    /*gap: 170px;*/
+    margin-top: 60px;
     align-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .subsection img{
@@ -44,5 +44,7 @@
     align-content: center;
     justify-content: center;
     text-align: center;
-    font-size: 80px;
+    font-size: 30px;
 }
+
+

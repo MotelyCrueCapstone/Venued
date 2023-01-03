@@ -32,6 +32,7 @@
                               console.log(currentVenue)
                               console.log((currentVenue.id))
                               console.log(currentVenue.alias)
+
                          })
                     })
          });
