@@ -8,7 +8,6 @@ import com.motelycrue.venued.users.UserJson;
 import com.motelycrue.venued.venues.Venue;
 import com.motelycrue.venued.venues.VenueJson;
 
-
 //conversion class turning entities into json
 //by converting entity into an object representing
 //its json value and converting the object
@@ -25,14 +24,14 @@ public class EntityToJson {
         return ( new ObjectMapper().writeValueAsString(userJson));
     }
 
-    public String venueToJson(Venue venue) throws JsonProcessingException{
-        VenueJson venueJson = VenueJson.builder()
-                .id(venue.getId())
-                .venueDescription(venue.getVenueDescription())
-                .venueName(venue.getVenueName())
-                .build();
-        return ( new ObjectMapper().writeValueAsString(venueJson));
-    }
+//    public String venueToJson(Venue venue) throws JsonProcessingException{
+//        VenueJson venueJson = VenueJson.builder()
+//                .id(venue.getId())
+//                .venueDescription(venue.getVenueDescription())
+//                .venueName(venue.getVenueName())
+//                .build();
+//        return ( new ObjectMapper().writeValueAsString(venueJson));
+//    }
 
     public String tipToJson(Tips tip) throws JsonProcessingException{
         TipsJson tipsJson = TipsJson.builder()
@@ -44,6 +43,4 @@ public class EntityToJson {
                 .build();
         return ( new ObjectMapper().writeValueAsString(tipsJson));
     }
-
-
 }

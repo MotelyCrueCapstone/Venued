@@ -87,9 +87,9 @@
 			
 			<div class="rightSide">
 				<div class="subscribe">
-					<form class="form-group">
+					<form class="subscribe-form" th:action="@{/about_us/subscribe}" method="post">
 						<label for="footer_email">Subscribe</label>
-						<input type="email" placeholder="Email Address" id="footer_email" class="email" size="40">
+						<input name="email" type="email" placeholder="Email Address" id="footer_email" class="email" size="40">
 						<button type="submit" class="btn subscribe_btn">Subscribe</button>
 					</form>
 				</div>
