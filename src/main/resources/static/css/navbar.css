@@ -109,9 +109,6 @@
 
 
 
-.hide{
-    display: none;
-}
 
 .nav-items a{
     text-decoration: none;
@@ -160,6 +157,43 @@
 .toggle-button{
     display: none;
 }
+
+.hide{
+    display: none!important;
+}
+
+.results-container{
+    z-index: 5;
+    position: absolute;
+    display: flex;
+    top:120%;
+    right: 0;
+    width: 500px;
+    min-width: 500px;
+    height: 200px;
+    min-height: 100px;
+    background-color: #130F10d4;
+    padding: 0 10px 10px 10px;
+}
+
+.results{
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+    padding: 0;
+    margin: 0;
+    scrollbar-width: none;
+}
+
+.result{
+    display: flex;
+    align-content: center;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(#240F1A88, #25123888);
+    border-bottom: white solid 1px;
+}
+
 @media screen and (max-width: 810px){
     .nav-items{
         gap: 1rem;
@@ -260,3 +294,4 @@
     }
 
 }
+
