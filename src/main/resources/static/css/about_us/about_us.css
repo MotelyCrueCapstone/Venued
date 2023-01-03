@@ -182,6 +182,9 @@ textarea{
 }
 dialog {
     position: absolute;
+    top: 15px;
+    left: 138px;
+    width: 300px;
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.25);
@@ -194,6 +197,11 @@ dialog {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+}
+.personalSocialMediaLogos{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 
