@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -28,4 +28,16 @@ public class User {
 
     @Column
     private String imgPath;
+
+    public User(long id, String email, String username, String password) {
+        this.id = id;
+        this.email = email;
+        this.userName = username;
+        this.password = password;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
 }
