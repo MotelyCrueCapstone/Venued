@@ -181,6 +181,7 @@ textarea{
     display: none;
 }
 dialog {
+    background-color: rgba(195,99,100,.9);
     position: absolute;
     top: 15px;
     left: 138px;
