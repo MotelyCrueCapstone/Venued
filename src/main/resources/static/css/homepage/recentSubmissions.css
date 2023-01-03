@@ -7,8 +7,6 @@
 
 #recent-cards {
     display: flex;
-    /*justify-content: center;*/
-
     flex-wrap: wrap;
     justify-content: space-between;
 }
@@ -16,6 +14,11 @@
 .centerbutton {
     display: flex;
     justify-content: center;
+}
+
+.recentimg {
+    width: 390px;
+    height: 300px;
 }
 
 #load-more-button {
@@ -63,6 +66,8 @@ small {
 
 .recent-card div:last-child > p {
     text-align: center;
+    overflow-wrap: break-word;
+    width: 400px;
 }
 .recent-card div:last-child > button {
     display: block;
@@ -73,10 +78,6 @@ small {
     color: #fff;
     border: none;
 }
-
-
-
-
 
 @media screen and (min-width: 700px) {
     .recent-cards {
