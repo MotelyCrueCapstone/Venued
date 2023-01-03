@@ -24,16 +24,16 @@
               fetch(`http://localhost:8085/yelp/${query}?latitude=${latitude}&longitude=${longitude}`)
                     .then(response => response.json())
                     .then(venuesJson => {
+
                          venuesJson.forEach(currentVenue =>{
-                              
                               //getting the current venue id to checkout existence in the database later
                               let currentVenueId = currentVenue.id;
                               let currentVenueAlias = currentVenue.alias;
-                              
+
                               $(".results").append($(`<li class="result">
                                         ${currentVenue.name}
                                                    </li>`))
-                              
+
                               //automatically creating paramter string for the controller request creation
                               let currentVenueParams = new URLSearchParams({
                                   venueId: currentVenueId,
@@ -45,7 +45,7 @@
                                   address: currentVenue.location.address1,
                                   rating: currentVenue.rating
                               })
-                              
+
                               //sending retrieved data from the api to be sent to the controller backend to be
                               // checked if venue exist or not if it does it saves it to the database
                               fetch(`http://localhost:8085/venues/${currentVenueId}?${currentVenueParams.toString()}`,{method: "POST"})
