@@ -27,8 +27,11 @@
                     .then(response => response.json())
                     .then(venuesJson => {
                          venuesJson.forEach(currentVenue =>{
-                              //getting the current venue id to check out existence in the database later
+                              
+                              //getting the current venue id to checkout existence in the database later
                               let currentVenueId = currentVenue.id;
+                              let currentVenueAlias = currentVenue.alias;
+                              
                               let currentVenueParams = {
                                   venueId: currentVenueId,
                                   venueName: currentVenue.name,
@@ -39,7 +42,8 @@
                                     address: currentVenue.location.address1,
                                   rating: currentVenue.rating,
                               }
-                              fetch(`http://localhost:8085/venue/${currentVenueId}?${currentVenueParams}`,{method: "POST"})
+                              
+                              fetch(`http://localhost:8085/venue/${currentVenue}?${currentVenueParams}`,{method: "POST"})
                                   .then(response => console.log(response.status))
                          })
                     })
