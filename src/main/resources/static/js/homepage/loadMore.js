@@ -10,7 +10,6 @@ loadMoreButton.addEventListener('click', () => {
     const card1 = document.createElement('div');
     card1.classList.add('recent-card');
     card1.innerHTML = `
-                         <div class="recent-card">
                             <figure>
                                 <div>
                                     <img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
@@ -21,20 +20,18 @@ loadMoreButton.addEventListener('click', () => {
                                             <small>San Antonio, TX</small>
                                         </div>
                             </figure>
-                                        <div>
-                                        <p>Does this venue have free parking</p>
-                                    <div>
+                            <div>
+                                <p>Does this venue have free parking</p>
+                                <div>
                                     <img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
                                 </div>
                                 <button>Answer Question</button>
                             </div>
-                        </div>
     `;
     const card2 = document.createElement('div');
     card2.classList.add('recent-card');
     card2.innerHTML = `
-                         <div class="recent-card">
-                            <figure>
+                          <figure>
                                 <div>
                                     <img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
                                     </div>
@@ -44,20 +41,18 @@ loadMoreButton.addEventListener('click', () => {
                                             <small>San Antonio, TX</small>
                                         </div>
                             </figure>
-                                        <div>
-                                        <p>Does this venue have free parking</p>
-                                    <div>
+                            <div>
+                                <p>Does this venue have free parking</p>
+                                <div>
                                     <img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
                                 </div>
                                 <button>Answer Question</button>
                             </div>
-                        </div>
     `;
     const card3 = document.createElement('div');
     card3.classList.add('recent-card');
     card3.innerHTML = `
-                         <div class="recent-card">
-                            <figure>
+                           <figure>
                                 <div>
                                     <img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
                                     </div>
@@ -67,14 +62,13 @@ loadMoreButton.addEventListener('click', () => {
                                             <small>San Antonio, TX</small>
                                         </div>
                             </figure>
-                                        <div>
-                                        <p>Does this venue have free parking</p>
-                                    <div>
+                            <div>
+                                <p>Does this venue have free parking</p>
+                                <div>
                                     <img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
                                 </div>
                                 <button>Answer Question</button>
                             </div>
-                        </div>
     `;
 
 // Append new cards to the end of the list

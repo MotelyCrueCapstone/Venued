@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <div th:replace="~{partials/venued_partials :: myheader('Profile')}"></div>
+  <link rel="stylesheet" th:href="@{/css/universalStyle.css}">
+  <link rel="stylesheet" th:href="@{/css/profile/profile.css}">
+</head>
+
+<body>
+<div class="page-wrapper">
+
+  <nav th:replace="~{partials/venued_partials :: mynav}"></nav>
+
+<div class="title">INSERT USERNAME's Profile</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <!--^^^RESPONSIVENESS^^^-->
+                <hr class="smallLine">
+                <!--RESULTS CARDS-->
+                <div class="card">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col col-lg-auto col-md-auto image">
+                                <img class="imagePlaceholder" src="/imgs/Avatar-Placeholder.png">
+                            </div>
+                            <div class="col col-sm venueInfo">
+                                <p>INSERT USERNAME</p>
+
+                            </div>
+                            <div class="row">
+                                <button class="gotoPage">change password</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--END OF RESPONSIVENESS-->
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

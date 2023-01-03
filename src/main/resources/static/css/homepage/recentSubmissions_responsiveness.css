@@ -1,0 +1,38 @@
+/* Small screens (e.g. phones) */
+@media only screen and (max-width: 600px) {
+    .recent-card {
+        flex-direction: column;
+    }
+    .image {
+        width: 100%;
+    }
+    #load-more-button {
+        width: 100%;
+    }
+}
+
+/* Medium screens (e.g. tablets) */
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+    .recent-card {
+        flex-direction: row;
+    }
+    .image {
+        width: 100%;
+    }
+    #load-more-button {
+        width: 50%;
+    }
+}
+
+/* Large screens (e.g. desktops) */
+@media only screen and (min-width: 993px) {
+    .recent-card {
+        flex-direction: row;
+    }
+    .image {
+        width: 100%;
+    }
+    #load-more-button {
+        width: 800px;
+    }
+}

@@ -46,23 +46,16 @@
     text-decoration: none;
     color: grey;
     margin-right: 5px;
-    /*justify-content: center;*/
-    /*align-items: flex-end;*/
 }
 
 .contact_us_link{
     text-decoration: none !important;
     color: grey !important;
-    /*display: flex;*/
-    /*justify-content: flex-end;*/
 }
 .about_us_container{
     display: flex;
     align-self: end;
-    /*display: flex;*/
-    /*align-items: flex-end;*/
-    /*flex-direction: row;*/
-    /*gap: 10px;*/
+    gap: 10px;
 }
 textarea{
     padding: 5px;
