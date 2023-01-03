@@ -32,18 +32,18 @@
                               let currentVenueId = currentVenue.id;
                               let currentVenueAlias = currentVenue.alias;
                               
-                              let currentVenueParams = {
+                              let currentVenueParams = new URLSearchParams({
                                   venueId: currentVenueId,
                                   venueName: currentVenue.name,
                                   venueAlias: currentVenue.alias,
                                   imgPath: currentVenue.image_url,
                                   longitude: currentVenue.coordinates.longitude,
-                                    latitude: currentVenue.coordinates.latitude,
+                                   latitude: currentVenue.coordinates.latitude,
                                     address: currentVenue.location.address1,
                                   rating: currentVenue.rating,
-                              }
-                              
-                              fetch(`http://localhost:8085/venue/${currentVenue}?${currentVenueParams}`,{method: "POST"})
+                              })
+
+                              fetch(`http://localhost:8085/venues/${currentVenueId}?${currentVenueParams.toString()}`,{method: "POST"})
                                   .then(response => console.log(response.status))
                          })
                     })
