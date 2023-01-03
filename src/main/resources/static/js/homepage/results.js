@@ -12,7 +12,7 @@
 
 (function () {
     
-    let input = $(".search_input")
+    let searchInput = $(".search_input")
     let searchButton = $(".search_icon")
     
     function search(query) {
@@ -40,9 +40,9 @@
                                   venueAlias: currentVenue.alias,
                                   imgPath: currentVenue.image_url,
                                   longitude: currentVenue.coordinates.longitude,
-                                   latitude: currentVenue.coordinates.latitude,
-                                    address: currentVenue.location.address1,
-                                  rating: currentVenue.rating,
+                                  latitude: currentVenue.coordinates.latitude,
+                                  address: currentVenue.location.address1,
+                                  rating: currentVenue.rating
                               })
                               
                               //sending retrieved data from the api to be sent to the controller backend to be
@@ -53,6 +53,8 @@
                     })
          });
     }
-    $(searchButton).on("click", () => search($(input).val()))
+    //when user clicks search or presses enter run search from yelp api
+    $(searchInput).on("submit", () => search($searchInput).val());
+    $(searchButton).on("click", () => search($(searchInput).val()));
     
 })();
