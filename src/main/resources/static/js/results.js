@@ -16,6 +16,7 @@
     let searchButton = $(".search_icon")
     
     function search(query) {
+         
          //fetching users current location to be used for the yelp apis longitude latitude position
          navigator.geolocation.getCurrentPosition(position => { //getting the latitude longitude from the DOM geolocation api
               
@@ -23,7 +24,8 @@
               //super long decimal numbers
               let latitude = position.coords.latitude.toFixed(2);
               let longitude = position.coords.longitude.toFixed(2);
-          
+              
+              //fetching api data from yelp
               fetch(`http://localhost:8085/yelp/${query}?latitude=${latitude}&longitude=${longitude}`)
                     .then(response => response.json())
                     .then(venuesJson => {

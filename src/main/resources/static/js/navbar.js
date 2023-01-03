@@ -12,24 +12,7 @@ const searchInput = document.querySelector('.search_input');
 const dropdownMenu = document.querySelector('.dropdown-menu');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//CHATGPT
+// //CHATGPT
 // searchInput.addEventListener('input', () => {
 //     const value = searchInput.value;
 //
