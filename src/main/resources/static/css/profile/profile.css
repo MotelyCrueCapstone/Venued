@@ -1,0 +1,55 @@
+.imagePlaceholder {
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.43);
+    padding: 15px;
+    color: white;
+}
+
+
+.venueInfo {
+    text-align: left;
+}
+
+.tryAgain {
+    color: white;
+    font-size: 30px;
+}
+
+@media (min-width:49em ) and (max-width: 200em) {
+    .card {
+        width: 700px;
+        margin: auto;
+    }
+}
+
+@media (min-width:10em ){
+    .imagePlaceholder {
+        width: 350px;
+        height: 250px;
+    }
+
+    .image {
+        display: flex;
+        justify-content: center;
+    }
+
+    .venueInfo {
+        text-align: center;
+    }
+}
+
+
+.gotoPage{
+    border-radius: 10px;
+    background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
+    font-family: "Lantinghei SC", sans-serif;
+    color: #E3DAF1;
+    margin: 8px 15px;
+    border: none;
+}
+
