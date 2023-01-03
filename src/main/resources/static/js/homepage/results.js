@@ -39,7 +39,7 @@
                                     address: currentVenue.location.address1,
                                   rating: currentVenue.rating,
                               }
-                              fetch(`http://localhost:8085/venue/${currentVenueId}?${currentVenueParams}`,{method: "POST"})
+                              fetch(`http://localhost:8085/venue/${currentVenueId}?${currentVenueParams.toString()}`,{method: "POST"})
                                   .then(response => console.log(response.status))
                          })
                     })
