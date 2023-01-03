@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Venue {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -42,4 +42,17 @@ public class Venue {
     @Column
     private String address;
 
+    @Column
+    private String rating;
+
+    public Venue(String venueId, String venueName, String venueAlias, String imgPath, String longitude, String latitude, String address, String rating) {
+        this.venueId = venueId;
+        this.venueName = venueName;
+        this.venueAlias = venueAlias;
+        this.imgPath = imgPath;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.address = address;
+        this.rating = rating;
+    }
 }
