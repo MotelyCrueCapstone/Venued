@@ -27,6 +27,9 @@
                     .then(response => response.json())
                     .then(venuesJson => {
                          venuesJson.forEach(currentVenue =>{
+                              //getting the current venue id to checkout existence in the database later
+                              let currentVenueId = currentVenue.idi;
+                              console.log(currentVenue)
                               console.log((currentVenue.id))
                               console.log(currentVenue.alias)
                          })

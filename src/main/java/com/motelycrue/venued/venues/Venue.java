@@ -42,4 +42,7 @@ public class Venue {
     @Column
     private String address;
 
+    @Column
+    private String rating;
+
 }
