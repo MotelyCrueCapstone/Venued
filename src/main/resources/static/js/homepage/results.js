@@ -25,9 +25,12 @@
           
               fetch(`http://localhost:8085/yelp/${query}?latitude=${latitude}&longitude=${longitude}`)
                     .then(response => response.json())
-                    .then(json => {console.log(json)
-              })
-          
+                    .then(venuesJson => {
+                         venuesJson.forEach(currentVenue =>{
+                              console.log((currentVenue.id))
+                              console.log(currentVenue.alias)
+                         })
+                    })
          });
     }
     $(searchButton).on("click", () => search($(input).val()))
