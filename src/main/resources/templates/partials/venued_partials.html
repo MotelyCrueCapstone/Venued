@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 
 	<head>
 		
@@ -43,23 +43,35 @@
 
 	
 	<nav th:fragment="mynav" class="topNav">
-		<a class="venued" th:href="@{/}">
-			<img  class="venued-logo" src="/imgs/venued-logo.jpg" alt="image of the word venued in white block letters">
-		</a>
-		<a href="#" class="toggle-button">
-			<span class="bar"></span>
-			<span class="bar"></span>
-			<span class="bar"></span>
-		</a>
+		
+			<a class="venued" th:href="@{/}">
+				<img  class="venued-logo" src="/imgs/venued-logo.jpg" alt="image of the word venued in white block letters">
+			</a>
+		
+			<a href="#" class="toggle-button">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</a>
+		
 			<ul class="nav-items">
 				<div class="searchbar">
+					
 					<input class="search_input" type="text" name="" placeholder="Search...">
 					<img th:src="@{imgs/search.svg}" alt="" class="search_icon">
+					
+					<section class="results-container">
+					
+					</section>
 				</div>
-				<div class="user-container">
-					<button type="submit" class="signup-btn nav-btn" onclick="window.location.href='/users/login'">Login</button>
-					<button type="submit" class="login-btn nav-btn" onclick="window.location.href='/users/register'">Register</button>
-				</div>
+				<ul class="user-container">
+					<li sec:authorize="isAnonymous()" class="nav-item">
+						<button type="submit" class="signup-btn nav-btn" onclick="window.location.href='/users/login'">Login</button>
+					</li>
+					<li sec:authorize="isAnonymous()" class="nav-item">
+						<button type="submit" class="login-btn nav-btn" onclick="window.location.href='/users/register'">Register</button>
+					</li>
+				</ul>
 			</ul>
 	</nav>
 
