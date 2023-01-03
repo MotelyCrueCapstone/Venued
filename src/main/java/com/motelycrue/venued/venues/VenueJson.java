@@ -14,5 +14,4 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class VenueJson {
     private Long id;
     private String venueName;
-    private String venueDescription;
 }
