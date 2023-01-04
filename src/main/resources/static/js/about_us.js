@@ -137,17 +137,22 @@ $('#contact-input').on('submit', function(event) {
 $(document).ready(function() {
     $('.showDialog').on("click", function (e) {
         $(this).parents(".img_overlay").siblings(".dialog").show();
-    });
-
-    $('.showDialog').on("click", function (e) {
         $(this).parents(".img_overlay_bottom").siblings(".dialog").show();
+
     });
 
     $('.close-button').click(function () {
         $(this).parents('.dialog').hide();
-
     });
 });
 
+
+//close dialog on click outside
+$(document).mouseup(function (e) {
+    let container = $(".dialog");
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+        container.hide();
+    }
+});
 
 
