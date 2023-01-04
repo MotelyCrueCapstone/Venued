@@ -1,44 +1,46 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org" lang="en"-->
-<!--xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
-<!--<head>-->
-<!--  <div th:replace="~{partials/venued_partials :: myheader('Profile')}"></div>-->
-<!--  <link rel="stylesheet" th:href="@{/css/universalStyle.css}">-->
-<!--  <link rel="stylesheet" th:href="@{/css/profile/profile.css}">-->
-<!--</head>-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <div th:replace="~{partials/venued_partials :: myheader('Profile')}"></div>
+  <link rel="stylesheet" th:href="@{/css/universalStyle.css}">
+  <link rel="stylesheet" th:href="@{/css/profile/profile.css}">
+</head>
 
-<!--<body>-->
-<!--<div class="page-wrapper">-->
-<!--    <nav th:replace="~{partials/venued_partials :: mynav}"></nav>-->
+<body>
+<div class="page-wrapper">
 
-<!--        <div class="title loggedInAs"-->
-<!--             sec="isAuthenticated()"><span th:text="${#authentication.pricipal.userName}">'s Profile</span></div>-->
-<!--        <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col">-->
-<!--                &lt;!&ndash;^^^RESPONSIVENESS^^^&ndash;&gt;-->
-<!--                <hr class="smallLine">-->
-<!--                &lt;!&ndash;RESULTS CARDS&ndash;&gt;-->
-<!--                <div class="card">-->
-<!--                    <div class="col">-->
-<!--                        <div class="row">-->
-<!--                            <div class="col col-lg-auto col-md-auto image">-->
-<!--                                <img class="imagePlaceholder" th:attr="src=${user.imgPath}">-->
-<!--                            </div>-->
-<!--                            <div class="col col-sm venueInfo">-->
-<!--                                <p th:text="${#authentication.pricipal.userName}"></p>-->
-<!--                            </div>-->
-<!--                            <div class="row">-->
-<!--                                <button class="gotoPage">change password</button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+  <nav th:replace="~{partials/venued_partials :: mynav}"></nav>
 
+<div class="title">INSERT USERNAME's Profile</div>
 
-<!--</body>-->
-<!--</html>-->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <!--^^^RESPONSIVENESS^^^-->
+                <hr class="smallLine">
+                <!--RESULTS CARDS-->
+                <div class="card">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col col-lg-auto col-md-auto image">
+                                <img class="imagePlaceholder" src="/imgs/Avatar-Placeholder.png">
+                            </div>
+                            <div class="col col-sm venueInfo">
+                                <p>INSERT USERNAME</p>
+
+                            </div>
+                            <div class="row">
+                                <button class="gotoPage">change password</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--END OF RESPONSIVENESS-->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -125,7 +125,7 @@ h2, h3 {
     padding: 0.2rem 1.3rem;
     border-radius: 10px;
     background: linear-gradient(35deg, #e66465 10%, #9370db 90%);
-    border: 1px solid white;
+    border: none;
 }
 
 .list-tips,
@@ -194,6 +194,13 @@ h2, h3 {
     padding: 1rem;
     border-radius: 10px;
 }
+.answer-wrapper,
+.thumbs-icon-wrapper,
+.question-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 @media screen and (min-width: 700px) {
     .answered-question-wrapper {
         display: flex;
@@ -249,8 +256,31 @@ small {
 
 @media screen and (min-width: 700px) {
     .restaurant-cards {
-        display: flex;
-        gap: 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 1rem 1rem;
+        width: 100%;
+        max-width: 1280px;
     }
 }
 
+/*--- modal style ----*/
+.modal-content {
+    background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
+}
+.modal-header {
+    border-bottom: none;
+}
+.modal-title {
+    color: #fff;
+}
+form > div:first-child textarea {
+    background-color: transparent;
+}
+form > div:first-child textarea:focus {
+    background-color: transparent;
+    color: #fff;
+}
+.modal-footer {
+    border-top: none;
+}

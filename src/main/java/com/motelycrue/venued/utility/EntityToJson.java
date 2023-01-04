@@ -35,8 +35,8 @@ public class EntityToJson {
 
     public String tipToJson(Tips tip) throws JsonProcessingException{
         TipsJson tipsJson = TipsJson.builder()
-                .tip_Name(tip.getTip_Name())
-                .tip_Content(tip.getTip_Content())
+                .tipName(tip.getTipName())
+                .tipContent(tip.getTipContent())
                 .upVotes(tip.getUpVotes())
                 .downVotes(tip.getDownVotes())
                 .id(tip.getId())

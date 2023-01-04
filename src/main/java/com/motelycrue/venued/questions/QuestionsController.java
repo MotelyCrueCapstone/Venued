@@ -20,7 +20,6 @@ public class QuestionsController {
     @Autowired
     private QuestionsRepository questionsDao;
 
-
     private final UserRepository userDao;
 
     public QuestionsController(UserRepository userDao, QuestionsRepository questionsDao) {

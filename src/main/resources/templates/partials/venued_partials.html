@@ -1,7 +1,5 @@
-
 <!DOCTYPE html>
-
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 
 	<head>
 
@@ -35,6 +33,7 @@
 			<script src="/js/carousel.js" defer></script>
 
 			<!-- Custom JS Navbar -->
+
 		</div>
 
 	</head>
@@ -53,13 +52,6 @@
 			</a>
 
 			<ul class="nav-items">
-<!--CHATGPT-->
-<!--				<div class="searchbar">-->
-<!--				<input class="search_input" type="text" name="" placeholder="Search...">--><!--				<img src="imgs/search.svg" alt="" class="search_icon">-->
-<!--				<div class="dropdown-menu">-->
-<!--				&lt;!&ndash; Dropdown menu items go here &ndash;&gt;-->
-<!--				</div>-->
-<!--				</div>-->
 
 				<div class="searchbar">
 					<input class="search_input" type="text" name="search_input" placeholder="Search...">
@@ -76,7 +68,7 @@
 					<button type="submit" class="signup-btn nav-btn" onclick="window.location.href='/users/login'">Login</button>
 					<button type="submit" class="login-btn nav-btn" onclick="window.location.href='/users/register'">Register</button>
 				</div>
-				
+
 			</ul>
 	</nav>
 
