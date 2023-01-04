@@ -6,8 +6,8 @@
     let searchButton = $(".search_icon")
     
     function toggleResults(){
-         $(".results ul").html("")
-         $(".results-container").toggleClass("hide")
+         $(".results").html("")
+         $(".results-container").removeClass("hide")
     }
     
     function search(query) {
