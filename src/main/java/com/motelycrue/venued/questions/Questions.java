@@ -1,6 +1,7 @@
 package com.motelycrue.venued.questions;
 
 import com.motelycrue.venued.users.User;
+import com.motelycrue.venued.venues.Venue;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,5 +27,8 @@ public class Questions {
     @JoinColumn(name="user_id")
     private User user;
 
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name="venueId")
+    private Venue venue;
 
 }
