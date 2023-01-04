@@ -3,12 +3,12 @@ function toSeconds(seconds){
     }
 
     let video = document.querySelector('video')
-    video.defaultPlaybackRate = 0.3
+    video.defaultPlaybackRate = 1
     video.load();
 
 $(function(){
 
-    let introductionBanner = 3
+    let introductionBanner = 1
     let counter = introductionBanner;
 
     setInterval(function(){
@@ -16,16 +16,16 @@ $(function(){
 
         //trying to set the counter back to what ever radio button the user clicked
         //on but am currently having complications.
-        for(let i = 1; i <= 4; i++){
-            $(`radio${i}`).on("click", ()=>{
-                counter = i;
-            })
-        }
+        // for(let i = 1; i <= 4; i++){
+        //     $(`radio${i}`).on("click", ()=>{
+        //         counter = i;
+        //     })
+        // }
 
-        counter++;
-        if(counter > 4) {
-            counter = 1;
-        }
+        // counter++;
+        // if(counter > 4) {
+        //     counter = 1;
+        // }
 
-    }, toSeconds(4));
+    }, toSeconds(10));
 })
