@@ -56,4 +56,6 @@ public class Venue {
         this.address = address;
         this.rating = rating;
     }
+
+
 }
