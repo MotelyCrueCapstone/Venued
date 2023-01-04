@@ -1,5 +1,6 @@
 
 .venued-logo{
+    filter: invert(100%);
     height: 30px;
     width: auto;
 }
@@ -319,6 +320,8 @@
         text-transform: capitalize;
         /*transition: all ease-in 0.3s;*/
     }
+
+
 
     /*.topNav .nav-btn:hover{*/
     /*    border: solid 1px #E3DAF1 !important;*/
