@@ -41,11 +41,12 @@
             <!----- tip and question section starts here --->
             <section class="wrapper cards-wrapper">
 
-                <!--------- tips card ---------->
+                <!--------- Tips card ---------->
                 <div class="tip-card">
                     <div class="card-wrapper">
                         <p class="title card-heading">Tips</p>
-                        <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#exampleModal1">Add a Tip</button>
+                        <button type="button" class="cta-button" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal1">Add A Tip</button>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
                             <div class="modal-dialog">
@@ -55,15 +56,22 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form>
+                                        <form method="post" action="/venues/{venueId}/add-tip">
                                             <div class="mb-3">
-                                                <textarea class="form-control shadow-none" id="exampleFormControlTextarea1" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
+                                                <input type="hidden" name="venueId" value="{venueId}">
+                                                <input type="text" name="tipName" placeholder="Tip Name">
+                                                <textarea class="form-control shadow-none" name="tipContent" id="exampleFormControlTextarea1" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="Submit" class="btn">Submit</button>
+                                                <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
+                                                <button type="Submit" class="btn submit">Submit</button>
                                             </div>
                                         </form>
+
+
+
+
+
                                     </div>
 
                                 </div>
@@ -89,9 +97,9 @@
                     </div>
                 </div>
 
-
-                <!------ Answers and question card ------->
+                <!------ Questions card ------->
                 <div class="question-card">
+                    <!--Questions Modal-->
                     <div class="card-wrapper">
                         <p class="title card-heading">Questions</p>
                         <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#exampleModal2">Ask a Question</button>
@@ -109,8 +117,9 @@
                                                 <textarea class="form-control shadow-none" id="question" rows="10" cols="30" placeholder="question goes here..."></textarea>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="Submit" class="btn btn-primary">Submit</button>
+                                                <button type="button" class="btn btn-secondary close"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                <button type="Submit" class="btn submit">Submit</button>
                                             </div>
                                         </form>
                                     </div>
@@ -119,49 +128,20 @@
                         </div>
                         <!---- modal end here --->
                     </div>
-                    <ul class="list-questions">
+                    <div th:each="question : ${questions}">
+                        <ul class="list-questions">
                         <li>
                             <div class="user-wrapper">
-                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
-                                <p>username</p>
+                                <span><img th:src="${question.user.imgPath}" alt="" class="user-image"></span>
+                                <p th:text="${question.user.userName}">username</p>
                             </div>
                             <div class="question-wrapper">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                                <span th:text="${question.question}"></span>
                                 <button class="button">Answer</button>
                             </div>
                         </li>
-                        <li>
-                            <div class="user-wrapper">
-                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
-                                <p>username</p>
-                            </div>
-                            <div class="question-wrapper">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                                <button class="button">Answer</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="user-wrapper">
-                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
-                                <p>username</p>
-                            </div>
-                            <div class="question-wrapper">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                               <button class="button">Answer</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="user-wrapper">
-                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
-                                <p>username</p>
-                            </div>
-                            <div class="question-wrapper">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                               <button class="button">Answer</button>
-                            </div>
-                        </li>
-
                     </ul>
+                    </div>
                 </div>
             </section>
 

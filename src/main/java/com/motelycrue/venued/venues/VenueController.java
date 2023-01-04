@@ -1,5 +1,7 @@
 package com.motelycrue.venued.venues;
 
+import com.motelycrue.venued.questions.Questions;
+import com.motelycrue.venued.questions.QuestionsRepository;
 import com.motelycrue.venued.tips.Tips;
 import com.motelycrue.venued.tips.TipsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class VenueController {
     @Autowired
     private TipsRepository TipsDao;
 
+    @Autowired
+    private QuestionsRepository QuestionsDao;
+
     @GetMapping("/{venueId}")
     public String showVenuePage(@PathVariable String venueId, Model model) {
         Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));
@@ -28,11 +33,11 @@ public class VenueController {
             model.addAttribute("venue", venue.get());
             List<Tips> tips = TipsDao.findByVenue(venue.get());
             model.addAttribute("tips", tips);
+            List<Questions> questions = QuestionsDao.findByVenue(venue.get());
+            model.addAttribute("questions", questions);
         }
         return "venue";
     }
-
-
 
     @PostMapping ("/{venueId}")
     public String saveVenue(@PathVariable String venueId, @RequestParam String venueName, @RequestParam String venueAlias, @RequestParam String imgPath, @RequestParam String longitude, @RequestParam String latitude, @RequestParam String address, @RequestParam String rating) {
@@ -49,4 +54,20 @@ public class VenueController {
             return "venue";
         }
     }
+
+    @PostMapping("/{venueId}/add-tip")
+    public String addTip(@PathVariable String venueId, @RequestParam String tipName, @RequestParam String tipContent) {
+        try {
+            long venueIdAsLong = Long.parseLong(venueId);
+            Optional<Venue> venue = VenueDao.findById(venueIdAsLong);
+            if (venue.isPresent()) {
+                Tips tip = new Tips(tipContent, tipName, venue.get());
+                TipsDao.save(tip);
+            }
+        } catch (NumberFormatException e) {
+            // handle the exception here
+        }
+        return "redirect:/venues/" + venueId;
+    }
+
 }

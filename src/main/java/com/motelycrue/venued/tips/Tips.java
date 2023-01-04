@@ -40,4 +40,9 @@ public class Tips {
     @JoinColumn(name="venueId")
     private Venue venue;
 
+    public Tips(String tipContent, String tipName, Venue venue) {
+        this.tipContent = tipContent;
+        this.venue = venue;
+        this.tipName = tipName;
+    }
 }
