@@ -31,8 +31,14 @@
                               let currentVenueAlias = currentVenue.alias;
                               
                               $(".results").append($(`<li class="result">
-                                        ${currentVenue.name}
-                                                   </li>`))
+                                             <div class="result-image">
+                                                 <img src="${currentVenue.image_url}" alt="resultImage">
+                                             </div>
+                                             <div class="result-body">
+                                                 <a href=""> ${currentVenue.name}</a>
+                                             </div>
+                                             
+                                        </li>`))
                               
                               //automatically creating paramter string for the controller request creation
                               let currentVenueParams = new URLSearchParams({
@@ -58,17 +64,14 @@
     
     //when user clicks search or presses enter run search from yelp api
     $(searchInput).on("keypress", (event) =>{
-         
           if(event.keyCode === 13){
              search($(searchInput).val());
              toggleResults();
           }
-          
     })
     
     $(searchButton).on("click", () =>{
          search($(searchInput).val());
          toggleResults();
     });
-    
 })();
