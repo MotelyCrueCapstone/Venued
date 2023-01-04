@@ -375,8 +375,8 @@ dialog {
     }
     .slide .flip {
         position: absolute;
-        top: 62px;
-        left: 23px;
+        top: 31px;
+        left: 25px;
         width: 88%;
         height: 84%;
         opacity: 0;
@@ -392,14 +392,20 @@ dialog {
     .personalSocialMediaLogos{
         justify-content: center;
     }
-
-    .mobileOverlay{
-        display: none;
-        /*position: absolute;*/
-        /*top:0;*/
-        /*bottom: 0;*/
-        /*!*opacity: 0;*!*/
-        /*background: rgba(0,0,0,0.6);*/
-        /*transition: opacity 0.3s ease-in-out;*/
+    .overlay {
+        position: absolute;
+        top: 430px;
+        left: 109px;
+        width: 50%;
+        height: 7%;
+        opacity: 0;
+        border-radius: 10px;
+        background: dimgray;
+        text-align: center;
+        transition: opacity 0.3s ease-in-out;
     }
+    .overlay.show {
+        opacity: .5;
+    }
+
 }

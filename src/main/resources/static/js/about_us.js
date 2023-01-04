@@ -114,22 +114,27 @@ $(document).ready(function(){
     }
 });
 
+const overlays = document.querySelectorAll('.overlay');
+
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-        if (entry.intersectionRatio > 0) {
-            // The image is in the viewport, so show the overlay
-            document.getElementById("mobileOverlay").style.display = "block";
-        } else {
-            // The image is not in the viewport, so hide the overlay
-            document.getElementById("mobileOverlay").style.display = "none";
-        }
+        // Toggle the show class on the overlays elements
+        overlays.forEach(overlay => {
+            overlay.classList.toggle('show', entry.isIntersecting);
+        });
     });
 }, {
-    rootMargin: "50% 0% 50% 0%"
+    // rootMargin: '100% 0% 100% 0%'
+    threshold: 1
 });
 
-const image = document.querySelector(".image");
-observer.observe(image);
+// Observe the slides elements
+// overlays.forEach(overlay => {
+//     observer.observe(overlay);
+// });
+slides.forEach(slide => {
+    observer.observe(slide);
+});
 
 
 // const slides = document.querySelectorAll('.slide');
@@ -137,6 +142,11 @@ slides.forEach(slide => {
     slide.addEventListener('click', (e) => {
         e.preventDefault();
         slide.classList.toggle('flipped');
+
+        // toggle the show class on the overlays elements
+        overlays.forEach(overlay => {
+            overlay.classList.toggle('show');
+        });
     });
 });
 
