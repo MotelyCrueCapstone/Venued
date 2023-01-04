@@ -1,5 +1,7 @@
 package com.motelycrue.venued.venues;
 
+import com.motelycrue.venued.questions.Questions;
+import com.motelycrue.venued.questions.QuestionsRepository;
 import com.motelycrue.venued.tips.Tips;
 import com.motelycrue.venued.tips.TipsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class VenueController {
     @Autowired
     private TipsRepository TipsDao;
 
+    @Autowired
+    private QuestionsRepository QuestionsDao;
+
     @GetMapping("/{venueId}")
     public String showVenuePage(@PathVariable String venueId, Model model) {
         Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));
@@ -28,9 +33,12 @@ public class VenueController {
             model.addAttribute("venue", venue.get());
             List<Tips> tips = TipsDao.findByVenue(venue.get());
             model.addAttribute("tips", tips);
+            List<Questions> questions = QuestionsDao.findByVenue(venue.get());
+            model.addAttribute("questions", questions);
         }
         return "venue";
     }
+
 
 
 
