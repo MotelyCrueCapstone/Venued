@@ -3,6 +3,7 @@ package com.motelycrue.venued.tips;
 import com.motelycrue.venued.questions.Questions;
 import com.motelycrue.venued.users.User;
 import com.motelycrue.venued.users.UserRepository;
+import com.motelycrue.venued.venues.Venue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,13 +35,7 @@ public class TipsController {
         model.addAttribute("tip", new Tips());
         return "/venue";
     }
-
-    @PostMapping()
-    public String createTips(@ModelAttribute Tips tip){
-        User user = userDao.findAll().get(0);
-        tip.setUser(user);
-        tipsDao.save(tip);
-        return "venue";
-    }
-
 }
+
+
+

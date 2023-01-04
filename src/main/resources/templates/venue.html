@@ -56,16 +56,22 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form>
+                                        <form method="post" action="/venues/{venueId}/add-tip">
                                             <div class="mb-3">
-                                                <textarea class="form-control shadow-none" id="exampleFormControlTextarea1" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
+                                                <input type="hidden" name="venueId" value="{venueId}">
+                                                <input type="text" name="tipName" placeholder="Tip Name">
+                                                <textarea class="form-control shadow-none" name="tipContent" id="exampleFormControlTextarea1" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary close"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                <button type="Submit" class=" btn submit">Submit</button>
+                                                <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
+                                                <button type="Submit" class="btn submit">Submit</button>
                                             </div>
                                         </form>
+
+
+
+
+
                                     </div>
 
                                 </div>
