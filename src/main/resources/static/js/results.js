@@ -4,7 +4,7 @@
     
     let searchInput = $(".search_input")
     let searchButton = $(".search_icon")
-    
+    let searchLocation = $(".search_location_input")
     function toggleResults(){
          $(".results").html("")
          $(".results-container").removeClass("hide")
@@ -21,7 +21,7 @@
               let longitude = position.coords.longitude.toFixed(2);
               
               //fetching api data from yelp
-              fetch(`http://localhost:8085/yelp/${query}?latitude=${latitude}&longitude=${longitude}`)
+              fetch(`http://localhost:8085/yelp/${query}?location=${searchLocation.val()}`)
                     .then(response => response.json())
                     .then(venuesJson => {
 
@@ -59,7 +59,6 @@
                               fetch(`http://localhost:8085/venues/${currentVenueId}?${currentVenueParams.toString()}`,{method: "POST"})
                                   .then(response => console.log(response.status))
                               })
-                         
                     })
          });
     }

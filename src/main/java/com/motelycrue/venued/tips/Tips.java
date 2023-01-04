@@ -1,6 +1,7 @@
 package com.motelycrue.venued.tips;
 
 import com.motelycrue.venued.users.User;
+import com.motelycrue.venued.venues.Venue;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Tips {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -34,5 +35,9 @@ public class Tips {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_id")
     private User user;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name="venueId")
+    private Venue venue;
 
 }

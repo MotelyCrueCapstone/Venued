@@ -176,6 +176,8 @@ h2, h3 {
     background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
 }
 
+
+
 @media screen and (min-width: 700px) {
     .cards-wrapper {
         display: flex;
@@ -283,4 +285,10 @@ form > div:first-child textarea:focus {
 }
 .modal-footer {
     border-top: none;
+}
+
+.btn {
+    border: none;
+    color: #ffffff;
+    background: rgba(222, 149, 109, 0.73) linear-gradient(to right, rgba(215, 85, 124, 0.87), rgba(175, 73, 2, 0.87));
 }
