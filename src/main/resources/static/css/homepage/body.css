@@ -3,13 +3,13 @@
     background-color: transparent;
     display: flex;
     width: 100vw;
-    height: 50px;
+    height: 1px;
     min-width: 100vw;
     min-height: 40px;
 }
 
 .main{
-    border-radius: 40px 40px;
+    border-radius: 0 0 40px 40px;
     backdrop-filter: blur(10px);
     background-color: #00000099;
     padding: 30px 75px;
