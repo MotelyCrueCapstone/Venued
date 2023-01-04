@@ -19,7 +19,7 @@
     width: 100%;
     padding: 0 2.813rem;
     font-family: "Lantinghei SC", sans-serif;
-    background-color: #130F10;
+    background: linear-gradient(#000, #000000cb, #000000bb);
 }
 
 .nav-items{
