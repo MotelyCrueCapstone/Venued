@@ -37,14 +37,14 @@
     position: relative;
     display: flex;
     align-items: center;
-    height: 60px;
     width: 500px;
     padding: 10px;
+    height: 40px;
+    border: .01em solid #ffffff65;
+    border-radius: 10px;
 }
 
 .search_icon {
-    position: absolute;
-    right: 20px;
     color: white;
     height: 20px;
     width: auto;
@@ -59,16 +59,38 @@
     color: #ffffffdd!important;
     background-color: transparent!important;
     line-height: 40px;
-    border-width: 1px;
     padding-left: 10px;
 }
+
+.searchbar input:focus{
+    outline: none;
+}
+
 .search_input {
-    border-radius: 10px 0 0 10px;
+    width: 60%;
+    border: none;
 }
 
 .search_location_input{
-    border-left: none;
-    border-radius: 0 10px 10px 0;
+    width: 35%;
+
+    border-left: #ffffff22 solid .01em;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.search_icon_container{
+    display: flex;
+    border-left: #ffffff22 solid .01em!important;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    width: 10%;
+    height: 40px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
 }
 
 /*DROPDOWN*/
@@ -157,7 +179,7 @@
     z-index: 5;
     position: absolute;
     display: flex;
-    top:90%;
+    top:110%;
     right: 0;
     width: 500px;
     min-width: 500px;

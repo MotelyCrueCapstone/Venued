@@ -55,11 +55,13 @@
 
 				<div class="searchbar">
 					<input class="search_input" type="text" name="search_input" placeholder="Search...">
-					<img th:src="@{imgs/search.svg}" alt="" class="search_icon">
 					<input class="search_location_input" type="text" name="search_location_input" placeholder="San Antonio, Tx">
+					<div class="search_icon_container">
+						<img th:src="@{imgs/search.svg}" alt="" class="search_icon">
+					</div>
+					
 					<section class="results-container hide">
 						<ul class="results">
-						
 						</ul>
 					</section>
 				</div>
