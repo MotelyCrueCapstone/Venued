@@ -35,7 +35,22 @@ public class YelpApiService {
                     .build()
                 .toUriString();
     }
-
+    private static String makeAutoCompleteUrl(String query, String location){
+        //making the uri adjustable by using the UriComponentsBuilder for the request
+        return UriComponentsBuilder.newInstance()
+                .scheme("https").host(yelpBaseUrl).path("/businesses/search")
+                .queryParam("term", query)
+                .queryParam("location", location)
+                .queryParam("radius", "2000")
+                .queryParam("categories", "club")
+                .queryParam("categories", "concert")
+                .queryParam("categories", "wedding")
+                .queryParam("categories", "music")
+                .queryParam("sort_by", "rating")
+                .queryParam("limit", "20")
+                .build()
+                .toUriString();
+    }
     public static String execute(String query, String latitude, String longitude) throws IOException {
 
         OkHttpClient client = new OkHttpClient();
@@ -56,28 +71,23 @@ public class YelpApiService {
         return objectNode.get("businesses").toPrettyString();
     }
 
-    //sending test requests to api service
-//    public static String execute(String query) throws IOException {
-//
-//        OkHttpClient client = new OkHttpClient();
-//
-//        //the object that turns POJOS into JSON objects
-//        ObjectMapper objectMapper = new ObjectMapper();
-//
-//        //creating the api endpoint url
-//        String requestUrl = makeAutoCompleteUrl(query, "San antonio");
-//
-//        //turns the url into a viable http requestt with the
-//        // Bearer token so we can receive the results of our query
-//
-//        Request request = new Request.Builder()
-//                .url(requestUrl)
-//                .addHeader("Authorization", "Bearer " + yelpApiKey)
-//                .build();
-//
-//        Response response = client.newCall(request).execute();
-//        String responseString  = response.body().string();
-//        ObjectNode objectNode = objectMapper.readValue(responseString, ObjectNode.class);
-//        return objectNode.get("businesses").toString();
-//    }
+    public static String execute(String query, String location) throws IOException {
+
+        OkHttpClient client = new OkHttpClient();
+
+        //creating the api endpoint url
+        String requestUri = makeAutoCompleteUrl(query, location);
+        Request request = new Request.Builder()
+
+                .url(requestUri)
+                .addHeader("Access-Control-Allow-Origin","*")
+                .addHeader("Authorization", "Bearer " + yelpApiKey)
+                .build();
+
+        Response response = client.newCall(request).execute();
+        String responseString  = response.body().string();
+        ObjectNode objectNode = new ObjectMapper()
+                .readValue(responseString, ObjectNode.class);
+        return objectNode.get("businesses").toString();
+    }
 }
