@@ -9,11 +9,12 @@
   <div class="page-wrapper">
         <nav th:replace="~{partials/venued_partials :: mynav}"></nav>
 
-        <section class="container">
+        <section class="container mt-5 border">
             <div class="row container">
-                <div class="col first">
+                <div class="col-sm-5 first border">
                     <div>
-                        <img src="../imgs/Avatar-Placeholder.png" alt="user-image">
+                        <p><img src="../imgs/Avatar-Placeholder.png" alt="user-image"></p>
+                        <p>user name goes here...</p>
                     </div>
                     <div>
                         <p>
@@ -26,36 +27,39 @@
                             </div>
                             <div>
                                <label for="bio">Bio</label>
-                               <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
+                               <textarea name="bio" id="bio" cols="30" rows="5"></textarea>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="col p-0 second">
-                    <h1>User Profile</h1>
-                    <ul class="nav nav-tabs border border-0" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+
+                <div class="col-sm-7 second">
+                    <h3>User Profile</h3>
+                    <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
+                        <li class="nav-item me-5" role="presentation">
+                            <button class="nav-link active" id="answer-tab" data-bs-toggle="tab" data-bs-target="#answer" type="button" role="tab" aria-controls="answer" aria-selected="true">
                                 <span class="badge rounded-pill bg-secondary me-1">0</span>
                                 Answers
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                        <li class="nav-item me-5" role="presentation">
+                            <button class="nav-link" id="question-tab" data-bs-toggle="tab" data-bs-target="#question" type="button" role="tab" aria-controls="question" aria-selected="false">
                                 <span class="badge rounded-pill bg-secondary me-1">0</span>
                                Questions
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">
+                        <li class="nav-item me-5" role="presentation">
+                            <button class="nav-link" id="tip-tab" data-bs-toggle="tab" data-bs-target="#tip" type="button" role="tab" aria-controls="tip" aria-selected="false">
                                 <span class="badge rounded-pill bg-secondary me-1">0</span>
                                 Tips
                             </button>
                         </li>
                     </ul>
-                    <div class="tab-content px-3 mb-4 border border-1" id="myTabContent">
-                        <!---- size and Crust tab-pane ---->
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                    <div class="tab-content px-3 mb-4 border" id="myTabContent">
+                        <!---- answer tab-pane ---->
+                        <div class="tab-pane fade show active" id="answer" role="tabpanel" aria-labelledby="answer-tab">
+                            <h3>Answer Pane</h3>
                             <!-- first card begins here -->
                             <div class="card mb-3">
                                 <div class="card-header bg-primary text-white">
@@ -67,37 +71,12 @@
                                 <div class="card-header bg-white">
 
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-
-                                    </li>
-                                    <li class="list-group-item">
-
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card border border-0">
-                                <div class="card">
-                                    <div class="card-header">
-
-                                    </div>
-                                    <div class="card-header bg-white">
-
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">
-
-                                        </li>
-                                        <li class="list-group-item">
-
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
 
-                        <!---- cheese and Sauce tab-pane ------->
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <!---- Question tab-pane ------->
+                        <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
+                            <h3>Question Pane</h3>
                             <!-- second card begins here -->
                             <div class="card mb-3">
                                 <div class="card-header bg-primary text-white">
@@ -110,24 +89,12 @@
 
                                 </div>
                             </div>
-                            <div class="card border border-0">
-                                <div class="card">
-                                    <div class="card-header">
 
-                                    </div>
-                                    <div class="card-header bg-white">
-
-                                    </div>
-
-                                    <div class="card-header border border-1 bg-white">
-
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
-                        <!------ Topping tap-pane ------->
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <!------ Tip tap-pane ------->
+                        <div class="tab-pane fade" id="tip" role="tabpanel" aria-labelledby="tip-tab">
+                            <h3>Tip Pane</h3>
                             <!-- third card begins here -->
                             <div class="card mb-3">
                                 <ul class="list-group list-group-flush">
@@ -144,24 +111,6 @@
 
                                     </li>
                                 </ul>
-                            </div>
-                            <div class="card border border-0">
-                                <div class="card">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">
-
-                                        </li>
-                                        <li class="list-group-item">
-
-                                        </li>
-                                        <li class="list-group-item">
-
-                                        </li>
-                                        <li class="list-group-item">
-
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>
