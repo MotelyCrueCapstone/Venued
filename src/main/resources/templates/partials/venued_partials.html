@@ -37,12 +37,10 @@
 		</div>
 
 	</head>
-
-
 	<nav th:fragment="mynav" class="topNav">
-
+			
 			<a class="venued" th:href="@{/}">
-				<img  class="venued-logo" src="/imgs/venued-logo.jpg" alt="image of the word venued in white block letters">
+				<img  class="venued-logo" src="/imgs/venuedImage.png" alt="image of the word venued in white block letters">
 			</a>
 
 			<a href="#" class="toggle-button">
@@ -55,7 +53,7 @@
 
 				<div class="searchbar">
 					<input class="search_input" type="text" name="search_input" placeholder="Search...">
-					<input class="search_location_input" type="text" name="search_location_input" placeholder="San Antonio, Tx">
+					<input class="search_location_input" type="text" name="search_location_input" placeholder="San Antonio, Tx" value="San Antonio, Tx">
 					<div class="search_icon_container">
 						<img th:src="@{imgs/search.svg}" alt="" class="search_icon">
 					</div>

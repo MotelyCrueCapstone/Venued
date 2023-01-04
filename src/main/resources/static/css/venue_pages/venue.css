@@ -287,7 +287,11 @@ form > div:first-child textarea:focus {
     border-top: none;
 }
 
-.btn {
+.close {
+    background-color: transparent;
+}
+
+.submit{
     border: none;
     color: #ffffff;
     background: rgba(222, 149, 109, 0.73) linear-gradient(to right, rgba(215, 85, 124, 0.87), rgba(175, 73, 2, 0.87));
