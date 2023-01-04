@@ -35,8 +35,6 @@
 			<script src="/js/carousel.js" defer></script>
 
 			<!-- Custom JS Navbar -->
-			<script src="/js/navbar.js"></script>
-
 		</div>
 
 	</head>
@@ -64,8 +62,9 @@
 <!--				</div>-->
 
 				<div class="searchbar">
-					<input class="search_input" type="text" name="" placeholder="Search...">
+					<input class="search_input" type="text" name="search_input" placeholder="Search...">
 					<img th:src="@{imgs/search.svg}" alt="" class="search_icon">
+					<input class="search_location_input" type="text" name="search_location_input" placeholder="San Antonio, Tx">
 					<section class="results-container hide">
 						<ul class="results">
 						
@@ -77,6 +76,7 @@
 					<button type="submit" class="signup-btn nav-btn" onclick="window.location.href='/users/login'">Login</button>
 					<button type="submit" class="login-btn nav-btn" onclick="window.location.href='/users/register'">Register</button>
 				</div>
+				
 			</ul>
 	</nav>
 
