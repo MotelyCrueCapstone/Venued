@@ -8,3 +8,4 @@ window.onload = ()=>{
     });
 }
 
+let MY_KEY = config.MY_KEY;
