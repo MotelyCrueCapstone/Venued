@@ -69,10 +69,27 @@
              search($(searchInput).val());
              toggleResults();
           }
-    })
+    });
     
     $(searchButton).on("click", () =>{
          search($(searchInput).val());
          toggleResults();
     });
 })();
+
+// create dropdown the uses google places api to suggest locations
+
+
+let input = document.getElementById('search_location_input');
+let options = {
+        types: ['cities'],
+        componentRestrictions: {country: "us"
+        }
+    }
+let autocomplete = new google.maps.places.Autocomplete(input,options)
+
+google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        let place = autocomplete.getPlace();
+        console.log(place);
+    });
+
