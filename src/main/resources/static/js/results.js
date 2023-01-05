@@ -75,4 +75,8 @@
          search($(searchInput).val());
          toggleResults();
     });
+    
+    $(searchInput).on("click", () => {
+         toggleResults();
+    })
 })();
