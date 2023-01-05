@@ -28,6 +28,7 @@ public class SecurityConfiguration {
         })
                 .formLogin().loginPage("/users/login").defaultSuccessUrl("/home").and()
                 .httpBasic(Customizer.withDefaults());
+
         return http.build();
     }
 
