@@ -39,9 +39,6 @@ public class VenueController {
         return "venue";
     }
 
-
-
-
     @PostMapping ("/{venueId}")
     public String saveVenue(@PathVariable String venueId, @RequestParam String venueName, @RequestParam String venueAlias, @RequestParam String imgPath, @RequestParam String longitude, @RequestParam String latitude, @RequestParam String address, @RequestParam String rating) {
         Optional<Venue> venueRecord = Optional.ofNullable(this.VenueDao.findVenueByVenueId(venueId));
@@ -57,4 +54,20 @@ public class VenueController {
             return "venue";
         }
     }
+
+    @PostMapping("/{venueId}/add-tip")
+    public String addTip(@PathVariable String venueId, @RequestParam String tipName, @RequestParam String tipContent) {
+        try {
+            long venueIdAsLong = Long.parseLong(venueId);
+            Optional<Venue> venue = VenueDao.findById(venueIdAsLong);
+            if (venue.isPresent()) {
+                Tips tip = new Tips(tipContent, tipName, venue.get());
+                TipsDao.save(tip);
+            }
+        } catch (NumberFormatException e) {
+            // handle the exception here
+        }
+        return "redirect:/venues/" + venueId;
+    }
+
 }
