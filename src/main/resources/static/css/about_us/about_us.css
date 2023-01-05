@@ -370,5 +370,42 @@ dialog {
         transform: scale(0.9);
         box-shadow: 0.313rem 0.313rem 2.5rem -0.063 var(--shadow);
     }
+    .slide{
+        position: relative;
+    }
+    .slide .flip {
+        position: absolute;
+        top: 31px;
+        left: 25px;
+        width: 88%;
+        height: 84%;
+        opacity: 0;
+        border-radius: 10px;
+        background: dimgray;
+        text-align: center;
+        transition: opacity 0.3s ease-in-out;
+    }
+    .slide.flipped .flip {
+        opacity: .82;
+    }
+
+    .personalSocialMediaLogos{
+        justify-content: center;
+    }
+    .overlay {
+        position: absolute;
+        top: 430px;
+        left: 109px;
+        width: 50%;
+        height: 7%;
+        opacity: 0;
+        border-radius: 10px;
+        background: dimgray;
+        text-align: center;
+        transition: opacity 0.3s ease-in-out;
+    }
+    .overlay.show {
+        opacity: .5;
+    }
 
 }
