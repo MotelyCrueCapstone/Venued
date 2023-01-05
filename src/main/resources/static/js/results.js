@@ -11,7 +11,7 @@
     }
     
     function search(query) {
-         
+
          //fetching users current location to be used for the yelp apis longitude latitude position
          navigator.geolocation.getCurrentPosition(position => { //getting the latitude longitude from the DOM geolocation api
               
