@@ -34,6 +34,9 @@
 
 			<!-- Navbar JS -->
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALW5WgCCQUPS06lkXKMliUUmbXPVIaVic&libraries=places"></script>
+			<script src="/js/results.js"></script>
+			<script src="/js/navbar.js"></script>
+
 
 		</div>
 	</head>
@@ -48,16 +51,13 @@
 				<span class="bar"></span>
 				<span class="bar"></span>
 			</a>
-
 			<ul class="nav-items">
-
 				<div class="searchbar">
 					<input class="search_input" type="text" name="search_input" placeholder="Search...">
 					<input id="search_location_input" type="text" name="search_location_input" placeholder="Enter a location" autocomplete="off">
 					<div class="search_icon_container">
 						<img th:src="@{imgs/search.svg}" alt="" class="search_icon">
 					</div>
-					
 					<section class="results-container hide">
 						<ul class="results">
 						</ul>
@@ -109,7 +109,5 @@
 				</div>
 			</div>
 		</div>
-		
-		<scripts src="js/results.js"></scripts>
 	</footer>
 </html>
