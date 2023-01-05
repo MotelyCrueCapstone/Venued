@@ -24,14 +24,16 @@
               fetch(`http://localhost:8085/yelp/${query}?location=${searchLocation.val()}`)
                     .then(response => response.json())
                     .then(venuesJson => {
+                         
                          //little change
                          venuesJson.forEach(currentVenue =>{
+                              
                               //getting the current venue id to checkout existence in the database later
                               let currentVenueId = currentVenue.id;
+                              
                               let currentVenueAlias = currentVenue.alias;
-
+                              
                               $(".results").append($(`<li class="result">
-
                                              <div class="result-image">
                                                  <img src="${currentVenue.image_url}" alt="resultImage">
                                              </div>
