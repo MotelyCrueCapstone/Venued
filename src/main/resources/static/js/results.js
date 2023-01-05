@@ -24,7 +24,7 @@
               fetch(`http://localhost:8085/yelp/${query}?location=${searchLocation.val()}`)
                     .then(response => response.json())
                     .then(venuesJson => {
-
+                         //little change
                          venuesJson.forEach(currentVenue =>{
                               //getting the current venue id to checkout existence in the database later
                               let currentVenueId = currentVenue.id;
@@ -69,10 +69,26 @@
              search($(searchInput).val());
              toggleResults();
           }
-    })
+    });
     
     $(searchButton).on("click", () =>{
          search($(searchInput).val());
          toggleResults();
     });
 })();
+
+    // create dropdown the uses google places api to suggest locations
+    function initAutocomplete(){
+        let input = document.getElementById('search_location_input');
+        let searchBox = new google.maps.places.SearchBox(input);
+        searchBox.addListener('places_changed', function() {
+            let places = searchBox.getPlaces();
+            if (places.length == 0) {
+                return;
+            }
+        });
+    }
+
+window.onload = function() {
+    initAutocomplete();
+};
