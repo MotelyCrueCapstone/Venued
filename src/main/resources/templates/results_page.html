@@ -7,9 +7,10 @@
 
 <body>
 <div class="page-wrapper">
-    <div>
-        <nav th:replace="partials/venued_partials :: mynav"></nav>
-    </div>
+	<section class="navSection">
+		<div class="set-tone"></div>
+		<nav th:replace="~{partials/venued_partials :: mynav}"></nav>
+	</section>
     <div class="container">
         <div class="row">
             <div class="col">

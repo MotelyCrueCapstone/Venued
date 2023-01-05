@@ -32,15 +32,15 @@ public class SecurityConfiguration {
         return http.build();
     }
 
-    @Bean
-    UserDetailsService userDetailsService(){
-        var admin = User.builder()
-                .userName("admin")
-                .password("admin123")
-                .build();
-        var user = User.builder()
-                .userName()
-    }
+//    @Bean
+//    UserDetailsService userDetailsService(){
+//        var admin = User.builder()
+//                .userName("admin")
+//                .password("admin123")
+//                .build();
+//        var user = User.builder()
+//                .userName()
+//    }
 //    @Bean
 //    public PasswordEncoder passwordEncoder() {
 //        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();

@@ -9,7 +9,11 @@
 
     <div class="page-wrapper">
         <!---- nav bar ---->
-        <nav th:replace="partials/venued_partials :: mynav"></nav>
+        <<section class="navSection">
+	    <div class="set-tone"></div>
+	    <nav th:replace="~{partials/venued_partials :: mynav}"></nav>
+    </section>
+	   
 <div th:object="${venue}">
         <!--------- header section ------->
         <header class="wrapper header-wrapper">
