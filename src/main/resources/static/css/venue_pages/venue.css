@@ -181,6 +181,10 @@ h2, h3 {
     color: #999;
 }
 
+.tipName {
+    font-weight: bold;
+}
+
 
 
 @media screen and (min-width: 700px) {
@@ -201,6 +205,11 @@ h2, h3 {
     padding: 1rem;
     border-radius: 10px;
 }
+
+.answered.background {
+    background-color: #E74E35; !important;
+}
+
 .answer-wrapper,
 .thumbs-icon-wrapper,
 .question-wrapper{
