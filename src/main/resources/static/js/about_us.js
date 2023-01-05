@@ -13,6 +13,7 @@ let isDragging = false,
 //Add event listeners
 slides.forEach((slide, index) => {
     const slideImage = slide.querySelector('img');
+
     //Disable default drag behaviour
     slideImage.addEventListener('dragstart', (e) => e.preventDefault());
 
@@ -48,6 +49,7 @@ function touchStart(index) {
 
         animationID = requestAnimationFrame(animation);
         slider.classList.add('grabbing');
+        // console.log("this is it");
     };
 }
 function touchEnd() {
@@ -63,6 +65,7 @@ function touchEnd() {
     setPositionByIndex();
 
     slider.classList.remove('grabbing');
+    // console.log("this is it");
 }
 
 // Touch Move
@@ -75,6 +78,7 @@ function touchMove(event) {
 
 // Get Mouse or Touch Position
 function getPositionX(event) {
+    // console.log("this is it");
     return event.type.includes('mouse')
         ? event.pageX
         : event.touches[0].clientX;
@@ -84,11 +88,13 @@ function getPositionX(event) {
 function animation() {
     setSliderPosition();
     if (isDragging) requestAnimationFrame(animation);
+    // console.log("this is it");
 }
 
 // Set Slider Position
 function setSliderPosition() {
     slider.style.transform = `translateX(${currentTranslate}px)`;
+    // console.log("this is it");
 }
 
 // Set position by index
@@ -96,6 +102,7 @@ function setPositionByIndex() {
     currentTranslate = currentIndex * -window.innerWidth;
     prevTranslate = currentTranslate;
     setSliderPosition();
+    // console.log("this is it");
 }
 
 //replaces subject and email labels with placeholders
@@ -106,6 +113,43 @@ $(document).ready(function(){
         $("#email").placeholder.hide();
     }
 });
+
+const overlays = document.querySelectorAll('.overlay');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        // Toggle the show class on the overlays elements
+        overlays.forEach(overlay => {
+            overlay.classList.toggle('show', entry.isIntersecting);
+        });
+    });
+}, {
+    // rootMargin: '100% 0% 100% 0%'
+    threshold: 1
+});
+
+// Observe the slides elements
+// overlays.forEach(overlay => {
+//     observer.observe(overlay);
+// });
+slides.forEach(slide => {
+    observer.observe(slide);
+});
+
+
+// const slides = document.querySelectorAll('.slide');
+slides.forEach(slide => {
+    slide.addEventListener('click', (e) => {
+        e.preventDefault();
+        slide.classList.toggle('flipped');
+
+        // toggle the show class on the overlays elements
+        overlays.forEach(overlay => {
+            overlay.classList.toggle('show');
+        });
+    });
+});
+
 
 
 // EmailJS email forwarding function.
@@ -136,12 +180,14 @@ $('#contact-input').on('submit', function(event) {
 //Show Dialog
 $(document).ready(function() {
     $('.showDialog').on("click", function (e) {
+        e.preventDefault();
         $(this).parents(".img_overlay").siblings(".dialog").show();
         $(this).parents(".img_overlay_bottom").siblings(".dialog").show();
 
     });
 
-    $('.close-button').click(function () {
+    $('.close-button').click(function (e) {
+        e.preventDefault();
         $(this).parents('.dialog').hide();
     });
 });

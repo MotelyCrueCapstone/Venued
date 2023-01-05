@@ -176,6 +176,11 @@ h2, h3 {
     background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
 }
 
+.small-number {
+    font-size: 0.8em;
+    color: #999;
+}
+
 
 
 @media screen and (min-width: 700px) {
