@@ -1,5 +1,6 @@
 package com.motelycrue.venued.configuration;
 
+import com.motelycrue.venued.users.User;
 import org.springframework.boot.autoconfigure.security.ConditionalOnDefaultWebSecurity;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,14 +29,23 @@ public class SecurityConfiguration {
         })
                 .formLogin().loginPage("/users/login").defaultSuccessUrl("/home").and()
                 .httpBasic(Customizer.withDefaults());
-
         return http.build();
     }
+
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        return encoder;
+    UserDetailsService userDetailsService(){
+        var admin = User.builder()
+                .userName("admin")
+                .password("admin123")
+                .build();
+        var user = User.builder()
+                .userName()
     }
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//        return encoder;
+//    }
 
 }
 
