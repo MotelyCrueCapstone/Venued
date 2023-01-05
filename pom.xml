@@ -17,10 +17,13 @@
     <description>Venued</description>
     <properties>
         <java.version>19</java.version>
+<!--        <spring-security.version>6.0.1</spring-security.version>-->
+<!--        <spring.version>6.0.3</spring.version>-->
     </properties>
 
     <dependencies>
 
+        <!-- Data -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -99,6 +102,17 @@
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+        </dependency>
+
+            <!-- ... other dependency elements ... -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
         </dependency>
 
         <dependency>
