@@ -19,7 +19,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
 public class SecurityConfiguration {
-
     // Bean to configure filter chain and set which pages must be authorized to view
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
