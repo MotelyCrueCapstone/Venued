@@ -14,14 +14,17 @@ INSERT INTO venue(id, venue_name, address, venue_alias) VALUES
 INSERT INTO answer(id, answer, user_id, up_votes, down_votes) VALUES
     (1, "They do card and they put an X mark on your hand with a sharpie if you're under 18.", 4, 15, 5),
     (2, "I've gotten there 5 hours early and there was still a long line! Some people camped out overnight to see
-    SZA", 1, 8, 8);
+    SZA", 1, 8, 8),
+    (3, "They don't patdown men or women at this venue", 2, 80, 10),
+    (4, "They do. They also make you go through a metal detector", 3, 45, 0 );
 
 INSERT INTO questions(id, question, user_id, venue_id, answered, answer_id) VALUES
-   (1, "Does anyone know if this place has a ChickFilA?", 1, 2,0, NULL),
-   (2, "How much is the parking right in front of the stadium??", 4, 2, 0, NULL),
+   (1, "Does anyone know if this place has a ChickFilA?", 1, 1,0, NULL),
+   (2, "How much is the parking right in front of the stadium??", 4, 1, 0, NULL),
    (3, "Do they card/id ppl under 18 after 10PM?", 3, 1, 1, 1),
-   (4, "Do they check the inside of your bag when you enter the place?", 2, 3, 0, NULL),
-   (5, "How early should I get to this venue??", 2, 1, 1, 2);
+   (4, "Do they check the inside of your bag when you enter the place?", 2, 1, 1, 4),
+   (5, "How early should I get to this venue??", 4, 1, 1, 2),
+   (6, "Does anyone know if they do patdowns on girls??", 1, 1, 1, 3);
 
 
 
