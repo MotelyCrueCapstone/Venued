@@ -79,16 +79,18 @@
     });
 })();
 
-// create dropdown the uses google places api to suggest locations
-let input = document.getElementById('search_location_input');
-let options = {
-        types: ['cities'],
-        componentRestrictions: {country: "us"
-        }
+    // create dropdown the uses google places api to suggest locations
+    function initAutocomplete(){
+        let input = document.getElementById('search_location_input');
+        let searchBox = new google.maps.places.SearchBox(input);
+        searchBox.addListener('places_changed', function() {
+            let places = searchBox.getPlaces();
+            if (places.length == 0) {
+                return;
+            }
+        });
     }
-let autocomplete = new google.maps.places.Autocomplete(input,options)
 
-google.maps.event.addListener(autocomplete, 'place_changed', function () {
-        let place = autocomplete.getPlace();
-        console.log(place);
-    });
+window.onload = function() {
+    initAutocomplete();
+};
