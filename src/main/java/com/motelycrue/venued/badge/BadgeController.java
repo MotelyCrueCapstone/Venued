@@ -16,8 +16,8 @@ public class BadgeController {
     @Autowired
     private UserRepository UserDao;
 
-    @Autowired
-    private QuestionsRepository QuestionsDao;
+//    @Autowired
+//    private QuestionsRepository QuestionsDao;
 
 
 

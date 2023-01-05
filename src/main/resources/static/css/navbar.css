@@ -181,9 +181,8 @@
     position: absolute;
     display: flex;
     top:110%;
-    right: 0;
-    width: 500px;
-    min-width: 500px;
+    left: -10px;
+    width: 59%;
     height: 200px;
     min-height: 100px;
     background-color: #000000f2;

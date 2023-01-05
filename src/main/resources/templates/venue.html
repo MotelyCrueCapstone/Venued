@@ -89,8 +89,18 @@
                                 <div class="thumbs-icon-wrapper">
                                     <span th:text="${tip.tipContent}">Lorem ipsum dolor sit amet, consectetur adipiscing
                                         elit</span>
-                                    <a href="#"><span class="fa-solid fa-thumbs-up text-primary"></span></a>
-                                    <a href="#"><span class="fa-solid fa-thumbs-down text-primary"></span></a>
+                                    <a href="#">
+                                        <span class="fa-solid fa-thumbs-up text-primary">
+                                            <span th:class="small-number" th:text="${tip.upVotes}">
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <a href="#">
+                                        <span class="fa-solid fa-thumbs-down text-primary">
+                                            <span th:class="small-number" th:text="${tip.downVotes}">
+                                            </span>
+                                        </span>
+                                    </a>
                                 </div>
                             </li>
                         </ul>
