@@ -5,13 +5,13 @@
     let searchInput = $(".search_input")
     let searchButton = $(".search_icon")
     let searchLocation = $(".search_location_input")
+    
     function toggleResults(){
          $(".results").html("")
          $(".results-container").removeClass("hide")
     }
     
     function search(query) {
-         
          //fetching users current location to be used for the yelp apis longitude latitude position
          navigator.geolocation.getCurrentPosition(position => { //getting the latitude longitude from the DOM geolocation api
               
@@ -24,14 +24,15 @@
               fetch(`http://localhost:8085/yelp/${query}?location=${searchLocation.val()}`)
                     .then(response => response.json())
                     .then(venuesJson => {
-
+                         
                          venuesJson.forEach(currentVenue =>{
+                              
                               //getting the current venue id to checkout existence in the database later
                               let currentVenueId = currentVenue.id;
+                              
                               let currentVenueAlias = currentVenue.alias;
-
+                              
                               $(".results").append($(`<li class="result">
-
                                              <div class="result-image">
                                                  <img src="${currentVenue.image_url}" alt="resultImage">
                                              </div>
@@ -69,14 +70,26 @@
              search($(searchInput).val());
              toggleResults();
           }
-    })
+    });
     
     $(searchButton).on("click", () =>{
          search($(searchInput).val());
          toggleResults();
     });
-    
-    $(searchInput).on("click", () => {
-         toggleResults();
-    })
 })();
+
+// create dropdown the uses google places api to suggest locations
+function initAutocomplete(){
+   let input = document.getElementById('search_location_input');
+   let searchBox = new google.maps.places.SearchBox(input);
+   searchBox.addListener('places_changed', function() {
+       let places = searchBox.getPlaces();
+       if (places.length == 0) {
+           return;
+       }
+   });
+}
+
+window.onload = function() {
+    initAutocomplete();
+};
