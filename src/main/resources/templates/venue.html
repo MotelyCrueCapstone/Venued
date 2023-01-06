@@ -5,6 +5,7 @@
     <div th:replace="partials/venued_partials :: myheader('Venue Page')" th:remove="tag"></div>
     <link rel="stylesheet" th:href="@{/css/venue_pages/venue.css}">
     <link rel="stylesheet" th:href="@{/css/universalStyle}">
+    <title></title>
 </head>
 <body>
 
@@ -79,13 +80,8 @@
                                             </div>
                                         </form>
 
-<<<<<<< HEAD
-
-
 										</div>
-=======
-                                    </div>
->>>>>>> tesfalem-tekie
+
 
                                 </div>
                             </div>
@@ -105,14 +101,13 @@
                                     <span th:text="${tip.getTipContent()}"></span>
                                     <a href="#">
                                         <span class="fa-solid fa-thumbs-up text-primary">
-<<<<<<< HEAD
+
                                             <span th:class="small-number" th:text="${tip.getUpVotes()}">
                                             </span>
-=======
-                                            <span th:class="small-number" th:text="${tip.upVotes}"></span>
->>>>>>> tesfalem-tekie
+
                                         </span>
                                     </a>
+
                                     <a href="#">
                                         <span class="fa-solid fa-thumbs-down text-primary">
                                             <span th:class="small-number" th:text="${tip.getDownVotes()}">
@@ -164,7 +159,7 @@
                     </div>
                     <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
                         <ul class="list-questions">
-<<<<<<< HEAD
+
                             <th:block th:if="${question.answered == 0}">
                                 <li>
                                     <div class="user-wrapper">
@@ -209,21 +204,8 @@
                                     </div>
                                 </li>
                             </th:block>
-=======
-                            <li>
-                                <div class="user-wrapper">
-                                    <span><img th:src="${question.user.imgPath}" alt="" class="user-image"></span>
-                                    <p th:text="${question.user.userName}">username</p>
-                                </div>
-                                <div class="question-wrapper">
-                                    <span th:text="${question.question}"></span>
-                                    <button class="button">Answer</button>
-                                </div>
-                            </li>
->>>>>>> tesfalem-tekie
                         </ul>
                     </div>
-
 
 					</div>
 				</section>
@@ -247,7 +229,6 @@
 								</div>
 							</li>
 
-
                     </ul>
 <!--        ANSWER GIVEN-->
                     <ul class="list-answered-questions">
@@ -267,7 +248,7 @@
                                         </span>
                                 </a>
                                 <a href="#">
-                                        <span class="fa-solid fa-thumbs-down text-primary"/>
+                                        <span class="fa-solid fa-thumbs-down text-primary"></span>
 
                                 </a>
                                 <span th:class="small-number" th:text="${question.getAnsweredQuestions().getDownVotes()}"/>
