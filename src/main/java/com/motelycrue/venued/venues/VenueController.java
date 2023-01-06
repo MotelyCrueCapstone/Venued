@@ -59,6 +59,7 @@ public class VenueController {
                             @RequestParam String latitude,
                             @RequestParam String address,
                             @RequestParam String rating) {
+
         Optional<Venue> venueRecord = Optional.ofNullable(this.VenueDao.findVenueByVenueId(venueId));
 
         //if venue is present we aren't going to save the new venue
