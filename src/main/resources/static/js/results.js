@@ -25,12 +25,15 @@
                          
                          let currentVenueAlias = currentVenue.alias;
                          
+                         let urlString =     `"http://localhost:8085/venues/id/${currentVenue.id}"`
                          $(".results").append($(`<li class="result">
+
                                         <div class="result-image">
                                             <img src="${currentVenue.image_url}" alt="resultImage">
                                         </div>
+                                        
                                         <div class="result-body">
-                                            <a href="http://localhost:8085/"+`${currentVenue.id}`> ${currentVenue.name}</a>
+                                            <a href=${urlString}> ${currentVenue.name}</a>
                                         </div>
                                         
                                    </li>`))
