@@ -6,10 +6,7 @@ import com.motelycrue.venued.users.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,5 +39,12 @@ public class QuestionsController {
         question.setUser(user);
         questionsDao.save(question);
         return "redirect:/questions";
+    }
+
+    @PostMapping("/venues/{venueId}/answer-question")
+    public String answerQuestion(@RequestParam("id") long id, @PathVariable String venueId) {
+        questionsDao.updateAnsweredStatus(id);
+        // redirect to the appropriate page
+        return "redirect:/venues/{venueId}";
     }
 }
