@@ -51,11 +51,10 @@ public class Tips {
         this.tipName = tipName;
     }
 
-    public Tips(String tipName, String tipContent, Long upVotes, Long downVotes, User user) {
+    public Tips(String tipName, String tipContent, Long upVotes, Long downVotes) {
         this.tipName = tipName;
         this.tipContent = tipContent;
         this.upVotes = upVotes;
         this.downVotes = downVotes;
-        this.user = user;
     }
 }

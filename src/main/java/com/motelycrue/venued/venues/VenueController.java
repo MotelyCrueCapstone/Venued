@@ -57,12 +57,23 @@ public class VenueController {
 
     @PostMapping("/{venueId}/add-tip")
     public String addTip(@PathVariable String venueId, @RequestParam String tipName, @RequestParam String tipContent,
-     @RequestParam String )                    ) {
+     @RequestParam Long upVotes, @RequestParam Long downVotes) {
         Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));
         if (venue.isPresent()) {
-            Tips tip = new Tips(tipName, tipContent);
+            Tips tip = new Tips(tipName, tipContent, upVotes, downVotes);
             tip.setVenue(venue.get());
             TipsDao.save(tip);
+        }
+        return "redirect:/venues/{venueId}";
+    }
+
+    @PostMapping("/{venueId}/add-question")
+    public String addQuestion(@PathVariable String venueId,  @RequestParam String question) {
+        Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));
+        if (venue.isPresent()) {
+            Questions question = new Questions(question);
+            question.setVenue(venue.get());
+            QuestionsDao.save(question);
         }
         return "redirect:/venues/{venueId}";
     }

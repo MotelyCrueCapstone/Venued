@@ -63,8 +63,6 @@
                                                 <input type="text" name="tipName" placeholder="Tip Name">
                                                 <textarea class="form-control shadow-none" name="tipContent" id="exampleFormControlTextarea1" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
 <!--THESE WILL BE ADDED AUTOMATICALLY WHEN THE USER IS LOGGED IN. I AM ONLY PUTTING THESE HERE FOR TESTING PURPOSES-->
-                                                <input type="text" name="imgPath" placeholder="ImageUrl">
-                                                <input type="text" name="userName" placeholder="Username">
                                                 <input type="text" name="upVotes" placeholder="upVotes">
                                                 <input type="text" name="downVotes" placeholder="downVotes">
                                             </div>
@@ -89,8 +87,9 @@
                         <ul class="list-tips">
                             <li>
                                 <div class="user-wrapper">
-                                    <span><img th:src="${tip.user.imgPath}" alt="" class="user-image"></span>
-                                    <p class="" th:text="${tip.user.userName}"></p>
+<!--UNCOMMENT LATER ONCE MODAL IS FIXED!!!!!!!!!!-->
+<!--                                    <span><img th:src="${tip.user.imgPath}" alt="" class="user-image"></span>-->
+<!--                                    <p class="" th:text="${tip.user.userName}"></p>-->
                                 </div>
                                 <div class="thumbs-icon-wrapper">
                                     <span th:class="tipName" th:text="${tip.tipName}"></span>
@@ -128,7 +127,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form>
+                                        <form form method="post" th:action="@{|/venues/${venueId}/add-question|}">
                                             <div class="mb-3">
                                                 <textarea class="form-control shadow-none" id="question" rows="10" cols="30" placeholder="question goes here..."></textarea>
                                             </div>
@@ -144,16 +143,18 @@
                         </div>
                         <!---- modal end here --->
                     </div>
-                    <div th:if="${questions.isEmpty()}">
-                        <p>Looks like no questions have been asked yet! Be the first to ask a question</p>
+                    <div th:if="${questions.isEmpty()}" class="empty">
+                        <p class="nothingHere">Looks like no questions have been asked yet! Be the first to ask a
+                            question</p>
                     </div>
                     <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
                         <ul class="list-questions">
                             <th:block th:if="${question.answered == 0}">
                                 <li>
                                     <div class="user-wrapper">
-                                        <span><img th:src="${question.user.imgPath}" alt="" class="user-image"></span>
-                                        <p th:text="${question.user.userName}">username</p>
+<!--!!!!!!UNCOMMENT LATER AFTER MODAL IS FIXED!!!!-->
+<!--                                        <span><img th:src="${question.user.imgPath}" alt="" class="user-image"></span>-->
+<!--                                        <p th:text="${question.user.userName}">username</p>-->
                                     </div>
                                     <div class="question-wrapper">
                                         <span th:text="${question.question}"></span>

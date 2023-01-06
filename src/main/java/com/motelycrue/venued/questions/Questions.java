@@ -38,4 +38,7 @@ public class Questions {
     @JoinColumn(name="answer_id")
     private Answer answeredQuestions;
 
+    public Questions(String question) {
+        this.question = question;
+    }
 }
