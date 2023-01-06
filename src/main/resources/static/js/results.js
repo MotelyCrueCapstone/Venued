@@ -30,7 +30,7 @@
                                             <img src="${currentVenue.image_url}" alt="resultImage">
                                         </div>
                                         <div class="result-body">
-                                            <a href=""> ${currentVenue.name}</a>
+                                            <a href="http://localhost:8085/"+`${currentVenue.id}`> ${currentVenue.name}</a>
                                         </div>
                                         
                                    </li>`))
