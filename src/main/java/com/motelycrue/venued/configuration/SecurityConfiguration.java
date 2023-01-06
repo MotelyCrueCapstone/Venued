@@ -27,8 +27,7 @@ public class SecurityConfiguration {
             authConfig.requestMatchers("/venues/**").authenticated();
         })
                 .formLogin().loginPage("/users/login").defaultSuccessUrl("/home").and()
-                .httpBasic(Customizer.withDefaults());
-
+                .httpBasic();
         return http.build();
     }
 
