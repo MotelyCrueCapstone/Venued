@@ -326,11 +326,10 @@
     /*    border: solid 1px #E3DAF1 !important;*/
     /*}*/
 
-    /*.nav-items.active{*/
-    /*    display: flex;*/
-    /*    text-transform: capitalize;*/
-    /*    z-index: 3;*/
-    /*}*/
+    .active{
+        display: flex!important;
+        z-index: 3!important;
+    }
 
 }
 
