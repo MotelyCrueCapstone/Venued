@@ -105,7 +105,7 @@
             <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
 
-            <!-- ... other dependency elements ... -->
+        <!-- ... other dependency elements ... -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
