@@ -48,7 +48,7 @@
 .search_icon {
     color: white;
     height: 20px;
-    width: auto;
+    width: 20px;
     text-decoration: none;
     filter: invert(100%);
 }
