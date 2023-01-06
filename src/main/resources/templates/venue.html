@@ -68,10 +68,6 @@
                                             </div>
                                         </form>
 
-
-
-
-
                                     </div>
 
                                 </div>
@@ -91,8 +87,7 @@
                                         elit</span>
                                     <a href="#">
                                         <span class="fa-solid fa-thumbs-up text-primary">
-                                            <span th:class="small-number" th:text="${tip.upVotes}">
-                                            </span>
+                                            <span th:class="small-number" th:text="${tip.upVotes}"></span>
                                         </span>
                                     </a>
                                     <a href="#">
@@ -140,17 +135,17 @@
                     </div>
                     <div th:each="question : ${questions}">
                         <ul class="list-questions">
-                        <li>
-                            <div class="user-wrapper">
-                                <span><img th:src="${question.user.imgPath}" alt="" class="user-image"></span>
-                                <p th:text="${question.user.userName}">username</p>
-                            </div>
-                            <div class="question-wrapper">
-                                <span th:text="${question.question}"></span>
-                                <button class="button">Answer</button>
-                            </div>
-                        </li>
-                    </ul>
+                            <li>
+                                <div class="user-wrapper">
+                                    <span><img th:src="${question.user.imgPath}" alt="" class="user-image"></span>
+                                    <p th:text="${question.user.userName}">username</p>
+                                </div>
+                                <div class="question-wrapper">
+                                    <span th:text="${question.question}"></span>
+                                    <button class="button">Answer</button>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </section>
