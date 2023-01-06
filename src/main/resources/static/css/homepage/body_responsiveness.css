@@ -1,3 +1,14 @@
+@media (max-width: 428px) {
+    .title {
+        display: block ruby;
+    }
+    .subsection p{
+        font-size: 25px;
+        margin: 10px -40px;
+    }
+
+}
+
 /* Add a media query to adjust the layout on smaller screens */
 @media (max-width: 900px) {
     .subsection {
@@ -13,14 +24,14 @@
     }
 }
 
-/* Add a media query to adjust the layout on medium-sized screens */
-@media (min-width: 90px) and (max-width: 2000px) {
-    .subsection p {
-        margin: 50px;
-    }
+/*!* Add a media query to adjust the layout on medium-sized screens *!*/
+/*@media (min-width: 90px) and (max-width: 2000px) {*/
+/*    .subsection p {*/
+/*        margin: 50px;*/
+/*    }*/
 
 
-}
+/*}*/
 
 /* Add a media query to adjust the layout on large screens */
 
