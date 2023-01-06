@@ -40,9 +40,21 @@ public class Tips {
     @JoinColumn(name="venueId")
     private Venue venue;
 
+    public Tips(String tipName, String tipContent) {
+        this.tipName = tipName;
+        this.tipContent = tipContent;
+    }
+
     public Tips(String tipContent, String tipName, Venue venue) {
         this.tipContent = tipContent;
         this.venue = venue;
         this.tipName = tipName;
+    }
+
+    public Tips(String tipName, String tipContent, Long upVotes, Long downVotes) {
+        this.tipName = tipName;
+        this.tipContent = tipContent;
+        this.upVotes = upVotes;
+        this.downVotes = downVotes;
     }
 }

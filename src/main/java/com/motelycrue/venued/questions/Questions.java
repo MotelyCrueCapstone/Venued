@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Questions {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -38,4 +38,7 @@ public class Questions {
     @JoinColumn(name="answer_id")
     private Answer answeredQuestions;
 
+    public Questions(String question) {
+        this.question = question;
+    }
 }

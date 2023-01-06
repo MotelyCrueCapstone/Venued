@@ -9,23 +9,23 @@
 <body>
 
     <div class="page-wrapper">
-	    
+
         <!---- nav bar ---->
         <section class="navSection">
 	        <div class="set-tone"></div>
 	        <nav th:replace="~{partials/venued_partials :: mynav}"></nav>
         </section>
-	   
+
 	<div th:object="${venue}">
 			<!--------- header section ------->
 			<header class="wrapper header-wrapper">
 
 				<div class="hero-card">
-					<img src="/imgs/venue_placeholder.jpg" alt="" class="image">
+					<img th:src="${venue.getImgPath()}" alt="" class="image">
 				</div>
 
 				<div class="event-card">
-					<p class="title" th:text="${venue.venueName}"></p>
+					<p class="title" th:text="${venue.getVenueName()}"></p>
 
 					<div class="event-container">
 						<div class="#">
@@ -38,7 +38,7 @@
 						</div>
 					</div>
 
-					<p class="desc venue-address" th:text="${venue.address}"></p>
+					<p class="desc venue-address" th:text="${venue.getAddress()}"></p>
 				</div>
 
 			</header>
@@ -47,122 +47,162 @@
 				<!----- tip and question section starts here --->
 				<section class="wrapper cards-wrapper">
 
-					<!--------- Tips card ---------->
-					<div class="tip-card">
-						<div class="card-wrapper">
-							<p class="title card-heading">Tips</p>
-							<button type="button" class="cta-button" data-bs-toggle="modal"
-									data-bs-target="#exampleModal1">Add A Tip</button>
-							<!-- Modal -->
-							<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content tip-modal">
-										<div class="modal-header">
-											<p class="modal-title fs-5 title" id="exampleModalLabel1">Add a tip</p>
-											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                <!--------- Tips card ---------->
+                <div class="tip-card">
+                    <div class="card-wrapper">
+                        <p class="title card-heading">Tips</p>
+                        <button type="button" class="cta-button" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal1">Add A Tip</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content tip-modal">
+                                    <div class="modal-header">
+                                        <p class="modal-title fs-5 title" id="exampleModalLabel1">Add a tip</p>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <form method="post" th:action="@{|/venues/${venueId}/add-tip|}">
+                                            <div class="mb-3">
+                                                <input type="hidden" name="venueId" value="{venueId}">
+                                                <input type="text" name="tipName" placeholder="Tip Name">
+                                                <textarea class="form-control shadow-none" name="tipContent" id="exampleFormControlTextarea1" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
+<!--THESE WILL BE ADDED AUTOMATICALLY WHEN THE USER IS LOGGED IN. I AM ONLY PUTTING THESE HERE FOR TESTING PURPOSES-->
+                                                <input type="text" name="upVotes" placeholder="upVotes">
+                                                <input type="text" name="downVotes" placeholder="downVotes">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
+                                                <button type="Submit" class="btn submit">Submit</button>
+                                            </div>
+                                        </form>
+
+
+
 										</div>
-										<div class="modal-body">
-											<form method="post" action="/venues/{venueId}/add-tip">
-												<div class="mb-3">
-													<input type="hidden" name="venueId" value="{venueId}">
-													<input type="text" name="tipName" placeholder="Tip Name">
-													<textarea class="form-control shadow-none" name="tipContent" id="exampleFormControlTextarea1" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
-													<button type="Submit" class="btn submit">Submit</button>
-												</div>
-											</form>
 
+                                </div>
+                            </div>
+                        </div>
+                        <!---- modal end here --->
+                    </div>
+                    <div th:each="tip : ${tips}">
+                        <ul class="list-tips">
+                            <li>
+                                <div class="user-wrapper">
+<!--UNCOMMENT LATER ONCE MODAL IS FIXED!!!!!!!!!!-->
+<!--                                    <span><img th:src="${tip.user.imgPath}" alt="" class="user-image"></span>-->
+<!--                                    <p class="" th:text="${tip.user.userName}"></p>-->
+                                </div>
+                                <div class="thumbs-icon-wrapper">
+                                    <span th:class="tipName" th:text="${tip.getTipName()}"></span>
+                                    <span th:text="${tip.getTipContent()}"></span>
+                                    <a href="#">
+                                        <span class="fa-solid fa-thumbs-up text-primary">
+                                            <span th:class="small-number" th:text="${tip.getUpVotes()}">
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <a href="#">
+                                        <span class="fa-solid fa-thumbs-down text-primary">
+                                            <span th:class="small-number" th:text="${tip.getDownVotes()}">
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
+<!------ Questions card ------->
+                <div class="question-card">
+                    <!--Questions Modal-->
+                    <div class="card-wrapper">
+                        <p class="title card-heading">Questions</p>
+                        <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#exampleModal2">Ask a Question</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content question-modal">
+                                    <div class="modal-header">
+                                        <p class="modal-title fs-5 title" id="exampleModalLabel2">Ask a Question</p>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form form method="post" th:action="@{|/venues/${venueId}/add-question|}">
+                                            <div class="mb-3">
+                                                <textarea class="form-control shadow-none" id="question" rows="10"
+                                                          cols="30" placeholder="question goes here..."
+                                                          name="question"></textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary close"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                <button type="Submit" class="btn submit">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---- modal end here --->
+                    </div>
+                    <div th:if="${questions.isEmpty()}" class="empty">
+                        <p class="nothingHere">Looks like no questions have been asked yet! Be the first to ask a
+                            question</p>
+                    </div>
+                    <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
+                        <ul class="list-questions">
+                            <th:block th:if="${question.answered == 0}">
+                                <li>
+                                    <div class="user-wrapper">
+<!--!!!!!!UNCOMMENT LATER AFTER MODAL IS FIXED!!!!-->
+<!--                                        <span><img th:src="${question.user.imgPath}" alt="" class="user-image"></span>-->
+<!--                                        <p th:text="${question.user.userName}">username</p>-->
+                                    </div>
+                                    <div class="question-wrapper">
+                                        <span th:text="${question.getQuestion()}"></span>
+                                        <button type="button" class="cta-button" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal3">Answer</button>
+                                        <div class="modal fade" id="exampleModal3" tabindex="-1"
+                                             aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content question-modal">
+                                                    <div class="modal-header">
+                                                        <p class="modal-title fs-5 title" id="exampleModalLabel3">Answer
+                                                        </p>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form form method="post" th:action="@{|/venues/${venueId}/answer-question|}">
+                                                            <div class="mb-3">
+                                                <span th:text="${question.getQuestion()}"></span>
+                                                <textarea class="form-control shadow-none" id="answer" rows="10"
+                                                          cols="30" placeholder="Answer goes here..."
+                                                          name="answer"></textarea>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <input type="hidden" name="answered"
+                                                                       th:value="${question.getAnswered()}">
 
+                                                                <button type="button" class="btn btn-secondary close"
+                                                                        data-bs-dismiss="modal">Close</button>
+                                                                <button type="Submit" class="btn submit">Submit</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </th:block>
+                        </ul>
+                    </div>
 
-
-										</div>
-
-									</div>
-								</div>
-							</div>
-							<!---- modal end here --->
-						</div>
-						<div th:each="tip : ${tips}">
-							<ul class="list-tips">
-								<li>
-									<div class="user-wrapper">
-										<span><img th:src="${tip.user.imgPath}" alt="" class="user-image"></span>
-										<p class="" th:text="${tip.user.userName}"></p>
-									</div>
-									<div class="thumbs-icon-wrapper">
-										<span th:class="tipName" th:text="${tip.tipName}"></span>
-										<span th:text="${tip.tipContent}"></span>
-										<a href="#">
-											<span class="fa-solid fa-thumbs-up text-primary">
-												<span th:class="small-number" th:text="${tip.upVotes}">
-												</span>
-											</span>
-										</a>
-										<a href="#">
-											<span class="fa-solid fa-thumbs-down text-primary">
-												<span th:class="small-number" th:text="${tip.downVotes}">
-												</span>
-											</span>
-										</a>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-
-	<!------ Questions card ------->
-					<div class="question-card">
-						<!--Questions Modal-->
-						<div class="card-wrapper">
-							<p class="title card-heading">Questions</p>
-							<button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#exampleModal2">Ask a Question</button>
-							<!-- Modal -->
-							<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content question-modal">
-										<div class="modal-header">
-											<p class="modal-title fs-5 title" id="exampleModalLabel2">Ask a Question</p>
-											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-										</div>
-										<div class="modal-body">
-											<form>
-												<div class="mb-3">
-													<textarea class="form-control shadow-none" id="question" rows="10" cols="30" placeholder="question goes here..."></textarea>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary close"
-															data-bs-dismiss="modal">Close</button>
-													<button type="Submit" class="btn submit">Submit</button>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!---- modal end here --->
-						</div>
-						<div th:if="${questions.isEmpty()}">
-							<p>Looks like no questions have been asked yet! Be the first to ask a question</p>
-						</div>
-						<div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
-							<ul class="list-questions">
-								<th:block th:if="${question.answered == 0}">
-									<li>
-										<div class="user-wrapper">
-											<span><img th:src="${question.user.imgPath}" alt="" class="user-image"></span>
-											<p th:text="${question.user.userName}">username</p>
-										</div>
-										<div class="question-wrapper">
-											<span th:text="${question.question}"></span>
-											<button class="button">Answer</button>
-										</div>
-									</li>
-								</th:block>
-							</ul>
-						</div>
 
 					</div>
 				</section>
@@ -178,42 +218,43 @@
 
 							<li>
 								<div class="user-wrapper">
-									<span><img th:src="${question.user.imgPath}" alt="" class="user-image"></span>
-									<p th:text="${question.user.userName}">username</p>
+									<span><img th:src="${question.getUser().getImgPath()}" alt="" class="user-image"></span>
+									<p th:text="${question.getUser().getUserName()}">username</p>
 								</div>
 								<div class="answer-wrapper">
-									<span th:text="${question.question}"></span>
+									<span th:text="${question.getQuestion()}"></span>
 								</div>
 							</li>
 
-						</ul>
-	<!--        ANSWER GIVEN-->
-						<ul class="list-answered-questions">
-							<li class="answered-background">
-								<div class="user-wrapper">
-									<span><img th:src="${question.answeredQuestions.user.imgPath}" alt="" class="user-image"></span>
-									<p th:text="${question.answeredQuestions.user.userName}"></p>
-								</div>
-								<div class="answer-wrapper">
-									<span th:text="${question.answeredQuestions.answer}"></span>
-									<a href="#">
-											<span class="fa-solid fa-thumbs-up text-primary">
-												<span th:class="small-number" th:text="${question.answeredQuestions.upVotes}">
-												</span>
-											</span>
-									</a>
-									<a href="#">
-											<span class="fa-solid fa-thumbs-down text-primary">
-												<span th:class="small-number" th:text="${question.answeredQuestions.downVotes}">
 
-									</a>
-								</div>
-							</li>
+                    </ul>
+<!--        ANSWER GIVEN-->
+                    <ul class="list-answered-questions">
+                        <li class="answered-background">
+                            <div class="user-wrapper">
+                                <span><img th:src="${question.answeredQuestions.getUser().getImgPath()}" alt=""
+                                           class="user-image"></span>
+                                <p th:text="${question.answeredQuestions.getUser().getUserName()}"></p>
+                            </div>
+                            <div class="answer-wrapper">
+                                <span th:text="${question.getAnsweredQuestions().getAnswer()}"></span>
+                                <a href="#">
+                                        <span class="fa-solid fa-thumbs-up text-primary">
+                                            <span th:class="small-number"
+                                                  th:text="${question.getAnsweredQuestions().getUpVotes()}">
+                                            </span>
+                                        </span>
+                                </a>
+                                <a href="#">
+                                        <span class="fa-solid fa-thumbs-down text-primary"/>
 
-						</ul>
-						</th:block>
-					</div>
-
+                                </a>
+                                <span th:class="small-number" th:text="${question.getAnsweredQuestions().getDownVotes()}"/>
+                            </div>
+                        </li>
+                    </ul>
+                    </th:block>
+                </div>
 				</section>
 
 				<!---- Restaurant cards section ----->
