@@ -56,18 +56,15 @@ public class VenueController {
     }
 
     @PostMapping("/{venueId}/add-tip")
-    public String addTip(@PathVariable String venueId, @RequestParam String tipName, @RequestParam String tipContent) {
-        try {
-            long venueIdAsLong = Long.parseLong(venueId);
-            Optional<Venue> venue = VenueDao.findById(venueIdAsLong);
-            if (venue.isPresent()) {
-                Tips tip = new Tips(tipContent, tipName, venue.get());
-                TipsDao.save(tip);
-            }
-        } catch (NumberFormatException e) {
-            // handle the exception here
+    public String addTip(@PathVariable String venueId, @RequestParam String tipName, @RequestParam String tipContent,
+     @RequestParam String )                    ) {
+        Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));
+        if (venue.isPresent()) {
+            Tips tip = new Tips(tipName, tipContent);
+            tip.setVenue(venue.get());
+            TipsDao.save(tip);
         }
-        return "redirect:/venues/" + venueId;
+        return "redirect:/venues/{venueId}";
     }
 
 }

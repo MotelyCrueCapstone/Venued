@@ -56,11 +56,17 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="post" action="/venues/{venueId}/add-tip">
+
+                                        <form method="post" th:action="@{|/venues/${venueId}/add-tip|}">
                                             <div class="mb-3">
                                                 <input type="hidden" name="venueId" value="{venueId}">
                                                 <input type="text" name="tipName" placeholder="Tip Name">
                                                 <textarea class="form-control shadow-none" name="tipContent" id="exampleFormControlTextarea1" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
+<!--THESE WILL BE ADDED AUTOMATICALLY WHEN THE USER IS LOGGED IN. I AM ONLY PUTTING THESE HERE FOR TESTING PURPOSES-->
+                                                <input type="text" name="imgPath" placeholder="ImageUrl">
+                                                <input type="text" name="userName" placeholder="Username">
+                                                <input type="text" name="upVotes" placeholder="upVotes">
+                                                <input type="text" name="downVotes" placeholder="downVotes">
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
@@ -199,11 +205,9 @@
                                 <a href="#">
                                         <span class="fa-solid fa-thumbs-down text-primary">
                                             <span th:class="small-number" th:text="${question.answeredQuestions.downVotes}">
-
                                 </a>
                             </div>
                         </li>
-
                     </ul>
                     </th:block>
                 </div>
