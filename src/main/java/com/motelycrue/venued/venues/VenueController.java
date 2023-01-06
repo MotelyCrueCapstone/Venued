@@ -1,5 +1,6 @@
 package com.motelycrue.venued.venues;
 
+import com.motelycrue.venued.questions.Answer;
 import com.motelycrue.venued.questions.Questions;
 import com.motelycrue.venued.questions.QuestionsRepository;
 import com.motelycrue.venued.tips.Tips;
@@ -71,11 +72,16 @@ public class VenueController {
     public String addQuestion(@PathVariable String venueId,  @RequestParam String question) {
         Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));
         if (venue.isPresent()) {
-            Questions question = new Questions(question);
-            question.setVenue(venue.get());
-            QuestionsDao.save(question);
+            Questions newQuestion = Questions.builder()
+                    .question(question)
+                    .venue(venue.get())
+                    .build();
+            QuestionsDao.save(newQuestion);
         }
         return "redirect:/venues/{venueId}";
     }
+
+
+
 
 }
