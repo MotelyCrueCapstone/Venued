@@ -9,8 +9,10 @@
     <div class="page-wrapper">
 
         <!--Navbar-->
-        <nav th:replace="~{partials/venued_partials :: mynav}"></nav>
-
+	    <section class="navSection">
+		    <div class="set-tone"></div>
+		    <nav th:replace="~{partials/venued_partials :: mynav}"></nav>
+	    </section>
         <main>
             <div class="form-wrapper">
                 <p class="text-center mb-4" id="form-title" th:class="title">Sign Up</p>

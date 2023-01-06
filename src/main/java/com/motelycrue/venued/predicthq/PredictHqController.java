@@ -20,7 +20,6 @@ public class PredictHqController {
             //making sure the longitude and latitude are both present in the
             //parameters or the controller will return the default page for the
             //venue or event
-
             if(latitude.isPresent() && longitude.isPresent()){
                 return PredictHqApiService.execute(latitude.get(), longitude.get());
             }else{

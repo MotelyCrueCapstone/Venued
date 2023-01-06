@@ -45,8 +45,10 @@ public class Venue {
     @Column
     private String rating;
 
-    public Venue(String venueId, String venueName, String venueAlias, String imgPath, String longitude, String latitude, String address, String rating) {
-
+    public Venue(String venueId, String venueName,
+                 String venueAlias, String imgPath,
+                 String longitude, String latitude,
+                 String address, String rating) {
         this.venueId = venueId;
         this.venueName = venueName;
         this.venueAlias = venueAlias;
