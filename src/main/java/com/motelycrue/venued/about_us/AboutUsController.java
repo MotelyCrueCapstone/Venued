@@ -17,7 +17,7 @@ public class AboutUsController {
 
     @GetMapping
     public String aboutUs(){
-        return "/about_us";
+        return "about_us";
     }
 
     @PostMapping("/subscribe")

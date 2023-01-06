@@ -41,7 +41,7 @@ public class UserController {
     public String registerUser(@ModelAttribute User user){
 //        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.save(user);
-        return "redirect:/login";
+        return "redirect:users/login";
     }
 
     @GetMapping("/profile")

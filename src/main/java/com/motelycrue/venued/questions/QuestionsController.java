@@ -33,7 +33,7 @@ public class QuestionsController {
         List<Questions> questions = questionsDao.findAll();
         model.addAttribute("questions", questions);
         model.addAttribute("emptyQuestions", new Questions());
-        return "/questions";
+        return "questions";
     }
 
     @PostMapping()

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import retrofit2.http.Path;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +27,16 @@ public class VenueController {
     @Autowired
     private QuestionsRepository QuestionsDao;
 
+    @GetMapping("/id/{venueId}")
+    public String actualVenue(@PathVariable String venueId){
+        Optional<Venue> venue = Optional.ofNullable(VenueDao.findVenueByVenueId(venueId));
+        if(venue.isPresent()){
+            String venueUrl = String.format("venues/%s", venue.get().getId());
+            return venueUrl;
+        }else{
+            return "/";
+        }
+    }
     @GetMapping("/{venueId}")
     public String showVenuePage(@PathVariable String venueId, Model model) {
         Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));

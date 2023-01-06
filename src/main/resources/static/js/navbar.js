@@ -1,11 +1,15 @@
-window.onload = ()=>{
 
-    const toggleButton = document.getElementsByClassName('toggle-button')[0]
-    const navbarLinks = document.getElementsByClassName('nav-items')[0]
 
-    toggleButton.addEventListener('click', () => {
-        navbarLinks.classList.toggle('active')
+$(function(){
+    let toggleButton = $('.toggle-button');
+    let navbarLinks = $('.nav-items');
+
+    //this will work lol
+    $(toggleButton).on("click", () => {
+        $(navbarLinks).toggleClass('active');
+        // console.log($(navbarLinks).hasClass('active'));
+        console.log("clicked");
     });
-}
+});
 
-let MY_KEY = config.MY_KEY;
+
