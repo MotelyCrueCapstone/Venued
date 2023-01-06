@@ -27,6 +27,7 @@ public class SecurityConfiguration {
 //            authConfig.requestMatchers(HttpMethod.POST, "/venues/create/**", "/venues/create").permitAll();
             authConfig.requestMatchers("/", "/home","/login","/register").permitAll();
             authConfig.requestMatchers("/venues/**").authenticated();
+
         }).formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/home")
