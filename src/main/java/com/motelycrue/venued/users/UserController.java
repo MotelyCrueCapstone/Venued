@@ -27,10 +27,9 @@ public class UserController {
 //    @Autowired
 //    private PasswordEncoder passwordEncoder;
 
-
     @GetMapping("/login")
     public String login(){
-        return "/users/login";
+        return "users/login";
     }
 
     @GetMapping("/register")
@@ -43,11 +42,11 @@ public class UserController {
     public String registerUser(@ModelAttribute User user){
 //        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.save(user);
-        return "redirect:/users/login";
+        return "redirect:users/login";
     }
 
     @GetMapping("/profile")
     public String profile(){
-        return "/users/profile";
+        return "users/profile";
     }
 }

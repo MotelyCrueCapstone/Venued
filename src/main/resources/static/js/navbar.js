@@ -1,13 +1,15 @@
- $(document).ready(function() {
-     let toggleButton = document.getElementsByClassName('toggle-button')[0]
-     let navbarLinks = document.getElementsByClassName('nav-items')[0]
-
-     toggleButton.addEventListener('click', () => {
-         navbarLinks.classList.toggle('active')
-         console.log("clicked");
-     });
- });
 
 
+$(function(){
+    let toggleButton = $('.toggle-button');
+    let navbarLinks = $('.nav-items');
+
+    //this will work lol
+    $(toggleButton).on("click", () => {
+        $(navbarLinks).toggleClass('active');
+        // console.log($(navbarLinks).hasClass('active'));
+        console.log("clicked");
+    });
+});
 
 
