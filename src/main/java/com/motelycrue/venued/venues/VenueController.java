@@ -37,6 +37,7 @@ public class VenueController {
         }
     }
 
+
     @GetMapping("/{venueId}")
     public String showVenuePage(@PathVariable String venueId, Model model) {
         Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));
@@ -72,18 +73,34 @@ public class VenueController {
     }
 
     @PostMapping("/{venueId}/add-tip")
-    public String addTip(@PathVariable String venueId, @RequestParam String tipName, @RequestParam String tipContent) {
-        try {
-            long venueIdAsLong = Long.parseLong(venueId);
-            Optional<Venue> venue = VenueDao.findById(venueIdAsLong);
-            if (venue.isPresent()) {
-                Tips tip = new Tips(tipContent, tipName, venue.get());
-                TipsDao.save(tip);
-            }
-        } catch (NumberFormatException e) {
-            // handle the exception here
+    public String addTip(@PathVariable String venueId, @RequestParam String tipName, @RequestParam String tipContent,
+     @RequestParam Long upVotes, @RequestParam Long downVotes) {
+        Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));
+        if (venue.isPresent()) {
+            Tips tip = new Tips(tipName, tipContent, upVotes, downVotes);
+            tip.setVenue(venue.get());
+            TipsDao.save(tip);
         }
-        return "redirect:/venues/" + venueId;
+        return "redirect:/venues/{venueId}";
     }
+
+    @PostMapping("/{venueId}/add-question")
+    public String addQuestion(@PathVariable String venueId,  @RequestParam String question) {
+        Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));
+        if (venue.isPresent()) {
+            Questions newQuestion = Questions.builder()
+                    .question(question)
+                    .venue(venue.get())
+                    .build();
+            QuestionsDao.save(newQuestion);
+        }
+        return "redirect:/venues/{venueId}";
+    }
+
+
+
+
+
+
 
 }
