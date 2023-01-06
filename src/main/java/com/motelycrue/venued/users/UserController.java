@@ -27,7 +27,6 @@ public class UserController {
 //    @Autowired
 //    private PasswordEncoder passwordEncoder;
 
-
     @GetMapping("/login")
     public String login(){
         return "users/login";
