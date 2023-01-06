@@ -22,10 +22,9 @@
                          
                          //getting the current venue id to checkout existence in the database later
                          let currentVenueId = currentVenue.id;
-                         
                          let currentVenueAlias = currentVenue.alias;
-                         
                          let urlString =     `"http://localhost:8085/venues/id/${currentVenue.id}"`;
+                         
                          $(".results").append($(`<li class="result">
 
                                         <div class="result-image">
