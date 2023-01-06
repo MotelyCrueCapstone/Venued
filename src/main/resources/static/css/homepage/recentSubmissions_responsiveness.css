@@ -1,3 +1,27 @@
+@media (max-width: 428px) {
+    .recents-wrapper p{
+        display: flex;
+        text-align: center;
+    }
+    #recent-cards{
+        justify-content: center;
+    }
+    .recent-card{
+        width: 98vw;
+        padding: 0;
+    }
+    .user-image{
+        height: 130px;
+    }
+    .recent-card div:last-child > button {
+        margin: .5rem auto .5rem;
+    }
+    .recent-card div:last-child > p {
+        width: 100vw;
+        justify-content: center;
+    }
+}
+
 /* Small screens (e.g. phones) */
 @media only screen and (max-width: 600px) {
     .recent-card {
