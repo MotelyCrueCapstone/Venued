@@ -16,7 +16,8 @@ public class WebFilter {
     @Bean
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.setAllowedOrigins(List.of("http://localhost:8085/"));
+        corsConfig.setAllowedOrigins(List.of("http://localhost:8085/",
+                "http://localhost:8085/create/*", "http://localhost/create"));
         corsConfig.setMaxAge(3600L);
         corsConfig.addAllowedMethod("*");
         corsConfig.addAllowedHeader("Requestor-Type");

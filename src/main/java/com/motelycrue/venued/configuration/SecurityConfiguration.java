@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -23,11 +24,19 @@ public class SecurityConfiguration {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authConfig -> {
-            authConfig.requestMatchers("/", "/home","/users/login").permitAll();
+
+//            authConfig.requestMatchers(HttpMethod.POST, "/venues/create/**", "/venues/create").permitAll();
+            authConfig.requestMatchers("/", "/home","/users/login",
+                    "/venues/id/**",
+                    "/venues/create/**",
+                    "/venues/create")
+                    .permitAll();
+
             authConfig.requestMatchers("/venues/**").authenticated();
         })
                 .formLogin().loginPage("/users/login").defaultSuccessUrl("/home").and()
                 .httpBasic();
+
         return http.build();
     }
 

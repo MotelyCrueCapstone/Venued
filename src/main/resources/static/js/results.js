@@ -2,12 +2,12 @@
 
 (function () {
     
-    let searchInput = $(".search_input")
-    let searchButton = $(".search_icon")
-    let searchLocation = $("#search_location_input")
+    let searchInput = $(".search_input");
+    let searchButton = $(".search_icon");
+    let searchLocation = $("#search_location_input");
     
     function toggleResults(){
-         $(".results").html("")
+         $(".results").html("");
          $(".results-container").removeClass("hide");
     }
     
@@ -25,7 +25,7 @@
                          
                          let currentVenueAlias = currentVenue.alias;
                          
-                         let urlString =     `"http://localhost:8085/venues/id/${currentVenue.id}"`
+                         let urlString =     `"http://localhost:8085/venues/id/${currentVenue.id}"`;
                          $(".results").append($(`<li class="result">
 
                                         <div class="result-image">
@@ -36,7 +36,7 @@
                                             <a href=${urlString}> ${currentVenue.name}</a>
                                         </div>
                                         
-                                   </li>`))
+                                   </li>`));
 
 
                          //automatically creating paramter string for the controller request creation
@@ -49,14 +49,14 @@
                              latitude: currentVenue.coordinates.latitude,
                              address: currentVenue.location.address1,
                              rating: currentVenue.rating
-                         })
+                         });
 
                          //sending retrieved data from the api to be sent to the controller backend to be
                          // checked if venue exist or not if it does it saves it to the database
-                         fetch(`http://localhost:8085/venues/${currentVenueId}?${currentVenueParams.toString()}`,{method: "POST"})
+                         fetch(`http://localhost:8085/venues/create/${currentVenueId}?${currentVenueParams.toString()}`,{method: "GET"})
                              .then(response => console.log(response.status))
-                         })
-               })
+                         });
+               });
     }
     
     //when user clicks search or presses enter run search from yelp api
@@ -74,19 +74,19 @@
          toggleResults();
     });
     
-// create dropdown the uses google places api to suggest locations
-         function initAutocomplete(){
-              let input = document.getElementById('search_location_input');
-              let searchBox = new google.maps.places.SearchBox(input);
-              
-              $(searchButton).on("click", function() {
-                   let places = searchBox.getPlaces();
-                   if (places.length == 0) {
-                        return;
-                   }
-              });
-         }
-     
-         initAutocomplete();
+// // create dropdown the uses google places api to suggest locations
+//          function initAutocomplete(){
+//               let input = document.getElementById('search_location_input');
+//               let searchBox = new google.maps.places.SearchBox(input);
+//
+//               $(searchButton).on("click", function() {
+//                    let places = searchBox.getPlaces();
+//                    if (places.length == 0) {
+//                         return;
+//                    }
+//               });
+//          }
+//
+//          initAutocomplete();
     
 })();
