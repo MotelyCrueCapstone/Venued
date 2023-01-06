@@ -24,17 +24,13 @@ public class SecurityConfiguration {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authConfig -> {
-
+            authConfig.anyRequest().permitAll();
 //            authConfig.requestMatchers(HttpMethod.POST, "/venues/create/**", "/venues/create").permitAll();
-            authConfig.requestMatchers("/", "/home","/users/login",
-                    "/venues/id/**",
-                    "/venues/create/**",
-                    "/venues/create")
-                    .permitAll();
-
-            authConfig.requestMatchers("/venues/**").authenticated();
+//            authConfig.requestMatchers("/", "/home","/login","/register").permitAll();
+//
+//            authConfig.requestMatchers("/venues/**").authenticated();
         })
-                .formLogin().loginPage("/users/login").defaultSuccessUrl("/home").and()
+                .formLogin().loginPage("/login").defaultSuccessUrl("/home").and()
                 .httpBasic();
 
         return http.build();

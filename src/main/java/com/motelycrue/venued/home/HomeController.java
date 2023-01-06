@@ -21,9 +21,11 @@ public class HomeController {
     public String homepage(){
         return "index";
     }
+
     @GetMapping("/home")
     public String homepageAlternative(){
-        return "redirect:/";
+
+        return "index";
     }
 
 }
