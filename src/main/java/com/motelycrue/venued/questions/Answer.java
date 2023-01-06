@@ -13,29 +13,25 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Questions {
-
+public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = true)
     private Long id;
 
     @Column(nullable = false)
-    private String question;
+    private String answer;
 
-    @Column(nullable = false, columnDefinition = "int default 0")
-    private int answered;
+    @Column
+    private Long upVotes;
+
+    @Column
+    private Long downVotes;
+
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_id")
     private User user;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name="venueId")
-    private Venue venue;
-
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name="answer_id")
-    private Answer answeredQuestions;
 
 }

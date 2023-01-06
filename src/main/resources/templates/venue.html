@@ -87,8 +87,8 @@
                                     <p class="" th:text="${tip.user.userName}"></p>
                                 </div>
                                 <div class="thumbs-icon-wrapper">
-                                    <span th:text="${tip.tipContent}">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit</span>
+                                    <span th:class="tipName" th:text="${tip.tipName}"></span>
+                                    <span th:text="${tip.tipContent}"></span>
                                     <a href="#">
                                         <span class="fa-solid fa-thumbs-up text-primary">
                                             <span th:class="small-number" th:text="${tip.upVotes}">
@@ -107,7 +107,7 @@
                     </div>
                 </div>
 
-                <!------ Questions card ------->
+<!------ Questions card ------->
                 <div class="question-card">
                     <!--Questions Modal-->
                     <div class="card-wrapper">
@@ -138,75 +138,74 @@
                         </div>
                         <!---- modal end here --->
                     </div>
-                    <div th:each="question : ${questions}">
+                    <div th:if="${questions.isEmpty()}">
+                        <p>Looks like no questions have been asked yet! Be the first to ask a question</p>
+                    </div>
+                    <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
                         <ul class="list-questions">
+                            <th:block th:if="${question.answered == 0}">
+                                <li>
+                                    <div class="user-wrapper">
+                                        <span><img th:src="${question.user.imgPath}" alt="" class="user-image"></span>
+                                        <p th:text="${question.user.userName}">username</p>
+                                    </div>
+                                    <div class="question-wrapper">
+                                        <span th:text="${question.question}"></span>
+                                        <button class="button">Answer</button>
+                                    </div>
+                                </li>
+                            </th:block>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+<!------- answered questions section -------->
+            <section class="wrapper answered-questions">
+                <p class="title">Answered Questions</p>
+<!--    ANSWERED QUESTIONS DIV-->
+                <div class="answered-question-wrapper" th:each="question : ${questions}">
+                    <th:block th:if="${question.answered == 1}">
+<!--        QUESTION ASKED-->
+                    <ul class="list-answered-questions">
+
                         <li>
                             <div class="user-wrapper">
                                 <span><img th:src="${question.user.imgPath}" alt="" class="user-image"></span>
                                 <p th:text="${question.user.userName}">username</p>
                             </div>
-                            <div class="question-wrapper">
+                            <div class="answer-wrapper">
                                 <span th:text="${question.question}"></span>
-                                <button class="button">Answer</button>
                             </div>
                         </li>
-                    </ul>
-                    </div>
-                </div>
-            </section>
 
-            <!------- answered questions section -------->
-            <section class="wrapper answered-questions">
-                <p class="title">Answered Questions</p>
-                <div class="answered-question-wrapper">
-                    <ul class="list-answered-questions">
-                        <li>
-                            <div class="user-wrapper">
-                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
-                                <p>username</p>
-                            </div>
-                            <div class="answer-wrapper">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                                <a href="#"><span class="fa-solid fa-thumbs-up text-primary"></span></a>
-                                <a href="#"><span class="fa-solid fa-thumbs-down text-primary"></span></a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="user-wrapper">
-                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
-                                <p>username</p>
-                            </div>
-                            <div class="answer-wrapper">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                                <a href="#"><span class="fa-solid fa-thumbs-up text-primary"></span></a>
-                                <a href="#"><span class="fa-solid fa-thumbs-down text-primary"></span></a>
-                            </div>
-                        </li>
                     </ul>
+<!--        ANSWER GIVEN-->
                     <ul class="list-answered-questions">
-                        <li>
+                        <li class="answered-background">
                             <div class="user-wrapper">
-                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
-                                <p>username</p>
+                                <span><img th:src="${question.answeredQuestions.user.imgPath}" alt="" class="user-image"></span>
+                                <p th:text="${question.answeredQuestions.user.userName}"></p>
                             </div>
                             <div class="answer-wrapper">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                                <a href="#"><span class="fa-solid fa-thumbs-up text-primary"></span></a>
-                                <a href="#"><span class="fa-solid fa-thumbs-down text-primary"></span></a>
+                                <span th:text="${question.answeredQuestions.answer}"></span>
+                                <a href="#">
+                                        <span class="fa-solid fa-thumbs-up text-primary">
+                                            <span th:class="small-number" th:text="${question.answeredQuestions.upVotes}">
+                                            </span>
+                                        </span>
+                                </a>
+                                <a href="#">
+                                        <span class="fa-solid fa-thumbs-down text-primary">
+                                            <span th:class="small-number" th:text="${question.answeredQuestions.downVotes}">
+
+                                </a>
                             </div>
                         </li>
-                        <li>
-                            <div class="user-wrapper">
-                                <span><img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image"></span>
-                                <p>username</p>
-                            </div>
-                            <div class="answer-wrapper">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                                <a href="#"><span class="fa-solid fa-thumbs-up text-primary"></span></a>
-                                <a href="#"><span class="fa-solid fa-thumbs-down text-primary"></span></a>
-                            </div>
-                        </li>
+
                     </ul>
+                    </th:block>
                 </div>
 
             </section>

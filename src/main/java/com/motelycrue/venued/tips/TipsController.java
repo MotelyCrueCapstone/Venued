@@ -33,7 +33,7 @@ public class TipsController {
         List<Tips> tips = tipsDao.findAll();
         model.addAttribute("tips", tips);
         model.addAttribute("tip", new Tips());
-        return "/venue";
+        return "venue";
     }
 }
 
