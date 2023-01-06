@@ -1,6 +1,5 @@
 package com.motelycrue.venued.venues;
 
-import com.motelycrue.venued.questions.Answer;
 import com.motelycrue.venued.questions.Questions;
 import com.motelycrue.venued.questions.QuestionsRepository;
 import com.motelycrue.venued.tips.Tips;
@@ -26,6 +25,7 @@ public class VenueController {
 
     @Autowired
     private QuestionsRepository QuestionsDao;
+
 
     @GetMapping("/{venueId}")
     public String showVenuePage(@PathVariable String venueId, Model model) {
@@ -80,6 +80,9 @@ public class VenueController {
         }
         return "redirect:/venues/{venueId}";
     }
+
+
+
 
 
 

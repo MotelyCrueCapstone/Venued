@@ -172,7 +172,7 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form form method="post">
+                                                        <form form method="post" th:action="@{|/venues/${venueId}/answer-question|}">
                                                             <div class="mb-3">
                                                 <span th:text="${question.question}"></span>
                                                 <textarea class="form-control shadow-none" id="answer" rows="10"
@@ -180,6 +180,9 @@
                                                           name="answer"></textarea>
                                                             </div>
                                                             <div class="modal-footer">
+                                                                <input type="hidden" name="answered"
+                                                                       th:value="${question.answered}">
+
                                                                 <button type="button" class="btn btn-secondary close"
                                                                         data-bs-dismiss="modal">Close</button>
                                                                 <button type="Submit" class="btn submit">Submit</button>
