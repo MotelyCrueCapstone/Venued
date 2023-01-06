@@ -8,7 +8,7 @@
     
     function toggleResults(){
          $(".results").html("")
-         $(".results-container").removeClass("hide")
+         $(".results-container").removeClass("hide");
     }
     
     function search(query) {
@@ -60,19 +60,23 @@
     $(searchInput).on("keypress", (event) =>{
           if(event.keyCode === 13){
              search($(searchInput).val());
-             toggleResults();
           }
     });
+    $(searchInput).one("click", ()=>{
+         toggleResults();
+    })
     
-    $(searchButton).on("click", () =>{
+    $(searchButton).on("click", () => {
          search($(searchInput).val());
          toggleResults();
-         
+    });
+    
 // create dropdown the uses google places api to suggest locations
          function initAutocomplete(){
               let input = document.getElementById('search_location_input');
               let searchBox = new google.maps.places.SearchBox(input);
-              searchBox.addListener('places_changed', function() {
+              
+              $(searchButton).on("click", function() {
                    let places = searchBox.getPlaces();
                    if (places.length == 0) {
                         return;
@@ -81,5 +85,5 @@
          }
      
          initAutocomplete();
-    });
+    
 })();
