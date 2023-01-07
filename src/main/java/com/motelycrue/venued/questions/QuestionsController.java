@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/questions")
@@ -17,11 +18,16 @@ public class QuestionsController {
     @Autowired
     private QuestionsRepository questionsDao;
 
+    @Autowired
     private final UserRepository userDao;
 
-    public QuestionsController(UserRepository userDao, QuestionsRepository questionsDao) {
+    @Autowired
+    private final answersRepository answersDao;
+
+    public QuestionsController(UserRepository userDao, QuestionsRepository questionsDao, answersRepository answersDao) {
         this.questionsDao = questionsDao;
         this.userDao = userDao;
+        this.answersDao = answersDao;
     }
 
 
@@ -41,10 +47,11 @@ public class QuestionsController {
         return "redirect:/questions";
     }
 
-    @PostMapping("/venues/{venueId}/answer-question")
+    @PostMapping("/venues/{venueId}")
     public String answerQuestion(@RequestParam("id") long id, @PathVariable String venueId) {
         questionsDao.updateAnsweredStatus(id);
+        return "redirect:/venues/" + venueId;
+
         // redirect to the appropriate page
-        return "redirect:/venues/{venueId}";
     }
 }

@@ -32,6 +32,4 @@ public class Answer {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_id")
     private User user;
-
-
 }

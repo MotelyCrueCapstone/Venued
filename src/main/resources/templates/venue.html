@@ -181,12 +181,12 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form form method="post" th:action="@{|/venues/${venueId}/answer-question|}">
+                                                        <form th:action="@{|/submit-answer|}">
                                                             <div class="mb-3">
-                                                <span th:text="${question.getQuestion()}"></span>
-                                                <textarea class="form-control shadow-none" id="answer" rows="10"
-                                                          cols="30" placeholder="Answer goes here..."
-                                                          name="answer"></textarea>
+                                                            <span th:text="${question.getQuestion()}"></span>
+                                                            <textarea class="form-control shadow-none" id="answer" rows="10"
+                                                            cols="30" placeholder="Answer goes here..."
+                                                            name="answer"></textarea>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <input type="hidden" name="answered"
