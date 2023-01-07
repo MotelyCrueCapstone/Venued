@@ -181,7 +181,7 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form th:action="@{|/submit-answer|}">
+                                                        <form th:action="@{|/venues/${venueId}|}">
                                                             <div class="mb-3">
                                                             <span th:text="${question.getQuestion()}"></span>
                                                             <textarea class="form-control shadow-none" id="answer" rows="10"

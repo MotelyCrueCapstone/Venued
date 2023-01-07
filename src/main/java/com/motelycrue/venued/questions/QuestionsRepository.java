@@ -15,6 +15,6 @@ public interface QuestionsRepository extends JpaRepository<Questions, Long> {
 
     @Transactional
     @Modifying
-    @Query("UPDATE Questions q SET q.question = :question WHERE q.id = :id")
-    int updateAnsweredStatus(@Param("id") long id);
+    @Query("UPDATE Questions q SET q.answered = :answered WHERE q.id = :id")
+    void updateAnsweredStatus(@Param("answered") int id, @Param("id") long questionId);
 }

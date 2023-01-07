@@ -32,4 +32,23 @@ public class Answer {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name="question_id")
+    private Questions question;
+
+    public Answer(String answer) {
+        this.answer = answer;
+    }
+
+    // getQuestion() method
+    public Questions getQuestion() {
+        return this.question;
+    }
+
+    // setQuestion() method
+    public void setQuestion(Questions question) {
+        this.question = question;
+    }
+
 }

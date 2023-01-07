@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,10 +49,19 @@ public class QuestionsController {
     }
 
     @PostMapping("/venues/{venueId}")
-    public String answerQuestion(@RequestParam("id") long id, @PathVariable String venueId) {
-        questionsDao.updateAnsweredStatus(id);
-        return "redirect:/venues/" + venueId;
+    public String answerQuestion(@PathVariable String venueId, @ModelAttribute Answer answer, Principal principal){
+        Long questionId = answer.getQuestion().getId();
+        String answerText = answer.getAnswer();
+        Answer newAnswer = new Answer(answerText);
+        Questions question = questionsDao.findById(questionId).orElseThrow(() -> new RuntimeException("Question not found"));
+        question.setAnswered(1);
 
-        // redirect to the appropriate page
+        questionsDao.save(question);
+
+        newAnswer.setQuestion(question);
+        newAnswer.setUser(userDao.findByUserName(principal.getName()));
+        answersDao.save(newAnswer);
+        System.out.println(question);
+        return "redirect:/venues/" + venueId;
     }
 }
