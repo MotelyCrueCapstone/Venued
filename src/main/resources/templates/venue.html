@@ -153,6 +153,7 @@
                         </div>
                         <!---- modal end here --->
                     </div>
+
                     <div th:if="${questions.isEmpty()}" class="empty">
                         <p class="nothingHere">Looks like no questions have been asked yet! Be the first to ask a
                             question</p>
@@ -169,25 +170,26 @@
                                     </div>
                                     <div class="question-wrapper">
                                         <span th:text="${question.getQuestion()}"></span>
-                                        <button type="button" class="cta-button" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal3">Answer</button>
-                                        <div class="modal fade" id="exampleModal3" tabindex="-1"
-                                             aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                        <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#exampleModal3">Answer</button>
+
+                                        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                                             <div class="modal-dialog">
+
                                                 <div class="modal-content question-modal">
+
                                                     <div class="modal-header">
-                                                        <p class="modal-title fs-5 title" id="exampleModalLabel3">Answer
-                                                        </p>
+                                                        <p class="modal-title fs-5 title" id="exampleModalLabel3">Answer</p>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
+
                                                     <div class="modal-body">
+
                                                         <form th:action="@{|/venues/${venueId}|}">
                                                             <div class="mb-3">
-                                                            <span th:text="${question.getQuestion()}"></span>
-                                                            <textarea class="form-control shadow-none" id="answer" rows="10"
-                                                            cols="30" placeholder="Answer goes here..."
-                                                            name="answer"></textarea>
+                                                                <span th:text="${question.getQuestion()}"></span>
+                                                                <textarea class="form-control shadow-none" id="answer" rows="10" cols="30" placeholder="Answer goes here..." name="answer"></textarea>
                                                             </div>
+
                                                             <div class="modal-footer">
                                                                 <input type="hidden" name="answered"
                                                                        th:value="${question.getAnswered()}">
@@ -196,7 +198,9 @@
                                                                         data-bs-dismiss="modal">Close</button>
                                                                 <button type="Submit" class="btn submit">Submit</button>
                                                             </div>
+
                                                         </form>
+
                                                     </div>
                                                 </div>
                                             </div>
