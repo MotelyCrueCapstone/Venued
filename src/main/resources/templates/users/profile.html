@@ -14,14 +14,14 @@
                 <div class="first-card-wrapper">
                     <div class="avatar-container">
                         <p>
-                            <img src="../imgs/Avatar-Placeholder-copy.png" alt="user-image">
+                            <img src="../imgs/avatar-image.png" alt="user-image">
                         </p>
-                        <form action="">
-                            <input type="file" name="user-image" value="">
-                        </form>
+<!--                        <form action="">-->
+<!--                            <input type="file" name="user-image" value="">-->
+<!--                        </form>-->
                         <p>user name goes here...</p>
                         <div class="edit-btn-container">
-                            <button>Edit Profile</button>
+                            <button class="edit-btn">Edit Profile</button>
                         </div>
                     </div>
                     <div class="form-container">
@@ -34,94 +34,120 @@
                                <label for="bio">Bio</label>
                                <textarea name="bio" id="bio" cols="30" rows="5"></textarea>
                             </div>
+                            <div>
+                                <input type="submit" value="Save" name="submit" id="submit-btn">
+                                <button class="cancel" id="cancel-btn">Cancel</button>
+                            </div>
                         </form>
                     </div>
                 </div>
 
                 <div class="second-card-wrapper">
                     <ul class="lists-wrapper" id="myTab">
-                        <li class="list-item" >
-                            <button class="tap-btn" id="answer-tab">
+                        <li class="list-item">
+                            <button class="tab-btn active" id="answer-tab" data-content="1">
                                 <span class="badge rounded-pill bg-secondary me-1">0</span>
                                 Answers
                             </button>
                         </li>
                         <li class="list-item">
-                            <button class="tap-btn" id="question-tab">
+                            <button class="tab-btn" id="question-tab" data-content="2">
                                 <span class="badge rounded-pill bg-secondary me-1">0</span>
                                Questions
                             </button>
                         </li>
                         <li class="list-item">
-                            <button class="tap-btn" id="tip-tab">
+                            <button class="tab-btn" id="tip-tab" data-content="3">
                                 <span class="badge rounded-pill bg-secondary me-1">0</span>
                                 Tips
                             </button>
                         </li>
                     </ul>
 
-                    <div class="tab-content" id="myTabContent">
-                        <!---- answer tab-pane ---->
-                        <div class="" id="answer">
-                            <!-- first card begins here -->
-                            <div class="card mb-3">
-                                <ul class="answered-question">
-                                    <li>
-                                        <span>answered question</span>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </li>
-                                    <li>
-                                        <span>answered question</span>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </li>
-                                </ul>
-                            </div>
+                    <div id="TabContents">
+                        <!-- first card begins here -->
+                        <div class="tab-content show-content" data-content="1">
+                            <ul class="answered-question">
+                                <li class="list-items answered-question-list">
+                                    <span>answered question</span>
+                                    <button>edit</button>
+                                    <button>delete</button>
+                                </li>
+                                <li class="list-items answered-question-list">
+                                    <span>answered question</span>
+                                    <button>edit</button>
+                                    <button>delete</button>
+                                </li>
+                                <li class="list-items answered-question-list">
+                                    <span>answered question</span>
+                                    <button>edit</button>
+                                    <button>delete</button>
+                                </li>
+                                <li class="list-items answered-question-list">
+                                    <span>answered question</span>
+                                    <button>edit</button>
+                                    <button>delete</button>
+                                </li>
+                                <li class="list-items answered-question-list">
+                                    <span>answered question</span>
+                                    <button>edit</button>
+                                    <button>delete</button>
+                                </li>
+                            </ul>
                         </div>
 
-                        <!---- Question tab-pane ------->
-                        <div class="tab-pane" id="question">
-                            <!-- second card begins here -->
-                            <div class="card mb-3">
-                                <ul class="list-questions">
-                                    <li>
-                                        <span>user question</span>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </li>
-                                    <li>
-                                        <span>user question</span>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </li>
-                                </ul>
-                            </div>
-
+                        <!-- second card begins here -->
+                        <div class="tab-content" data-content="2">
+                            <ul class="list-questions">
+                                <li class="list-items user-question-list">
+                                    <span>user question</span>
+                                    <button>edit</button>
+                                    <button>delete</button>
+                                </li>
+                                <li class="list-items user-question-list">
+                                    <span>user question</span>
+                                    <button>edit</button>
+                                    <button>delete</button>
+                                </li>
+                                <li class="list-items user-question-list">
+                                    <span>user question</span>
+                                    <button>edit</button>
+                                    <button>delete</button>
+                                </li>
+                            </ul>
                         </div>
 
-                        <!------ Tip tap-pane ------->
-                        <div class="tab-pane fade w-100" id="tip">
-                            <!-- third card begins here -->
-                            <div class="card mb-3">
-                                <ul class="list-tips">
-                                    <li>
-                                        <span>user tip</span>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </li>
-                                    <li>
-                                        <span>user tip</span>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </li>
-                                </ul>
-                            </div>
+                        <!-- third card begins here -->
+                        <div class="tab-content" data-content="3">
+                            <ul class="list-tips">
+                                <li class="list-items user-tip-list">
+                                    <span>user tip</span>
+                                    <button>edit</button>
+                                    <button>delete</button>
+                                </li>
+                                <li class="list-items user-tip-list">
+                                    <span>user tip</span>
+                                    <button>edit</button>
+                                    <button>delete</button>
+                                </li>
+                                <li class="list-items user-tip-list">
+                                    <span>user tip</span>
+                                    <button>edit</button>
+                                    <button>delete</button>
+                                </li>
+                                <li class="list-items user-tip-list">
+                                    <span>user tip</span>
+                                    <button>edit</button>
+                                    <button>delete</button>
+                                </li>
+                            </ul>
                         </div>
+
                     </div>
                 </div>
             </div>
         </section>
   </div>
+  <script src="/js/profile.js"></script>
 </body>
 </html>
