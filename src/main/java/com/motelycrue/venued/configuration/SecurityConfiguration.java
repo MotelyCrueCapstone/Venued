@@ -20,23 +20,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
-public class SecurityConfiguration {
+public class SecurityConfiguration{
     // Bean to configure filter chain and set which pages must be authorized to view
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authorize)-> {
-            authorize.anyRequest().permitAll();
-//            authorize.requestMatchers("/","/home", "/venues/**").permitAll();
-//            authConfig.requestMatchers("/").permitAll().and(;
-//            authConfig.requestMatchers("/home").permitAll();
-//            authConfig.requestMatchers("/login").permitAll();
-//            authConfig.requestMatchers("/register").permitAll();
-//            authConfig.requestMatchers("/venues").authenticated();
-
-        });
-//                .formLogin(Customizer.withDefaults())
-//                .httpBasic(Customizer.withDefaults());
-
+            authorize.requestMatchers("/","/home", "/venues/**").permitAll();
+        })
+                .formLogin(login -> {
+                    login.loginPage("/login").defaultSuccessUrl("/login");
+                })
+                .httpBasic(basic -> {});
         return http.build();
     }
 
@@ -46,14 +40,12 @@ public class SecurityConfiguration {
 //                .userName("admin")
 //                .password("admin123")
 //                .build();
-//        var user = User.builder()
-//                .userName()
 //    }
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-//        return encoder;
-//    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        return encoder;
+    }
 
 }
 
