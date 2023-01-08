@@ -13,5 +13,8 @@ public interface QuestionsRepository extends JpaRepository<Questions, Long> {
 
     List<Questions> findByVenue(Venue venue);
 
-
+    @Transactional
+    @Modifying
+    @Query("UPDATE Questions q SET q.answered = :answered WHERE q.id = :id")
+    void updateAnsweredStatus(@Param("answered") int id, @Param("id") long questionId);
 }
