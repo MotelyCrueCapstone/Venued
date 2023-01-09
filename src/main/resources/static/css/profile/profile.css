@@ -8,11 +8,49 @@
     color: #fff;
     margin-top: 3rem;
     min-height: 100vh;
+    padding-bottom: 3rem;
 }
 
 .first-card-wrapper {
     /*border: 2px dashed red;*/
 }
+/*Profile Pic Start*/
+.picture-container{
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+}
+.picture{
+    width: 200px;
+    height: 200px;
+    background-color: #999;
+    border: 4px solid #ccc;
+    color: #fff;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    overflow: hidden;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+.picture:hover{
+    border-color: #2ca8ff;
+}
+
+.picture input[type="file"] {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.picture-src{
+    width: 100%;
+}
+/*Profile Pic End*/
 
 .avatar-container {
     /*border: 2px dashed yellow;*/
@@ -109,16 +147,26 @@ button#cancel-btn {
 .lists-wrapper {
     display: flex;
     justify-content: center;
-    /*border: 2px solid aquamarine;*/
-    padding: 1rem;
+    padding: 1rem 0 0.5rem;
     gap: 0.5rem;
 }
 
 .tab-btn {
     display: block;
-    padding: 0.2rem 1rem;
+    padding: 0.3rem 0.35rem;
+    color: #fff;
+    background: linear-gradient(35deg, #e66465 10%, #9370db 90%);
+    border: none;
+    border-radius: 10px;
 }
-
+@media screen and (min-width: 700px) {
+    .lists-wrapper {
+        gap: 2rem;
+    }
+    .tab-btn {
+        padding: 0.5rem 1.2rem;
+    }
+}
 .answered-question,
 .list-questions,
 .list-tips {
@@ -142,9 +190,10 @@ button#cancel-btn {
 .list-items div:last-child {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 1.2rem;
+    margin-top: 1rem;
 }
-.list-items > div button:nth-child(1) {
+.list-items  > div button:nth-child(1) {
     padding: 0.3rem 1rem;
     border: none;
     background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
@@ -154,7 +203,7 @@ button#cancel-btn {
 }
 
 .list-items > div button:nth-child(2) {
-    padding: 0.3rem 1rem;
+    padding: 0.3rem 0.8rem;
     border: none;
     background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
     color: #fff;
@@ -163,25 +212,28 @@ button#cancel-btn {
 }
 
 @media screen and (min-width: 700px) {
+    .list-items {
+        flex-direction: row;
+        align-items: center;
+        padding: 1.5rem 0.5rem;
+    }
+
     .list-items div:first-child {
         margin-right: auto;
         flex: 1;
         font-size: 1.2rem;
     }
-    .list-items {
-        padding: 2rem 0.5rem;
-        display: flex;
-        flex-direction: row;
-    }
+
 
     .list-items div:last-child {
-        display: flex;
-        gap: 1rem;
+        margin: 0;
     }
 }
 
 .active {
-    background: red;
+    background: coral;
+    color: #000;
+    font-weight: 500;
 }
 
 .tab-content {
