@@ -66,7 +66,15 @@ public class VenueController {
         //if venue is present we aren't going to save the new venue
         if (venueRecord.isEmpty()) {
             //if venue received from api isn't present we save and all associated data with it by id
-            Venue venue = new Venue(venueId, venueName, venueAlias, imgPath, longitude, latitude, address, rating);
+            Venue venue = Venue.builder()
+                    .venueId(venueId)
+                    .venueName(venueName)
+                    .venueAlias(venueAlias)
+                    .imgPath(imgPath)
+                    .longitude(longitude)
+                    .latitude(latitude)
+                    .address(address)
+                    .rating(rating).build();
             this.VenueDao.save(venue);
         }
         return "venue";
