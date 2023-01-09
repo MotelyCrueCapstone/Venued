@@ -3,16 +3,16 @@ package com.motelycrue.venued.tips;
 import com.motelycrue.venued.users.User;
 import com.motelycrue.venued.venues.Venue;
 import javax.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table
 public class Tips {
 
     @Id

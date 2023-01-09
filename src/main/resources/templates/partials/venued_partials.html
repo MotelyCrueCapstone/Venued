@@ -52,6 +52,7 @@
 				<span class="bar"></span>
 				<span class="bar"></span>
 			</a>
+		
 			<ul class="nav-items">
 				<div class="searchbar">
 					<input class="search_input" type="text" name="search_input" placeholder="Search...">
@@ -68,16 +69,13 @@
 						</ul>
 					</section>
 				</div>
-
 				<div class="user-container" sec:authorize="isAnonymous()">
 
 					<button type="submit" class="signup-btn nav-btn" onclick="window.location.href='/login'">Login</button>
 					<button type="submit" class="login-btn nav-btn" onclick="window.location.href='/register'">Register</button>
 				</div>
-
 				<div class="user-container" sec:authorize="isAuthenticated()">
 					<a class="signup-btn nav-btn" href="javascript: document.logoutForm.submit()" role="menuitem"> Logout</a>
-
 					<form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
 						<input hidden type="submit" value="Sign Out"/>
 					</form>
