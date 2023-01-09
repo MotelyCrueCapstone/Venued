@@ -73,7 +73,7 @@
          toggleResults();
     });
 
-    $(".search_input").on("focus", function() {
+    $(".search_input").on("keyup", function() {
         $('.results-container').removeClass('hideme');
     });
 
