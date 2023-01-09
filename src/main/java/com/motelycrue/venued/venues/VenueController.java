@@ -54,10 +54,15 @@ public class VenueController {
             model.addAttribute("user", currentUser);
 
             model.addAttribute("venue", venue.get());
+
             List<Tips> tips = TipsDao.findByVenue(venue.get());
+
             model.addAttribute("tips", tips);
+
             List<Questions> questions = QuestionsDao.findByVenue(venue.get());
             model.addAttribute("questions", questions);
+
+            model.addAttribute("newQuestion",  new Questions());
         }
         return "venue";
     }
@@ -106,9 +111,13 @@ public class VenueController {
     @PostMapping("/{venueId}/add-question")
     public String addQuestion(@PathVariable String venueId,  @RequestParam String question) {
         Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));
-        if (venue.isPresent()) {
+        User currentUserPrincipal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<User> currentUser = userDao.findById(currentUserPrincipal.getId());
+
+        if (venue.isPresent() && currentUser.isPresent()) {
             Questions newQuestion = Questions.builder()
                     .question(question)
+                    .user(currentUser.get())
                     .venue(venue.get())
                     .build();
             QuestionsDao.save(newQuestion);

@@ -68,13 +68,13 @@
                     <ul class="lists-wrapper" id="myTab">
                         <li class="list-item">
                             <button class="tab-btn active" id="answer-tab" data-content="1">
-                                <span class="badge rounded-pill bg-secondary me-1">0</span>
+                                <span class="badge rounded-pill bg-secondary me-1" th:text="${allAnswersLength}"></span>
                                 Answers
                             </button>
                         </li>
                         <li class="list-item">
                             <button class="tab-btn" id="question-tab" data-content="2">
-                                <span class="badge rounded-pill bg-secondary me-1">0</span>
+                                <span class="badge rounded-pill bg-secondary me-1" th:text="${allQuestionsLength}"></span>
                                Questions
                             </button>
                         </li>
@@ -89,39 +89,12 @@
 
                     <!------ tab content wrapper start here ---->
                     <div id="TabContents">
+
                         <!-- first tab content card begins here -->
                         <div class="tab-content show-content" data-content="1">
-                            <ul class="answered-question">
+                            <ul class="answered-question" th:each="answer : ${allAnswers}">
                                 <li class="list-items answered-question-list">
-                                    <div>answered question</div>
-                                    <div>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </div>
-                                </li>
-                                <li class="list-items answered-question-list">
-                                    <div>answered question</div>
-                                    <div>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </div>
-                                </li>
-                                <li class="list-items answered-question-list">
-                                    <div>answered question</div>
-                                    <div>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </div>
-                                </li>
-                                <li class="list-items answered-question-list">
-                                    <div>answered question</div>
-                                    <div>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </div>
-                                </li>
-                                <li class="list-items answered-question-list">
-                                    <div>answered question</div>
+                                    <div th:text="${answer.getAnswer()}"></div>
                                     <div>
                                         <button>edit</button>
                                         <button>delete</button>
@@ -133,23 +106,12 @@
 
                         <!-- second tab content card begins here -->
                         <div class="tab-content" data-content="2">
-                            <ul class="list-questions">
+                            <ul class="list-questions" th:each="question : ${allQuestions}">
+                                <!--                                <div th:each="item : ${shoppingCart}">-->
+                                <!--                                    <p th:text="${item.name}" />-->
+                                <!--                                </div>-->
                                 <li class="list-items user-question-list">
-                                    <div>answered question</div>
-                                    <div>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </div>
-                                </li>
-                                <li class="list-items user-question-list">
-                                    <div>answered question</div>
-                                    <div>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </div>
-                                </li>
-                                <li class="list-items user-question-list">
-                                    <div>answered question</div>
+                                    <div th:text="${question.getQuestion()}"></div>
                                     <div>
                                         <button>edit</button>
                                         <button>delete</button>
@@ -169,27 +131,7 @@
                                         <button>delete</button>
                                     </div>
                                 </li>
-                                <li class="list-items user-tip-list">
-                                    <div>answered question</div>
-                                    <div>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </div>
-                                </li>
-                                <li class="list-items user-tip-list">
-                                    <div>answered question</div>
-                                    <div>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </div>
-                                </li>
-                                <li class="list-items user-tip-list">
-                                    <div>answered question</div>
-                                    <div>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </div>
-                                </li>
+
                             </ul>
                         </div>
                         <!---- third tab content card end here ----->

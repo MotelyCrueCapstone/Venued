@@ -52,4 +52,7 @@ public class Answer {
         this.question = question;
     }
 
+    public void setUser_Id(User userById) {
+        this.user = userById;
+    }
 }

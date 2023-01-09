@@ -46,9 +46,13 @@ public class QuestionsController {
 
     @PostMapping()
     public String createQuestions(@ModelAttribute Questions question){
-        User user = userDao.findAll().get(0);
-        question.setUser(user);
-        questionsDao.save(question);
+        User currentUserPrincipal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<User> currentUser = userDao.findById(currentUserPrincipal.getId());
+        if(currentUser.isPresent()){
+            question.setUser(currentUser.get());
+            questionsDao.save(question);
+        }
+
         return "redirect:/questions";
     }
 
@@ -66,6 +70,8 @@ public class QuestionsController {
         questionsDao.findById(Long.parseLong(questionId)).ifPresent(question1 -> {
             newAnswer.setQuestion(question1);
             question1.setAnswered(1);
+            question1.setAnsweredQuestions(newAnswer);
+            newAnswer.setUser_Id(userDao.getUserById(Long.parseLong(userId)));
             answersDao.save(newAnswer);
             questionsDao.save(question1);
         });

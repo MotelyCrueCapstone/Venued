@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/venue_pages/venue.css}">
     <link rel="stylesheet" th:href="@{/css/universalStyle}">
     <title></title>
+    <script src="../static/js/vote.js"></script>
 </head>
 <body th:object="${user}">
 
@@ -101,7 +102,8 @@
                                 <div class="thumbs-icon-wrapper">
                                     <span th:class="tipName" th:text="${tip.getTipName()}"></span>
                                     <span th:text="${tip.getTipContent()}"></span>
-                                    <a href="#">
+
+                                    <a href="#" class="upvoteButton" th:data-tip-id="${tip.getId()}" th:method="POST" th:action="@{|/tips/vote|}">
                                         <span class="fa-solid fa-thumbs-up text-primary">
 
                                             <span th:class="small-number" th:text="${tip.getUpVotes()}">
@@ -110,7 +112,7 @@
                                         </span>
                                     </a>
 
-                                    <a href="#">
+                                    <a href="#" class="downvoteButton" th:data-tip-id="${tip.getId()}" th:method="POST">
                                         <span class="fa-solid fa-thumbs-down text-primary">
                                             <span th:class="small-number" th:text="${tip.getDownVotes()}">
                                             </span>
@@ -137,7 +139,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form form method="post" th:action="@{|/venues/${venueId}/add-question|}">
+                                        <form method="post" th:action="@{|/venues/${venueId}/add-question|}" th:object="${newQuestion}">
                                             <div class="mb-3">
 
                                                 <textarea class="form-control shadow-none" id="question"  name="question" rows="10" cols="30" placeholder="question goes here..."></textarea>
@@ -234,9 +236,9 @@
 						<ul class="list-answered-questions">
 
 							<li>
-								<div class="user-wrapper">
+								<div class="user-wrapper text-center">
 									<span><img th:src="${question.getUser().getImgPath()}" alt="" class="user-image"></span>
-									<p th:text="${question.getUser().getUserName()}">username</p>
+									<p th:text="${question.getUser().getUsername()}">username</p>
 								</div>
 								<div class="answer-wrapper">
 									<span th:text="${question.getQuestion()}"></span>
@@ -245,31 +247,30 @@
 
                     </ul>
 <!--        ANSWER GIVEN-->
-                    <ul class="list-answered-questions">
-                        <li class="answered-background">
-                            <div class="user-wrapper">
-                                <span><img th:src="${question.answeredQuestions.getUser().getImgPath()}" alt=""
-                                           class="user-image"></span>
-                                <p th:text="${question.answeredQuestions.getUser().getUserName()}"></p>
-                            </div>
-                            <div class="answer-wrapper">
-                                <span th:text="${question.getAnsweredQuestions().getAnswer()}"></span>
-                                <a href="#">
-                                        <span class="fa-solid fa-thumbs-up text-primary">
-                                            <span th:class="small-number"
-                                                  th:text="${question.getAnsweredQuestions().getUpVotes()}">
-                                            </span>
-                                        </span>
-                                </a>
-                                <a href="#">
-                                        <span class="fa-solid fa-thumbs-down text-primary"></span>
-
-                                </a>
-                                <span th:class="small-number" th:text="${question.getAnsweredQuestions().getDownVotes()}"/>
-                            </div>
-                        </li>
-                    </ul>
-                    </th:block>
+                            <ul class="list-answered-questions">
+                                <li class="answered-background">
+                                    <div class="user-wrapper">
+                                        <span><img th:src="${question.answeredQuestions.getUser().getImgPath()}" alt=""
+                                                   class="user-image"></span>
+                                        <p th:text="${question.answeredQuestions.getUser().getUsername()}"></p>
+                                    </div>
+                                    <div class="answer-wrapper">
+                                        <span th:text="${question.answeredQuestions.getAnswer()}"></span>
+                                        <a href="#">
+                                                <span class="fa-solid fa-thumbs-up text-primary">
+                                                    <span th:class="small-number"
+                                                          th:text="${question.getAnsweredQuestions().getUpVotes()}">
+                                                    </span>
+                                                </span>
+                                        </a>
+                                        <a href="#">
+                                                <span class="fa-solid fa-thumbs-down text-primary"></span>
+                                        </a>
+                                        <span th:class="small-number" th:text="${question.getAnsweredQuestions().getDownVotes()}"/>
+                                    </div>
+                                </li>
+                             </ul>
+                        </th:block>
                 </div>
 				</section>
 

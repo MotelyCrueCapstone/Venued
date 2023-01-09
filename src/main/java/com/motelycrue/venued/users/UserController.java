@@ -1,5 +1,12 @@
 package com.motelycrue.venued.users;
 
+import com.motelycrue.venued.questions.Answer;
+import com.motelycrue.venued.questions.Questions;
+import com.motelycrue.venued.questions.QuestionsRepository;
+import com.motelycrue.venued.questions.answersRepository;
+import com.motelycrue.venued.tips.Tips;
+import com.motelycrue.venued.tips.TipsRepository;
+import com.motelycrue.venued.venues.Venue;
 import com.motelycrue.venued.venues.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
@@ -7,11 +14,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -20,9 +25,14 @@ public class UserController {
     @Autowired
     private UserRepository userDao;
 
+    @Autowired
+    private QuestionsRepository questionsDao;
 
     @Autowired
-    private VenueRepository VenueDao;
+    private TipsRepository TipsDao;
+
+    @Autowired
+    answersRepository answersDao;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -53,10 +63,23 @@ public class UserController {
         User currentUserPrincipal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<User> currentUser = userDao.findById(currentUserPrincipal.getId());
         if(currentUser.isPresent()){
+            List<Questions> allQuestions = questionsDao.findQuestionsByUser(currentUser.get());
             model.addAttribute("user", currentUser.get());
+            model.addAttribute("allQuestions", allQuestions);
+            model.addAttribute("allQuestionsLength", allQuestions.size());
+
+
+            List<Answer> allAnswers = answersDao.findAnswersByUser(currentUser.get());
+            model.addAttribute("user", currentUser.get());
+            model.addAttribute("allAnswers", allAnswers);
+            model.addAttribute("allAnswersLength", allAnswers.size());
+
+
             return "users/profile";
         }else{
             return "redirect:/home";
         }
     }
+
+
 }
