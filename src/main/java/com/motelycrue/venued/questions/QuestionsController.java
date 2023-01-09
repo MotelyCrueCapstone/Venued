@@ -48,6 +48,7 @@ public class QuestionsController {
         return "redirect:/questions";
     }
 
+
     @PostMapping("/venues/{venueId}")
     public String answerQuestion(@PathVariable String venueId, @ModelAttribute Answer answer, Principal principal){
         Long questionId = answer.getQuestion().getId();
@@ -55,14 +56,14 @@ public class QuestionsController {
         Answer newAnswer = new Answer(answerText);
         Questions question = questionsDao.findById(questionId).orElseThrow(() -> new RuntimeException("Question not found"));
         question.setAnswered(1);
+
         questionsDao.save(question);
-        int answered = question.getAnswered();
 
         newAnswer.setQuestion(question);
-        newAnswer.setUser(userDao.findByUserName(principal.getName()));
+        newAnswer.setUser(userDao.findByUsername(principal.getName()));
         answersDao.save(newAnswer);
-        questionsDao.updateAnsweredStatus(answered, questionId);
         System.out.println(question);
         return "redirect:/venues/" + venueId;
     }
+
 }

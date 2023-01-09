@@ -16,8 +16,17 @@
 
 		<main>
 			<div class="form-wrapper">
+				
+				<div class="wrong" th:if="${param.error}" >
+					Wrong! try again
+				</div>
+				
+				<div class="wrong" th:if="${param.logout}" >
+					You've logged out :(
+				</div>
+				
 				<p class="text-center mb-4" id="form-title" th:class="title">Login</p>
-				<form th:action="@{/users/login}" th:method="post" class="w-100 mx-auto">
+				<form th:action="@{/login}" th:method="post" class="w-100 mx-auto">
 					<div class="w-100 mb-4">
 						<input id="username" name="username" type="text" class="form-control w-100 shadow-none" autocomplete="off" placeholder="Username">
 					</div>
@@ -27,7 +36,7 @@
 					<div class="w-100">
 						<input type="submit" value="Login" class="form-control shadow-none" id="submit-btn">
 					</div>
-					<div>Need an account?<a th:href="@{/users/register}">&nbsp;Sign Up</a></div>
+					<div>Need an account?<a th:href="@{/register}">&nbsp;Sign Up</a></div>
 				</form>
 			</div>
 		</main>
