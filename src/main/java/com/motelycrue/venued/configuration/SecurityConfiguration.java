@@ -24,6 +24,7 @@ public class SecurityConfiguration {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authConfig -> {
+            //modifying the spring securirty configuration
             authConfig.anyRequest().permitAll();
 //            authConfig.requestMatchers("/").permitAll().and(;
 //            authConfig.requestMatchers("/home").permitAll();
