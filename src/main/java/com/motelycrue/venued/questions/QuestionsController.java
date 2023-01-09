@@ -59,7 +59,7 @@ public class QuestionsController {
         questionsDao.save(question);
 
         newAnswer.setQuestion(question);
-        newAnswer.setUser(userDao.findByUserName(principal.getName()));
+        newAnswer.setUser(userDao.findByUsername(principal.getName()));
         answersDao.save(newAnswer);
         System.out.println(question);
         return "redirect:/venues/" + venueId;

@@ -1,52 +1,34 @@
 package com.motelycrue.venued.configuration;
 
-import com.motelycrue.venued.users.User;
-import org.springframework.boot.autoconfigure.security.ConditionalOnDefaultWebSecurity;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
-import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-@EnableWebSecurity
+@Configuration
 public class SecurityConfiguration{
-    // Bean to configure filter chain and set which pages must be authorized to view
+    //tells the configuration file to add this to the spring
+    //apps configuration
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((authorize)-> {
-            authorize.requestMatchers("/","/home", "/venues/**").permitAll();
-        })
-                .formLogin(login -> {
-                    login.loginPage("/login").defaultSuccessUrl("/login");
-                })
-                .httpBasic(basic -> {});
+    SecurityFilterChain customSecurityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests()
+                .antMatchers("/profile").authenticated()
+                .antMatchers("/","/home", "/register").permitAll()
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/home")
+                .and().logout()
+                .and().httpBasic();
+
+        http.formLogin();
+        http.httpBasic();
+
         return http.build();
+
     }
 
-//    @Bean
-//    UserDetailsService userDetailsService(){
-//        var admin = User.builder()
-//                .userName("admin")
-//                .password("admin123")
-//                .build();
-//    }
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        return encoder;
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
-
 }
-
-
