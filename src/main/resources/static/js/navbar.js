@@ -8,34 +8,50 @@ $(function(){
         // console.log($(navbarLinks).hasClass('active'));
         console.log("clicked");
     });
-});
 
-$(function() {
+
+
     // Retrieve and parse the JSON file
-    $.getJSON('/json/cities.json', function(data) {
-        // Create the dropdown menu
-        const select = $("<select></select>");
-
-        // Add options to the dropdown menu
-        $.each(data, function(key, value) {
-            select.append($("<option></option>").attr("value", key).text(value));
+    $.getJSON('./json/cities.json', function(data) {
+        // When the user clicks on the search bar, show the search results container
+        $("#search_location_input").on("keyup", function() {
+            $('.location-results-container').removeClass('hide');
         });
 
-        // Add the dropdown menu to the container
-        $("#search_icon_container").append(select);
-    });
+        // When the user types in the search bar, update the search results list
+        $("#search_location_input").on("keyup", function() {
+            // Get the search term the user entered
+            const searchTerm = $(this).val().toLowerCase();
 
-    // When the user types in the search bar, update the dropdown menu
-    $("#search_location_input").on("keyup", function() {
-        // Get the search term the user entered
-        const searchTerm = $(this).val().toLowerCase();
+            // Clear the search results list
+            $('.location-results').empty();
 
-        // Show options in the dropdown menu that contain the search term
-        $("#search_icon_container select option").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -1);
+
+            // Add a list item for each city and state that matches the search term
+            $.each(data, function(state, cities) {
+                $.each(cities, function(index, city) {
+                    if (city.toLowerCase().indexOf(searchTerm) > -1) {
+                        $('.location-results').append($('<li class="location-result"></li>').text(city + ', ' + state));
+                    }
+                });
+            });
+        });
+
+        // When the user clicks on a search result, update the search bar
+        $('.location-results').on('click', 'li', function() {
+            $("#search_location_input").val($(this).text());
+        });
+
+        $(document).on('click', function(event) {
+            if (!$(event.target).closest('.searchbar').length) {
+                $('.location-results-container').addClass('hide');
+            }
         });
     });
 });
+
+
+
 
 
 

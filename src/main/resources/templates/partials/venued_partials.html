@@ -39,7 +39,7 @@
 		</div>
 	</head>
 	<nav th:fragment="mynav" class="topNav">
-			
+
 			<a class="venued" th:href="@{/}">
 				<img  class="venued-logo" src="/imgs/venuedImage.png" alt="image of the word venued in white block letters">
 			</a>
@@ -53,15 +53,20 @@
 				<div class="searchbar">
 					<input class="search_input" type="text" name="search_input" placeholder="Search...">
 					<input id="search_location_input" type="text" name="search_location_input" placeholder="Enter a location" autocomplete="off">
-					<div class="search_icon_container">
+					<div id="search_icon_container">
 						<img src="/imgs/search.svg" alt="" class="search_icon">
 					</div>
-					<section class="results-container hide">
-						<ul class="results">
+					<section class="results-container hideme ">
+						<ul class="results" id="search-results ">
+						</ul>
+					</section>
+					<section class="location-results-container hide">
+						<ul class="location-results" id="location-results">
 						</ul>
 					</section>
 				</div>
-				
+
+
 				<div class="user-container">
 					<button type="submit" class="signup-btn nav-btn" onclick="window.location.href='/login'">Login</button>
 					<button type="submit" class="login-btn nav-btn" onclick="window.location.href='/register'">Register</button>
@@ -70,7 +75,7 @@
 	</nav>
 
 	<footer th:fragment="footer" class="footer">
-		
+
 		<div class="footer_content">
 			<div class="leftSide">
 				<div class="venuedBlack">
