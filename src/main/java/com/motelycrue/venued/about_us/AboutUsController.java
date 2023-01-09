@@ -1,7 +1,7 @@
 package com.motelycrue.venued.about_us;
 
 import com.motelycrue.venued.email_service.EmailService;
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

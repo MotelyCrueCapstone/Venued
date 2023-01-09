@@ -57,7 +57,7 @@ public class QuestionsController {
 
         Answer newAnswer = new Answer();
         newAnswer.setAnswer(answer);
-        newAnswer.setUser(userDao.findByUserName(principal.getName()));
+        newAnswer.setUser(userDao.findByUsername(principal.getName()));
 
         questionsDao.findById(questionId).ifPresent(question1 -> {
             newAnswer.setQuestion(question1);

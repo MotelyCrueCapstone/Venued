@@ -5,6 +5,7 @@
     <div th:replace="partials/venued_partials :: myheader('Venue Page')" th:remove="tag"></div>
     <link rel="stylesheet" th:href="@{/css/venue_pages/venue.css}">
     <link rel="stylesheet" th:href="@{/css/universalStyle}">
+    <title></title>
 </head>
 <body>
 
@@ -54,13 +55,13 @@
                     <div class="card-wrapper">
                         <p class="title card-heading">Tips</p>
                         <button type="button" class="cta-button" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal1">Add A Tip</button>
+                                data-bs-target="#tipModal1">Add A Tip</button>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                        <div class="modal fade" id="tipModal1" tabindex="-1" aria-labelledby="tipModal1" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content tip-modal">
                                     <div class="modal-header">
-                                        <p class="modal-title fs-5 title" id="exampleModalLabel1">Add a tip</p>
+                                        <p class="modal-title fs-5 title" id="tipModalLabel1">Add a tip</p>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -69,10 +70,12 @@
                                             <div class="mb-3">
                                                 <input type="hidden" name="venueId" value="{venueId}">
                                                 <input type="text" name="tipName" placeholder="Tip Name">
-                                                <textarea class="form-control shadow-none" name="tipContent" id="exampleFormControlTextarea1" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
 <!--THESE WILL BE ADDED AUTOMATICALLY WHEN THE USER IS LOGGED IN. I AM ONLY PUTTING THESE HERE FOR TESTING PURPOSES-->
                                                 <input type="text" name="upVotes" placeholder="upVotes">
                                                 <input type="text" name="downVotes" placeholder="downVotes">
+=======
+                                                <textarea class="form-control shadow-none" name="tipContent" id="tipTextarea" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
+>>>>>>> tesfalem-tekie
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
@@ -80,8 +83,11 @@
                                             </div>
                                         </form>
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> e3eadc7120c8f89cffc7358c0881741c6a33e4a7
 										</div>
 
 
@@ -109,6 +115,7 @@
 
                                         </span>
                                     </a>
+
                                     <a href="#">
                                         <span class="fa-solid fa-thumbs-down text-primary">
                                             <span th:class="small-number" th:text="${tip.getDownVotes()}">
@@ -126,21 +133,20 @@
                     <!--Questions Modal-->
                     <div class="card-wrapper">
                         <p class="title card-heading">Questions</p>
-                        <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#exampleModal2">Ask a Question</button>
+                        <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#questionModal2">Ask a Question</button>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                        <div class="modal fade" id="questionModal2" tabindex="-1" aria-labelledby="questionModal2" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content question-modal">
                                     <div class="modal-header">
-                                        <p class="modal-title fs-5 title" id="exampleModalLabel2">Ask a Question</p>
+                                        <p class="modal-title fs-5 title" id="questionModalLabel2">Ask a Question</p>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <form form method="post" th:action="@{|/venues/${venueId}/add-question|}">
                                             <div class="mb-3">
-                                                <textarea class="form-control shadow-none" id="question" rows="10"
-                                                          cols="30" placeholder="question goes here..."
-                                                          name="question"></textarea>
+
+                                                <textarea class="form-control shadow-none" id="questionTextarea" rows="10" cols="30" placeholder="question goes here..."></textarea>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary close"
@@ -164,6 +170,7 @@
                     <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
 
                         <ul class="list-questions">
+
                             <th:block th:if="${question.answered == 0}">
 
                                 <li>
@@ -241,7 +248,6 @@
 								</div>
 							</li>
 
-
                     </ul>
 <!--        ANSWER GIVEN-->
                     <ul class="list-answered-questions">
@@ -261,7 +267,7 @@
                                         </span>
                                 </a>
                                 <a href="#">
-                                        <span class="fa-solid fa-thumbs-down text-primary"/>
+                                        <span class="fa-solid fa-thumbs-down text-primary"></span>
 
                                 </a>
                                 <span th:class="small-number" th:text="${question.getAnsweredQuestions().getDownVotes()}"/>

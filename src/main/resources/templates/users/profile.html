@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <div th:replace="~{partials/venued_partials :: myheader('Profile')}"></div>
     <link rel="stylesheet" th:href="@{/css/universalStyle.css}">
@@ -7,37 +9,36 @@
 </head>
 <body>
   <div class="page-wrapper">
-<<<<<<< HEAD
-	  
-	  <section class="navSection">
-		  <div class="set-tone"></div>
-		  <nav th:replace="~{partials/venued_partials :: mynav}"></nav>
-	  </section>
-	  
-        <section class="container mt-5 border">
-            <div class="row container">
-                <div class="col-sm-5 first border">
-                    <div>
-                        <p><img src="../imgs/Avatar-Placeholder.png" alt="user-image"></p>
-                        <p>user name goes here...</p>
-                    </div>
-                    <div>
-=======
+
         <nav th:replace="~{partials/venued_partials :: mynav}"></nav>
 
         <section class="main-wrapper">
+            <!----- row wrapper starts here ----->
             <div class="row-wrapper">
+
+                <!---- first column wrapper starts here ------>
                 <div class="first-card-wrapper">
+
+                    <!--- profile picture starts here ---->
                     <div class="avatar-container">
->>>>>>> tesfalem-tekie
-                        <p>
-                            <img src="../imgs/Avatar-Placeholder.png" alt="user-image">
-                        </p>
+                        <div class="picture-container">
+                            <div class="picture">
+<!--                                <div th:if="${user. == #authentication.principal.id}">-->
+<!--                                    -->
+<!--                                </div>-->
+                                <img src="../imgs/avatar-image.png" class="picture-src" id="wizardPicturePreview" title="">
+                                <input type="file" id="wizard-picture" class="">
+                            </div>
+                            <h6 class="">Upload Photo</h6>
+                        </div>
                         <p>user name goes here...</p>
                         <div class="edit-btn-container">
-                            <button>Edit Profile</button>
+                            <button class="edit-btn">Edit Profile</button>
                         </div>
                     </div>
+                    <!----- profile picture ends here ---->
+
+                    <!---- profile form starts here ------>
                     <div class="form-container">
                         <form class="form" action="#" method="#">
                             <div>
@@ -48,94 +49,157 @@
                                <label for="bio">Bio</label>
                                <textarea name="bio" id="bio" cols="30" rows="5"></textarea>
                             </div>
+                            <div>
+                                <input type="submit" value="Save" name="submit" id="submit-btn">
+                                <button class="cancel" id="cancel-btn">Cancel</button>
+                            </div>
                         </form>
                     </div>
-                </div>
+                    <!----- profile form ends here -------->
 
+                </div>
+                <!--------- first column wrapper end here ------>
+
+
+                <!---- second column wrapper starts here ------->
                 <div class="second-card-wrapper">
+
+                    <!---- list of all tabs start here ------>
                     <ul class="lists-wrapper" id="myTab">
-                        <li class="list-item" >
-                            <button class="tap-btn" id="answer-tab">
+                        <li class="list-item">
+                            <button class="tab-btn active" id="answer-tab" data-content="1">
                                 <span class="badge rounded-pill bg-secondary me-1">0</span>
                                 Answers
                             </button>
                         </li>
                         <li class="list-item">
-                            <button class="tap-btn" id="question-tab">
+                            <button class="tab-btn" id="question-tab" data-content="2">
                                 <span class="badge rounded-pill bg-secondary me-1">0</span>
                                Questions
                             </button>
                         </li>
                         <li class="list-item">
-                            <button class="tap-btn" id="tip-tab">
+                            <button class="tab-btn" id="tip-tab" data-content="3">
                                 <span class="badge rounded-pill bg-secondary me-1">0</span>
                                 Tips
                             </button>
                         </li>
                     </ul>
+                    <!------ list of all tabs end here ------->
 
-                    <div class="tab-content" id="myTabContent">
-                        <!---- answer tab-pane ---->
-                        <div class="" id="answer">
-                            <!-- first card begins here -->
-                            <div class="card mb-3">
-                                <ul class="answered-question">
-                                    <li>
-                                        <span>answered question</span>
+                    <!------ tab content wrapper start here ---->
+                    <div id="TabContents">
+                        <!-- first tab content card begins here -->
+                        <div class="tab-content show-content" data-content="1">
+                            <ul class="answered-question">
+                                <li class="list-items answered-question-list">
+                                    <div>answered question</div>
+                                    <div>
                                         <button>edit</button>
                                         <button>delete</button>
-                                    </li>
-                                    <li>
-                                        <span>answered question</span>
+                                    </div>
+                                </li>
+                                <li class="list-items answered-question-list">
+                                    <div>answered question</div>
+                                    <div>
                                         <button>edit</button>
                                         <button>delete</button>
-                                    </li>
-                                </ul>
-                            </div>
+                                    </div>
+                                </li>
+                                <li class="list-items answered-question-list">
+                                    <div>answered question</div>
+                                    <div>
+                                        <button>edit</button>
+                                        <button>delete</button>
+                                    </div>
+                                </li>
+                                <li class="list-items answered-question-list">
+                                    <div>answered question</div>
+                                    <div>
+                                        <button>edit</button>
+                                        <button>delete</button>
+                                    </div>
+                                </li>
+                                <li class="list-items answered-question-list">
+                                    <div>answered question</div>
+                                    <div>
+                                        <button>edit</button>
+                                        <button>delete</button>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
+                        <!----- first tab content card end here ------>
 
-                        <!---- Question tab-pane ------->
-                        <div class="tab-pane" id="question">
-                            <!-- second card begins here -->
-                            <div class="card mb-3">
-                                <ul class="list-questions">
-                                    <li>
-                                        <span>user question</span>
+                        <!-- second tab content card begins here -->
+                        <div class="tab-content" data-content="2">
+                            <ul class="list-questions">
+                                <li class="list-items user-question-list">
+                                    <div>answered question</div>
+                                    <div>
                                         <button>edit</button>
                                         <button>delete</button>
-                                    </li>
-                                    <li>
-                                        <span>user question</span>
+                                    </div>
+                                </li>
+                                <li class="list-items user-question-list">
+                                    <div>answered question</div>
+                                    <div>
                                         <button>edit</button>
                                         <button>delete</button>
-                                    </li>
-                                </ul>
-                            </div>
-
+                                    </div>
+                                </li>
+                                <li class="list-items user-question-list">
+                                    <div>answered question</div>
+                                    <div>
+                                        <button>edit</button>
+                                        <button>delete</button>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
+                        <!----- second tab content card end here ----->
 
-                        <!------ Tip tap-pane ------->
-                        <div class="tab-pane fade w-100" id="tip">
-                            <!-- third card begins here -->
-                            <div class="card mb-3">
-                                <ul class="list-tips">
-                                    <li>
-                                        <span>user tip</span>
+                        <!-- third tab content card begins here -->
+                        <div class="tab-content" data-content="3">
+                            <ul class="list-tips">
+                                <li class="list-items user-tip-list">
+                                    <div>answered question</div>
+                                    <div>
                                         <button>edit</button>
                                         <button>delete</button>
-                                    </li>
-                                    <li>
-                                        <span>user tip</span>
+                                    </div>
+                                </li>
+                                <li class="list-items user-tip-list">
+                                    <div>answered question</div>
+                                    <div>
                                         <button>edit</button>
                                         <button>delete</button>
-                                    </li>
-                                </ul>
-                            </div>
+                                    </div>
+                                </li>
+                                <li class="list-items user-tip-list">
+                                    <div>answered question</div>
+                                    <div>
+                                        <button>edit</button>
+                                        <button>delete</button>
+                                    </div>
+                                </li>
+                                <li class="list-items user-tip-list">
+                                    <div>answered question</div>
+                                    <div>
+                                        <button>edit</button>
+                                        <button>delete</button>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
+                        <!---- third tab content card end here ----->
+
                     </div>
+                    <!---- tab content wrapper end here ----->
                 </div>
             </div>
         </section>
   </div>
+  <script src="/js/profile.js"></script>
 </body>
 </html>
