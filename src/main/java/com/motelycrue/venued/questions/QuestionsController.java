@@ -4,6 +4,7 @@ package com.motelycrue.venued.questions;
 import com.motelycrue.venued.users.User;
 import com.motelycrue.venued.users.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -34,9 +35,12 @@ public class QuestionsController {
 
     @GetMapping()
     public String createController(Model model){
+
         List<Questions> questions = questionsDao.findAll();
+
         model.addAttribute("questions", questions);
         model.addAttribute("emptyQuestions", new Questions());
+
         return "questions";
     }
 
@@ -49,17 +53,17 @@ public class QuestionsController {
     }
 
     @PostMapping("/{venueId}/add-answer")
-    public String answerQuestion(@PathVariable long venueId,
+    public String answerQuestion(@PathVariable String venueId,
                                  @RequestParam(name = "answer") String answer,
-                                 @RequestParam(name = "questionId") long questionId,
-                                 Principal principal){
+                                 @RequestParam(name = "questionId") String questionId,
+                                 @RequestParam(name = "userId") String userId){
 
 
         Answer newAnswer = new Answer();
         newAnswer.setAnswer(answer);
-        newAnswer.setUser(userDao.findByUsername(principal.getName()));
+        newAnswer.setUser(userDao.getUserById(Long.parseLong(userId)));
 
-        questionsDao.findById(questionId).ifPresent(question1 -> {
+        questionsDao.findById(Long.parseLong(questionId)).ifPresent(question1 -> {
             newAnswer.setQuestion(question1);
             question1.setAnswered(1);
             answersDao.save(newAnswer);

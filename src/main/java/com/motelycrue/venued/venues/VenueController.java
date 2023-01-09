@@ -4,7 +4,10 @@ import com.motelycrue.venued.questions.Questions;
 import com.motelycrue.venued.questions.QuestionsRepository;
 import com.motelycrue.venued.tips.Tips;
 import com.motelycrue.venued.tips.TipsRepository;
+import com.motelycrue.venued.users.User;
+import com.motelycrue.venued.users.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +21,8 @@ import java.util.Optional;
 @RequestMapping("/venues")
 public class VenueController {
 
+    @Autowired
+    private UserRepository userDao;
     @Autowired
     private VenueRepository VenueDao;
 
@@ -42,6 +47,11 @@ public class VenueController {
     public String showVenuePage(@PathVariable String venueId, Model model) {
         Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));
         if (venue.isPresent()) {
+
+            User currentUserPrinciple  = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User currentUser = userDao.getUserById(currentUserPrinciple.getId());
+            model.addAttribute("user", currentUser);
+
             model.addAttribute("venue", venue.get());
             List<Tips> tips = TipsDao.findByVenue(venue.get());
             model.addAttribute("tips", tips);
