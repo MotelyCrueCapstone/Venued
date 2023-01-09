@@ -236,7 +236,7 @@
 							<li>
 								<div class="user-wrapper">
 									<span><img th:src="${question.getUser().getImgPath()}" alt="" class="user-image"></span>
-									<p th:text="${question.getUser().getUserName()}">username</p>
+									<p th:text="${question.getUser().getUsername()}">username</p>
 								</div>
 								<div class="answer-wrapper">
 									<span th:text="${question.getQuestion()}"></span>
@@ -245,31 +245,31 @@
 
                     </ul>
 <!--        ANSWER GIVEN-->
-                    <ul class="list-answered-questions">
-                        <li class="answered-background">
-                            <div class="user-wrapper">
-                                <span><img th:src="${question.answeredQuestions.getUser().getImgPath()}" alt=""
-                                           class="user-image"></span>
-                                <p th:text="${question.answeredQuestions.getUser().getUserName()}"></p>
-                            </div>
-                            <div class="answer-wrapper">
-                                <span th:text="${question.getAnsweredQuestions().getAnswer()}"></span>
-                                <a href="#">
-                                        <span class="fa-solid fa-thumbs-up text-primary">
-                                            <span th:class="small-number"
-                                                  th:text="${question.getAnsweredQuestions().getUpVotes()}">
-                                            </span>
-                                        </span>
-                                </a>
-                                <a href="#">
-                                        <span class="fa-solid fa-thumbs-down text-primary"></span>
+                            <ul class="list-answered-questions">
+                                <li class="answered-background">
+                                    <div class="user-wrapper">
+                                        <span><img th:src="${question.answeredQuestions.getUser().getImgPath()}" alt=""
+                                                   class="user-image"></span>
+                                        <p th:text="${question.answeredQuestions.getUser().getUsername()}"></p>
+                                    </div>
+                                    <div class="answer-wrapper">
+                                        <span th:text="${question.answeredQuestions.getAnswer()}"></span>
+                                        <a href="#">
+                                                <span class="fa-solid fa-thumbs-up text-primary">
+                                                    <span th:class="small-number"
+                                                          th:text="${question.getAnsweredQuestions().getUpVotes()}">
+                                                    </span>
+                                                </span>
+                                        </a>
+                                        <a href="#">
+                                                <span class="fa-solid fa-thumbs-down text-primary"></span>
 
-                                </a>
-                                <span th:class="small-number" th:text="${question.getAnsweredQuestions().getDownVotes()}"/>
-                            </div>
-                        </li>
-                    </ul>
-                    </th:block>
+                                        </a>
+                                        <span th:class="small-number" th:text="${question.getAnsweredQuestions().getDownVotes()}"/>
+                                    </div>
+                                </li>
+                             </ul>
+                        </th:block>
                 </div>
 				</section>
 
