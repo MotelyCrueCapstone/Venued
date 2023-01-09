@@ -2,65 +2,189 @@
     width: 90%;
     margin: 0 auto;
 }
+
 .row-wrapper {
-    border: 2px dashed green;
+    /*border: 2px dashed green;*/
     color: #fff;
+    margin-top: 3rem;
+    min-height: 100vh;
 }
+
 .first-card-wrapper {
     /*border: 2px dashed red;*/
 }
+
 .avatar-container {
-    border: 2px dashed yellow;
-    margin: 2rem 0;
+    /*border: 2px dashed yellow;*/
+    margin: 0 0 2rem ;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 2rem;
 }
+
 .avatar-container p:first-child {
     text-align: center;
 }
+
 .avatar-container p:nth-child(2) {
     text-align: center;
     color: #fff;
 }
+
 .avatar-container button:last-child {
-    padding: 0.5rem 2.5rem;
+    padding: 0.5rem 3rem;
     display: block;
     margin: 0 auto;
+    background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    letter-spacing: 1.5px;
 }
-label, input {
+
+label {
     display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
 }
-input {
-    padding: 0.2rem 1rem;
+
+input#name {
+    display: block;
+    padding: 0.3rem 1rem;
     width: 100%;
+    background-color: transparent;
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    color: #fff;
 }
-textarea {
+
+textarea#bio {
     width: 100%;
+    background-color: transparent;
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    color: #fff;
+    margin-bottom: 1rem;
 }
+
+input#submit-btn {
+    padding: 0.3rem 1rem;
+    background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
+    border: none;
+    border-radius: 10px;
+    margin-right: 0.7rem;
+    color: #fff;
+}
+
+button#cancel-btn {
+    padding: 0.3rem 1rem;
+    background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
+    display: inline-block;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+}
+
 .form-container {
-    border: 2px dashed magenta;
+    display:none;
+    /*border: 2px dashed magenta;*/
     padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
 }
+
+.active {
+    background: red;
+}
+
 .second-card-wrapper {
-    border: 2px dashed blue;
+    /*border: 2px dashed blue;*/
     margin: 2rem 0 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    height: 100%;
 }
+
 .second-card-wrapper ul {
     list-style-type: none;
 }
+
 .lists-wrapper {
     display: flex;
     justify-content: center;
-   border: 2px solid aquamarine;
+    /*border: 2px solid aquamarine;*/
+    padding: 1rem;
+    gap: 0.5rem;
 }
-.list-item {
-    display: inline-block;
-}
+
 .tap-btn {
     display: block;
     padding: 0.2rem 1rem;
 }
+
+.answered-question,
+.list-questions,
+.list-tips {
+    padding-left: 0;
+}
+
+.list-items {
+    color: #fff;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem 0.5rem;
+    margin-bottom: .5rem;
+    border-radius: 10px;
+}
+
+.list-items span:first-child {
+    margin-right: auto;
+    flex: 1;
+    font-size: 1.2rem;
+}
+
+.list-items button:nth-child(2) {
+    margin: 0 1rem 0 1rem;
+    padding: 0.3rem 1rem;
+    border: none;
+    background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
+    color: #fff;
+    border-radius: 10px;
+    letter-spacing: 1.5px;
+}
+
+.list-items button:nth-child(3) {
+    padding: 0.3rem 1rem;
+    border: none;
+    background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
+    color: #fff;
+    border-radius: 10px;
+    letter-spacing: 1.5px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.open {
+    display: block;
+}
+
+.show-content {
+    display: block;
+}
+
 @media screen and (min-width: 700px) {
     .row-wrapper {
         display:flex;
-        gap: 1.5rem;
+        gap: 2rem;
+    }
+    .first-card-wrapper {
+        flex-basis: 45%;
+    }
+    .second-card-wrapper {
+        margin: 0;
+        flex-basis: 55%;
     }
 }
