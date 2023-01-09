@@ -17,7 +17,7 @@ public class EntityToJson {
 
     public String userToJson(User user) throws JsonProcessingException {
         UserJson userJson = UserJson.builder()
-                .userName(user.getUserName())
+                .userName(user.getUsername())
                 .email(user.getEmail())
                 .id(user.getId())
                 .build();
