@@ -1,7 +1,7 @@
 package com.motelycrue.venued.questions;
 
 import com.motelycrue.venued.users.User;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
 package com.motelycrue.venued.users;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +18,7 @@ public class User {
     private Long id;
 
     @Column(nullable = false)
-    private String userName;
+    private String username;
 
     @Column(nullable = false)
     private String password;
@@ -32,13 +32,14 @@ public class User {
     public User(long id, String email, String username, String password) {
         this.id = id;
         this.email = email;
-        this.userName = username;
+        this.username = username;
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
-
-
+    public void setUsername(String userName){
+        this.username = userName;
+    }
 }
