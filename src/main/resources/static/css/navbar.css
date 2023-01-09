@@ -199,7 +199,11 @@
     height: 50px;
     width: auto;
 }
-
+@media only screen and (max-width: 1024px){
+    .user-container{
+        gap: 5px;
+    }
+}
 @media screen and (max-width: 810px){
     .nav-items{
         gap: 1rem;

@@ -1,4 +1,4 @@
-@media (max-width: 428px) {
+@media only screen and (max-width: 428px) {
     .recents-wrapper p{
         display: flex;
         text-align: center;
@@ -34,7 +34,27 @@
         width: 100%;
     }
 }
-
+@media only screen and (max-width: 1024px){
+    #recent-cards{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 1rem 1rem;
+        width: 100%;
+        max-width: 1024px;
+    }
+    .recent-card{
+        width: 100%;
+    }
+    figure div img{
+        width: inherit;
+    }
+    figure div:first-child {
+        width: 100px;
+    }
+    .recent-card div:last-child > p {
+        width: 100%;
+    }
+}
 /* Medium screens (e.g. tablets) */
 @media only screen and (min-width: 601px) and (max-width: 992px) {
     .recent-card {
