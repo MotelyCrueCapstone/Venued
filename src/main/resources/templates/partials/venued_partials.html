@@ -71,7 +71,11 @@
 				</div>
 				
 				<div class="user-container" sec:authorize="isAuthenticated()">
-					<button type="submit" class="signup-btn nav-btn" onclick="window.location.href='/logout'">Logout</button>
+					<a class="signup-btn nav-btn" href="javascript: document.logoutForm.submit()" role="menuitem"> Logout</a>
+					
+					<form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+						<input hidden type="submit" value="Sign Out"/>
+					</form>
 				</div>
 			</ul>
 	</nav>

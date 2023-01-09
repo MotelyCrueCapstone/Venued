@@ -23,7 +23,6 @@ public class SecurityConfiguration{
 
         http.formLogin();
         http.httpBasic();
-
         return http.build();
 
     }
