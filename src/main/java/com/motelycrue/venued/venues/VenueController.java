@@ -53,8 +53,11 @@ public class VenueController {
             model.addAttribute("user", currentUser);
 
             model.addAttribute("venue", venue.get());
+
             List<Tips> tips = TipsDao.findByVenue(venue.get());
+
             model.addAttribute("tips", tips);
+
             List<Questions> questions = QuestionsDao.findByVenue(venue.get());
             model.addAttribute("questions", questions);
         }
@@ -106,11 +109,6 @@ public class VenueController {
         }
         return "redirect:/venues/{venueId}";
     }
-
-
-
-
-
 
 
 }

@@ -89,9 +89,11 @@
 
                     <!------ tab content wrapper start here ---->
                     <div id="TabContents">
+
                         <!-- first tab content card begins here -->
                         <div class="tab-content show-content" data-content="1">
-                            <ul class="answered-question">
+                            <ul class="answered-question" >
+
                                 <li class="list-items answered-question-list">
                                     <div>answered question</div>
                                     <div>
@@ -133,23 +135,12 @@
 
                         <!-- second tab content card begins here -->
                         <div class="tab-content" data-content="2">
-                            <ul class="list-questions">
+                            <ul class="list-questions" th:each="question : ${allQuestions}">
+                                <!--                                <div th:each="item : ${shoppingCart}">-->
+                                <!--                                    <p th:text="${item.name}" />-->
+                                <!--                                </div>-->>
                                 <li class="list-items user-question-list">
-                                    <div>answered question</div>
-                                    <div>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </div>
-                                </li>
-                                <li class="list-items user-question-list">
-                                    <div>answered question</div>
-                                    <div>
-                                        <button>edit</button>
-                                        <button>delete</button>
-                                    </div>
-                                </li>
-                                <li class="list-items user-question-list">
-                                    <div>answered question</div>
+                                    <div th:text="${question.getQuestion()}"></div>
                                     <div>
                                         <button>edit</button>
                                         <button>delete</button>
