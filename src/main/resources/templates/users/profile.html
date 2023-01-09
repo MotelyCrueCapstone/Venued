@@ -80,7 +80,7 @@
                         </li>
                         <li class="list-item">
                             <button class="tab-btn" id="tip-tab" data-content="3">
-                                <span class="badge rounded-pill bg-secondary me-1">0</span>
+                                <span class="badge rounded-pill bg-secondary me-1" th:text="${allTipsLength}"></span>
                                 Tips
                             </button>
                         </li>
@@ -123,9 +123,9 @@
 
                         <!-- third tab content card begins here -->
                         <div class="tab-content" data-content="3">
-                            <ul class="list-tips">
+                            <ul class="list-tips" th:each="tip : ${allTips}">
                                 <li class="list-items user-tip-list">
-                                    <div>answered question</div>
+                                    <div th:text="${tip.getTipContent()}"></div>
                                     <div>
                                         <button>edit</button>
                                         <button>delete</button>
