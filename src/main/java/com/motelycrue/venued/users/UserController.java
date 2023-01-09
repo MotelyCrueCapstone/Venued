@@ -3,6 +3,7 @@ package com.motelycrue.venued.users;
 import com.motelycrue.venued.venues.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -40,12 +43,20 @@ public class UserController {
     @PostMapping("/register")
     public String registerUser(@ModelAttribute User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setImgPath("/imgs/avatar-image.png");
         userDao.save(user);
         return "redirect:login";
     }
 
     @GetMapping("/profile")
-    public String profile(){
-        return "users/profile";
+    public String profile(Model model){
+        User currentUserPrincipal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<User> currentUser = userDao.findById(currentUserPrincipal.getId());
+        if(currentUser.isPresent()){
+            model.addAttribute("user", currentUser.get());
+            return "users/profile";
+        }else{
+            return "redirect:/home";
+        }
     }
 }
