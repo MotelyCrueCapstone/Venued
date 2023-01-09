@@ -7,6 +7,7 @@ import com.motelycrue.venued.tips.TipsRepository;
 import com.motelycrue.venued.users.User;
 import com.motelycrue.venued.users.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,6 +66,7 @@ public class VenueController {
     }
 
     @GetMapping ("create/{venueId}")
+    @ResponseBody
     public String saveVenue(@PathVariable String venueId,
                             @RequestParam String venueName,
                             @RequestParam String venueAlias,
@@ -79,10 +81,18 @@ public class VenueController {
         //if venue is present we aren't going to save the new venue
         if (venueRecord.isEmpty()) {
             //if venue received from api isn't present we save and all associated data with it by id
-            Venue venue = new Venue(venueId, venueName, venueAlias, imgPath, longitude, latitude, address, rating);
+            Venue venue = Venue.builder()
+                    .venueId(venueId)
+                    .venueName(venueName)
+                    .venueAlias(venueAlias)
+                    .imgPath(imgPath)
+                    .longitude(longitude)
+                    .latitude(latitude)
+                    .address(address)
+                    .rating(rating).build();
             this.VenueDao.save(venue);
         }
-        return "venue";
+        return HttpStatus.OK.toString();
     }
 
     @PostMapping("/{venueId}/add-tip")

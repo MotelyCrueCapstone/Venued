@@ -3,16 +3,16 @@ package com.motelycrue.venued.questions;
 import com.motelycrue.venued.users.User;
 import com.motelycrue.venued.venues.Venue;
 import javax.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
 
 @Entity
-@Data
+@Setter
+@Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table
 public class Questions {
 
     @Id
@@ -41,4 +41,5 @@ public class Questions {
     public Questions(String question) {
         this.question = question;
     }
+
 }
