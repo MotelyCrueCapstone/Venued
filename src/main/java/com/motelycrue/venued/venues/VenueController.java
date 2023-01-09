@@ -5,6 +5,7 @@ import com.motelycrue.venued.questions.QuestionsRepository;
 import com.motelycrue.venued.tips.Tips;
 import com.motelycrue.venued.tips.TipsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -52,6 +53,7 @@ public class VenueController {
     }
 
     @GetMapping ("create/{venueId}")
+    @ResponseBody
     public String saveVenue(@PathVariable String venueId,
                             @RequestParam String venueName,
                             @RequestParam String venueAlias,
@@ -77,7 +79,7 @@ public class VenueController {
                     .rating(rating).build();
             this.VenueDao.save(venue);
         }
-        return "venue";
+        return HttpStatus.OK.toString();
     }
 
     @PostMapping("/{venueId}/add-tip")
