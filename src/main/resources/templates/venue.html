@@ -190,11 +190,12 @@
 
                                                     <div class="modal-body">
 
-                                                        <form th:action="@{|/venues/${venueId}|}">
+                                                        <form form method="post" th:action="@{|/questions/${venueId}/add-answer|}">
 
                                                             <div class="mb-3" >
                                                                 <p th:text="${question.getQuestion()}"></p>
-                                                                <textarea class="form-control shadow-none" id="answer" rows="10" cols="30" placeholder="Answer goes here..." name="answer"></textarea>
+                                                                <input type="hidden" name="questionId" th:value="${question.getId()}">
+                                                                <textarea class="form-control shadow-none" id="answer" rows="10" cols="30" placeholder="Answer goes here..." name="answer" th:value="${answer}"></textarea>
                                                             </div>
 
                                                             <div class="modal-footer">
