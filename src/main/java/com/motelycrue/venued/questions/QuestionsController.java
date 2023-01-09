@@ -46,9 +46,13 @@ public class QuestionsController {
 
     @PostMapping()
     public String createQuestions(@ModelAttribute Questions question){
-        User user = userDao.findAll().get(0);
-        question.setUser(user);
-        questionsDao.save(question);
+        User currentUserPrincipal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<User> currentUser = userDao.findById(currentUserPrincipal.getId());
+        if(currentUser.isPresent()){
+            question.setUser(currentUser.get());
+            questionsDao.save(question);
+        }
+
         return "redirect:/questions";
     }
 

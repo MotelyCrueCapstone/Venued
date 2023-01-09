@@ -139,7 +139,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form form method="post" th:action="@{|/venues/${venueId}/add-question|}">
+                                        <form method="post" th:action="@{|/venues/${venueId}/add-question|}" th:object="${newQuestion}">
                                             <div class="mb-3">
 
                                                 <textarea class="form-control shadow-none" id="question"  name="question" rows="10" cols="30" placeholder="question goes here..."></textarea>
