@@ -152,6 +152,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <!---- modal end here --->
                     </div>
 
@@ -159,21 +160,25 @@
                         <p class="nothingHere">Looks like no questions have been asked yet! Be the first to ask a
                             question</p>
                     </div>
-                    <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
-                        <ul class="list-questions">
 
+                    <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
+
+                        <ul class="list-questions">
                             <th:block th:if="${question.answered == 0}">
+
                                 <li>
                                     <div class="user-wrapper">
 <!--!!!!!!UNCOMMENT LATER AFTER MODAL IS FIXED!!!!-->
 <!--                                        <span><img th:src="${question.user.imgPath}" alt="" class="user-image"></span>-->
 <!--                                        <p th:text="${question.user.userName}">username</p>-->
                                     </div>
-                                    <div class="question-wrapper">
-                                        <span th:text="${question.getQuestion()}"></span>
-                                        <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#exampleModal3">Answer</button>
 
-                                        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                    <div class="question-wrapper">
+
+                                        <span th:text="${question.getQuestion()}"></span>
+                                        <button type="button" class="cta-button" data-bs-toggle="modal" th:data-bs-target="'#Modal' + ${question.getId()}">Answer</button>
+
+                                        <div class="modal fade" th:id="'Modal' + ${question.getId()}" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                                             <div class="modal-dialog">
 
                                                 <div class="modal-content question-modal">
@@ -186,15 +191,15 @@
                                                     <div class="modal-body">
 
                                                         <form th:action="@{|/venues/${venueId}|}">
-                                                            <div class="mb-3">
-                                                                <span th:text="${question.getQuestion()}"></span>
+
+                                                            <div class="mb-3" >
+                                                                <p th:text="${question.getQuestion()}"></p>
                                                                 <textarea class="form-control shadow-none" id="answer" rows="10" cols="30" placeholder="Answer goes here..." name="answer"></textarea>
                                                             </div>
 
                                                             <div class="modal-footer">
                                                                 <input type="hidden" name="answered"
                                                                        th:value="${question.getAnswered()}">
-
                                                                 <button type="button" class="btn btn-secondary close"
                                                                         data-bs-dismiss="modal">Close</button>
                                                                 <button type="Submit" class="btn submit">Submit</button>
@@ -216,13 +221,13 @@
 					</div>
 				</section>
 
-	<!------- answered questions section -------->
+	            <!------- answered questions section -------->
 				<section class="wrapper answered-questions">
 					<p class="title">Answered Questions</p>
-	<!--    ANSWERED QUESTIONS DIV-->
+	            <!--    ANSWERED QUESTIONS DIV-->
 					<div class="answered-question-wrapper" th:each="question : ${questions}">
 						<th:block th:if="${question.answered == 1}">
-	<!--        QUESTION ASKED-->
+	            <!--        QUESTION ASKED-->
 						<ul class="list-answered-questions">
 
 							<li>
