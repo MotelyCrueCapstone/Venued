@@ -19,5 +19,6 @@ public interface QuestionsRepository extends JpaRepository<Questions, Long> {
     List<Questions> findByVenue(Venue venue);
 
     //find questions by user who posted them
-    ArrayList<Questions> findQuestionsByUser(User user);
+    List<Questions> findQuestionsByUser(User user);
+
 }

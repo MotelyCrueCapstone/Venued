@@ -5,10 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public interface answersRepository extends JpaRepository<Answer, Long> {
 
     //get all answers by user who posted them
-    ArrayList<Answer> findAnswersByUser(User user);
+    List<Answer> findAnswersByUser(User user);
 }

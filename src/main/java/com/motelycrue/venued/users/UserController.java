@@ -1,7 +1,9 @@
 package com.motelycrue.venued.users;
 
+import com.motelycrue.venued.questions.Answer;
 import com.motelycrue.venued.questions.Questions;
 import com.motelycrue.venued.questions.QuestionsRepository;
+import com.motelycrue.venued.questions.answersRepository;
 import com.motelycrue.venued.tips.Tips;
 import com.motelycrue.venued.tips.TipsRepository;
 import com.motelycrue.venued.venues.Venue;
@@ -28,6 +30,9 @@ public class UserController {
 
     @Autowired
     private TipsRepository TipsDao;
+
+    @Autowired
+    answersRepository answersDao;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -58,8 +63,17 @@ public class UserController {
         User currentUserPrincipal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<User> currentUser = userDao.findById(currentUserPrincipal.getId());
         if(currentUser.isPresent()){
+            List<Questions> allQuestions = questionsDao.findQuestionsByUser(currentUser.get());
             model.addAttribute("user", currentUser.get());
-            model.addAttribute("allQuestions", questionsDao.findQuestionsByUser(currentUser.get()));
+            model.addAttribute("allQuestions", allQuestions);
+            model.addAttribute("allQuestionsLength", allQuestions.size());
+
+
+            List<Answer> allAnswers = answersDao.findAnswersByUser(currentUser.get());
+            model.addAttribute("user", currentUser.get());
+            model.addAttribute("allAnswers", allAnswers);
+            model.addAttribute("allAnswersLength", allAnswers.size());
+
 
             return "users/profile";
         }else{
