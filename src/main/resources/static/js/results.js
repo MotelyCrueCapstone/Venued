@@ -1,40 +1,40 @@
 "use strict";
 
 (function () {
-    
+
     let searchInput = $(".search_input");
     let searchButton = $(".search_icon");
     let searchLocation = $("#search_location_input");
-    
+
     function toggleResults(){
          $(".results").html("");
          $(".results-container").removeClass("hide");
     }
-    
+
     function search(query) {
          //fetching api data from yelp
-         
+
          fetch(`http://localhost:8085/yelp/${query.trimEnd()}?location=${searchLocation.val()}`)
                .then(response => response.json())
                .then(venuesJson => {
-                    
+
                     venuesJson.forEach(currentVenue =>{
-                         
+
                          //getting the current venue id to checkout existence in the database later
                          let currentVenueId = currentVenue.id;
                          let currentVenueAlias = currentVenue.alias;
                          let urlString =     `"http://localhost:8085/venues/id/${currentVenue.id}"`;
-                         
+
                          $(".results").append($(`<li class="result">
 
                                         <div class="result-image">
                                             <img src="${currentVenue.image_url}" alt="resultImage">
                                         </div>
-                                        
+
                                         <div class="result-body">
                                             <a href=${urlString}> ${currentVenue.name}</a>
                                         </div>
-                                        
+
                                    </li>`));
 
 
@@ -57,7 +57,7 @@
                          });
                });
     }
-    
+
     //when user clicks search or presses enter run search from yelp api
     $(searchInput).on("keypress", (event) =>{
           if(event.keyCode === 13){
@@ -67,25 +67,22 @@
     $(searchInput).one("click", ()=>{
          toggleResults();
     })
-    
+
     $(searchButton).on("click", () => {
          search($(searchInput).val());
          toggleResults();
     });
-    
-// // create dropdown the uses google places api to suggest locations
-//          function initAutocomplete(){
-//               let input = document.getElementById('search_location_input');
-//               let searchBox = new google.maps.places.SearchBox(input);
-//
-//               $(searchButton).on("click", function() {
-//                    let places = searchBox.getPlaces();
-//                    if (places.length == 0) {
-//                         return;
-//                    }
-//               });
-//          }
-//
-//          initAutocomplete();
-    
+
+    $(".search_input").on("focus", function() {
+        $('.results-container').removeClass('hideme');
+    });
+
+// When the user clicks outside of the search bar, hide the search results container
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('.searchbar').length) {
+            $('.results-container').addClass('hideme');
+        }
+    });
+
+
 })();

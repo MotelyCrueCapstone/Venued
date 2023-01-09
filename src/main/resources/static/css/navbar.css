@@ -155,7 +155,22 @@
     width: 59%;
     height: 200px;
     min-height: 100px;
-    background-color: #000000f2;
+    background-color: rgba(54, 53, 53, 0.95);
+    padding: 0 0 5px 0;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 9px 21px 7px rgba(0,0,0,0.25);
+}
+
+.location-results-container{
+    z-index: 5;
+    position: absolute;
+    display: flex;
+    top:110%;
+    right: -5px;
+    width: 44%;
+    height: 200px;
+    min-height: 100px;
+    background-color: rgba(54, 53, 53, 0.95);
     padding: 0 0 5px 0;
     border-radius: 0 0 10px 10px;
     box-shadow: 0 9px 21px 7px rgba(0,0,0,0.25);
@@ -168,6 +183,20 @@
     padding: 0;
     margin: 0;
     scrollbar-width: none;
+}
+
+.location-results{
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+
+.location-result:hover{
+    color: blue;
+    cursor: pointer;
 }
 
 .result{
@@ -199,6 +228,9 @@
     height: 50px;
     width: auto;
 }
+
+
+
 @media only screen and (max-width: 1024px){
     .user-container{
         gap: 5px;
