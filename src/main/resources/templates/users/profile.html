@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <div th:replace="~{partials/venued_partials :: myheader('Profile')}"></div>
     <link rel="stylesheet" th:href="@{/css/universalStyle.css}">
@@ -20,6 +22,9 @@
                     <div class="avatar-container">
                         <div class="picture-container">
                             <div class="picture">
+<!--                                <div th:if="${user. == #authentication.principal.id}">-->
+<!--                                    -->
+<!--                                </div>-->
                                 <img src="../imgs/avatar-image.png" class="picture-src" id="wizardPicturePreview" title="">
                                 <input type="file" id="wizard-picture" class="">
                             </div>
@@ -114,7 +119,6 @@
                                         <button>delete</button>
                                     </div>
                                 </li>
-<!--                                test-->
                                 <li class="list-items answered-question-list">
                                     <div>answered question</div>
                                     <div>
