@@ -7,7 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/universalStyle}">
     <title></title>
 </head>
-<body>
+<body th:object="${user}">
 
     <div class="page-wrapper">
 
@@ -82,8 +82,7 @@
                                             </div>
                                         </form>
 
-
-										</div>
+                                    </div>
 
 
                                 </div>
@@ -141,7 +140,7 @@
                                         <form form method="post" th:action="@{|/venues/${venueId}/add-question|}">
                                             <div class="mb-3">
 
-                                                <textarea class="form-control shadow-none" id="questionTextarea" rows="10" cols="30" placeholder="question goes here..."></textarea>
+                                                <textarea class="form-control shadow-none" id="question"  name="question" rows="10" cols="30" placeholder="question goes here..."></textarea>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary close"
@@ -197,6 +196,7 @@
                                                             <div class="mb-3" >
                                                                 <p th:text="${question.getQuestion()}"></p>
                                                                 <input type="hidden" name="questionId" th:value="${question.getId()}">
+                                                                <input type="hidden" name="userId" th:value="${user.getId()}">
                                                                 <textarea class="form-control shadow-none" id="answer" rows="10" cols="30" placeholder="Answer goes here..." name="answer" th:value="${answer}"></textarea>
                                                             </div>
 
