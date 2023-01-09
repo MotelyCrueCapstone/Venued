@@ -6,7 +6,6 @@
     <link rel="stylesheet" th:href="@{/css/venue_pages/venue.css}">
     <link rel="stylesheet" th:href="@{/css/universalStyle}">
     <title></title>
-    <script src="../static/js/vote.js"></script>
 </head>
 <body th:object="${user}">
 
@@ -103,21 +102,21 @@
                                     <span th:class="tipName" th:text="${tip.getTipName()}"></span>
                                     <span th:text="${tip.getTipContent()}"></span>
 
-                                    <a href="#" class="upvoteButton" th:data-tip-id="${tip.getId()}" th:method="POST" th:action="@{|/tips/vote|}">
-                                        <span class="fa-solid fa-thumbs-up text-primary">
+                                    <button class="upVoteButton" th:data-tip-id="${tip.getId()}" th:method="POST" th:action="@{|/tips/vote|}">
 
+                                        <span class="fa-solid fa-thumbs-up text-primary">
                                             <span th:class="small-number" th:text="${tip.getUpVotes()}">
                                             </span>
-
                                         </span>
-                                    </a>
+                                    </button>
 
-                                    <a href="#" class="downvoteButton" th:data-tip-id="${tip.getId()}" th:method="POST">
+                                    <button class="downVoteButton" th:data-tip-id="${tip.getId()}" th:method="POST" th:action="@{|/tips/vote|}">
+
                                         <span class="fa-solid fa-thumbs-down text-primary">
                                             <span th:class="small-number" th:text="${tip.getDownVotes()}">
                                             </span>
                                         </span>
-                                    </a>
+                                    </button>
                                 </div>
                             </li>
                         </ul>

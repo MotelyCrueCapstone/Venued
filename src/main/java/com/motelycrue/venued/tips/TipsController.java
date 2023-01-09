@@ -36,20 +36,19 @@ public class TipsController {
     }
 
     @PostMapping("/vote")
-    public ResponseEntity<Void> handleVote(@RequestBody Vote vote){
-        Optional<Tips> optionalTip = tipsDao.findById(vote.getTipId());
-        if(optionalTip.isEmpty()){
-            return ResponseEntity.notFound().build();
+    public String handleVote(@RequestBody Vote vote){
+        Optional<Tips> tip = tipsDao.findById(vote.getTipId());
+        if(tip.isPresent()){
+            if(vote.getDirection().equals("up")){
+                tip.get().setUpVotes(tip.get().getUpVotes() + 1);
+            } else {
+                tip.get().setDownVotes(tip.get().getDownVotes() + 1);
+            }
+            tipsDao.save(tip.get());
+        }
+        return null;
     }
-    Tips tip = optionalTip.get();
-    if(vote.getDirection().equals("up")){
-        tip.setUpVotes(tip.getUpVotes() + 1);
-    }else if (vote.getDirection().equals("down")){
-        tip.setDownVotes(tip.getDownVotes() + 1);
-    }
-    tipsDao.save(tip);
-    return ResponseEntity.ok().build();
-    }
+
 }
 
 
