@@ -7,7 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/universalStyle.css}">
     <link rel="stylesheet" th:href="@{/css/profile/profile.css}">
 </head>
-<body>
+<body th:object="${user}">
   <div class="page-wrapper">
 
         <nav th:replace="~{partials/venued_partials :: mynav}"></nav>
@@ -26,7 +26,7 @@
 <!--                                <div th:if="${user. == #authentication.principal.id}">-->
 <!--                                    -->
 <!--                                </div>-->
-                                <img src="../imgs/avatar-image.png" class="picture-src" id="wizardPicturePreview" title="">
+                                <img th:src="${user.getImgPath()}" id="wizardPicturePreview" title="">
                                 <input type="file" id="wizard-picture" class="">
                             </div>
                             <h6 class="">Upload Photo</h6>
