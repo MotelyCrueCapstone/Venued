@@ -185,6 +185,10 @@
     scrollbar-width: none;
 }
 
+.hideme {
+    display:none;
+}
+
 .location-results{
     height: 100%;
     width: 100%;
