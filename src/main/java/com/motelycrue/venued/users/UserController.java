@@ -75,6 +75,11 @@ public class UserController {
             model.addAttribute("allAnswersLength", allAnswers.size());
 
 
+            List<Tips> allTips = TipsDao.findTipsByUser(currentUser.get());
+            model.addAttribute("user", currentUser.get());
+            model.addAttribute("allTips", allTips);
+            model.addAttribute("allTipsLength", allTips.size());
+
             return "users/profile";
         }else{
             return "redirect:/home";

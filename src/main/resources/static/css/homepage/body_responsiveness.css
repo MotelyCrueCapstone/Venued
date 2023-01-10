@@ -1,10 +1,14 @@
-@media (max-width: 428px) {
+@media (max-width: 500px) {
+    .set-tone{
+        display: none!important;
+    }
     .title {
         display: block ruby;
     }
     .subsection p{
         font-size: 25px;
         margin: 10px -40px;
+        max-width: 94vw;
     }
 
 }
