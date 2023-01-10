@@ -68,6 +68,6 @@ public class Tips {
     }
     public long getDownvotes(){
         return vote == null ? 0 :
-                vote.stream().filter(vote1 -> vote1.getDirection() == -1).count();
+                vote.stream().filter(vote1 -> vote1.getDirection() == 0).count();
     }
 }
