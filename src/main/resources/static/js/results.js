@@ -29,10 +29,23 @@
 
                                         <div class="result-image">
                                             <img src="${currentVenue.image_url}" alt="resultImage">
+                                           
                                         </div>
 
                                         <div class="result-body">
-                                            <a href=${urlString}> ${currentVenue.name}</a>
+                       
+                                            <div class="result-name-container">
+                                          
+                                                <a href=${urlString}> ${currentVenue.name}</a>
+                                              
+                                            </div>
+                                         
+                                            <p class="result-address">${currentVenue.location.address1} ${currentVenue.location.city}</p>
+                                     
+                                        </div>
+                                        
+                                        <div class="result-rating">
+                                            <p>${currentVenue.rating} </p>
                                         </div>
 
                                    </li>`));
