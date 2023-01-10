@@ -54,9 +54,43 @@
 						</div>
 					</div>
 				</section>
-
+<section class="wrapper recents-wrapper reveal">
+					<p class="title">Recent Activity<p>
+	
+					<div class="recent-cards" id="recent-cards" >
+	
+						<div class="recent-card" th:each="tip : ${topQuestions}">
+							<div class="homepage-Question" th:id="${'tip' + tip.getId()}">
+								<figure>
+									<div>
+										<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
+									</div>
+									<div>
+										<small>username</small>
+										<small th:text="${tip.getVenue().getVenueName()}"></small>
+										<small th:text="${tip.getVenue().getAddress()}"></small>
+									</div>
+								</figure>
+							
+								<div>
+									<p th:text="${tip.getQuestion()}"></p>
+									<div class="recentImg-container">
+										<img th:src="${tip.getVenue().getImgPath()}" alt="restaurant image" class="image recentImg">
+									</div>
+								</div>
+							</div>
+							
+						</div>
+	
+					</div>
+	
+					<div class="centerbutton">
+						<button id="load-more-button">Load More</button>
+					</div>
+				</section>
 <!--BODY-->
 				<section class="main">
+					
 					<div class="main-body">
 						
 						<div class="title">What is Venued?</div>
@@ -81,88 +115,17 @@
 						</div>
 					</div>
 				</section>
+				
 
+				<!--MOST RECENT-->
+				
 			</div>
-
-			<div class="bar-divider"></div>
-
-<!--MOST RECENT-->
-				<section class="wrapper recents-wrapper reveal">
-
-				<p class="title">Most Recent User Submissions<p>
-				<div class="recent-cards" id="recent-cards">
-					<div class="recent-card">
-						<figure>
-							<div>
-								<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-							</div>
-							<div>
-								<small>username</small>
-								<small>venuename</small>
-								<small>San Antonio, TX</small>
-							</div>
-						</figure>
-						
-						<div>
-							<p>Does this venue have free parking</p>
-							<div>
-								<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-							</div>
-							<button>Answer Question</button>
-						</div>
-					</div>
-					<div class="recent-card">
-						<figure>
-							<div>
-								<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-							</div>
-							<div>
-								<small>username</small>
-								<small>venuename</small>
-								<small>San Antonio, TX</small>
-							</div>
-						</figure>
-						<div>
-							<p>Does this venue have free parking</p>
-							<div>
-								<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-							</div>
-							<button>Answer Question</button>
-						</div>
-					</div>
-
-					<div class="recent-card">
-						<figure>
-							<div>
-								<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-							</div>
-							<div>
-								<small>username</small>
-								<small>venuename</small>
-								<small>San Antonio, TX</small>
-							</div>
-						</figure>
-						<div>
-							<p>Does this venue have free parking</p>
-							<div>
-								<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-							</div>
-							<button>Answer Question</button>
-						</div>
-					</div>
-				</div>
-				<div class="centerbutton">
-					<button id="load-more-button">Load More</button>
-				</div>
-		</section>
-
-				<div class="bar-divider"></div>
 			
-		<footer th:replace="~{partials/venued_partials.html :: footer}"></footer>
-		<script src="/js/homepage/events.js"></script>
-		<script src="/js/homepage/loadMore.js"></script>
-		<script src="/js/homepage/scrolling-reveal.js"></script>
-		<script src="/js/results.js"></script>
+			<footer th:replace="~{partials/venued_partials.html :: footer}"></footer>
+			<script src="/js/homepage/events.js"></script>
+			<script src="/js/homepage/loadMore.js"></script>
+			<script src="/js/homepage/scrolling-reveal.js"></script>
+			<script src="/js/results.js"></script>
 	</body>
 </html>
 
