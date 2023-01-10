@@ -54,9 +54,43 @@
 						</div>
 					</div>
 				</section>
-
+<section class="wrapper recents-wrapper reveal">
+					<p class="title">Recent Activity<p>
+	
+					<div class="recent-cards" id="recent-cards" >
+	
+						<div class="recent-card" th:each="tip : ${topQuestions}">
+							<div class="homepage-Question" th:id="${'tip' + tip.getId()}">
+								<figure>
+									<div>
+										<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
+									</div>
+									<div>
+										<small>username</small>
+										<small th:text="${tip.getVenue().getVenueName()}"></small>
+										<small th:text="${tip.getVenue().getAddress()}"></small>
+									</div>
+								</figure>
+							
+								<div>
+									<p th:text="${tip.getQuestion()}"></p>
+									<div class="recentImg-container">
+										<img th:src="${tip.getVenue().getImgPath()}" alt="restaurant image" class="image recentImg">
+									</div>
+								</div>
+							</div>
+							
+						</div>
+	
+					</div>
+	
+					<div class="centerbutton">
+						<button id="load-more-button">Load More</button>
+					</div>
+				</section>
 <!--BODY-->
 				<section class="main">
+					
 					<div class="main-body">
 
 						<div class="title">What is Venued?</div>
@@ -81,8 +115,12 @@
 						</div>
 					</div>
 				</section>
+				
 
+				<!--MOST RECENT-->
+				
 			</div>
+<<<<<<< HEAD
 
 			<div class="bar-divider"></div>
 
@@ -130,6 +168,14 @@
 		<script src="/js/homepage/loadMore.js"></script>
 		<script src="/js/homepage/scrolling-reveal.js"></script>
 		<script src="/js/results.js"></script>
+=======
+			
+			<footer th:replace="~{partials/venued_partials.html :: footer}"></footer>
+			<script src="/js/homepage/events.js"></script>
+			<script src="/js/homepage/loadMore.js"></script>
+			<script src="/js/homepage/scrolling-reveal.js"></script>
+			<script src="/js/results.js"></script>
+>>>>>>> 037047324e37f69c3ee67351cf030a63a3013289
 	</body>
 </html>
 

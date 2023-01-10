@@ -77,7 +77,6 @@ public class VenueController {
                             @RequestParam String latitude,
                             @RequestParam String address,
                             @RequestParam String rating) {
-
         Optional<Venue> venueRecord = Optional.ofNullable(this.VenueDao.findVenueByVenueId(venueId));
 
         //if venue is present we aren't going to save the new venue
@@ -100,10 +99,12 @@ public class VenueController {
     @PostMapping("/{venueId}/add-tip")
     public String addTip(@PathVariable String venueId, @RequestParam String tipName, @RequestParam String tipContent,
      @RequestParam Long upVotes, @RequestParam Long downVotes) {
-        Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));
-        if (venue.isPresent()) {
+        Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));User currentUserPrincipal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<User> currentUser = userDao.findById(currentUserPrincipal.getId());
+        if (venue.isPresent() && currentUser.isPresent()) {
             Tips tip = new Tips(tipName, tipContent, upVotes, downVotes);
             tip.setVenue(venue.get());
+            tip.setUser(currentUser.get());
             TipsDao.save(tip);
         }
         return "redirect:/venues/{venueId}";
@@ -125,6 +126,4 @@ public class VenueController {
         }
         return "redirect:/venues/{venueId}";
     }
-
-
 }

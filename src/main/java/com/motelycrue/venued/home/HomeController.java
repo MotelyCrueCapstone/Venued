@@ -3,6 +3,10 @@ package com.motelycrue.venued.home;
 
 import com.motelycrue.venued.questions.Questions;
 import com.motelycrue.venued.questions.QuestionsRepository;
+
+import com.motelycrue.venued.tips.Tips;
+import com.motelycrue.venued.tips.TipsRepository;
+
 import com.motelycrue.venued.yelp_api.YelpApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -22,13 +26,19 @@ public class HomeController {
     private YelpApiService yelpApiService;
 
     @Autowired
+
     private QuestionsRepository QuestionsDao;
+
+
+    private TipsRepository tipsRepository;
+
+    @Autowired
+    private QuestionsRepository questionsRepository;
 
 
     @GetMapping("/home")
     public String homepageAlternative(){
-
-        return "index";
+        return "redirect:/";
     }
 
     @GetMapping("/")
