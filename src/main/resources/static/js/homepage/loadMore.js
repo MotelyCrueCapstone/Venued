@@ -10,78 +10,38 @@ loadMoreButton.addEventListener('click', () => {
     const card1 = document.createElement('div');
     card1.classList.add('recent-card');
     card1.innerHTML = `
-                            <figure>
-                                <div>
-                                    <img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-                                    </div>
-                                        <div>
-                                            <small>username</small>
-                                            <small>venuename</small>
-                                            <small>San Antonio, TX</small>
-                                        </div>
-                            </figure>
-                            <div>
-                                <p>Does this venue have free parking</p>
-                                <div>
-                                    <img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-                                </div>
-                                <button>Answer Question</button>
-                            </div>
+        <div class="recent-card" th:each="question : ${questions}">
+            <figure>
+                <div>
+                    <img th:src="${question.getUser().getImgPath()}" alt="" class="user-image">
+                </div>
+                <div>
+                    <small th:text="${question.getUser().getUsername()}">username</small>
+                    <small th:text="${question.getVenue().getVenueName()}">venuename</small>
+                    <small th:text="${question.getVenue().getAddress()}">San Antonio, TX</small>
+                </div>
+            </figure>
+            
+            <div>
+                <p th:text="${question.getQuestion()}"></p>
+                <div class="imagecenter">
+                    <img th:src="${question.getVenue().getImgPath()}" alt="Image of this venue" class="venueImage">
+                </div>
+                <a th:class="answerLink" th:href="@{'/venues/' + ${question.getVenue().getId()}}">
+                    <p class="button">Answer Question</p>
+                </a>
+            </div>
+        <div>
     `;
-    const card2 = document.createElement('div');
-    card2.classList.add('recent-card');
-    card2.innerHTML = `
-                          <figure>
-                                <div>
-                                    <img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-                                    </div>
-                                        <div>
-                                            <small>username</small>
-                                            <small>venuename</small>
-                                            <small>San Antonio, TX</small>
-                                        </div>
-                            </figure>
-                            <div>
-                                <p>Does this venue have free parking</p>
-                                <div>
-                                    <img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-                                </div>
-                                <button>Answer Question</button>
-                            </div>
-    `;
-    const card3 = document.createElement('div');
-    card3.classList.add('recent-card');
-    card3.innerHTML = `
-                           <figure>
-                                <div>
-                                    <img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-                                    </div>
-                                        <div>
-                                            <small>username</small>
-                                            <small>venuename</small>
-                                            <small>San Antonio, TX</small>
-                                        </div>
-                            </figure>
-                            <div>
-                                <p>Does this venue have free parking</p>
-                                <div>
-                                    <img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-                                </div>
-                                <button>Answer Question</button>
-                            </div>
-    `;
+
 
 // Append new cards to the end of the list
     cardContainer.appendChild(card1);
-    cardContainer.appendChild(card2);
-    cardContainer.appendChild(card3);
 
     loadMoreButton.scrollIntoView({ behavior: 'smooth' });
 
     // Increment counter
     currentSet++;
-
-
 });
 
 

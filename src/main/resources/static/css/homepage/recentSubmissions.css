@@ -51,6 +51,12 @@
     border-radius: 10px;
 }
 
+.user-image {
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+}
+
 figure {
     display: flex;
     padding: 0.5rem;
@@ -69,7 +75,13 @@ small {
     overflow-wrap: break-word;
     width: 400px;
 }
-.recent-card div:last-child > button {
+
+.answerLink{
+    text-decoration: none;
+    text-align: center;
+}
+
+.button {
     display: block;
     margin: 1rem auto 0;
     padding: 0.3rem 1rem;
@@ -77,7 +89,19 @@ small {
     background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
     color: #fff;
     border: none;
+    text-decoration: none;
 }
+.imagecenter{
+    display: flex;
+    justify-content: center;
+}
+
+.venueImage {
+    width: 400px;
+    height: auto;
+}
+
+
 
 @media screen and (min-width: 700px) {
     .recent-cards {

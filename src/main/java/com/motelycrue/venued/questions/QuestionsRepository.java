@@ -21,4 +21,6 @@ public interface QuestionsRepository extends JpaRepository<Questions, Long> {
     //find questions by user who posted them
     List<Questions> findQuestionsByUser(User user);
 
+    List<Questions> findFirst30ByOrderByIdDesc();
+
 }
