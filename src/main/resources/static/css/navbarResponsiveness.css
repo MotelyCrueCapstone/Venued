@@ -18,6 +18,24 @@
 }
 
 @media (max-width: 768px) {
+    footer{
+        background-color: rgb(0, 0, 0)!important;
+    }
+    .main{
+        background-color: #090808f2!important;
+    }
+    .subsection .reveal1{
+        margin-top: 0!important;
+    }
+    .title{
+        position: absolute;
+        z-index: 3;
+        top: 200px;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+    }
     .recents-wrapper{
         background-color: rgba(0, 0, 0,0.99)!important;
         backdrop-filter: blur(10px);
