@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -26,28 +27,9 @@ public class HomeController {
     private YelpApiService yelpApiService;
 
     @Autowired
-
     private QuestionsRepository QuestionsDao;
 
 
-    private TipsRepository tipsRepository;
-
-    @Autowired
-    private QuestionsRepository questionsRepository;
-
-//<<<<<<< HEAD
-//=======
-//    @GetMapping("/")
-//    public String homepage(Model model){
-//        List<Questions> questions = questionsRepository.findAll();
-//        if(questions.size() < 30){
-//            model.addAttribute("topQuestions", questions);
-//        }else{
-//            model.addAttribute("topQuestions", questionsRepository.findFirst30ByOrderByIdDesc());
-//        }
-//        return "index";
-//    }
-//>>>>>>> 1f02a4697a3650163170636d32b9b5e7e88a5bdc
 
     @GetMapping("/home")
     public String homepageAlternative(){
@@ -60,6 +42,15 @@ public class HomeController {
         model.addAttribute("questions", questions);
         return "index";
     }
+
+    @GetMapping("/loadMore/{currentSet}")
+    public List<Questions> loadMoreQuestions(@PathVariable int currentSet) {
+        List<Questions> questions = QuestionsDao.findAll();
+        int start = currentSet * 3;
+        int end = start + 3;
+        return questions.subList(start, end);
+    }
+
 
 }
 
