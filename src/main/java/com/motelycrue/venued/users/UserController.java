@@ -68,12 +68,10 @@ public class UserController {
             model.addAttribute("allQuestions", allQuestions);
             model.addAttribute("allQuestionsLength", allQuestions.size());
 
-
             List<Answer> allAnswers = answersDao.findAnswersByUser(currentUser.get());
             model.addAttribute("user", currentUser.get());
             model.addAttribute("allAnswers", allAnswers);
             model.addAttribute("allAnswersLength", allAnswers.size());
-
 
             List<Tips> allTips = TipsDao.findTipsByUser(currentUser.get());
             model.addAttribute("user", currentUser.get());
@@ -81,9 +79,14 @@ public class UserController {
             model.addAttribute("allTipsLength", allTips.size());
 
             return "users/profile";
-        }else{
+        }else {
             return "redirect:/home";
         }
+    }
+
+    @PostMapping("/user-info")
+    public String userProfileInfo(@ModelAttribute User user) {
+        return "";
     }
 
 

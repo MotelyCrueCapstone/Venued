@@ -17,12 +17,13 @@ public class VenuedUserDetailsService implements UserDetailsService {
     }
     //loads user data from the dao and checks it against user input
     @Override public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+        User user = userRepository. findByUsername(username);
         if(user == null){
             throw new UsernameNotFoundException("UserDetails Not found");
         } else{
             return new VenuedUserDetails(
                     user.getId(),
+                    user.getName(),
                     user.getUsername(),
                     user.getPassword(),
                     user.getEmail(),

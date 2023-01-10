@@ -14,6 +14,10 @@
 .first-card-wrapper {
     /*border: 2px dashed red;*/
 }
+#bio {
+   padding-left: 0.9rem;
+}
+
 /*Profile Pic Start*/
 .picture-container{
     position: relative;

@@ -22,14 +22,22 @@
                     <!--- profile picture starts here ---->
                     <div class="avatar-container">
                         <div class="picture-container">
+
                             <div class="picture">
-<!--                                <div th:if="${user. == #authentication.principal.id}">-->
-<!--                                    -->
-<!--                                </div>-->
-                                <img th:src="${user.getImgPath()}" id="wizardPicturePreview" title="">
-                                <input type="file" id="wizard-picture" class="">
+                                <img th:src="${user.getImgPath()}" id="wizardPicturePreview" alt="user image">
                             </div>
-                            <h6 class="">Upload Photo</h6>
+
+                            <form action="/fileupload" method="post" enctype="multipart/form-data">
+
+                                <div>
+                                    <input type="file" name="file" id="wizard-picture" class="">
+                                </div>
+
+                                <div>
+                                    <input type="submit" value="Upload a photo" />
+                                </div>
+
+                            </form>
                         </div>
                         <p>user name goes here...</p>
                         <div class="edit-btn-container">
@@ -47,7 +55,7 @@
                             </div>
                             <div>
                                <label for="bio">Bio</label>
-                               <textarea name="bio" id="bio" cols="30" rows="5" placeholder="add bio..."></textarea>
+                               <textarea name="bio" id="bio" cols="30" rows="5" placeholder="Add a bio..."></textarea>
                             </div>
                             <div>
                                 <input type="submit" value="Save" name="submit" id="submit-btn">
@@ -142,6 +150,7 @@
             </div>
         </section>
   </div>
+  <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
   <script src="/js/profile.js"></script>
 </body>
 </html>
