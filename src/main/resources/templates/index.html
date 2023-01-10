@@ -62,8 +62,10 @@
 					<p class="title">Recent Activity<p>
 					<div class="recent-cards" id="recent-cards">
 						<div class="recent-card" th:each="question : ${questions}">
+
+
 							<figure>
-								<div>
+								<div class="userVenuecontainer">
 									<img th:src="${question.getUser().getImgPath()}" alt="" class="user-image">
 								</div>
 								<div>
@@ -84,7 +86,8 @@
 								</div>
 <!--Only show if logged in-->
 								<div class="user-container" sec:authorize="isAuthenticated()">
-									<a class="answerLink" th:href="@{'/venues/' + ${question.getVenue().getId()}}">
+									<a class="answerLink"
+									   th:href="@{'/venues/' + ${question.getVenue().getId()}#questionModal2}">
 										<p class="button">Answer Question</p>
 									</a>
 								</div>
