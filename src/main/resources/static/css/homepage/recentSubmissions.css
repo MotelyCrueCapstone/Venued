@@ -57,11 +57,18 @@ figure {
     display: flex;
     padding: 0.5rem;
     overflow-wrap: break-word;
+    white-space: nowrap;
     width: 400px;
+}
+
+.userVenuecontainer {
+    overflow-wrap: break-word;
+    white-space: nowrap;
 }
 
 figure div:first-child {
     margin-right: 3rem;
+
 }
 
 small {
@@ -74,13 +81,19 @@ small {
     width: 400px;
 }
 
+.user-container {
+    display: flex;
+    align-items: flex-end;
+}
+
 
 .answerLink{
     text-decoration: none;
     text-align: center;
     margin-top: auto;
-    width: 100%
+    width: 100%;
 }
+
 
 .button {
     display: block;
@@ -119,6 +132,7 @@ small {
 
 .venueName {
     font-size: 23px;
+    word-break: break-all;
 }
 
 @media screen and (min-width: 700px) {
