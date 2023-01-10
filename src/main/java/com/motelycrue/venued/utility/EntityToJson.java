@@ -33,14 +33,12 @@ public class EntityToJson {
 //        return ( new ObjectMapper().writeValueAsString(venueJson));
 //    }
 
-    public String tipToJson(Tips tip) throws JsonProcessingException{
-        TipsJson tipsJson = TipsJson.builder()
-                .tipName(tip.getTipName())
-                .tipContent(tip.getTipContent())
-                .upVotes(tip.getUpVotes())
-                .downVotes(tip.getDownVotes())
-                .id(tip.getId())
-                .build();
-        return ( new ObjectMapper().writeValueAsString(tipsJson));
-    }
+//    public String tipToJson(Tips tip) throws JsonProcessingException{
+//        TipsJson tipsJson = TipsJson.builder()
+//                .tipName(tip.getTipName())
+//                .tipContent(tip.getTipContent())
+//                .id(tip.getId())
+//                .build();
+//        return ( new ObjectMapper().writeValueAsString(tipsJson));
+//    }
 }

@@ -40,7 +40,7 @@ public class VenuedUserDetails extends User implements UserDetails {
 
     public VenuedUserDetails(){}
 
-    public VenuedUserDetails(long id, String username, String password, String email, String imgPath, String bio) {
-        super(id, username, password, email, imgPath, bio);
+    public VenuedUserDetails(long id, String username, String name, String password, String email, String imgPath, String bio) {
+        super(id, name, username, password, email, imgPath, bio);
     }
 }

@@ -232,6 +232,15 @@
     height: 50px;
     width: auto;
 }
+.nav-user-image{
+    height: 40px;
+    width: 40px;
+    border-radius: 100px;
+}
+.profile{
+    border-style: none;
+    background-color: transparent;
+}
 
 
 

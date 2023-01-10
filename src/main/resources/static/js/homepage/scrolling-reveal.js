@@ -16,7 +16,7 @@ $(function(){
 
 
      ScrollReveal().reveal('.reveal', {
-          origin: 'bottom',
+          origin: 'left',
           delay: 300,
           duration: 1600,
           distance: '1000px',

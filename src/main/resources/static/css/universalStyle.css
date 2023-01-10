@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Thasadith:wght@400;700&display=swap');
+
 * {
-    font-family: "Lantinghei SC", sans-serif;
+    font-family: 'Thasadith', sans-serif;
     scrollbar-width: none;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-h1, h2, h3, h4 {
-    font-family: "Lantinghei SC", serif;
+h1, h2, h3, h4, input, button, form {
+    font-family: 'Thasadith', sans-serif;
 }
 
 html{

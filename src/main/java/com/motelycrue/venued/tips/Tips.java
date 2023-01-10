@@ -4,7 +4,12 @@ import com.motelycrue.venued.users.User;
 import com.motelycrue.venued.venues.Venue;
 import javax.persistence.*;
 
+import com.motelycrue.venued.votes.Vote;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,11 +31,6 @@ public class Tips {
     @Column(nullable = false)
     private String tipContent;
 
-    @Column
-    private Long upVotes;
-
-    @Column
-    private Long downVotes;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_id")
@@ -40,21 +40,34 @@ public class Tips {
     @JoinColumn(name="venueId")
     private Venue venue;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tip")
+    private List<Vote> vote;
+
+//    @Column(nullable = true)
+//    private long upvotes = vote == null ? 0 : vote.stream().filter(vote -> vote.getDirection() == 1).count();
+//
+//    @Column(nullable = true)
+//    private long downvotes
+
+
+    public Tips(String tipName, String tipContent, User user, Venue venue) {
+        this.tipName = tipName;
+        this.tipContent = tipContent;
+        this.user = user;
+        this.venue = venue;
+    }
+
     public Tips(String tipName, String tipContent) {
         this.tipName = tipName;
         this.tipContent = tipContent;
     }
 
-    public Tips(String tipContent, String tipName, Venue venue) {
-        this.tipContent = tipContent;
-        this.venue = venue;
-        this.tipName = tipName;
+    public long getUpvotes() {
+        return vote == null ? 0 :
+                vote.stream().filter(vote1 -> vote1.getDirection() == 1).count();
     }
-
-    public Tips(String tipName, String tipContent, Long upVotes, Long downVotes) {
-        this.tipName = tipName;
-        this.tipContent = tipContent;
-        this.upVotes = upVotes;
-        this.downVotes = downVotes;
+    public long getDownvotes(){
+        return vote == null ? 0 :
+                vote.stream().filter(vote1 -> vote1.getDirection() == 0).count();
     }
 }

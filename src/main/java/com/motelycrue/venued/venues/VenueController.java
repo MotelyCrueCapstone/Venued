@@ -49,9 +49,15 @@ public class VenueController {
         Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));
         if (venue.isPresent()) {
 
-            User currentUserPrinciple  = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            User currentUser = userDao.getUserById(currentUserPrinciple.getId());
-            model.addAttribute("user", currentUser);
+            if( SecurityContextHolder.getContext().getAuthentication() != null &&
+                    SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User currentUserPrinciple){
+
+                User currentUser =  (User) userDao.getUserById(currentUserPrinciple.getId());
+
+
+                model.addAttribute("user", currentUser);
+            }
+
 
             model.addAttribute("venue", venue.get());
 
@@ -102,7 +108,7 @@ public class VenueController {
         Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));User currentUserPrincipal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<User> currentUser = userDao.findById(currentUserPrincipal.getId());
         if (venue.isPresent() && currentUser.isPresent()) {
-            Tips tip = new Tips(tipName, tipContent, upVotes, downVotes);
+            Tips tip = new Tips(tipName, tipContent);
             tip.setVenue(venue.get());
             tip.setUser(currentUser.get());
             TipsDao.save(tip);
@@ -126,4 +132,5 @@ public class VenueController {
         }
         return "redirect:/venues/{venueId}";
     }
+
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 	<!--useful global meta data-->
@@ -54,47 +55,66 @@
 						</div>
 					</div>
 				</section>
+
+<!--RECENT SUBMISSIONS-->
 				<section class="wrapper recents-wrapper reveal">
+
 					<p class="title">Recent Activity<p>
-	
-					<div class="recent-cards" id="recent-cards" >
-	
-						<div class="recent-card" th:each="question : ${topQuestions}">
-							<div class="homepage-Question" th:id="${'tip' + question.getId()}">
-								<figure>
-									<div>
-										<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-									</div>
-									<div>
-										<small>username</small>
-										<small th:text="${question.getVenue().getVenueName()}"></small>
-										<small th:text="${question.getVenue().getAddress()}"></small>
-									</div>
-								</figure>
-							
+					<div class="recent-cards" id="recent-cards">
+						<div class="recent-card" th:each="question : ${questions}">
+
+
+							<figure>
+								<div class="userVenuecontainer">
+									<img th:src="${question.getUser().getImgPath()}" alt="" class="user-image">
+								</div>
 								<div>
-									<p th:text="${question.getQuestion()}"></p>
-									<div class="recentImg-container">
-										<img th:src="${question.getVenue().getImgPath()}" alt="restaurant image" class="image recentImg">
+									<small th:text="${question.getUser().getUsername()}">Unknown Username</small>
+									<small th:text="${question.getVenue().getVenueName()}" class="venueName">Unknown
+										Venue</small>
+									<small th:text="${question.getVenue().getAddress()}">Unknown Address</small>
+								</div>
+							</figure>
+
+							<div>
+								<p th:text="${question.getQuestion()}"></p>
+								<div class="imagecenter">
+									<div class="imagewindow">
+										<img th:src="${question.getVenue().getImgPath()}" alt="Image of this venue"
+											 class="venueImage">
 									</div>
 								</div>
+<!--Only show if logged in-->
+								<div class="user-container" sec:authorize="isAuthenticated()">
+									<a class="answerLink"
+									   th:href="@{'/venues/' + ${question.getVenue().getId()}}">
+										<p class="button">Answer Question</p>
+									</a>
+								</div>
+<!--Only show if not logged in-->
+								<div class="user-container" sec:authorize="isAnonymous()">
+									<a class="answerLink" onclick="window.location='/login'">
+										<p class="button">Login to Answer</p>
+									</a>
+								</div>
 							</div>
-							
 						</div>
-	
+
+
+
 					</div>
-	
 					<div class="centerbutton">
 						<button id="load-more-button">Load More</button>
 					</div>
 				</section>
+
 <!--BODY-->
 				<section class="main">
-					
+
 					<div class="main-body">
-						
+
 						<div class="title">What is Venued?</div>
-						
+
 						<div class="subsection reveal1">
 							<img th:src="@{imgs/homepage/body/confetti.png}" alt="">
 							<p>Have you ever driven to another city to see a band and found out that the cheapest
@@ -115,12 +135,14 @@
 						</div>
 					</div>
 				</section>
-				
+
 
 				<!--MOST RECENT-->
-				
+
 			</div>
-			
+
+
+<!--MOST RECENT-->
 			<footer th:replace="~{partials/venued_partials.html :: footer}"></footer>
 			<script src="/js/homepage/events.js"></script>
 			<script src="/js/homepage/loadMore.js"></script>

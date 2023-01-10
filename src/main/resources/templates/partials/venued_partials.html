@@ -52,7 +52,7 @@
 				<span class="bar"></span>
 				<span class="bar"></span>
 			</a>
-		
+
 			<ul class="nav-items">
 				<div class="searchbar">
 					<input class="search_input" type="text" name="search_input" placeholder="Search...">
@@ -79,6 +79,10 @@
 					<form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
 						<input hidden type="submit" value="Sign Out"/>
 					</form>
+				</div>
+				<div class="user-wrapper text-center" sec:authorize="isAuthenticated()">
+					<button class="profile" onclick="window.location.href='/profile'"><img th:src="${#authentication.principal.getImgPath()}" alt="" class="nav-user-image">
+					</button>
 				</div>
 			</ul>
 	</nav>
@@ -109,7 +113,7 @@
 			<div class="rightSide">
 				<div class="subscribe">
 					<form class="subscribe-form" th:action="@{/about_us/subscribe}" method="post">
-						<label for="footer_email">Subscribe</label>
+						<label for="footer_email" class="footer_email">Subscribe</label>
 						<input name="email" type="email" placeholder="Email Address" id="footer_email" class="email" size="40">
 						<button type="submit" class="btn subscribe_btn">Subscribe</button>
 					</form>

@@ -8,22 +8,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@Data
-@Builder
+
+
 public class TipsJson {
-
-
-    private Long id;
-
-    private String tipName;
-
-    private String tipContent;
-
-    private Long upVotes;
-
-    private Long downVotes;
-    private User user;
-
 
 
 }
