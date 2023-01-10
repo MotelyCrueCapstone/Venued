@@ -29,7 +29,7 @@ public class User {
     @Column
     private String imgPath;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String bio;
 
 //    public User(long id, String email, String username, String password) {

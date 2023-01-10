@@ -1,5 +1,6 @@
-package com.motelycrue.venued.tips;
+package com.motelycrue.venued.votes;
 
+import com.motelycrue.venued.tips.Tips;
 import com.motelycrue.venued.users.User;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;

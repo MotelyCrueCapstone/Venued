@@ -76,12 +76,13 @@
                                                 <input type="text" name="upVotes" placeholder="upVotes">
                                                 <input type="text" name="downVotes" placeholder="downVotes">
                                                 <textarea class="form-control shadow-none" name="tipContent" id="tipTextarea" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
-
                                             </div>
+
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
                                                 <button type="Submit" class="btn submit">Submit</button>
                                             </div>
+
                                         </form>
 
                                     </div>
@@ -105,22 +106,23 @@
                                     <span th:class="tipName" th:text="${tip.getTipName()}"></span>
                                     <span th:text="${tip.getTipContent()}"></span>
 
-                                    <form th:method="POST" th:action="@{|/tips/vote/up|}">
+                                    <form th:method="POST" th:action="@{|/tips/vote/1|}">
 
-                                        <div sec:authentication="isAuthenticated()">
+                                        <div sec:authorize="isAuthenticated()"> <!-- if user is logged in -->
                                             <input type="hidden" name="tipId" th:value="${tip.getId()}">
+                                            <input type="hidden" name="userId" th:value="${user.getId()}">
                                             <button class="upVoteButton" th:data-tip-id="${tip.getId()}">
                                                 <span class="fa-solid fa-thumbs-up text-primary">
-                                                <span th:class="small-number" th:text="${tip.getUpVotes()}">
+                                                <span th:class="small-number" th:text="${}">
                                                 </span>
                                              </span>
                                             </button>
                                         </div>
 
-                                        <div sec:authentication="isAnonymous()">
+                                        <div sec:authorize="isAnonymous()">
                                             <button onclick="window.location='/login'" class="upVoteButton" th:data-tip-id="${tip.getId()}">
                                                 <span class="fa-solid fa-thumbs-up text-primary">
-                                                <span th:class="small-number" th:text="${tip.getUpVotes()}">
+                                                <span th:class="small-number" text="">
                                                 </span>
                                              </span>
                                             </button>
@@ -128,23 +130,22 @@
 
                                     </form>
 
-
-
-                                    <form th:method="POST" th:action="@{|/tips/vote/down|}">
+                                    <form th:method="POST" th:action="@{|/tips/vote/0|}">
                                         <input type="hidden" name="tipId" th:value="${tip.getId()}">
-                                        <div sec:authentication="isAuthenticated()">
+                                        <input type="hidden" name="userId" th:value="${user.getId()}">
+                                        <div sec:authorize="isAuthenticated()">
                                             <button type="submit" class="downVoteButton" th:data-tip-id="${tip.getId()}">
                                             <span class="fa-solid fa-thumbs-down text-primary">
-                                                <span th:class="small-number" th:text="">
+                                                <span th:class="small-number" text="">
                                                 </span>
                                             </span>
                                             </button>
                                         </div>
 
-                                        <div sec:authentication="isAnonymous()">
+                                        <div sec:authorize="isAnonymous()">
                                             <button class="downVoteButton" onclick="window.location='/login'" th:data-tip-id="${tip.getId()}">
                                             <span class="fa-solid fa-thumbs-down text-primary">
-                                                <span th:class="small-number" th:text="">
+                                                <span th:class="small-number" text="">
                                                 </span>
                                             </span>
                                             </button>
@@ -312,14 +313,14 @@
                                         <a href="#">
                                                 <span class="fa-solid fa-thumbs-up text-primary">
                                                     <span th:class="small-number"
-                                                          th:text="${question.getAnsweredQuestions().getUpVotes()}">
+                                                          text="">
                                                     </span>
                                                 </span>
                                         </a>
                                         <a href="#">
                                                 <span class="fa-solid fa-thumbs-down text-primary"></span>
                                         </a>
-                                        <span th:class="small-number" th:text="${question.getAnsweredQuestions().getDownVotes()}"/>
+                                        <span th:class="small-number" text=""/>
                                     </div>
                                 </li>
                              </ul>

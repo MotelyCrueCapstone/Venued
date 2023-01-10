@@ -4,6 +4,7 @@ import com.motelycrue.venued.users.User;
 import com.motelycrue.venued.venues.Venue;
 import javax.persistence.*;
 
+import com.motelycrue.venued.votes.Vote;
 import lombok.*;
 
 import java.util.List;

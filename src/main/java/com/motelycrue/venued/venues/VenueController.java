@@ -50,7 +50,6 @@ public class VenueController {
         if (venue.isPresent()) {
 
             if( SecurityContextHolder.getContext().getAuthentication() != null &&
-                    SecurityContextHolder.getContext().getAuthentication().isAuthenticated() &&
                     SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User currentUserPrinciple){
 
                 User currentUser =  (User) userDao.getUserById(currentUserPrinciple.getId());
