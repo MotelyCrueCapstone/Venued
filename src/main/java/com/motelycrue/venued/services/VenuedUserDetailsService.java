@@ -23,6 +23,7 @@ public class VenuedUserDetailsService implements UserDetailsService {
         } else{
             return new VenuedUserDetails(
                     user.getId(),
+                    user.getName(),
                     user.getUsername(),
                     user.getPassword(),
                     user.getEmail(),
