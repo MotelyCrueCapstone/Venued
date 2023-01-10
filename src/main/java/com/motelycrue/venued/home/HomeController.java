@@ -35,25 +35,31 @@ public class HomeController {
     @Autowired
     private QuestionsRepository questionsRepository;
 
-
-    @GetMapping("/")
-    public String homepage(Model model){
-        List<Questions> questions = questionsRepository.findAll();
-        if(questions.size() < 30){
-            model.addAttribute("topQuestions", questions);
-        }else{
-            model.addAttribute("topQuestions", questionsRepository.findFirst30ByOrderByIdDesc());
-        }
-        return "index";
-    }
-
+//<<<<<<< HEAD
+//=======
+//    @GetMapping("/")
+//    public String homepage(Model model){
+//        List<Questions> questions = questionsRepository.findAll();
+//        if(questions.size() < 30){
+//            model.addAttribute("topQuestions", questions);
+//        }else{
+//            model.addAttribute("topQuestions", questionsRepository.findFirst30ByOrderByIdDesc());
+//        }
+//        return "index";
+//    }
+//>>>>>>> 1f02a4697a3650163170636d32b9b5e7e88a5bdc
 
     @GetMapping("/home")
     public String homepageAlternative(){
         return "redirect:/";
     }
 
-
+    @GetMapping("/")
+    public String homepage(Model model){
+        List<Questions> questions = QuestionsDao.findFirst30ByOrderByIdDesc();
+        model.addAttribute("questions", questions);
+        return "index";
+    }
 
 }
 

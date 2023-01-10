@@ -49,9 +49,16 @@ public class VenueController {
         Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));
         if (venue.isPresent()) {
 
-            User currentUserPrinciple  = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            User currentUser = userDao.getUserById(currentUserPrinciple.getId());
-            model.addAttribute("user", currentUser);
+            if( SecurityContextHolder.getContext().getAuthentication() != null &&
+                    SecurityContextHolder.getContext().getAuthentication().isAuthenticated() &&
+                    SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User currentUserPrinciple){
+
+                User currentUser =  (User) userDao.getUserById(currentUserPrinciple.getId());
+
+
+                model.addAttribute("user", currentUser);
+            }
+
 
             model.addAttribute("venue", venue.get());
 

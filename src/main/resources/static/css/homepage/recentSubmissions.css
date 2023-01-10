@@ -49,8 +49,8 @@
     display: flex;
     justify-content: center;
     color: #fff;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    /*overflow-x: scroll;*/
+    /*overflow-y: hidden;*/
     scrollbar-width: none;
 }
 

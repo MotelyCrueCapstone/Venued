@@ -8,9 +8,10 @@
     <title></title>
     <script src="../static/js/vote.js"></script>
 </head>
-<body th:object="${user}">
+<body>
 
     <div class="page-wrapper">
+
 
         <!---- nav bar ---->
         <section class="navSection">
@@ -145,9 +146,11 @@
                                                 <textarea class="form-control shadow-none" id="question"  name="question" rows="10" cols="30" placeholder="question goes here..."></textarea>
                                             </div>
                                             <div class="modal-footer">
+
                                                 <button type="button" class="btn btn-secondary close"
                                                         data-bs-dismiss="modal">Close</button>
                                                 <button type="Submit" class="btn submit">Submit</button>
+
                                             </div>
                                         </form>
                                     </div>
@@ -159,8 +162,10 @@
                     </div>
 
                     <div th:if="${questions.isEmpty()}" class="empty">
+
                         <p class="nothingHere">Looks like no questions have been asked yet! Be the first to ask a
                             question</p>
+
                     </div>
 
                     <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
@@ -179,7 +184,13 @@
                                     <div class="question-wrapper">
 
                                         <span th:text="${question.getQuestion()}"></span>
-                                        <button type="button" class="cta-button" data-bs-toggle="modal" th:data-bs-target="'#Modal' + ${question.getId()}">Answer</button>
+                                        <div sec:authorize="isAuthenticated()">
+                                            <button type="button" class="cta-button" data-bs-toggle="modal" th:data-bs-target="'#Modal' + ${question.getId()}">Answer</button>
+                                        </div>
+                                        <div sec:authorize="isAnonymous()">
+                                            <button type="button" class="cta-button" data-bs-toggle="modal" onclick="window.location='/login'">
+                                                Answer</button>
+                                        </div>
 
                                         <div class="modal fade" th:id="'Modal' + ${question.getId()}" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                                             <div class="modal-dialog">
@@ -193,12 +204,17 @@
 
                                                     <div class="modal-body">
 
-                                                        <form form method="post" th:action="@{|/questions/${venueId}/add-answer|}">
+
+                                                        <form form method="post" th:action="@{|/questions/${venueId}/add-answer|}" >
 
                                                             <div class="mb-3" >
                                                                 <p th:text="${question.getQuestion()}"></p>
                                                                 <input type="hidden" name="questionId" th:value="${question.getId()}">
-                                                                <input type="hidden" name="userId" th:value="${user.getId()}">
+
+                                                                <div sec:authorize="isAuthenticated()">
+                                                                    <input type="hidden" name="userId" th:value="${user.getId()}">
+                                                                </div>
+
                                                                 <textarea class="form-control shadow-none" id="answer" rows="10" cols="30" placeholder="Answer goes here..." name="answer" th:value="${answer}"></textarea>
                                                             </div>
 
@@ -207,7 +223,12 @@
                                                                        th:value="${question.getAnswered()}">
                                                                 <button type="button" class="btn btn-secondary close"
                                                                         data-bs-dismiss="modal">Close</button>
-                                                                <button type="Submit" class="btn submit">Submit</button>
+                                                                <div sec:authorize="isAuthenticated()">
+                                                                    <button type="Submit" class="btn submit">Submit</button>
+                                                                </div>
+                                                                <div sec:authorize="isAnonymous()">
+                                                                    <button onclick="window.location='/login'" class="btn submit">Submit</button>
+                                                                </div>
                                                             </div>
 
                                                         </form>
