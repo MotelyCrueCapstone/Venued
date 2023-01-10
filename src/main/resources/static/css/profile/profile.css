@@ -137,7 +137,7 @@ button#cancel-btn {
     margin: 2rem 0 0;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    height: 100%;
+    min-height: 600px;
 }
 
 .second-card-wrapper ul {

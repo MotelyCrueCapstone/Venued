@@ -29,6 +29,9 @@ public class User {
     @Column
     private String imgPath;
 
+    @Column(nullable = false)
+    private String bio;
+
 //    public User(long id, String email, String username, String password) {
 //        this.id = id;
 //        this.email = email;
