@@ -54,28 +54,28 @@
 						</div>
 					</div>
 				</section>
-<section class="wrapper recents-wrapper reveal">
+				<section class="wrapper recents-wrapper reveal">
 					<p class="title">Recent Activity<p>
 	
 					<div class="recent-cards" id="recent-cards" >
 	
-						<div class="recent-card" th:each="tip : ${topQuestions}">
-							<div class="homepage-Question" th:id="${'tip' + tip.getId()}">
+						<div class="recent-card" th:each="question : ${topQuestions}">
+							<div class="homepage-Question" th:id="${'tip' + question.getId()}">
 								<figure>
 									<div>
 										<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
 									</div>
 									<div>
 										<small>username</small>
-										<small th:text="${tip.getVenue().getVenueName()}"></small>
-										<small th:text="${tip.getVenue().getAddress()}"></small>
+										<small th:text="${question.getVenue().getVenueName()}"></small>
+										<small th:text="${question.getVenue().getAddress()}"></small>
 									</div>
 								</figure>
 							
 								<div>
-									<p th:text="${tip.getQuestion()}"></p>
+									<p th:text="${question.getQuestion()}"></p>
 									<div class="recentImg-container">
-										<img th:src="${tip.getVenue().getImgPath()}" alt="restaurant image" class="image recentImg">
+										<img th:src="${question.getVenue().getImgPath()}" alt="restaurant image" class="image recentImg">
 									</div>
 								</div>
 							</div>

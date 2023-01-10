@@ -32,7 +32,11 @@ public class HomeController {
     @GetMapping("/")
     public String homepage(Model model){
         List<Questions> questions = questionsRepository.findAll();
-        model.addAttribute("topQuestions",questions.subList(0, 5) );
+        if(questions.size() < 30){
+            model.addAttribute("topQuestions", questions);
+        }else{
+            model.addAttribute("topQuestions", questionsRepository.findFirst30ByOrderByIdDesc());
+        }
         return "index";
     }
 
