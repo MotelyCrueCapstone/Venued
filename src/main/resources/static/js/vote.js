@@ -7,8 +7,9 @@ tips.forEach(tip => {
     upVoteButton.addEventListener("click", () => handleVote("up"));
     downVoteButton.addEventListener("click", () => handleVote("down"));
 
+
     function handleVote(voteType) {
-        fetch(`/tips/${tipId}/vote`, {
+fetch(`/api/tips/${tipId}/vote`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -16,12 +17,14 @@ tips.forEach(tip => {
             body: JSON.stringify({
                 voteType: voteType
             })
-        }).then(response => response.json())
+        }).then(res => res.json())
             .then(data => {
-                const votes = tip.querySelector('.votes');
-                votes.innerHTML = data.votes;
+                const { upVotes, downVotes } = data;
+                tip.querySelector('.upVotes').innerText = upVotes;
+                tip.querySelector('.downVotes').innerText = downVotes;
             })
     }
+
 });
 
 
