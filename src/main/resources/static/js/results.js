@@ -1,7 +1,6 @@
 "use strict";
 
 (function () {
-
     let searchInput = $(".search_input");
     let searchButton = $(".search_icon");
     let searchLocation = $("#search_location_input");
@@ -17,9 +16,7 @@
          fetch(`http://localhost:8085/yelp/${query.trimEnd()}?location=${searchLocation.val()}`)
                .then(response => response.json())
                .then(venuesJson => {
-
                     venuesJson.forEach(currentVenue =>{
-
                          //getting the current venue id to checkout existence in the database later
                          let currentVenueId = currentVenue.id;
                          let currentVenueAlias = currentVenue.alias;
@@ -96,5 +93,6 @@
         }
     });
 
+    
 
 })();
