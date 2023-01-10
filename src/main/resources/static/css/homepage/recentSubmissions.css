@@ -49,10 +49,13 @@
     display: flex;
     justify-content: center;
     color: #fff;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
 }
 
 .recent-card {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.38);
     margin: 2rem 0;
     padding: 1rem;
     border-radius: 10px;
@@ -103,6 +106,7 @@ small {
     border: none;
     text-decoration: none;
 }
+
 .imagecenter{
     display: flex;
     justify-content: center;
@@ -115,6 +119,9 @@ small {
 
 
 
+.title{
+    text-decoration: underline;
+}
 @media screen and (min-width: 700px) {
     .recent-cards {
         display: flex;
