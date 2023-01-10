@@ -113,7 +113,7 @@
                                             <input type="hidden" name="userId" th:value="${user.getId()}">
                                             <button class="upVoteButton" th:data-tip-id="${tip.getId()}">
                                                 <span class="fa-solid fa-thumbs-up text-primary">
-                                                <span th:class="small-number" th:text="${}">
+                                                <span th:class="small-number" th:text="${tip.getUpvotes()}"> //text=""
                                                 </span>
                                              </span>
                                             </button>
@@ -122,7 +122,7 @@
                                         <div sec:authorize="isAnonymous()">
                                             <button onclick="window.location='/login'" class="upVoteButton" th:data-tip-id="${tip.getId()}">
                                                 <span class="fa-solid fa-thumbs-up text-primary">
-                                                <span th:class="small-number" text="">
+                                                <span th:class="small-number" th:text="${tip.getUpvotes()}">
                                                 </span>
                                              </span>
                                             </button>
@@ -136,7 +136,7 @@
                                         <div sec:authorize="isAuthenticated()">
                                             <button type="submit" class="downVoteButton" th:data-tip-id="${tip.getId()}">
                                             <span class="fa-solid fa-thumbs-down text-primary">
-                                                <span th:class="small-number" text="">
+                                                <span th:class="small-number" th:text="${tip.getDownvotes()}">
                                                 </span>
                                             </span>
                                             </button>
@@ -145,7 +145,7 @@
                                         <div sec:authorize="isAnonymous()">
                                             <button class="downVoteButton" onclick="window.location='/login'" th:data-tip-id="${tip.getId()}">
                                             <span class="fa-solid fa-thumbs-down text-primary">
-                                                <span th:class="small-number" text="">
+                                                <span th:class="small-number" th:text="${tip.getDownvotes()}">
                                                 </span>
                                             </span>
                                             </button>

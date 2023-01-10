@@ -58,6 +58,8 @@ public class TipsController {
         return String.format("redirect:/venues/%d",
                 tip.get().getVenue().getId());
     }
+
+
 }
 
 

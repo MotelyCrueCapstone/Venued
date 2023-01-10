@@ -6,7 +6,9 @@ import javax.persistence.*;
 
 import com.motelycrue.venued.votes.Vote;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,6 +31,7 @@ public class Tips {
     @Column(nullable = false)
     private String tipContent;
 
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_id")
     private User user;
@@ -39,6 +42,12 @@ public class Tips {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tip")
     private List<Vote> vote;
+
+//    @Column(nullable = true)
+//    private long upvotes = vote == null ? 0 : vote.stream().filter(vote -> vote.getDirection() == 1).count();
+//
+//    @Column(nullable = true)
+//    private long downvotes
 
 
     public Tips(String tipName, String tipContent, User user, Venue venue) {
@@ -51,5 +60,14 @@ public class Tips {
     public Tips(String tipName, String tipContent) {
         this.tipName = tipName;
         this.tipContent = tipContent;
+    }
+
+    public long getUpvotes() {
+        return vote == null ? 0 :
+                vote.stream().filter(vote1 -> vote1.getDirection() == 1).count();
+    }
+    public long getDownvotes(){
+        return vote == null ? 0 :
+                vote.stream().filter(vote1 -> vote1.getDirection() == -1).count();
     }
 }

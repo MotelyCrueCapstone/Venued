@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface VoteRepository extends JpaRepository<Vote, Long> {
-
     List<Vote> findByDirectionLessThanEqual(Integer direction);
     List<Vote> findByDirectionGreaterThanEqual(Integer direction);
+
 }
