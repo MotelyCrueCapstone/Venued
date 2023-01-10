@@ -109,7 +109,7 @@ public class VenueController {
         Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));User currentUserPrincipal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<User> currentUser = userDao.findById(currentUserPrincipal.getId());
         if (venue.isPresent() && currentUser.isPresent()) {
-            Tips tip = new Tips(tipName, tipContent, upVotes, downVotes);
+            Tips tip = new Tips(tipName, tipContent);
             tip.setVenue(venue.get());
             tip.setUser(currentUser.get());
             TipsDao.save(tip);

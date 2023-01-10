@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -26,12 +28,6 @@ public class Tips {
     @Column(nullable = false)
     private String tipContent;
 
-    @Column
-    private Long upVotes;
-
-    @Column
-    private Long downVotes;
-
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_id")
     private User user;
@@ -40,21 +36,19 @@ public class Tips {
     @JoinColumn(name="venueId")
     private Venue venue;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tip")
+    private List<Vote> vote;
+
+
+    public Tips(String tipName, String tipContent, User user, Venue venue) {
+        this.tipName = tipName;
+        this.tipContent = tipContent;
+        this.user = user;
+        this.venue = venue;
+    }
+
     public Tips(String tipName, String tipContent) {
         this.tipName = tipName;
         this.tipContent = tipContent;
-    }
-
-    public Tips(String tipContent, String tipName, Venue venue) {
-        this.tipContent = tipContent;
-        this.venue = venue;
-        this.tipName = tipName;
-    }
-
-    public Tips(String tipName, String tipContent, Long upVotes, Long downVotes) {
-        this.tipName = tipName;
-        this.tipContent = tipContent;
-        this.upVotes = upVotes;
-        this.downVotes = downVotes;
     }
 }

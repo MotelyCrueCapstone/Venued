@@ -37,8 +37,6 @@ public class EntityToJson {
         TipsJson tipsJson = TipsJson.builder()
                 .tipName(tip.getTipName())
                 .tipContent(tip.getTipContent())
-                .upVotes(tip.getUpVotes())
-                .downVotes(tip.getDownVotes())
                 .id(tip.getId())
                 .build();
         return ( new ObjectMapper().writeValueAsString(tipsJson));

@@ -33,12 +33,24 @@ public class TipsController {
         model.addAttribute("tips", tips);
         model.addAttribute("tip", new Tips());
         return "venue";
+
     }
 
-    @PostMapping("/vote")
-    public String handleVote(@RequestBody Vote vote){
+    @PostMapping("/tips/vote/{direction}")
+    public String handleVote(@PathVariable String direction,@RequestParam Long tipId) {
+        Optional<Tips> tip = tipsDao.findById(tipId);
+        if (tip.isPresent()) {
+            int voteDirection = Integer.parseInt(direction);
 
+            Vote vote = Vote.builder()
+                    .direction(voteDirection).
+            tip(tip.get()).build();
+            tip.get().getVote().add(vote);
+            tipsDao.save(tip.get());
+        }
 
+        return String.format("redirect:/venues/%d",
+                tip.get().getVenue().getId());
     }
 }
 

@@ -100,28 +100,56 @@
 <!--                                    <span><img th:src="${tip.user.imgPath}" alt="" class="user-image"></span>-->
 <!--                                    <p class="" th:text="${tip.user.userName}"></p>-->
                                 </div>
+
                                 <div class="thumbs-icon-wrapper">
                                     <span th:class="tipName" th:text="${tip.getTipName()}"></span>
                                     <span th:text="${tip.getTipContent()}"></span>
 
                                     <form th:method="POST" th:action="@{|/tips/vote/up|}">
-                                    <button class="upVoteButton" th:data-tip-id="${tip.getId()}">
 
-                                        <span class="fa-solid fa-thumbs-up text-primary">
-                                            <span th:class="small-number" th:text="${tip.getUpVotes()}">
-                                            </span>
-                                        </span>
-                                    </button>
+                                        <div sec:authentication="isAuthenticated()">
+                                            <input type="hidden" name="tipId" th:value="${tip.getId()}">
+                                            <button class="upVoteButton" th:data-tip-id="${tip.getId()}">
+                                                <span class="fa-solid fa-thumbs-up text-primary">
+                                                <span th:class="small-number" th:text="${tip.getUpVotes()}">
+                                                </span>
+                                             </span>
+                                            </button>
+                                        </div>
+
+                                        <div sec:authentication="isAnonymous()">
+                                            <button onclick="window.location='/login'" class="upVoteButton" th:data-tip-id="${tip.getId()}">
+                                                <span class="fa-solid fa-thumbs-up text-primary">
+                                                <span th:class="small-number" th:text="${tip.getUpVotes()}">
+                                                </span>
+                                             </span>
+                                            </button>
+                                        </div>
+
                                     </form>
 
-                                    <form th:method="POST" th:action="@{|/tips/vote/down|}">
-                                        <button class="downVoteButton" th:data-tip-id="${tip.getId()}">
 
+
+                                    <form th:method="POST" th:action="@{|/tips/vote/down|}">
+                                        <input type="hidden" name="tipId" th:value="${tip.getId()}">
+                                        <div sec:authentication="isAuthenticated()">
+                                            <button type="submit" class="downVoteButton" th:data-tip-id="${tip.getId()}">
                                             <span class="fa-solid fa-thumbs-down text-primary">
-                                                <span th:class="small-number" th:text="${tip.getDownVotes()}">
+                                                <span th:class="small-number" th:text="">
                                                 </span>
                                             </span>
-                                        </button>
+                                            </button>
+                                        </div>
+
+                                        <div sec:authentication="isAnonymous()">
+                                            <button class="downVoteButton" onclick="window.location='/login'" th:data-tip-id="${tip.getId()}">
+                                            <span class="fa-solid fa-thumbs-down text-primary">
+                                                <span th:class="small-number" th:text="">
+                                                </span>
+                                            </span>
+                                            </button>
+                                        </div>
+
                                     </form>
                                 </div>
                             </li>
