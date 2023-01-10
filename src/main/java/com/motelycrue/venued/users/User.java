@@ -18,10 +18,10 @@ public class User {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false)
     private String username;
+
+    @Column(nullable = true)
+    private String name;
 
     @Column(nullable = false)
     private String password;
@@ -32,7 +32,7 @@ public class User {
     @Column
     private String imgPath;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String bio;
 
 //    public User(long id, String email, String username, String password) {
@@ -41,11 +41,4 @@ public class User {
 //        this.username = username;
 //        this.password = password;
 //    }
-
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String userName){
-        this.username = userName;
-    }
 }

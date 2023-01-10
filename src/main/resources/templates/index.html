@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 	<!--useful global meta data-->
@@ -61,26 +62,41 @@
 					<p class="title">Recent Activity<p>
 					<div class="recent-cards" id="recent-cards">
 						<div class="recent-card" th:each="question : ${questions}">
+
+
 							<figure>
-								<div>
+								<div class="userVenuecontainer">
 									<img th:src="${question.getUser().getImgPath()}" alt="" class="user-image">
 								</div>
 								<div>
-									<small th:text="${question.getUser().getUsername()}">username</small>
-									<small th:text="${question.getVenue().getVenueName()}">venuename</small>
-									<small th:text="${question.getVenue().getAddress()}">San Antonio, TX</small>
+									<small th:text="${question.getUser().getUsername()}">Unknown Username</small>
+									<small th:text="${question.getVenue().getVenueName()}" class="venueName">Unknown
+										Venue</small>
+									<small th:text="${question.getVenue().getAddress()}">Unknown Address</small>
 								</div>
 							</figure>
 
 							<div>
 								<p th:text="${question.getQuestion()}"></p>
 								<div class="imagecenter">
-									<img th:src="${question.getVenue().getImgPath()}" alt="Image of this venue"
-										 class="venueImage">
+									<div class="imagewindow">
+										<img th:src="${question.getVenue().getImgPath()}" alt="Image of this venue"
+											 class="venueImage">
+									</div>
 								</div>
-								<a th:class="answerLink" th:href="@{'/venues/' + ${question.getVenue().getId()}}">
-									<p class="button">Answer Question</p>
-								</a>
+<!--Only show if logged in-->
+								<div class="user-container" sec:authorize="isAuthenticated()">
+									<a class="answerLink"
+									   th:href="@{'/venues/' + ${question.getVenue().getId()}}">
+										<p class="button">Answer Question</p>
+									</a>
+								</div>
+<!--Only show if not logged in-->
+								<div class="user-container" sec:authorize="isAnonymous()">
+									<a class="answerLink" onclick="window.location='/login'">
+										<p class="button">Login to Answer</p>
+									</a>
+								</div>
 							</div>
 						</div>
 
@@ -92,42 +108,6 @@
 					</div>
 				</section>
 
-
-
-<!--				<section class="wrapper recents-wrapper reveal">-->
-<!--					<p class="title">Recent Activity<p>-->
-
-<!--					<div class="recent-cards" id="recent-cards" >-->
-
-<!--						<div class="recent-card" th:each="question : ${topQuestions}">-->
-<!--							<div class="homepage-Question" th:id="${'tip' + question.getId()}">-->
-<!--								<figure>-->
-<!--									<div>-->
-<!--										<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">-->
-<!--									</div>-->
-<!--									<div>-->
-<!--										<small>username</small>-->
-<!--										<small th:text="${question.getVenue().getVenueName()}"></small>-->
-<!--										<small th:text="${question.getVenue().getAddress()}"></small>-->
-<!--									</div>-->
-<!--								</figure>-->
-
-<!--								<div>-->
-<!--									<p th:text="${question.getQuestion()}"></p>-->
-<!--									<div class="recentImg-container">-->
-<!--										<img th:src="${question.getVenue().getImgPath()}" alt="restaurant image" class="image recentImg">-->
-<!--									</div>-->
-<!--								</div>-->
-<!--							</div>-->
-
-<!--						</div>-->
-
-<!--					</div>-->
-
-<!--					<div class="centerbutton">-->
-<!--						<button id="load-more-button">Load More</button>-->
-<!--					</div>-->
-<!--				</section>-->
 <!--BODY-->
 				<section class="main">
 

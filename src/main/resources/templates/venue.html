@@ -56,8 +56,19 @@
                 <div class="tip-card">
                     <div class="card-wrapper">
                         <p class="title card-heading">Tips</p>
-                        <button type="button" class="cta-button" data-bs-toggle="modal"
-                                data-bs-target="#tipModal1">Add A Tip</button>
+
+                        <div sec:authorize="isAuthenticated()">
+                            <button type="button" class="cta-button" data-bs-toggle="modal"
+                                    data-bs-target="#tipModal1">Add A Tip
+                            </button>
+                        </div>
+
+                        <div class="user-container" sec:authorize="isAnonymous()">
+                            <button type="button" class="cta-button" onclick="window.location='/login'"
+                                    >Login to Add a Tip
+                            </button>
+                        </div>
+
                         <!-- Modal -->
                         <div class="modal fade" id="tipModal1" tabindex="-1" aria-labelledby="tipModal1" aria-hidden="true">
                             <div class="modal-dialog">
@@ -76,12 +87,13 @@
                                                 <input type="text" name="upVotes" placeholder="upVotes">
                                                 <input type="text" name="downVotes" placeholder="downVotes">
                                                 <textarea class="form-control shadow-none" name="tipContent" id="tipTextarea" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
-
                                             </div>
+
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
                                                 <button type="Submit" class="btn submit">Submit</button>
                                             </div>
+
                                         </form>
 
                                     </div>
@@ -100,25 +112,57 @@
 <!--                                    <span><img th:src="${tip.user.imgPath}" alt="" class="user-image"></span>-->
 <!--                                    <p class="" th:text="${tip.user.userName}"></p>-->
                                 </div>
+
                                 <div class="thumbs-icon-wrapper">
                                     <span th:class="tipName" th:text="${tip.getTipName()}"></span>
                                     <span th:text="${tip.getTipContent()}"></span>
 
-                                    <a href="#" class="upvoteButton" th:data-tip-id="${tip.getId()}" th:method="POST" th:action="@{|/tips/vote|}">
-                                        <span class="fa-solid fa-thumbs-up text-primary">
+                                    <form th:method="POST" th:action="@{|/tips/vote/1|}">
 
-                                            <span th:class="small-number" th:text="${tip.getUpVotes()}">
+                                        <div sec:authorize="isAuthenticated()"> <!-- if user is logged in -->
+                                            <input type="hidden" name="tipId" th:value="${tip.getId()}">
+                                            <input type="hidden" name="userId" th:value="${user.getId()}">
+                                            <button class="upVoteButton" th:data-tip-id="${tip.getId()}">
+                                                <span class="fa-solid fa-thumbs-up text-primary">
+                                                <span th:class="small-number" th:text="${tip.getUpvotes()}"> //text=""
+                                                </span>
+                                             </span>
+                                            </button>
+                                        </div>
+
+                                        <div sec:authorize="isAnonymous()">
+                                            <button onclick="window.location='/login'" class="upVoteButton" th:data-tip-id="${tip.getId()}">
+                                                <span class="fa-solid fa-thumbs-up text-primary">
+                                                <span th:class="small-number" th:text="${tip.getUpvotes()}">
+                                                </span>
+                                             </span>
+                                            </button>
+                                        </div>
+
+                                    </form>
+
+                                    <form th:method="POST" th:action="@{|/tips/vote/0|}">
+                                        <input type="hidden" name="tipId" th:value="${tip.getId()}">
+                                        <input type="hidden" name="userId" th:value="${user.getId()}">
+                                        <div sec:authorize="isAuthenticated()">
+                                            <button type="submit" class="voteButton" th:data-tip-id="${tip.getId()}">
+                                            <span class="fa-solid fa-thumbs-down text-primary">
+                                                <span th:class="small-number" th:text="${tip.getDownvotes()}">
+                                                </span>
                                             </span>
+                                            </button>
+                                        </div>
 
-                                        </span>
-                                    </a>
-
-                                    <a href="#" class="downvoteButton" th:data-tip-id="${tip.getId()}" th:method="POST">
-                                        <span class="fa-solid fa-thumbs-down text-primary">
-                                            <span th:class="small-number" th:text="${tip.getDownVotes()}">
+                                        <div sec:authorize="isAnonymous()">
+                                            <button class="voteButton" onclick="window.location='/login'" th:data-tip-id="${tip.getId()}">
+                                            <span class="fa-solid fa-thumbs-down text-primary">
+                                                <span th:class="small-number" th:text="${tip.getDownvotes()}">
+                                                </span>
                                             </span>
-                                        </span>
-                                    </a>
+                                            </button>
+                                        </div>
+
+                                    </form>
                                 </div>
                             </li>
                         </ul>
@@ -130,7 +174,18 @@
                     <!--Questions Modal-->
                     <div class="card-wrapper">
                         <p class="title card-heading">Questions</p>
-                        <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#questionModal2">Ask a Question</button>
+                        <div sec:authorize="isAuthenticated()">
+                            <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#questionModal2">
+                                Ask a Question
+                            </button>
+                        </div>
+                        <div sec:authorize="isAnonymous()">
+                            <button type="button" class="cta-button" onclick="window.location='/login'">
+                                Login to Ask a Question
+                            </button>
+                        </div>
+
+
                         <!-- Modal -->
                         <div class="modal fade" id="questionModal2" tabindex="-1" aria-labelledby="questionModal2" aria-hidden="true">
                             <div class="modal-dialog">
@@ -280,14 +335,14 @@
                                         <a href="#">
                                                 <span class="fa-solid fa-thumbs-up text-primary">
                                                     <span th:class="small-number"
-                                                          th:text="${question.getAnsweredQuestions().getUpVotes()}">
+                                                          text="">
                                                     </span>
                                                 </span>
                                         </a>
                                         <a href="#">
                                                 <span class="fa-solid fa-thumbs-down text-primary"></span>
                                         </a>
-                                        <span th:class="small-number" th:text="${question.getAnsweredQuestions().getDownVotes()}"/>
+                                        <span th:class="small-number" text=""/>
                                     </div>
                                 </li>
                              </ul>

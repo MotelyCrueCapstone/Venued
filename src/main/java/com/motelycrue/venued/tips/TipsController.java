@@ -1,11 +1,9 @@
 package com.motelycrue.venued.tips;
 
-import com.motelycrue.venued.questions.Questions;
 import com.motelycrue.venued.users.User;
 import com.motelycrue.venued.users.UserRepository;
-import com.motelycrue.venued.venues.Venue;
+import com.motelycrue.venued.votes.Vote;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,23 +31,35 @@ public class TipsController {
         model.addAttribute("tips", tips);
         model.addAttribute("tip", new Tips());
         return "venue";
+
     }
 
-    @PostMapping("/vote")
-    public ResponseEntity<Void> handleVote(@RequestBody Vote vote){
-        Optional<Tips> optionalTip = tipsDao.findById(vote.getTipId());
-        if(optionalTip.isEmpty()){
-            return ResponseEntity.notFound().build();
+    @PostMapping("/vote/{direction}")
+    public String handleVote(@PathVariable String direction,
+                             @RequestParam Long tipId,
+                             @RequestParam Long userId){
+
+        Optional<Tips> tip = tipsDao.findById(tipId);
+        Optional<User> currentUser = userDao.findById(userId);
+
+        if (tip.isPresent() && currentUser.isPresent()) {
+            int voteDirection = Integer.parseInt(direction);
+
+            Vote vote = Vote.builder()
+                    .direction(voteDirection)
+                    .tip(tip.get())
+                    .user(currentUser.get())
+                    .build();
+
+            tip.get().getVote().add(vote);
+            tipsDao.save(tip.get());
+        }
+
+        return String.format("redirect:/venues/%d",
+                tip.get().getVenue().getId());
     }
-    Tips tip = optionalTip.get();
-    if(vote.getDirection().equals("up")){
-        tip.setUpVotes(tip.getUpVotes() + 1);
-    }else if (vote.getDirection().equals("down")){
-        tip.setDownVotes(tip.getDownVotes() + 1);
-    }
-    tipsDao.save(tip);
-    return ResponseEntity.ok().build();
-    }
+
+
 }
 
 

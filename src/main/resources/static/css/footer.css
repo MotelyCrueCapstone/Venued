@@ -19,21 +19,16 @@
     border-radius: 10px;
     border: 1px solid grey;
     margin-bottom: 5px;
-    font-family: "Lantinghei SC", sans-serif;
+    font-weight: bold;
 }
 
-.rightSide{
-}
-
-.subscribe{
-}
 
 .subscribe-form{
     display: flex;
     flex-direction: column;
-    font-family: "Lantinghei SC", sans-serif;
 }
 .subscribe_btn{
+    border: none;
     background: orangered linear-gradient(to right, orangered, orange);
 }
 
@@ -63,6 +58,11 @@ textarea{
 #mobile_subscribe{
     display: none;
 }
+
+.fab, .footer_email {
+    color: white;
+}
+
 
 @media (max-width: 768px) {
     .black-logo{
