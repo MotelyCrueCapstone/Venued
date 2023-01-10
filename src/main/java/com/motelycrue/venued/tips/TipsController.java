@@ -37,18 +37,9 @@ public class TipsController {
 
     @PostMapping("/vote")
     public String handleVote(@RequestBody Vote vote){
-        Optional<Tips> tip = tipsDao.findById(vote.getTipId());
-        if(tip.isPresent()){
-            if(vote.getDirection().equals("up")){
-                tip.get().setUpVotes(tip.get().getUpVotes() + 1);
-            } else if (vote.getDirection().equals("down")){
-                tip.get().setDownVotes(tip.get().getDownVotes() + 1);
-            }
-            tipsDao.save(tip.get());
-        }
-        return null;
-    }
 
+
+    }
 }
 
 

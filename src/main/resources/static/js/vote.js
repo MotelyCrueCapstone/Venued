@@ -9,7 +9,7 @@ tips.forEach(tip => {
 
 
     function handleVote(voteType) {
-fetch(`/api/tips/${tipId}/vote`, {
+fetch(`/tips/${tipId}/vote`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
