@@ -103,6 +103,9 @@ small {
 }
 
 .imagewindow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 350px;
     height: 200px;
     overflow: hidden;
