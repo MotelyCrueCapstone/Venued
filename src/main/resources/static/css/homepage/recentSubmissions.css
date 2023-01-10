@@ -4,10 +4,11 @@
     padding: 1rem;
     overflow: hidden;
 }
-
+.homepage-Question:nth-child(3n){
+    clear: right;
+}
 #recent-cards {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
 }
 
@@ -16,9 +17,15 @@
     justify-content: center;
 }
 
-.recentimg {
-    width: 390px;
-    height: 300px;
+.recentImg-container{
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+}
+.recentImg {
+    width: 200px;
+    height: auto;
+    border: 1px solid #ffffff55;
 }
 
 #load-more-button {
@@ -49,6 +56,10 @@
     margin: 2rem 0;
     padding: 1rem;
     border-radius: 10px;
+    border: 1px solid #ffffff55;
+    max-height: 350px;
+    min-height: 350px;
+    max-width: 400px;
 }
 
 figure {
@@ -69,6 +80,7 @@ small {
     overflow-wrap: break-word;
     width: 400px;
 }
+
 .recent-card div:last-child > button {
     display: block;
     margin: 1rem auto 0;

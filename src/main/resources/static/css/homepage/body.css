@@ -9,13 +9,13 @@
 }
 
 .main{
-    border-radius: 0 0 40px 40px;
     backdrop-filter: blur(10px);
-    background-color: #00000099;
-    padding: 30px 75px;
+    background-color: #000000bb;
+    padding: 30px 20px  100px 20px;
     color: white;
     overflow: hidden;
 }
+
 /*gi*/
 .main-body{
     display: flex;
@@ -25,7 +25,7 @@
 
 .subsection{
     display: flex;
-    /*gap: 170px;*/
+    gap: 100px;
     margin-top: 60px;
     align-content: center;
     align-items: center;
@@ -44,7 +44,8 @@
     align-content: center;
     justify-content: center;
     text-align: center;
-    font-size: 30px;
+    font-size: 1.4rem;
+    max-width: 40vw;
 }
 
 
