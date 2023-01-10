@@ -5,7 +5,12 @@
         gap: 5px;
     }
 }
+
 @media screen and (max-width: 810px){
+    .set-tone{
+        display: none;
+    }
+
     .nav-items{
         gap: 1rem;
         margin-right: -55px;
@@ -13,8 +18,16 @@
 }
 
 @media (max-width: 768px) {
+    .recents-wrapper{
+        background-color: rgba(0, 0, 0,0.99)!important;
+        backdrop-filter: blur(10px);
+    }
+    .set-tone{
+        display: none;
+    }
     .topNav{
         align-items: unset;
+        background: linear-gradient(#000, #000000f3, #000000f1);
     }
 
     .venued{
@@ -22,9 +35,25 @@
     }
     .venued-logo{
         vertical-align: unset;
+        margin-left: 30px;
         margin-bottom: 10px;
     }
 
+    .searchbar{
+        border: none;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .searchbar input{
+        width: 80vw;
+        border: solid 1px white;
+    }
+    .searchbar #search_location_input{
+        margin-top: 10px;
+        border: solid 1px white;
+        width: 80vw;
+    }
     .toggle-button{
         display: flex;
         position: absolute;
@@ -61,13 +90,14 @@
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 70px;
+        top: 68px;
+        left: 0;
         width: 100vw;
         height: 100vh;
         padding: 1rem 0;
         gap: 3rem;
         z-index: 99;
-        background: rgb(35, 29, 53);
+        background: #000000;
     }
 
     .topNav .nav-items .user-container{
