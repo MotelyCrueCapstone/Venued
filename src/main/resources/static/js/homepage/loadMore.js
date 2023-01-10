@@ -3,6 +3,7 @@ const loadMoreButton = document.querySelector('#load-more-button');
 let cardsToShow = 3;
 
 window.addEventListener('load', function() {
+    const totalCards = cardContainer.childNodes.length;
     function showCards() {
         const cardContent = document.querySelectorAll('.recent-card');
         for (let i = 0; i < cardContent.length; i++) {
@@ -12,8 +13,11 @@ window.addEventListener('load', function() {
                 cardContent[i].style.display = "none";
             }
         }
-    }
 
+        if (cardsToShow >= totalCards) {
+            loadMoreButton.style.display = "none";
+        }
+    }
     showCards();
 
     loadMoreButton.addEventListener('click', () => {
