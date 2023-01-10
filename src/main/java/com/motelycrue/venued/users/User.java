@@ -20,6 +20,9 @@ public class User {
     @Column(nullable = false)
     private String username;
 
+    @Column(nullable = true)
+    private String name;
+
     @Column(nullable = false)
     private String password;
 
