@@ -48,7 +48,7 @@
 
                     <!---- profile form starts here ------>
                     <div class="form-container">
-                        <form class="form" th:action="@{/user-info}" th:method="post" th:object="${user}">
+                        <form class="form" th:action="@{|/{id}/user-info|}" th:method="post" th:object="${user}">
                             <div>
                                <label for="name">Name</label>
                                <input type="text" name="name" id="name" th:field="*{name}">

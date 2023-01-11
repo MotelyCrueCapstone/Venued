@@ -85,8 +85,8 @@ public class UserController {
         }
     }
 
-    @GetMapping("{id}/user-info")
-    public String showProfileForm(@PathVariable Long id,  Model model) {
+    @GetMapping("/user-info")
+    public String showProfileForm(@PathVariable Long id, Model model) {
         User user = userDao.getUserById(id);
         model.addAttribute("user", user);
         return "users/profile";
