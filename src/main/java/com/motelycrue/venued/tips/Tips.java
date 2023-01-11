@@ -28,7 +28,7 @@ public class Tips {
     @Column(nullable = false)
     private String tipName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 510)
     private String tipContent;
 
 
@@ -42,13 +42,6 @@ public class Tips {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tip")
     private List<Vote> vote;
-
-//    @Column(nullable = true)
-//    private long upvotes = vote == null ? 0 : vote.stream().filter(vote -> vote.getDirection() == 1).count();
-//
-//    @Column(nullable = true)
-//    private long downvotes
-
 
     public Tips(String tipName, String tipContent, User user, Venue venue) {
         this.tipName = tipName;
@@ -64,10 +57,12 @@ public class Tips {
 
     public long getUpvotes() {
         return vote == null ? 0 :
-                vote.stream().filter(vote1 -> vote1.getDirection() == 1).count();
+                vote.stream().filter(vote1 ->
+                        vote1.getDirection() == 1).count();
     }
     public long getDownvotes(){
         return vote == null ? 0 :
-                vote.stream().filter(vote1 -> vote1.getDirection() == 0).count();
+                vote.stream().filter(vote1 ->
+                        vote1.getDirection() == 0).count();
     }
 }

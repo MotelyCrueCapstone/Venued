@@ -19,7 +19,7 @@ public class Answer {
     @Column(name = "id", nullable = true)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 510)
     private String answer;
 
     @Column
