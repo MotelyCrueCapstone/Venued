@@ -61,7 +61,7 @@
 
                         <div class="user-container" sec:authorize="isAnonymous()">
                             <button type="button" class="cta-button" onclick="window.location='/login'"
-                                    >Login to Add a Tip
+                                    >Add a Tip
                             </button>
                         </div>
 
@@ -79,9 +79,6 @@
                                             <div class="mb-3">
                                                 <input type="hidden" name="venueId" value="{venueId}">
                                                 <input type="text" name="tipName" placeholder="Tip Name">
-<!--THESE WILL BE ADDED AUTOMATICALLY WHEN THE USER IS LOGGED IN. I AM ONLY PUTTING THESE HERE FOR TESTING PURPOSES-->
-                                                <input type="text" name="upVotes" placeholder="upVotes">
-                                                <input type="text" name="downVotes" placeholder="downVotes">
                                                 <textarea class="form-control shadow-none" name="tipContent" id="tipTextarea" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
                                             </div>
 
@@ -112,9 +109,7 @@
                             <ul class="list-tips">
                             <li>
                                 <div class="user-wrapper">
-<!--UNCOMMENT LATER ONCE MODAL IS FIXED!!!!!!!!!!-->
-<!--                                    <span><img th:src="${tip.user.imgPath}" alt="" class="user-image"></span>-->
-<!--                                    <p class="" th:text="${tip.user.userName}"></p>-->
+
                                 </div>
 
                                 <div class="thumbs-icon-wrapper">
