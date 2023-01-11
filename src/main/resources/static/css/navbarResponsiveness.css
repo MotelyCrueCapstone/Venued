@@ -30,10 +30,9 @@
     .title{
         position: absolute;
         z-index: 3;
-        top: 200px;
+        top: 0px;
         width: 100vw;
         display: flex;
-        justify-content: center;
         justify-items: center;
     }
     .recents-wrapper{
