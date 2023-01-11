@@ -103,8 +103,7 @@ public class VenueController {
     }
 
     @PostMapping("/{venueId}/add-tip")
-    public String addTip(@PathVariable String venueId, @RequestParam String tipName, @RequestParam String tipContent,
-     @RequestParam Long upVotes, @RequestParam Long downVotes) {
+    public String addTip(@PathVariable String venueId, @RequestParam String tipName, @RequestParam String tipContent) {
         Optional<Venue> venue = VenueDao.findById(Long.parseLong(venueId));User currentUserPrincipal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<User> currentUser = userDao.findById(currentUserPrincipal.getId());
         if (venue.isPresent() && currentUser.isPresent()) {

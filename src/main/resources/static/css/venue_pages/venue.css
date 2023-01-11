@@ -219,8 +219,18 @@ h2, h3 {
 .question-wrapper{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 1rem;
 }
+
+
+
+.upVoteButton, .voteButton {
+    background:none;
+    border: none;
+}
+
+
 @media screen and (min-width: 700px) {
     .answered-question-wrapper {
         display: flex;
