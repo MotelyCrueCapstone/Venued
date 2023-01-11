@@ -20,11 +20,11 @@ public class Questions {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 510)
     private String question;
 
-    @Column(nullable = false, columnDefinition = "int default 0")
-    private int answered;
+    @Column(nullable = false)
+    private int answered = 0;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_id")

@@ -1,7 +1,6 @@
 "use strict";
 
 (function () {
-
     let searchInput = $(".search_input");
     let searchButton = $(".search_icon");
     let searchLocation = $("#search_location_input");
@@ -17,9 +16,7 @@
          fetch(`http://localhost:8085/yelp/${query.trimEnd()}?location=${searchLocation.val()}`)
                .then(response => response.json())
                .then(venuesJson => {
-
                     venuesJson.forEach(currentVenue =>{
-
                          //getting the current venue id to checkout existence in the database later
                          let currentVenueId = currentVenue.id;
                          let currentVenueAlias = currentVenue.alias;
@@ -29,12 +26,24 @@
 
                                         <div class="result-image">
                                             <img src="${currentVenue.image_url}" alt="resultImage">
+                                           
                                         </div>
 
                                         <div class="result-body">
-                                            <a href=${urlString}> ${currentVenue.name}</a>
+                       
+                                            <div class="result-name-container">
+                                          
+                                                <a href=${urlString}> ${currentVenue.name}</a>
+                                              
+                                            </div>
+                                         
+                                            <p class="result-address">${currentVenue.location.address1} ${currentVenue.location.city}</p>
+                                     
                                         </div>
-
+                                       
+                                        <div class="result-rating">
+                                            <p>${currentVenue.rating} </p>
+                                        </div>
                                    </li>`));
 
 
@@ -64,25 +73,25 @@
              search($(searchInput).val());
           }
     });
+    
     $(searchInput).one("click", ()=>{
          toggleResults();
     })
 
     $(searchButton).on("click", () => {
          search($(searchInput).val());
+         $('.location-results-container').addClass('hide');
          toggleResults();
     });
 
     $(".search_input").on("keyup", function() {
         $('.results-container').removeClass('hideme');
     });
-
+    
 // When the user clicks outside of the search bar, hide the search results container
     $(document).on('click', function(event) {
         if (!$(event.target).closest('.searchbar').length) {
             $('.results-container').addClass('hideme');
         }
     });
-
-
 })();

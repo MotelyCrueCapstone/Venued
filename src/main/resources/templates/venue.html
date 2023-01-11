@@ -30,14 +30,10 @@
 				<div class="event-card">
 					<p class="title" th:text="${venue.getVenueName()}"></p>
 
-					<div class="event-container">
-						<div class="#">
-							<p class="title">Event</p>
-							<p class="desc event-desc">This is a section for event description</p>
-						</div>
-
-						<div class="#">
-							<img src="/imgs/venue_placeholder.jpg" alt="" class="image">
+					<div class="event-container marquee" id="event-container">
+						<div class="# ">
+							<p class="title eventText">Event</p>
+							<p class="desc event-desc eventText">This is a section for event description</p>
 						</div>
 					</div>
 
@@ -104,8 +100,16 @@
                         </div>
                         <!---- modal end here --->
                     </div>
-                    <div th:each="tip : ${tips}">
-                        <ul class="list-tips">
+
+                        <div th:if="${tips.isEmpty()}" class="empty">
+
+                            <p class="nothingHere">Looks like no tips have been added yet! <br>Be the first to add
+                                a tip!</p>
+
+                        </div>
+
+                        <div th:if="${!tips.isEmpty()}" th:each="tip : ${tips}">
+                            <ul class="list-tips">
                             <li>
                                 <div class="user-wrapper">
 <!--UNCOMMENT LATER ONCE MODAL IS FIXED!!!!!!!!!!-->
@@ -166,12 +170,11 @@
                                 </div>
                             </li>
                         </ul>
-                    </div>
+                        </div>
                 </div>
 
 <!------ Questions card ------->
                 <div class="question-card">
-                    <!--Questions Modal-->
                     <div class="card-wrapper">
                         <p class="title card-heading">Questions</p>
                         <div sec:authorize="isAuthenticated()">
@@ -186,7 +189,7 @@
                         </div>
 
 
-                        <!-- Modal -->
+        <!-- ASK A QUESTION -->
                         <div class="modal fade" id="questionModal2" tabindex="-1" aria-labelledby="questionModal2" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content question-modal">
@@ -217,10 +220,8 @@
                     </div>
 
                     <div th:if="${questions.isEmpty()}" class="empty">
-
-                        <p class="nothingHere">Looks like no questions have been asked yet! Be the first to ask a
+                        <p class="nothingHere">Looks like no questions have been asked yet! <br>Be the first to ask a
                             question</p>
-
                     </div>
 
                     <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
@@ -302,10 +303,17 @@
 					</div>
 				</section>
 
-	            <!------- answered questions section -------->
+<!------- Answered section -------->
 				<section class="wrapper answered-questions">
 					<p class="title">Answered Questions</p>
 	            <!--    ANSWERED QUESTIONS DIV-->
+                    <div th:if="${questions.isEmpty()}" class="empty">
+                        <p class="nothingHere">Looks like no questions have been answered yet! <br>Be the first to
+                            answer a
+                            question</p>
+                    </div>
+
+                    <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
 					<div class="answered-question-wrapper" th:each="question : ${questions}">
 						<th:block th:if="${question.answered == 1}">
 	            <!--        QUESTION ASKED-->
@@ -347,92 +355,11 @@
                                 </li>
                              </ul>
                         </th:block>
+                    </div>
                 </div>
 				</section>
 
-				<!---- Restaurant cards section ----->
-				<section class="wrapper restaurants-wrapper">
-					<p class="title">Restaurants Near You</p>
-					<div class="restaurant-cards">
-						<div class="restaurant-card">
-							<figure>
-								<div>
-									<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-								</div>
-								<div>
-									<small>username</small>
-									<small>venuename</small>
-									<small>San Antonio, TX</small>
-								</div>
-							</figure>
-							<div>
-								<p>Re</p>
-								<div>
-									<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-								</div>
-	<!--                            <button>Answer Question</button>-->
-							</div>
-						</div>
-						<div class="restaurant-card">
-							<figure>
-								<div>
-									<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-								</div>
-								<div>
-									<small>username</small>
-									<small>venuename</small>
-									<small>San Antonio, TX</small>
-								</div>
-							</figure>
-							<div>
-								<p>Does this venue have free parking</p>
-								<div>
-									<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-								</div>
-	<!--                            <button>Answer Question</button>-->
-							</div>
-						</div>
-						<div class="restaurant-card">
-							<figure>
-								<div>
-									<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-								</div>
-								<div>
-									<small>username</small>
-									<small>venuename</small>
-									<small>San Antonio, TX</small>
-								</div>
-							</figure>
-							<div>
-								<p>Does this venue have free parking</p>
-								<div>
-									<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-								</div>
-	<!--                            <button>Answer Question</button>-->
-							</div>
-						</div>
-						<div class="restaurant-card">
-							<figure>
-								<div>
-									<img src="/imgs/Avatar-Placeholder.png" alt="" class="user-image">
-								</div>
-								<div>
-									<small>username</small>
-									<small>venuename</small>
-									<small>San Antonio, TX</small>
-								</div>
-							</figure>
-							<div>
-								<p>Does this venue have free parking</p>
-								<div>
-									<img src="/imgs/restaurant-image.jpg" alt="restaurant image" class="image">
-								</div>
-	<!--                            <button>Answer Question</button>-->
-							</div>
-						</div>
 
-					</div>
-				</section>
 			</main>
 	</div>
         <!-- footer section -->
@@ -440,6 +367,7 @@
     </div>
 
   <!-- JavaScript Bundle with Popper -->
+<!--    <script src="/js/events.js"></script>-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>

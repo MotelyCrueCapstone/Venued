@@ -1,0 +1,158 @@
+
+
+@media only screen and (max-width: 1024px){
+    .user-container{
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 810px){
+    .set-tone{
+        display: none;
+    }
+
+    .nav-items{
+        gap: 1rem;
+        margin-right: -55px;
+    }
+}
+
+@media (max-width: 768px) {
+    footer{
+        background-color: rgb(0, 0, 0)!important;
+    }
+    .main{
+        background-color: #090808f2!important;
+    }
+    .subsection .reveal1{
+        margin-top: 0!important;
+    }
+    .title{
+        position: absolute;
+        z-index: 3;
+        top: 200px;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+    }
+    .recents-wrapper{
+        background-color: rgba(0, 0, 0,0.99)!important;
+        backdrop-filter: blur(10px);
+    }
+    .set-tone{
+        display: none;
+    }
+    .topNav{
+        align-items: unset;
+        background: linear-gradient(#000, #000000f3, #000000f1);
+    }
+
+    .venued{
+        margin-top: 25px;
+    }
+    .venued-logo{
+        vertical-align: unset;
+        margin-left: 30px;
+        margin-bottom: 10px;
+    }
+
+    .searchbar{
+        border: none;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .searchbar input{
+        width: 80vw;
+        border: solid 1px white;
+    }
+    .searchbar #search_location_input{
+        margin-top: 10px;
+        border: solid 1px white;
+        width: 80vw;
+    }
+    .toggle-button{
+        display: flex;
+        position: absolute;
+        top: .75rem;
+        right: 1rem;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        margin-top: 20px;
+    }
+
+    .toggle-button .bar{
+        height: 3px;
+        width: 100%;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    .search_icon{
+        display: none;
+    }
+
+    .search_input{
+        border: white 1px solid;
+        background-color: white;
+        color: black;
+        width: unset;
+        caret-color: unset;
+        cursor: text;
+    }
+
+    .nav-items{
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        padding: 1rem 0;
+        gap: 3rem;
+        z-index: 99;
+        background: #000000;
+    }
+
+    .topNav .nav-items .user-container{
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        width: 50%;
+        gap: 0;
+        margin-left: 30px;
+    }
+
+    .topNav{
+        width: 100vw;
+        color: white;
+        margin: 0;
+        padding: 5px;
+        border-radius: 0;
+    }
+
+    .topNav .nav-btn{
+        border: 2px solid rgb(116,36,255);
+        padding: 5px 20px;
+        border-radius: 3px;
+        text-transform: capitalize;
+        /*transition: all ease-in 0.3s;*/
+    }
+
+
+
+    /*.topNav .nav-btn:hover{*/
+    /*    border: solid 1px #E3DAF1 !important;*/
+    /*}*/
+
+    .active{
+        display: flex!important;
+        z-index: 3!important;
+    }
+
+}
+
