@@ -52,8 +52,19 @@
                 <div class="tip-card">
                     <div class="card-wrapper">
                         <p class="title card-heading">Tips</p>
-                        <button type="button" class="cta-button" data-bs-toggle="modal"
-                                data-bs-target="#tipModal1">Add A Tip</button>
+
+                        <div sec:authorize="isAuthenticated()">
+                            <button type="button" class="cta-button" data-bs-toggle="modal"
+                                    data-bs-target="#tipModal1">Add A Tip
+                            </button>
+                        </div>
+
+                        <div class="user-container" sec:authorize="isAnonymous()">
+                            <button type="button" class="cta-button" onclick="window.location='/login'"
+                                    >Login to Add a Tip
+                            </button>
+                        </div>
+
                         <!-- Modal -->
                         <div class="modal fade" id="tipModal1" tabindex="-1" aria-labelledby="tipModal1" aria-hidden="true">
                             <div class="modal-dialog">
@@ -130,7 +141,7 @@
                                         <input type="hidden" name="tipId" th:value="${tip.getId()}">
                                         <input type="hidden" name="userId" th:value="${user.getId()}">
                                         <div sec:authorize="isAuthenticated()">
-                                            <button type="submit" class="downVoteButton" th:data-tip-id="${tip.getId()}">
+                                            <button type="submit" class="voteButton" th:data-tip-id="${tip.getId()}">
                                             <span class="fa-solid fa-thumbs-down text-primary">
                                                 <span th:class="small-number" th:text="${tip.getDownvotes()}">
                                                 </span>
@@ -139,7 +150,7 @@
                                         </div>
 
                                         <div sec:authorize="isAnonymous()">
-                                            <button class="downVoteButton" onclick="window.location='/login'" th:data-tip-id="${tip.getId()}">
+                                            <button class="voteButton" onclick="window.location='/login'" th:data-tip-id="${tip.getId()}">
                                             <span class="fa-solid fa-thumbs-down text-primary">
                                                 <span th:class="small-number" th:text="${tip.getDownvotes()}">
                                                 </span>
@@ -159,7 +170,18 @@
                     <!--Questions Modal-->
                     <div class="card-wrapper">
                         <p class="title card-heading">Questions</p>
-                        <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#questionModal2">Ask a Question</button>
+                        <div sec:authorize="isAuthenticated()">
+                            <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#questionModal2">
+                                Ask a Question
+                            </button>
+                        </div>
+                        <div sec:authorize="isAnonymous()">
+                            <button type="button" class="cta-button" onclick="window.location='/login'">
+                                Login to Ask a Question
+                            </button>
+                        </div>
+
+
                         <!-- Modal -->
                         <div class="modal fade" id="questionModal2" tabindex="-1" aria-labelledby="questionModal2" aria-hidden="true">
                             <div class="modal-dialog">
