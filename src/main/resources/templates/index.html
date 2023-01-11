@@ -68,7 +68,7 @@
 								<div class="userVenuecontainer">
 									<img th:src="${question.getUser().getImgPath()}" alt="" class="user-image">
 								</div>
-								<div>
+								<div class="user-venue-info">
 									<small th:text="${question.getUser().getUsername()}">Unknown Username</small>
 									<small th:text="${question.getVenue().getVenueName()}" class="venueName">Unknown
 										Venue</small>
@@ -76,7 +76,7 @@
 								</div>
 							</figure>
 
-							<div>
+							<div class="recent-card-bottom">
 								<p th:text="${question.getQuestion()}"></p>
 								<div class="imagecenter">
 									<div class="imagewindow">
@@ -87,7 +87,7 @@
 <!--Only show if logged in-->
 								<div class="user-container" sec:authorize="isAuthenticated()">
 									<a class="answerLink"
-									   th:href="@{'/venues/' + ${question.getVenue().getId()}#questionModal2}">
+									   th:href="@{'/venues/' + ${question.getVenue().getId()}}">
 										<p class="button">Answer Question</p>
 									</a>
 								</div>

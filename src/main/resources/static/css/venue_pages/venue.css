@@ -314,3 +314,24 @@ form > div:first-child textarea:focus {
     color: #ffffff;
     background: rgba(222, 149, 109, 0.73) linear-gradient(to right, rgba(215, 85, 124, 0.87), rgba(175, 73, 2, 0.87));
 }
+
+
+.marquee {
+    width: 100%;
+    color: white;
+    overflow: hidden;
+}
+
+.eventText {
+    animation: animate 10s linear infinite;
+    padding-left: 100%;
+    display: inline-block;
+}
+
+@keyframes animate {
+    100% {
+        transform: translate(-100%, 0);
+    }
+}
+
+

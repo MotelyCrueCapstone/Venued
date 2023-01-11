@@ -42,9 +42,6 @@
     margin: 2rem 0;
     padding: 1rem;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
 }
 
 .user-image {
@@ -57,8 +54,11 @@ figure {
     display: flex;
     padding: 0.5rem;
     overflow-wrap: break-word;
-    white-space: nowrap;
-    width: 400px;
+    /*white-space: nowrap;*/
+    width: 100%;
+    min-width: 0px;
+    flex: none;
+    column-gap: 20px;
 }
 
 .userVenuecontainer {
@@ -66,10 +66,6 @@ figure {
     white-space: nowrap;
 }
 
-figure div:first-child {
-    margin-right: 3rem;
-
-}
 
 small {
     display: block;
@@ -84,6 +80,12 @@ small {
 .user-container {
     display: flex;
     align-items: flex-end;
+}
+
+.recent-card-bottom {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -133,6 +135,11 @@ small {
 .venueName {
     font-size: 23px;
     word-break: break-all;
+}
+
+.user-venue-info {
+    min-width: 0px;
+    flex: 1 0 0;
 }
 
 @media screen and (min-width: 700px) {
