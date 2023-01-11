@@ -9,7 +9,8 @@ $(async function() {
 
                 const title = json.results[0].title;
                 const description = json.results[0].description;
-                const eventDate = json.results[0].start;
+                let date = new Date(json.results[0].start);
+                const eventDate =`${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`;
 
                 $('.title-info').append(title);
                 $('.desc-info').append(description);
