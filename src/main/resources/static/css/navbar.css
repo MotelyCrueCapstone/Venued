@@ -98,7 +98,7 @@
     text-decoration: none;
 }
 
-.nav-user-container{
+.user-container{
     display: flex;
     align-items: center;
     gap: 20px;
@@ -245,22 +245,9 @@
 
 
 @media only screen and (max-width: 1024px){
-
-    .nav-user-container{
+    .user-container{
         display: none;
         gap: 5px;
-    }
-    #profile-modal {
-        background-color: rgba(195,99,100,.9);
-        position: absolute;
-        top: 82px;
-        width: 322px;
-        border: none;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.25);
-        padding: 10px;
-        z-index: 99;
-        left: 607px;
     }
 }
 @media screen and (max-width: 810px){
@@ -328,7 +315,7 @@
         background: rgb(35, 29, 53);
     }
 
-    .topNav .nav-items {
+    .topNav .nav-items .user-container{
         flex-direction: row;
         justify-content: center;
         text-align: center;

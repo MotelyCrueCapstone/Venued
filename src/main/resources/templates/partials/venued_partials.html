@@ -74,7 +74,7 @@
 					<button type="submit" class="signup-btn nav-btn" onclick="window.location.href='/login'">Login</button>
 					<button type="submit" class="login-btn nav-btn" onclick="window.location.href='/register'">Register</button>
 				</div>
-				<div class="nav-user-container" sec:authorize="isAuthenticated()">
+				<div class="user-container" sec:authorize="isAuthenticated()">
 					<a class="signup-btn nav-btn" href="javascript: document.logoutForm.submit()" role="menuitem"> Logout</a>
 					<form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
 						<input hidden type="submit" value="Sign Out"/>
@@ -84,18 +84,6 @@
 					<button class="profile" onclick="window.location.href='/profile'">
 						<img th:src="${#authentication.principal.getImgPath()}" alt="" class="nav-user-image">
 					</button>
-					<dialog class="profile-modal" id="profile-modal">
-						<div>
-							<img th:src="${#authentication.principal.getImgPath()}" alt="" class="profile-modal-image">
-							<h3 th:text="${#authentication.principal.getUsername()}"></h3>
-							<p th:text="${#authentication.principal.getEmail()}"></p>
-							<button class="profile-modal-btn" onclick="window.location.href='/profile'">Profile</button>
-							<button class="profile-modal-btn" onclick="window.location.href='/profile/edit'">Edit Profile</button>
-							<button class="profile-modal-btn" onclick="window.location.href='/profile/favorites'">Favorites</button>
-							<button class="profile-modal-btn" onclick="window.location.href='/profile/tips'">Tips</button>
-							<button class="profile-modal-btn" onclick="window.location.href='/profile/reviews'">Reviews</button>
-						</div>
-					</dialog>
 				</div>
 			</ul>
 	</nav>
