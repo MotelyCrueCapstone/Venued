@@ -39,7 +39,8 @@
 
                             </form>
                         </div>
-                        <p th:text="${user.getName()}"><span></span></p>
+                        <p th:text="${user.name}"><span></span></p>
+                        <p th:text="${user.bio}"></p>
                         <div class="edit-btn-container">
                             <button class="edit-btn">Edit Profile</button>
                         </div>
@@ -48,14 +49,14 @@
 
                     <!---- profile form starts here ------>
                     <div class="form-container">
-                        <form class="form" th:action="@{|/{id}/user-info|}" th:method="post" th:object="${user}">
+                        <form class="form" th:action="@{/user-info}" th:method="post" th:object="${user}">
                             <div>
                                <label for="name">Name</label>
-                               <input type="text" name="name" id="name" th:field="*{name}">
+                               <input type="text" id="name" th:field="*{name}">
                             </div>
                             <div>
                                <label for="bio">Bio</label>
-                               <textarea name="bio" id="bio" cols="30" rows="5" placeholder="Add a bio..." th:field="*{bio}"></textarea>
+                               <textarea id="bio" cols="30" rows="5" placeholder="Add a bio..." th:field="*{bio}"></textarea>
                             </div>
                             <div>
                                 <input type="submit" value="Save" name="submit" id="submit-btn">
