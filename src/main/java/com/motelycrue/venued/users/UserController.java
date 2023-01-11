@@ -84,10 +84,16 @@ public class UserController {
         }
     }
 
-    @PostMapping("/user-info")
-    public String userProfileInfo(@ModelAttribute User user) {
-        return "";
+    @GetMapping("/user-info")
+    public String showProfileForm(Model model) {
+        model.addAttribute("user", new User());
+        return "users/profile";
     }
 
-
+    @PostMapping("/user-info")
+    public String userProfileInfo(@ModelAttribute User user) {
+        System.out.println(user);
+        userDao.save(user);
+        return "users/profile";
+    }
 }
