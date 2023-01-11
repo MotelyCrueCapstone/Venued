@@ -57,9 +57,6 @@
 }
 /* Medium screens (e.g. tablets) */
 @media only screen and (min-width: 601px) and (max-width: 992px) {
-    .recent-card {
-        flex-direction: row;
-    }
     .image {
         width: 100%;
     }
