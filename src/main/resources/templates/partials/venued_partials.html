@@ -39,14 +39,14 @@
 			         on the artist, which restaurants are good, and much more!">
 
 			<!--custom navbar css-->
-			<link rel="stylesheet" th:href="@{/css/navbar.css}">
-			<link rel="stylesheet" th:href="@{/css/navbarResponsiveness.css}">
+			<link rel="stylesheet" href="/css/navbar.css">
+			<link rel="stylesheet" href="/css/navbarResponsiveness.css">
 			
 			<!--custom footer css-->
-			<link rel="stylesheet" th:href="@{/css/footer.css}">
+			<link rel="stylesheet" href="/css/footer.css">
 			
 			<!--custom global styling for each page-->
-			<link rel="stylesheet" th:href="@{/css/universalStyle.css}">
+			<link rel="stylesheet" href="/css/universalStyle.css">
 
 			<!--bootstrap css cdns-->
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -60,14 +60,14 @@
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 			<!-- Navbar JS -->
-			<script th:src="@{/js/results.js}"></script>
-			<script th:src="@{/js/navbar.js}"></script>
+			<script src="/js/results.js"></script>
+			<script src="/js/navbar.js"></script>
 
 		</div>
 	</head>
 	<nav th:fragment="mynav" class="topNav">
 
-			<a class="venued" th:href="@{/}">
+			<a class="venued" href="/">
 				<img  class="venued-logo" src="/imgs/venuedImage.png" alt="image of the word venued in white block letters">
 			</a>
 
@@ -136,7 +136,8 @@
 
 			<div class="rightSide">
 				<div class="subscribe">
-					<form class="subscribe-form" th:action="@{/about_us/subscribe}" method="post">
+					<form>
+<!--					<form class="subscribe-form" th:action="@{/about_us/subscribe}" method="post">-->
 						<label for="footer_email" class="footer_email">Subscribe</label>
 						<input name="email" type="email" placeholder="Email Address" id="footer_email" class="email" size="40">
 						<button type="submit" class="btn subscribe_btn">Subscribe</button>

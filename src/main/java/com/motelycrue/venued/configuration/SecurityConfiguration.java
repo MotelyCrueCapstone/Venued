@@ -15,14 +15,15 @@ public class SecurityConfiguration{
 
     SecurityFilterChain customSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .antMatchers("/profile").authenticated()
+
                 .antMatchers("/","/home", "/register").permitAll()
+                .antMatchers("/profile").authenticated()
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/home")
                 .and().logout()
                 .and().httpBasic();
 
-        http.formLogin();
-        http.httpBasic();
+//        http.formLogin();
+//        http.httpBasic();
         return http.build();
 
     }
