@@ -91,6 +91,7 @@ public class YelpApiService {
         String requestUri = makeAutoCompleteUrl(query, location);
 
         Response response = client.newCall(
+
                 new Request.Builder()
                     .url(requestUri)
                     .addHeader("Access-Control-Allow-Origin","*")
