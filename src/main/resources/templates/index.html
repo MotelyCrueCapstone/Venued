@@ -7,12 +7,13 @@
 	<div th:replace="~{partials/venued_partials :: myheader('Venued - number one venue platform')}"></div>
 
 	<!--homepage custom css-->
-	<link rel="stylesheet" th:href="@{/css/homepage/banner.css}">
-	<link rel="stylesheet" th:href="@{/css/homepage/banner_responsiveness.css}">
-	<link rel="stylesheet" th:href="@{/css/homepage/body.css}">
-	<link rel="stylesheet" th:href="@{/css/homepage/body_responsiveness.css}">
-	<link rel="stylesheet" th:href="@{/css/homepage/recentSubmissions.css}">
-	<link rel="stylesheet" th:href="@{/css/homepage/recentSubmissions_responsiveness.css}">
+	<link rel="stylesheet" href="/css/homepage/banner.css">
+	<link rel="stylesheet" href="/css/homepage/banner_responsiveness.css">
+	<link rel="stylesheet" href="/css/homepage/body.css">
+	<link rel="stylesheet" href="/css/homepage/body_responsiveness.css">
+	<link rel="stylesheet" href="/css/homepage/recentSubmissions.css">
+	<link rel="stylesheet" href="/css/homepage/recentSubmissions_responsiveness.css">
+	
 <!--	<link rel="stylesheet" th:href="@{/css/universalStyle.css}">-->
 	<!--		<link rel="stylesheet" th:href="@{/css/venue_pages/venue.css}">-->
 
@@ -117,7 +118,7 @@
 						<div class="title">What is Venued?</div>
 
 						<div class="subsection reveal1">
-							<img th:src="@{imgs/homepage/body/confetti.png}" alt="">
+							<img src="/imgs/homepage/body/confetti.png" alt="">
 							<p>Have you ever driven to another city to see a band and found out that the cheapest
 								parking near the venue ends up costing you $25? Or have you ever Ubered to a stadium
 								with a purse, only to find out that the venue only allows clear bags?
@@ -126,11 +127,11 @@
 
 						<div class="subsection city reveal2 ">
 							<p>Venued is a venue-focused website, aimed at helping users submit tips about their favorite places to help out other venue-explorers (or 'Venueders' as we like to call them!)</p>
-							<img th:src="@{imgs/homepage/body/city-down.png}" alt="">
+							<img src="/imgs/homepage/body/city-down.png" alt="">
 						</div>
 
 						<div class="subsection reveal1">
-							<img th:src="@{imgs/homepage/body/venue.png}" alt="">
+							<img src="/imgs/homepage/body/venue.png" alt="">
 							<p>Users can tell other people where the best place to park is, how early to get to the venue if an
 								event is super popular, the best restaurants to eat at after the concert is over, and much more!</p>
 						</div>
@@ -148,7 +149,6 @@
 			<script src="/js/homepage/events.js"></script>
 			<script src="/js/homepage/loadMore.js"></script>
 			<script src="/js/homepage/scrolling-reveal.js"></script>
-			<script src="/js/results.js"></script>
 	</body>
 </html>
 

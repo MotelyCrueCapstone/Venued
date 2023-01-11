@@ -3,8 +3,8 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <div th:replace="partials/venued_partials :: myheader('Venue Page')" th:remove="tag"></div>
-    <link rel="stylesheet" th:href="@{/css/venue_pages/venue.css}">
-    <link rel="stylesheet" th:href="@{/css/universalStyle}">
+    <link rel="stylesheet" href="/css/venue_pages/venue.css">
+    <link rel="stylesheet" href="/css/universalStyle">
     <title></title>
     <script src="../static/js/vote.js"></script>
 </head>
@@ -50,7 +50,7 @@
 				<section class="wrapper cards-wrapper">
 
 
-                <!--------- Tips card ---------->
+<!--------- Tips card ---------->
                 <div class="tip-card">
                     <div class="card-wrapper">
                         <p class="title card-heading">Tips</p>
@@ -63,7 +63,7 @@
 
                         <div class="user-container" sec:authorize="isAnonymous()">
                             <button type="button" class="cta-button" onclick="window.location='/login'"
-                                    >Login to Add a Tip
+                                    >Add a Tip
                             </button>
                         </div>
 
@@ -81,9 +81,6 @@
                                             <div class="mb-3">
                                                 <input type="hidden" name="venueId" value="{venueId}">
                                                 <input type="text" name="tipName" placeholder="Tip Name">
-<!--THESE WILL BE ADDED AUTOMATICALLY WHEN THE USER IS LOGGED IN. I AM ONLY PUTTING THESE HERE FOR TESTING PURPOSES-->
-                                                <input type="text" name="upVotes" placeholder="upVotes">
-                                                <input type="text" name="downVotes" placeholder="downVotes">
                                                 <textarea class="form-control shadow-none" name="tipContent" id="tipTextarea" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
                                             </div>
 
@@ -116,21 +113,22 @@
                             <ul class="list-tips">
                             <li>
                                 <div class="user-wrapper">
-<!--UNCOMMENT LATER ONCE MODAL IS FIXED!!!!!!!!!!-->
-<!--                                    <span><img th:src="${tip.user.imgPath}" alt="" class="user-image"></span>-->
-<!--                                    <p class="" th:text="${tip.user.userName}"></p>-->
+                                    <img th:src="${tip.getUser().imgPath}" class="user-image">
+                                    <div th:text="${tip.getUser().getUsername()}"></div>
                                 </div>
 
                                 <div class="thumbs-icon-wrapper">
+
                                     <span th:class="tipName" th:text="${tip.getTipName()}"></span>
                                     <span th:text="${tip.getTipContent()}"></span>
-
+                                    <div >
                                     <form th:method="POST" th:action="@{|/tips/vote/1|}">
 
                                         <div sec:authorize="isAuthenticated()"> <!-- if user is logged in -->
                                             <input type="hidden" name="tipId" th:value="${tip.getId()}">
                                             <input type="hidden" name="userId" th:value="${user.getId()}">
                                             <button class="upVoteButton" th:data-tip-id="${tip.getId()}">
+
                                                 <span class="fa-solid fa-thumbs-up text-primary">
                                                 <span th:class="small-number" th:text="${tip.getUpvotes()}"> //text=""
                                                 </span>
@@ -165,12 +163,13 @@
                                             <button class="voteButton" onclick="window.location='/login'" th:data-tip-id="${tip.getId()}">
                                             <span class="fa-solid fa-thumbs-down text-primary">
                                                 <span th:class="small-number" th:text="${tip.getDownvotes()}">
-                                                </span>
+                                            </span>
                                             </span>
                                             </button>
                                         </div>
 
                                     </form>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -237,8 +236,8 @@
                                 <li>
                                     <div class="user-wrapper">
 <!--!!!!!!UNCOMMENT LATER AFTER MODAL IS FIXED!!!!-->
-<!--                                        <span><img th:src="${question.user.imgPath}" alt="" class="user-image"></span>-->
-<!--                                        <p th:text="${question.user.userName}">username</p>-->
+                                        <span><img th:src="${question.getUser().getImgPath()}" alt="" class="user-image"></span>
+                                        <div th:text="${question.getUser().getUsername()}">username</div>
                                     </div>
 
                                     <div class="question-wrapper">
