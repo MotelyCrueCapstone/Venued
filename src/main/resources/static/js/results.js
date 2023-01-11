@@ -73,26 +73,25 @@
              search($(searchInput).val());
           }
     });
+    
     $(searchInput).one("click", ()=>{
          toggleResults();
     })
 
     $(searchButton).on("click", () => {
          search($(searchInput).val());
+         $('.location-results-container').addClass('hide');
          toggleResults();
     });
 
     $(".search_input").on("keyup", function() {
         $('.results-container').removeClass('hideme');
     });
-
+    
 // When the user clicks outside of the search bar, hide the search results container
     $(document).on('click', function(event) {
         if (!$(event.target).closest('.searchbar').length) {
             $('.results-container').addClass('hideme');
         }
     });
-
-    
-
 })();
