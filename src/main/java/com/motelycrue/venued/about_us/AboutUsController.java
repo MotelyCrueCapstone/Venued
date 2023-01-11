@@ -20,14 +20,14 @@ public class AboutUsController {
         return "about_us";
     }
 
-    @PostMapping("/subscribe")
-    public String sendMessage(@RequestParam(name = "email") String email){
-        System.out.println(email);
-       emailService.prepareAndSend(
-                email,
-                "Subscription",
-                "Thank you for subscribing to our newsletter! We will keep you updated with the latest news and events."
-       );
-         return "redirect:/about_us";
-    }
+//    @PostMapping("/subscribe")
+//    public String sendMessage(@RequestParam(name = "email") String email){
+//        System.out.println(email);
+//       emailService.prepareAndSend(
+//                email,
+//                "Subscription",
+//                "Thank you for subscribing to our newsletter! We will keep you updated with the latest news and events."
+//       );
+//         return "redirect:/about_us";
+//    }
 }

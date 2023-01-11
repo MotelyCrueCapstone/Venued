@@ -1,6 +1,7 @@
 package com.motelycrue.venued.predicthq;
 
 import com.motelycrue.venued.yelp_api.YelpApiService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,9 @@ import java.util.Optional;
 
 @Controller
 public class PredictHqController {
+
+    @Autowired
+    private PredictHqApiService predictHqApiService;
 
     @GetMapping(value = "/event", produces = MediaType.APPLICATION_JSON_VALUE)
     @CrossOrigin("*")
@@ -27,6 +31,8 @@ public class PredictHqController {
                 return "{\"result\" : \"requires longitude and latitude parameters\"}";
             }
     }
+    //http://localhost:8085/predicthq?latitude=30.43187&longitude=-97.71844
+
 
 }
 
