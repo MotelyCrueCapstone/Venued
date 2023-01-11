@@ -17,10 +17,10 @@ public class User {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String username;
 
-    @Column(nullable = true)
+    @Column(nullable = true, length = 50)
     private String name;
 
     @Column(nullable = false)
@@ -32,7 +32,7 @@ public class User {
     @Column
     private String imgPath;
 
-    @Column(nullable = true)
+    @Column(nullable = true, length = 510)
     private String bio;
 
 //    public User(long id, String email, String username, String password) {

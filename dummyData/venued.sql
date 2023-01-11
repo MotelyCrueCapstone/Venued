@@ -129,7 +129,7 @@ CREATE TABLE `user` (
   `img_path` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `bio` varchar(255) NOT NULL,
+  `bio` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_ob8kqyqqgmefl0aco34akdtpe` (`email`)

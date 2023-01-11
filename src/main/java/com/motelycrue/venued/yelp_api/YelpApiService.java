@@ -14,18 +14,19 @@ import java.io.IOException;
 
 @Service("yelpApiService")
 public class YelpApiService {
-    static String yelpApiKey = APIAccess.getApiKey();
 
+    static String yelpApiKey = APIAccess.getApiKey();
     private static final String yelpBaseUrl = "api.yelp.com/v3";
 
     private static String makeAutoCompleteUrl(String query, String latitude, String longitude){
+
         //making the uri adjustable by using the UriComponentsBuilder for the request
         return UriComponentsBuilder.newInstance()
                 .scheme("https").host(yelpBaseUrl).path("/businesses/search")
                     .queryParam("term", query)
                     .queryParam("latitude", latitude)
                     .queryParam("longitude", longitude)
-                    .queryParam("radius", "2000")
+                    .queryParam("radius", "40000")
                     .queryParam("categories", "bars")
                     .queryParam("categories", "concert")
                     .queryParam("categories", "venues")
@@ -41,18 +42,24 @@ public class YelpApiService {
                 .toUriString();
     }
     private static String makeAutoCompleteUrl(String query, String location){
+
         //making the uri adjustable by using the UriComponentsBuilder for the request
         return UriComponentsBuilder.newInstance()
                 .scheme("https").host(yelpBaseUrl).path("/businesses/search")
                 .queryParam("term", query)
                 .queryParam("location", location)
-                .queryParam("radius", "2000")
-                .queryParam("categories", "club")
+                .queryParam("radius", "40000")
+                .queryParam("categories", "bars")
                 .queryParam("categories", "concert")
-                .queryParam("categories", "wedding")
+                .queryParam("categories", "venues")
+                .queryParam("categories", "stadiumsarenas")
+                .queryParam("categories", "clubcrawl")
+                .queryParam("categories", "comedyclubs")
+                .queryParam("categories", "danceclubs")
+                .queryParam("categories", "beergardens")
                 .queryParam("categories", "music")
                 .queryParam("sort_by", "rating")
-                .queryParam("limit", "20")
+                .queryParam("limit", "40")
                 .build()
                 .toUriString();
     }
@@ -82,17 +89,18 @@ public class YelpApiService {
 
         //creating the api endpoint url
         String requestUri = makeAutoCompleteUrl(query, location);
-        Request request = new Request.Builder()
 
-                .url(requestUri)
-                .addHeader("Access-Control-Allow-Origin","*")
-                .addHeader("Authorization", "Bearer " + yelpApiKey)
-                .build();
+        Response response = client.newCall(
 
-        Response response = client.newCall(request).execute();
+                new Request.Builder()
+                    .url(requestUri)
+                    .addHeader("Access-Control-Allow-Origin","*")
+                    .addHeader("Authorization", "Bearer " + yelpApiKey)
+                    .build())
+                .execute();
+
         String responseString  = response.body().string();
-        ObjectNode objectNode = new ObjectMapper()
-                .readValue(responseString, ObjectNode.class);
+        ObjectNode objectNode = new ObjectMapper().readValue(responseString, ObjectNode.class);
         return objectNode.get("businesses").toString();
     }
 }
