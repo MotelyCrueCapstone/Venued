@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import retrofit2.http.Path;
 
 import java.util.List;
 import java.util.Optional;
@@ -84,15 +85,15 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user-info")
-    public String showProfileForm(Model model) {
-        model.addAttribute("user", new User());
+    @GetMapping("{id}/user-info")
+    public String showProfileForm(@PathVariable Long id,  Model model) {
+        User user = userDao.getUserById(id);
+        model.addAttribute("user", user);
         return "users/profile";
     }
 
     @PostMapping("/user-info")
     public String userProfileInfo(@ModelAttribute User user) {
-        System.out.println(user);
         userDao.save(user);
         return "users/profile";
     }
