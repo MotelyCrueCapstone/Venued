@@ -184,6 +184,7 @@ $(document).ready(function() {
         $(this).parents(".img_overlay").siblings(".dialog").show();
         $(this).parents(".img_overlay_bottom").siblings(".dialog").show();
 
+        console.log("you clicked me");
     });
 
     $('.close-button').click(function (e) {
