@@ -6,14 +6,14 @@ $(function(){
           origin: 'left',
           delay: 300,
           duration: 1000,
-          distance: '100px',
+          distance: '50px',
      })
 
      ScrollReveal().reveal('.reveal2', {
           origin: 'right',
           delay: 300,
           duration: 1000,
-          distance: '100px',
+          distance: '50px',
      })
 
 
@@ -21,7 +21,7 @@ $(function(){
           origin: 'left',
           delay: 300,
           duration: 1000,
-          distance: '100px',
+          distance: '50px',
      })
 })
 
