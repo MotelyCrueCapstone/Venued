@@ -3,6 +3,9 @@
 -- Host: localhost    Database: venued_db
 -- ------------------------------------------------------
 -- Server version	8.0.30
+use venued_db;
+
+USE venued_db;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;

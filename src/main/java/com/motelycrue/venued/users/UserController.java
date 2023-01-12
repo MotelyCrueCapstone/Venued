@@ -96,4 +96,6 @@ public class UserController {
         userDao.save(user);
         return "users/profile";
     }
+
+
 }

@@ -312,9 +312,8 @@ form > div:first-child textarea:focus {
 }
 
 .eventText {
-    animation: animate 10s linear infinite;
     padding-left: 100%;
-    display: inline-block;
+    display: contents;
 }
 
 @keyframes animate {

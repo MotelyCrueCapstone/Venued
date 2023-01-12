@@ -76,9 +76,9 @@
                     <!---- list of all tabs start here ------>
                     <ul class="lists-wrapper" id="myTab">
                         <li class="list-item">
-                            <button class="tab-btn active" id="answer-tab" data-content="1">
-                                <span class="badge rounded-pill bg-secondary me-1" th:text="${allAnswersLength}"></span>
-                                Answers
+                            <button class="tab-btn" id="tip-tab" data-content="3">
+                                <span class="badge rounded-pill bg-secondary me-1" th:text="${allTipsLength}"></span>
+                                Tips
                             </button>
                         </li>
                         <li class="list-item">
@@ -88,9 +88,10 @@
                             </button>
                         </li>
                         <li class="list-item">
-                            <button class="tab-btn" id="tip-tab" data-content="3">
-                                <span class="badge rounded-pill bg-secondary me-1" th:text="${allTipsLength}"></span>
-                                Tips
+
+                            <button class="tab-btn active" id="answer-tab" data-content="1">
+                                <span class="badge rounded-pill bg-secondary me-1" th:text="${allAnswersLength}"></span>
+                                Answers
                             </button>
                         </li>
                     </ul>
@@ -150,6 +151,7 @@
                 </div>
             </div>
         </section>
+      <footer th:replace="~{partials/venued_partials.html :: footer}"></footer>
   </div>
   <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
   <script src="/js/profile.js"></script>

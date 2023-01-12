@@ -42,7 +42,7 @@ public class HomeController {
 
         List<Questions> questions = QuestionsDao.findFirst30ByOrderByIdDesc();
         List<Questions> allQuestions = QuestionsDao.findAll();
-        model.addAttribute("questions", allQuestions);
+        model.addAttribute("questions", questions);
         return "index";
     }
 

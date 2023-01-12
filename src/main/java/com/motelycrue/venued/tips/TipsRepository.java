@@ -18,4 +18,5 @@ public interface TipsRepository extends JpaRepository<Tips, Long> {
     List<Tips> findTipsByUser(User user);
 
 //    List<Tips> findTop20(List<Tips> tips);
+
 }
