@@ -38,6 +38,7 @@ public class UserController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
 //    @Autowired
 //    private PasswordEncoder passwordEncoder;
 
@@ -88,15 +89,18 @@ public class UserController {
 
     @GetMapping("/user-info")
     public String showProfileForm(Model model) {
-        model.addAttribute("user", new User());
+        User currentUser = userDao.getUserById(Utils.currentUserId());
+        model.addAttribute("user", currentUser);
         return "users/profile";
     }
 
     @PostMapping("/user-info")
-    public String userProfileInfo(@ModelAttribute User user) {
-        userDao.save(user);
+    public String userProfileInfo(@ModelAttribute User user, @RequestParam(name = "name") String name, @RequestParam(name = "bio") String bio) {
+        User currentUser = userDao.getUserById(Utils.currentUserId());
+        currentUser.setName(name);
+        currentUser.setBio(bio);
+        userDao.save(currentUser);
         return "users/profile";
     }
-
 
 }
