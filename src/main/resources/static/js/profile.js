@@ -27,8 +27,6 @@ $(function() {
         document.querySelector(`.tab-content[data-content="${contentId}"]`).classList.add('show-content');
     }));
 
-
-
 });
 
 
