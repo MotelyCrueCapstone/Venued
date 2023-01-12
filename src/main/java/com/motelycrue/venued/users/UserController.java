@@ -6,6 +6,7 @@ import com.motelycrue.venued.questions.QuestionsRepository;
 import com.motelycrue.venued.questions.answersRepository;
 import com.motelycrue.venued.tips.Tips;
 import com.motelycrue.venued.tips.TipsRepository;
+import com.motelycrue.venued.utils.Utils;
 import com.motelycrue.venued.venues.Venue;
 import com.motelycrue.venued.venues.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
