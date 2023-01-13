@@ -21,23 +21,17 @@
 
                     <!--- profile picture starts here ---->
                     <div class="avatar-container">
-                        <div class="picture-container">
-
-                            <div class="picture">
-                                <img th:src="${user.getImgPath()}" id="wizardPicturePreview" alt="user image">
-                            </div>
-
-                            <form action="/fileupload" method="post" enctype="multipart/form-data" >
-
-                                <div>
-                                    <input type="file" name="file" id="wizard-picture" class="">
-                                </div>
-
-                                <div>
-                                    <input type="submit" value="Upload a photo" />
-                                </div>
-
+                        <div id="profile-info-container">
+                            <form id="profilePicForm" th:method="Post" th:action="@{/profilePic}" style="display: none">
+                                <input name="profilePicInput" id="profilePicInput" type="text">
                             </form>
+                            <img th:if="${user.getProfilePic() != null}"
+                                 th:src="${user.getProfilePic()}" alt="Profile Picture"
+                                 class="profileImg rounded-circle img-fluid" style="width: 150px;"/>
+                            <img th:if="${user.getProfilePic() == null}"
+                                 th:src="@{/imgs/avatar-image.png}" alt="Profile Picture"
+                                 class="profileImg rounded-circle img-fluid" style="width: 150px;"/>
+                            <p id="profilePicChangeButton">Change</p>
                         </div>
                         <div>
                             <p th:text="${user.name}"></p>
