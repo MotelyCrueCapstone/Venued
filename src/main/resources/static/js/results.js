@@ -77,7 +77,8 @@
     $(searchInput).one("click", ()=>{
          toggleResults();
     })
-
+     
+     //on search button click test
     $(searchButton).on("click", () => {
          search($(searchInput).val());
          $('.location-results-container').addClass('hide');
