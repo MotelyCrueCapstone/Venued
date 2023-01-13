@@ -3,12 +3,10 @@ package com.motelycrue.venued.users;
 import com.motelycrue.venued.questions.Answer;
 import com.motelycrue.venued.questions.Questions;
 import com.motelycrue.venued.questions.QuestionsRepository;
-import com.motelycrue.venued.questions.answersRepository;
+import com.motelycrue.venued.questions.AnswersRepository;
 import com.motelycrue.venued.tips.Tips;
 import com.motelycrue.venued.tips.TipsRepository;
 import com.motelycrue.venued.utils.Utils;
-import com.motelycrue.venued.venues.Venue;
-import com.motelycrue.venued.venues.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import retrofit2.http.Path;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,7 +31,7 @@ public class UserController {
     private TipsRepository TipsDao;
 
     @Autowired
-    answersRepository answersDao;
+    AnswersRepository answersDao;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
