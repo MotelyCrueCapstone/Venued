@@ -27,10 +27,10 @@
                             </form>
                             <img th:if="${user.getProfilePic() != null}"
                                  th:src="${user.getProfilePic()}" alt="Profile Picture"
-                                 class="profileImg rounded-circle img-fluid" style="width: 150px;"/>
+                                 class="profileImg rounded-circle img-fluid" style="width: 200px;"/>
                             <img th:if="${user.getProfilePic() == null}"
                                  th:src="@{/imgs/avatar-image.png}" alt="Profile Picture"
-                                 class="profileImg rounded-circle img-fluid" style="width: 150px;"/>
+                                 class="profileImg rounded-circle img-fluid" style="width: 200px;"/>
                             <p id="profilePicChangeButton">Change</p>
                         </div>
                         <div>

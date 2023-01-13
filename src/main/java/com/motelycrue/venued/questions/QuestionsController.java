@@ -24,9 +24,9 @@ public class QuestionsController {
     private final UserRepository userDao;
 
     @Autowired
-    private final answersRepository answersDao;
+    private final AnswersRepository answersDao;
 
-    public QuestionsController(UserRepository userDao, QuestionsRepository questionsDao, answersRepository answersDao) {
+    public QuestionsController(UserRepository userDao, QuestionsRepository questionsDao, AnswersRepository answersDao) {
         this.questionsDao = questionsDao;
         this.userDao = userDao;
         this.answersDao = answersDao;
