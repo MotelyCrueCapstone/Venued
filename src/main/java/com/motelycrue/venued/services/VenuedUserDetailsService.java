@@ -28,7 +28,8 @@ public class VenuedUserDetailsService implements UserDetailsService {
                     user.getPassword(),
                     user.getEmail(),
                     user.getImgPath(),
-                    user.getBio());
+                    user.getBio(),
+                    user.getProfilePic());
         }
     }
 }

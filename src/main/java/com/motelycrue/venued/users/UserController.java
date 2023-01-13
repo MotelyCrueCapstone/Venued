@@ -1,9 +1,9 @@
 package com.motelycrue.venued.users;
 
 import com.motelycrue.venued.questions.Answer;
+import com.motelycrue.venued.questions.AnswersRepository;
 import com.motelycrue.venued.questions.Questions;
 import com.motelycrue.venued.questions.QuestionsRepository;
-import com.motelycrue.venued.questions.AnswersRepository;
 import com.motelycrue.venued.tips.Tips;
 import com.motelycrue.venued.tips.TipsRepository;
 import com.motelycrue.venued.utils.Utils;
@@ -31,7 +31,8 @@ public class UserController {
     private TipsRepository TipsDao;
 
     @Autowired
-    AnswersRepository answersDao;
+    private AnswersRepository answersDao;
+
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -100,4 +101,12 @@ public class UserController {
         return "users/profile";
     }
 
+
+    @PostMapping("/profilePic")
+    public String profileImage(@RequestParam (name="profilePicInput") String url) {
+        User user = userDao.getUserById(Utils.currentUser().getId());
+        user.setProfilePic(url);
+        userDao.save(user);
+        return "redirect:/profile";
+    }
 }
