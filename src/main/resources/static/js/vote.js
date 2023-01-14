@@ -9,6 +9,7 @@ tips.forEach(tip => {
 
 
     function handleVote(voteType) {
+         //using a get request for the adding of the votes to avoid errors
 fetch(`/tips/${tipId}/vote`, {
             method: 'POST',
             headers: {
@@ -17,6 +18,7 @@ fetch(`/tips/${tipId}/vote`, {
             body: JSON.stringify({
                 voteType: voteType
             })
+     
         }).then(res => res.json())
             .then(data => {
                 const { upVotes, downVotes } = data;
