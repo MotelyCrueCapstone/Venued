@@ -105,7 +105,7 @@ public class UserController {
     @PostMapping("/profilePic")
     public String profileImage(@RequestParam (name="profilePicInput") String url) {
         User user = userDao.getUserById(Utils.currentUser().getId());
-        user.setProfilePic(url);
+        user.setImgPath(url);
         userDao.save(user);
         return "redirect:/profile";
     }

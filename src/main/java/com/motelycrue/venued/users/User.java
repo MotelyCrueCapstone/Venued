@@ -35,8 +35,6 @@ public class User {
     @Column(nullable = true, length = 510)
     private String bio;
 
-    @Column
-    private String profilePic;
 
 //    public User(String name, String bio) {
 //        this.name = name;

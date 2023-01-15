@@ -25,17 +25,38 @@
     border-radius: 10px;
     padding: 2rem;
 }
-
-.avatar-container p:first-child {
-    text-align: center;
+/* profile image wrapper */
+#profile-info-container {
+    position: relative;
+    margin-bottom: 1rem;
+    border: 2px solid #fff;
 }
 
-.avatar-container p:nth-child(2) {
+/* profile image upload button */
+.avatar-container div:first-child > p {
+    /*display: none;*/
+    position: absolute;
+    bottom: 0;
+    right: 30%;
+}
+
+.avatar-container div:first-child > img {
+    display: block;
+    margin: 0 auto;
+    width: 250px;
+    height: 250px;
+    border: 2px solid #f00;
+    border-radius: 50%;
+    position: relative;
+}
+.avatar-container div:nth-child(2) p {
     text-align: center;
     color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
-.avatar-container button:last-child {
+.avatar-container div:last-child button{
     padding: 0.5rem 3rem;
     display: block;
     margin: 0 auto;

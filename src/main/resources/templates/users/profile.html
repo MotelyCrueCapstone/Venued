@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
 <head>
     <div th:replace="~{partials/venued_partials :: myheader('Profile')}"></div>
     <link rel="stylesheet" th:href="@{/css/universalStyle.css}">
     <link rel="stylesheet" th:href="@{/css/profile/profile.css}">
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
 <body th:object="${user}">
   <div class="page-wrapper">
 
@@ -25,13 +24,13 @@
                             <form id="profilePicForm" th:method="Post" th:action="@{/profilePic}" style="display: none">
                                 <input name="profilePicInput" id="profilePicInput" type="text">
                             </form>
-                            <img th:if="${user.getProfilePic() != null}"
-                                 th:src="${user.getProfilePic()}" alt="Profile Picture"
-                                 class="profileImg rounded-circle img-fluid" style="width: 200px;"/>
-                            <img th:if="${user.getProfilePic() == null}"
+                            <img th:if="${user.getImgPath() != null}"
+                                 th:src="${user.getImgPath()}" alt="Profile Picture"
+                                 class="profileImg"/>
+                            <img th:if="${user.getImgPath() == null}"
                                  th:src="@{/imgs/avatar-image.png}" alt="Profile Picture"
-                                 class="profileImg rounded-circle img-fluid" style="width: 200px;"/>
-                            <p id="profilePicChangeButton">Change</p>
+                                 class="profileImg"/>
+                            <p id="profilePicChangeButton"><i class="fa fa-camera fa-2xl"></i></p>
                         </div>
                         <div>
                             <p th:text="${user.name}"></p>
@@ -84,7 +83,6 @@
                             </button>
                         </li>
                         <li class="list-item">
-
                             <button class="tab-btn active" id="answer-tab" data-content="1">
                                 <span class="badge rounded-pill bg-secondary me-1" th:text="${allAnswersLength}"></span>
                                 Answers

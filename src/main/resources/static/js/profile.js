@@ -1,4 +1,28 @@
 $(async function () {
+
+    // file stack api call
+    const keys = await fetch(
+        `${window.location.protocol}//${window.location.host}/keys`)
+        .then(results => results.json());
+
+    const client = filestack.init(keys.fileStackKey);
+    $("#profilePicChangeButton").on("click", function () {
+        client.picker({
+            accept: ["image/*"],
+            transformations: {
+                circle: true,
+                crop: false,
+                rotate: false,
+                force: true
+            },
+            onFileUploadFinished: function (file) {
+                $("#profilePicInput").val(file.url);
+                $("#profilePicForm").submit();
+            }
+        }).open()
+    });
+
+
     // select all DOM nodes and store the object representation of each node in a variable
     const formContainer = document.querySelector('.form-container');
     const editButton = document.querySelector('.edit-btn');
@@ -32,28 +56,19 @@ $(async function () {
         document.querySelector(`.tab-content[data-content="${contentId}"]`).classList.add('show-content');
     }));
 
+   //  const profileImage = $('.profileImg');
+   //  const profileImageIcon = $('#profilePicChangeButton');
+   //
+   // profileImage.hover(
+   //     function() {
+   //         profileImageIcon.css('display', 'block');
+   //     },
+   //     function() {
+   //         profileImageIcon.css('display', 'none');
+   //     }
+   // );
 
-    //
-    const keys = await fetch(
-        `${window.location.protocol}//${window.location.host}/keys`)
-        .then(results => results.json());
 
-    const client = filestack.init(keys.fileStackKey);
-    $("#profilePicChangeButton").on("click", function () {
-        client.picker({
-            accept: ["image/*"],
-            transformations: {
-                circle: true,
-                crop: false,
-                rotate: false,
-                force: true
-            },
-            onFileUploadFinished: function (file) {
-                $("#profilePicInput").val(file.url);
-                $("#profilePicForm").submit();
-            }
-        }).open()
-    })
 
 });
 

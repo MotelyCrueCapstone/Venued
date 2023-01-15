@@ -41,8 +41,8 @@ public class VenuedUserDetails extends User implements UserDetails {
     public VenuedUserDetails(){}
 
 
-    public VenuedUserDetails(long id, String username, String name, String password, String email, String imgPath, String bio, String profilePic) {
+    public VenuedUserDetails(long id, String username, String name, String password, String email, String imgPath, String bio) {
 
-        super(id, username, name, password, email, imgPath, bio, profilePic);
+        super(id, username, name, password, email, imgPath, bio);
     }
 }
