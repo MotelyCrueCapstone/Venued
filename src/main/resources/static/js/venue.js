@@ -2,8 +2,8 @@ $(async function() {
     console.log("Inside venue.js");
 
     function grabEvents(latitude, longitude){
-        fetch(`http://localhost:8085/event?latitude=${latitude}&longitude=${longitude}`).
-        then(res => res.json())
+        fetch(`http://localhost:8085/event?latitude=${latitude}&longitude=${longitude}`)
+            .then(res => res.json())
             .then(json => {
                 console.log(json);
 
