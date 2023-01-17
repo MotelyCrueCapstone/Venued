@@ -225,6 +225,10 @@
                         <p class="nothingHere">Looks like no questions have been asked yet! <br>Be the first to ask a
                             question</p>
                     </div>
+                        <div th:if="${unanswered.isEmpty()}" class="empty">
+                            <p class="nothingHere">Looks like there are no unanswered questions! <br>ask a new
+                                question</p>
+                        </div>
 
                     <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
 
