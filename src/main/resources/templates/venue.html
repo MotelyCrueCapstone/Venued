@@ -317,7 +317,7 @@
                             answer a question</p>
                     </div>
                         <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
-                        <div class="answered-question-wrapper" th:each="question : ${questions}">
+                        <div class="answered-question-wrapper">
                             <th:block th:if="${question.answered == 1}">
                     <!--        QUESTION ASKED-->
                             <ul class="list-answered-questions">
