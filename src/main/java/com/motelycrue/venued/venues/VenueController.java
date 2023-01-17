@@ -69,6 +69,9 @@ public class VenueController {
             model.addAttribute("questions", questions);
 
             model.addAttribute("newQuestion",  new Questions());
+
+            List<Questions> answered = QuestionsDao.findQuestionsByAnsweredEquals(1);
+            model.addAttribute("answered", answered);
         }
         return "venue";
     }
