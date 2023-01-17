@@ -56,20 +56,15 @@ $(async function () {
         document.querySelector(`.tab-content[data-content="${contentId}"]`).classList.add('show-content');
     }));
 
-   //  const profileImage = $('.profileImg');
-   //  const profileImageIcon = $('#profilePicChangeButton');
-   //
-   // profileImage.hover(
-   //     function() {
-   //         profileImageIcon.css('display', 'block');
-   //     },
-   //     function() {
-   //         profileImageIcon.css('display', 'none');
-   //     }
-   // );
 
-
-
+    const modalButton = document.querySelector('#modal-button');
+    console.log(modalButton);
+    const editModal = document.querySelector('.edit-modal');
+    console.log(editModal);
+    editModal.style.display = "none";
+    modalButton.addEventListener('click', function(e) {
+        editModal.classList.toggle('show');
+    });
 });
 
 

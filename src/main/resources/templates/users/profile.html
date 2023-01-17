@@ -5,7 +5,6 @@
     <div th:replace="~{partials/venued_partials :: myheader('Profile')}"></div>
     <link rel="stylesheet" th:href="@{/css/universalStyle.css}">
     <link rel="stylesheet" th:href="@{/css/profile/profile.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
 <body th:object="${user}">
   <div class="page-wrapper">
 
@@ -30,7 +29,7 @@
                             <img th:if="${user.getImgPath() == null}"
                                  th:src="@{/imgs/avatar-image.png}" alt="Profile Picture"
                                  class="profileImg"/>
-                            <p id="profilePicChangeButton"><i class="fa fa-camera fa-2xl"></i></p>
+                            <p id="profilePicChangeButton">Upload Photo</i></p>
                         </div>
                         <div>
                             <p th:text="${user.name}"></p>
@@ -39,8 +38,7 @@
                         <div class="edit-btn-container">
                             <button class="edit-btn">Edit Profile</button>
                         </div>
-                    </div>
-                    <!----- profile picture ends here ---->
+                    </div><!---profile picture ends here ---->
 
                     <!---- profile form starts here ------>
                     <div class="form-container">
@@ -58,11 +56,9 @@
                                 <button class="cancel" id="cancel-btn">Cancel</button>
                             </div>
                         </form>
-                    </div>
-                    <!----- profile form ends here -------->
+                    </div><!--- profile form ends here ---->
 
-                </div>
-                <!--------- first column wrapper end here ------>
+                </div><!---- first column wrapper end here ----->
 
 
                 <!---- second column wrapper starts here ------->
@@ -71,7 +67,7 @@
                     <!---- list of all tabs start here ------>
                     <ul class="lists-wrapper" id="myTab">
                         <li class="list-item">
-                            <button class="tab-btn" id="tip-tab" data-content="3">
+                            <button class="tab-btn active" id="tip-tab" data-content="1">
                                 <span class="badge rounded-pill bg-secondary me-1" th:text="${allTipsLength}"></span>
                                 Tips
                             </button>
@@ -83,30 +79,28 @@
                             </button>
                         </li>
                         <li class="list-item">
-                            <button class="tab-btn active" id="answer-tab" data-content="1">
+                            <button class="tab-btn" id="answer-tab" data-content="3">
                                 <span class="badge rounded-pill bg-secondary me-1" th:text="${allAnswersLength}"></span>
                                 Answers
                             </button>
                         </li>
-                    </ul>
-                    <!------ list of all tabs end here ------->
+                    </ul><!---- list of all tabs end here ---->
 
                     <!------ tab content wrapper start here ---->
                     <div id="TabContents">
 
                         <!-- first tab content card begins here -->
                         <div class="tab-content show-content" data-content="1">
-                            <ul class="answered-question" th:each="answer : ${allAnswers}">
-                                <li class="list-items answered-question-list">
-                                    <div th:text="${answer.getAnswer()}"></div>
+                            <ul class="list-tips" th:each="tip : ${allTips}">
+                                <li class="list-items user-tip-list">
+                                    <div th:text="${tip.getTipContent()}"></div>
                                     <div>
                                         <button>edit</button>
                                         <button>delete</button>
                                     </div>
                                 </li>
                             </ul>
-                        </div>
-                        <!----- first tab content card end here ------>
+                        </div><!---- first tab content card end here ----->
 
                         <!-- second tab content card begins here -->
                         <div class="tab-content" data-content="2">
@@ -117,33 +111,29 @@
                                 <li class="list-items user-question-list">
                                     <div th:text="${question.getQuestion()}"></div>
                                     <div>
-                                        <button>edit</button>
+                                        <button class="edit-btn">edit</button>
                                         <button>delete</button>
                                     </div>
                                 </li>
                             </ul>
-                        </div>
-                        <!----- second tab content card end here ----->
+                        </div><!--- second tab content card end here --->
 
                         <!-- third tab content card begins here -->
                         <div class="tab-content" data-content="3">
-                            <ul class="list-tips" th:each="tip : ${allTips}">
-                                <li class="list-items user-tip-list">
-                                    <div th:text="${tip.getTipContent()}"></div>
+                            <ul class="answered-question" th:each="answer : ${allAnswers}">
+                                <li class="list-items answered-question-list">
+                                    <div th:text="${answer.getAnswer()}"></div>
                                     <div>
-                                        <button>edit</button>
+                                        <button class="edit-btn open-button">edit</button>
                                         <button>delete</button>
                                     </div>
                                 </li>
-
                             </ul>
-                        </div>
-                        <!---- third tab content card end here ----->
+                        </div><!--- third tab content card end here ---->
 
-                    </div>
-                    <!---- tab content wrapper end here ----->
-                </div>
-            </div>
+                    </div><!---- tab content wrapper end here ----->
+                </div><!--- second column wrapper end here -->
+            </div><!--- row wrapper end here --->
         </section>
       <footer th:replace="~{partials/venued_partials.html :: footer}"></footer>
   </div>

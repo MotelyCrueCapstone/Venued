@@ -63,6 +63,8 @@ public class UserController {
     public String profile(Model model){
         User currentUserPrincipal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<User> currentUser = userDao.findById(currentUserPrincipal.getId());
+        System.out.println("This is inside userController.");
+        System.out.println(currentUser);
         if(currentUser.isPresent()){
             List<Questions> allQuestions = questionsDao.findQuestionsByUser(currentUser.get());
             model.addAttribute("user", currentUser.get());

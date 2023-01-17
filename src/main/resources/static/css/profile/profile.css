@@ -27,17 +27,13 @@
 }
 /* profile image wrapper */
 #profile-info-container {
-    position: relative;
+    /*position: relative;*/
     margin-bottom: 1rem;
-    border: 2px solid #fff;
 }
 
 /* profile image upload button */
 .avatar-container div:first-child > p {
     /*display: none;*/
-    position: absolute;
-    bottom: 0;
-    right: 30%;
 }
 
 .avatar-container div:first-child > img {
@@ -45,7 +41,6 @@
     margin: 0 auto;
     width: 250px;
     height: 250px;
-    border: 2px solid #f00;
     border-radius: 50%;
     position: relative;
 }
@@ -248,3 +243,4 @@ button#cancel-btn {
         flex-basis: 55%;
     }
 }
+
