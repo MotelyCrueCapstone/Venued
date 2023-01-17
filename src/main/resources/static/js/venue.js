@@ -1,6 +1,12 @@
 $(async function() {
     console.log("Inside venue.js");
     let eventIndex = 0;
+    let events;
+
+    $('.title-info').text("Loading...");
+    $('.desc-info').text("");
+    $('.event-date').text("");
+    $('.event-venue').text("");
 
     function grabEvents(latitude, longitude){
         fetch(`http://localhost:8085/event?latitude=${latitude}&longitude=${longitude}`)
@@ -13,6 +19,8 @@ $(async function() {
                     let dateB = new Date(b.start);
                     return dateA - dateB;
                 });
+                updateEvent();
+                setInterval(updateEvent, 7000);
             });
     }
 
@@ -27,12 +35,19 @@ $(async function() {
                 const eventDate =`${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
 
                 $('.title-info').text(title);
-                $('.desc-info').text(category);
+
+                if (events[eventIndex].category) {
+                    $('.event-desc').text("Event Type: " + events[eventIndex].category);
+                } else {
+                    $('.event-desc').text("");
+                }
+
+
                 $('.event-date').text(eventDate);
 
                 if (events[eventIndex].entities && events[eventIndex].entities[0] && events[eventIndex].entities[0].name) {
                     const venue = events[eventIndex].entities[0].name;
-                    $('.event-venue').text(venue);
+                    $('.event-venue').text("Venue: " + events[eventIndex].entities[0].name);
                 } else {
                     $('.event-venue').text("");
                 }
@@ -57,14 +72,10 @@ $(async function() {
         }
     }
 
-
-
-
-
     let mainSection = $('#main-section')
     let latitude = $(mainSection).data("venue-latitude");
     let longitude = $(mainSection).data("venue-longitude");
 
     grabEvents(latitude, longitude);
-    setInterval(updateEvent, 1000);
 });
+

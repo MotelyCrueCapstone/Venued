@@ -64,6 +64,13 @@ h1 {
     color: white;
 }
 
+.title-info {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+
+
 .venue-address {
     margin-top: 1rem;
 }
