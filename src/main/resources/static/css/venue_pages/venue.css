@@ -60,6 +60,17 @@ h1 {
     font-size: 1.2rem;
 }
 
+.title-info, .desc-info, .event-date, .event-venue, .events-card {
+    color: white;
+}
+
+.title-info {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+
+
 .venue-address {
     margin-top: 1rem;
 }
@@ -286,6 +297,7 @@ small {
 }
 form > div:first-child textarea {
     background-color: transparent;
+    resize: none;
 }
 form > div:first-child textarea:focus {
     background-color: transparent;

@@ -6,7 +6,7 @@
 
 	<head>
 
-		<div th:fragment="myheader (title)">
+		<div th:fragment="myheader (title)" th:remove="tag">
 
 			<title th:text="${title}"></title>
 
@@ -147,7 +147,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<script src="/js/results.js"></script>
 	</footer>
 </html>
