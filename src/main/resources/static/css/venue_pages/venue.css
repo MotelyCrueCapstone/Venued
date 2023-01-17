@@ -60,6 +60,10 @@ h1 {
     font-size: 1.2rem;
 }
 
+.title-info, .desc-info, .event-date {
+    color: white;
+}
+
 .venue-address {
     margin-top: 1rem;
 }
