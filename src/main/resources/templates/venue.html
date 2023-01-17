@@ -312,8 +312,7 @@
 	            <!--    ANSWERED QUESTIONS DIV-->
                     <div th:if="${questions.isEmpty()}" class="empty">
                         <p class="nothingHere">Looks like no questions have been answered yet! <br>Be the first to
-                            answer a
-                            question</p>
+                            answer a question</p>
                     </div>
 
                     <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">

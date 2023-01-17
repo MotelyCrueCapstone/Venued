@@ -52,7 +52,7 @@ $(function(){
 
 
 // $(function() {
-//
+
 //     $('.profile').on("mouseover",function(e) {
 //         e.preventDefault();
 //         $(this).siblings(".profile-modal").show();
