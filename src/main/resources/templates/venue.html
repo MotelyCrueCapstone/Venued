@@ -222,7 +222,7 @@
 
                     <div th:if="${questions.isEmpty()}" class="empty">
                         <p class="nothingHere">Looks like no questions have been asked yet! <br>Be the first to ask a
-                            question</p>
+                            question.</p>
                     </div>
                         <div th:if="${unanswered.isEmpty() && !questions.isEmpty()}" class="empty">
                             <p class="nothingHere">Looks like there are no unanswered questions! <br>ask a new
@@ -310,7 +310,7 @@
 
 <!------- Answered section -------->
 				<section class="wrapper answered-questions">
-					<h1 class="answered-question-title">Answered Questions</h1>
+					<p class="answered-question-title title">Answered Questions</p>
 	            <!--    ANSWERED QUESTIONS DIV-->
                     <div th:if="${answered.isEmpty()}" class="empty">
                         <p class="nothingHere">Looks like no questions have been answered yet! <br>Be the first to
