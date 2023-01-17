@@ -5,6 +5,7 @@
     <div th:replace="~{partials/venued_partials :: myheader('Profile')}"></div>
     <link rel="stylesheet" th:href="@{/css/universalStyle.css}">
     <link rel="stylesheet" th:href="@{/css/profile/profile.css}">
+</head>
 <body th:object="${user}">
   <div class="page-wrapper">
 
@@ -29,7 +30,7 @@
                             <img th:if="${user.getImgPath() == null}"
                                  th:src="@{/imgs/avatar-image.png}" alt="Profile Picture"
                                  class="profileImg"/>
-                            <p id="profilePicChangeButton">Upload Photo</i></p>
+                            <p id="profilePicChangeButton">Upload Photo</p>
                         </div>
                         <div>
                             <p th:text="${user.name}"></p>
@@ -95,8 +96,30 @@
                                 <li class="list-items user-tip-list">
                                     <div th:text="${tip.getTipContent()}"></div>
                                     <div>
-                                        <button>edit</button>
+<!--                                        <button class="edit-button">edit</button>-->
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#tipModal">
+                                            edit
+                                        </button>
                                         <button>delete</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="tipModal" tabindex="-1" aria-labelledby="tipModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="tipModalLabel">Modal title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        ...
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn">Save changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- modal end here -->
                                     </div>
                                 </li>
                             </ul>
@@ -105,14 +128,33 @@
                         <!-- second tab content card begins here -->
                         <div class="tab-content" data-content="2">
                             <ul class="list-questions" th:each="question : ${allQuestions}">
-                                <!--                                <div th:each="item : ${shoppingCart}">-->
-                                <!--                                    <p th:text="${item.name}" />-->
-                                <!--                                </div>-->
                                 <li class="list-items user-question-list">
                                     <div th:text="${question.getQuestion()}"></div>
                                     <div>
-                                        <button class="edit-btn">edit</button>
+<!--                                        <button class="edit-button">edit</button>-->
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#equestionModal">
+                                            edit
+                                        </button>
                                         <button>delete</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="questionModal" tabindex="-1" aria-labelledby="questionModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="questionModalLabel">Modal title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        ...
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn">Save changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- modal end here -->
                                     </div>
                                 </li>
                             </ul>
@@ -124,8 +166,30 @@
                                 <li class="list-items answered-question-list">
                                     <div th:text="${answer.getAnswer()}"></div>
                                     <div>
-                                        <button class="edit-btn open-button">edit</button>
+<!--                                        <button class="edit-button">edit</button>-->
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#answerModal">
+                                            edit
+                                        </button>
                                         <button>delete</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="answerModal" tabindex="-1" aria-labelledby="answerModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="answerModalLabel">Modal title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        ...
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn">Save changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- modal end here -->
                                     </div>
                                 </li>
                             </ul>
