@@ -17,9 +17,11 @@ $(async function() {
     }
 
     function updateEvent() {
+        let hasEvents = false;
         while (true) {
             let date = new Date(events[eventIndex].start);
             if (date > new Date()) {
+                hasEvents = true;
                 const title = events[eventIndex].title;
                 const category = events[eventIndex].category;
                 const eventDate =`${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
@@ -44,9 +46,17 @@ $(async function() {
             eventIndex++;
             if (eventIndex >= events.length) {
                 eventIndex = 0;
+                if (!hasEvents) {
+                    $('.title-info').text("Sorry, no events soon!");
+                    $('.desc-info').text("");
+                    $('.event-date').text("");
+                    $('.event-venue').text("");
+                }
+                break;
             }
         }
     }
+
 
 
 
