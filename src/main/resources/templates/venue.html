@@ -31,10 +31,14 @@
                     <p class="desc venue-address" th:text="${venue.getAddress()}"></p>
 
 					<div class="event-container" id="event-container">
-						<div>
-							<p class="title-info eventText"></p>
+						<div class="events-card">
+                            <p class="events-card-title">EVENTS NEARBY:</p><br>
+							<p class="title-info eventText"></p><br>
+                            Event Type:
 							<p class="desc-info event-desc eventText"></p>
-                            <p class="event-date"></p>
+                            <p class="event-date"></p><br>
+                            Venue:
+                            <p class="event-venue"></p>
 						</div>
 					</div>
 
