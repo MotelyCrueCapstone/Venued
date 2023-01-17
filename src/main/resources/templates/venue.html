@@ -5,8 +5,7 @@
     <div th:replace="partials/venued_partials :: myheader('Venue Page')" th:remove="tag"></div>
     <link rel="stylesheet" href="/css/venue_pages/venue.css">
     <link rel="stylesheet" href="/css/universalStyle.css">
-    <title></title>
-    <script src="/js/vote.js"></script>
+    <script src="/js/vote.js" defer></script>
 </head>
 <body>
 
@@ -19,19 +18,19 @@
 	        <nav th:replace="~{partials/venued_partials :: mynav}"></nav>
         </section>
 
-	<div th:object="${venue}">
+	    <div th:object="${venue}">
 			<!--------- header section ------->
 			<header class="wrapper header-wrapper">
 
 				<div class="hero-card">
-					<img th:src="${venue.getImgPath()}" alt="" class="image">
+					<img th:src="${venue.getImgPath()}" alt="" class="hero-image">
 				</div>
 
 				<div class="event-card">
-					<p class="title" th:text="${venue.getVenueName()}"></p>
+					<h1 class="event-title" th:text="${venue.getVenueName()}"></h1>
 
 					<div class="event-container marquee" id="event-container">
-						<div class="# ">
+						<div>
 							<p class="title-info eventText"></p>
 							<p class="desc-info event-desc eventText"></p>
                             <p class="event-date"></p>
@@ -39,147 +38,142 @@
 					</div>
 
 					<p class="desc venue-address" th:text="${venue.getAddress()}"></p>
-
 				</div>
 
 			</header>
+
 			<!-- main section -->
-			<main id="main-section" th:data-venue-latitude="${venue.getLatitude()}"
-                  th:data-venue-longitude="${venue.getLongitude()}">
+			<main id="main-section" th:data-venue-latitude="${venue.getLatitude()}" th:data-venue-longitude="${venue.getLongitude()}">
+
 				<!----- tip and question section starts here --->
 				<section class="wrapper cards-wrapper">
 
 
-                <!--------- Tips card ---------->
-                <div class="tip-card">
-                    <div class="card-wrapper">
-                        <p class="title card-heading">Tips</p>
+                    <!--------- Tips card ---------->
+                    <div class="tip-card">
+                        <div class="card-wrapper">
+                            <h1 class="tip-title card-heading">Tips</h1>
 
-                        <div sec:authorize="isAuthenticated()">
-                            <button type="button" class="cta-button" data-bs-toggle="modal"
-                                    data-bs-target="#tipModal1">Add A Tip
-                            </button>
-                        </div>
+                            <div sec:authorize="isAuthenticated()">
+                                <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#tipModal1">Add A Tip</button>
+                            </div>
 
-                        <div class="user-container" sec:authorize="isAnonymous()">
-                            <button type="button" class="cta-button" onclick="window.location='/login'"
-                                    >Add a Tip
-                            </button>
-                        </div>
+                            <div class="user-container" sec:authorize="isAnonymous()">
+                                <button type="button" class="cta-button" onclick="window.location='/login'">Add a Tip</button>
+                            </div>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="tipModal1" tabindex="-1" aria-labelledby="tipModal1" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content tip-modal">
-                                    <div class="modal-header">
-                                        <p class="modal-title fs-5 title" id="tipModalLabel1">Add a tip</p>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="tipModal1" tabindex="-1" aria-labelledby="tipModal1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content tip-modal">
+                                        <div class="modal-header">
+                                            <p class="modal-title fs-5" id="tipModalLabel1">Add a tip</p>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form method="post"  th:action="@{|/venues/${venueId}/add-tip|}">
+                                                <div class="mb-3">
+                                                    <input type="hidden" name="venueId" value="{venueId}">
+                                                    <input type="text" name="tipName" placeholder="Tip Name">
+                                                    <textarea class="form-control shadow-none" name="tipContent" id="tipTextarea" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
+                                                    <button type="Submit" class="btn submit">Submit</button>
+                                                </div>
+
+
+
+                                            </form>
+
+                                        </div>
+
+
                                     </div>
-                                    <div class="modal-body">
-
-                                        <form method="post"  th:action="@{|/venues/${venueId}/add-tip|}">
-                                            <div class="mb-3">
-                                                <input type="hidden" name="venueId" value="{venueId}">
-                                                <input type="text" name="tipName" placeholder="Tip Name">
-                                                <textarea class="form-control shadow-none" name="tipContent" id="tipTextarea" rows="10" cols="30" placeholder="Add a tip here..."></textarea>
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
-                                                <button type="Submit" class="btn submit">Submit</button>
-                                            </div>
-
-
-
-                                        </form>
-
-                                    </div>
-
-
                                 </div>
                             </div>
-                        </div>
-                        <!---- modal end here --->
-                    </div>
-
-                        <div th:if="${tips.isEmpty()}" class="empty">
-
-                            <p class="nothingHere">Looks like no tips have been added yet! <br>Be the first to add
-                                a tip!</p>
-
+                            <!---- modal end here --->
                         </div>
 
-                        <div th:if="${!tips.isEmpty()}" th:each="tip : ${tips}">
-                            <ul class="list-tips">
-                            <li>
-                                <div class="user-wrapper">
-                                    <img th:src="${tip.getUser().imgPath}" class="user-image">
-                                    <div th:text="${tip.getUser().getUsername()}"></div>
-                                </div>
+                            <div th:if="${tips.isEmpty()}" class="empty">
 
-                                <div class="thumbs-icon-wrapper">
+                                <p class="nothingHere">Looks like no tips have been added yet! <br>Be the first to add a tip!</p>
 
-                                    <span th:class="tipName" th:text="${tip.getTipName()}"></span>
-                                    <span th:text="${tip.getTipContent()}"></span>
-                                    <div >
-                                    <form th:method="POST" th:action="@{|/tips/vote/1|}">
+                            </div>
 
-                                        <div sec:authorize="isAuthenticated()"> <!-- if user is logged in -->
-                                            <input type="hidden" name="tipId" th:value="${tip.getId()}">
-                                            <input type="hidden" name="userId" th:value="${user.getId()}">
-                                            <button class="upVoteButton" th:data-tip-id="${tip.getId()}">
+                            <div th:if="${!tips.isEmpty()}" th:each="tip : ${tips}">
+                                <ul class="list-tips">
+                                <li>
+                                    <div class="user-wrapper">
+                                        <img th:src="${tip.getUser().imgPath}" class="user-image">
+                                        <div th:text="${tip.getUser().getUsername()}"></div>
+                                    </div>
+
+                                    <div class="thumbs-icon-wrapper">
+
+                                        <span th:class="tipName" th:text="${tip.getTipName()}"></span>
+                                        <span th:text="${tip.getTipContent()}"></span>
+                                        <div >
+                                        <form th:method="POST" th:action="@{|/tips/vote/1|}">
+
+                                            <div sec:authorize="isAuthenticated()"> <!-- if user is logged in -->
+                                                <input type="hidden" name="tipId" th:value="${tip.getId()}">
+                                                <input type="hidden" name="userId" th:value="${user.getId()}">
+                                                <button class="upVoteButton" th:data-tip-id="${tip.getId()}">
 
                                                 <span class="fa-solid fa-thumbs-up text-primary">
                                                 <span th:class="small-number" th:text="${tip.getUpvotes()}"> //text=""
                                                 </span>
-                                             </span>
-                                            </button>
-                                        </div>
-
-                                        <div sec:authorize="isAnonymous()">
-                                            <button onclick="window.location='/login'" class="upVoteButton" th:data-tip-id="${tip.getId()}">
-                                                <span class="fa-solid fa-thumbs-up text-primary">
-                                                <span th:class="small-number" th:text="${tip.getUpvotes()}">
                                                 </span>
-                                             </span>
-                                            </button>
-                                        </div>
+                                                </button>
+                                            </div>
 
-                                    </form>
+                                            <div sec:authorize="isAnonymous()">
+                                                <button onclick="window.location='/login'" class="upVoteButton" th:data-tip-id="${tip.getId()}">
+                                                    <span class="fa-solid fa-thumbs-up text-primary">
+                                                    <span th:class="small-number" th:text="${tip.getUpvotes()}">
+                                                    </span>
+                                                 </span>
+                                                </button>
+                                            </div>
 
-                                    <form th:method="POST" th:action="@{|/tips/vote/0|}">
-                                        <input type="hidden" name="tipId" th:value="${tip.getId()}">
-                                        <input type="hidden" name="userId" th:value="${user.getId()}">
-                                        <div sec:authorize="isAuthenticated()">
-                                            <button type="submit" class="voteButton" th:data-tip-id="${tip.getId()}">
-                                            <span class="fa-solid fa-thumbs-down text-primary">
-                                                <span th:class="small-number" th:text="${tip.getDownvotes()}">
+                                        </form>
+
+                                        <form th:method="POST" th:action="@{|/tips/vote/0|}">
+                                            <input type="hidden" name="tipId" th:value="${tip.getId()}">
+                                            <input type="hidden" name="userId" th:value="${user.getId()}">
+                                            <div sec:authorize="isAuthenticated()">
+                                                <button type="submit" class="voteButton" th:data-tip-id="${tip.getId()}">
+                                                <span class="fa-solid fa-thumbs-down text-primary">
+                                                    <span th:class="small-number" th:text="${tip.getDownvotes()}">
+                                                    </span>
                                                 </span>
-                                            </span>
-                                            </button>
-                                        </div>
+                                                </button>
+                                            </div>
 
-                                        <div sec:authorize="isAnonymous()">
-                                            <button class="voteButton" onclick="window.location='/login'" th:data-tip-id="${tip.getId()}">
-                                            <span class="fa-solid fa-thumbs-down text-primary">
-                                                <span th:class="small-number" th:text="${tip.getDownvotes()}">
-                                            </span>
-                                            </span>
-                                            </button>
-                                        </div>
+                                            <div sec:authorize="isAnonymous()">
+                                                <button class="voteButton" onclick="window.location='/login'" th:data-tip-id="${tip.getId()}">
+                                                <span class="fa-solid fa-thumbs-down text-primary">
+                                                    <span th:class="small-number" th:text="${tip.getDownvotes()}">
+                                                </span>
+                                                </span>
+                                                </button>
+                                            </div>
 
-                                    </form>
+                                        </form>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
-                        </div>
-                </div>
+                                </li>
+                            </ul>
+                            </div>
+                    </div> <!--- tip card end here --->
 
                 <!------ Questions card ------->
                 <div class="question-card">
                     <div class="card-wrapper">
-                        <p class="title card-heading">Questions</p>
+                        <h1 class="question-title card-heading">Questions</h1>
                         <div sec:authorize="isAuthenticated()">
                             <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#questionModal2">
                                 Ask a Question
@@ -197,7 +191,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content question-modal">
                                     <div class="modal-header">
-                                        <p class="modal-title fs-5 title" id="questionModalLabel2">Ask a Question</p>
+                                        <p class="modal-title fs-5" id="questionModalLabel2">Ask a Question</p>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -257,7 +251,7 @@
                                                 <div class="modal-content question-modal">
 
                                                     <div class="modal-header">
-                                                        <p class="modal-title fs-5 title" id="exampleModalLabel3">Answer</p>
+                                                        <p class="modal-title fs-5" id="exampleModalLabel3">Answer</p>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
 
@@ -303,67 +297,66 @@
                         </ul>
                     </div>
 
-					</div>
+					</div> <!--- question card end here -->
 				</section>
 
 <!------- Answered section -------->
 				<section class="wrapper answered-questions">
-					<p class="title">Answered Questions</p>
+					<h1 class="answered-question-title">Answered Questions</h1>
 	            <!--    ANSWERED QUESTIONS DIV-->
                     <div th:if="${questions.isEmpty()}" class="empty">
                         <p class="nothingHere">Looks like no questions have been answered yet! <br>Be the first to
                             answer a question</p>
                     </div>
 
-                    <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
-					<div class="answered-question-wrapper" th:each="question : ${questions}">
-						<th:block th:if="${question.answered == 1}">
-	            <!--        QUESTION ASKED-->
-						<ul class="list-answered-questions">
-
-							<li>
-								<div class="user-wrapper text-center">
-									<span><img th:src="${question.getUser().getImgPath()}" alt="" class="user-image"></span>
-									<p th:text="${question.getUser().getUsername()}">username</p>
-								</div>
-								<div class="answer-wrapper">
-									<span th:text="${question.getQuestion()}"></span>
-								</div>
-							</li>
-
-                    </ul>
-<!--        ANSWER GIVEN-->
+                        <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
+                        <div class="answered-question-wrapper" th:each="question : ${questions}">
+                            <th:block th:if="${question.answered == 1}">
+                    <!--        QUESTION ASKED-->
                             <ul class="list-answered-questions">
-                                <li class="answered-background">
-                                    <div class="user-wrapper">
-                                        <span><img th:src="${question.answeredQuestions.getUser().getImgPath()}" alt=""
-                                                   class="user-image"></span>
-                                        <p th:text="${question.answeredQuestions.getUser().getUsername()}"></p>
+
+                                <li>
+                                    <div class="user-wrapper text-center">
+                                        <span><img th:src="${question.getUser().getImgPath()}" alt="" class="user-image"></span>
+                                        <p th:text="${question.getUser().getUsername()}">username</p>
                                     </div>
                                     <div class="answer-wrapper">
-                                        <span th:text="${question.answeredQuestions.getAnswer()}"></span>
-                                        <a href="#">
-                                                <span class="fa-solid fa-thumbs-up text-primary">
-                                                    <span th:class="small-number"
-                                                          text="">
-                                                    </span>
-                                                </span>
-                                        </a>
-                                        <a href="#">
-                                                <span class="fa-solid fa-thumbs-down text-primary"></span>
-                                        </a>
-                                        <span th:class="small-number" text=""/>
+                                        <span th:text="${question.getQuestion()}"></span>
                                     </div>
                                 </li>
-                             </ul>
-                        </th:block>
+
+                            </ul>
+    <!--        ANSWER GIVEN-->
+                                <ul class="list-answered-questions">
+                                    <li class="answered-background">
+                                        <div class="user-wrapper">
+                                            <span><img th:src="${question.answeredQuestions.getUser().getImgPath()}" alt=""
+                                                       class="user-image"></span>
+                                            <p th:text="${question.answeredQuestions.getUser().getUsername()}"></p>
+                                        </div>
+                                        <div class="answer-wrapper">
+                                            <span th:text="${question.answeredQuestions.getAnswer()}"></span>
+                                            <a href="#">
+                                                    <span class="fa-solid fa-thumbs-up text-primary">
+                                                        <span th:class="small-number"
+                                                              text="">
+                                                        </span>
+                                                    </span>
+                                            </a>
+                                            <a href="#">
+                                                    <span class="fa-solid fa-thumbs-down text-primary"></span>
+                                            </a>
+                                            <span th:class="small-number" text=""></span>
+                                        </div>
+                                    </li>
+                                 </ul>
+                            </th:block>
+                        </div>
                     </div>
-                </div>
 				</section>
 
-
 			</main>
-	</div>
+	    </div>
         <!-- footer section -->
         <footer th:replace="partials/venued_partials :: footer"></footer>
     </div>

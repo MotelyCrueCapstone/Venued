@@ -35,6 +35,13 @@ public class User {
     @Column(nullable = true, length = 510)
     private String bio;
 
+
+//    public User(String name, String bio) {
+//        this.name = name;
+//        this.bio = bio;
+//    }
+
+
 //    public User(long id, String email, String username, String password) {
 //        this.id = id;
 //        this.email = email;

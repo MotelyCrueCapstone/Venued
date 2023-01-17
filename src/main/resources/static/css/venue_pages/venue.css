@@ -3,15 +3,18 @@ main {
     font-size: 1.2rem;
 }
 
-h2, h3 {
+h1 {
     text-align: center;
     color: #fff;
     font-family: inherit;
+    font-size: 2.4rem;
+    font-weight: 600;
 }
 
-.image {
-    width: 85%;
+.hero-image {
+    width: 100%;
     border-radius: 10px;
+    height: 500px;
 }
 
 .wrapper {
@@ -23,13 +26,11 @@ h2, h3 {
 .header-wrapper {
     background-color: rgba(0, 0, 0, 0.4);
     padding: 1rem;
-    height: 75vh;
 }
 
 .hero-card {
     margin: 0 auto 2.5rem;
     border-radius: 10px;
-    height: 100%;
     overflow: hidden;
 }
 
@@ -39,33 +40,31 @@ h2, h3 {
 }
 
 .event-container {
-    width: 90%;
-    height: 60%;
+    min-height: 60%;
     margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 10px;
 }
 
-.event-container div:nth-child(2) {
+.event-container div:first-child {
+    text-align: center;
     width: 100%;
     margin: 0 auto;
-}
-
-.event-container div:nth-child(2) img {
-    margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 
 .desc {
     color: #fff;
     text-align: center;
+    font-size: 1.2rem;
 }
 
 .venue-address {
     margin-top: 1rem;
 }
 
-/*---------- header mobile style ------ */
+/*---------- header bigger screen style ------ */
 @media screen and (min-width: 700px) {
     .header-wrapper {
         display: flex;
@@ -74,6 +73,7 @@ h2, h3 {
 
     .hero-card {
         width: 55%;
+        margin-bottom: 0;
     }
 
     .hero-card > img {
@@ -89,13 +89,15 @@ h2, h3 {
 
 
 /*-------- tip and question section style ---------*/
+.tip-card {
+    margin-bottom: 3rem;
+}
+
 .tip-card,
 .question-card {
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 10px;
-    margin-bottom: 3rem;
     height: 500px;
-    /*border: 2px dashed green;*/
     overflow-y: auto;
     padding: 0 1rem;
 }
@@ -189,12 +191,13 @@ h2, h3 {
     font-weight: bold;
 }
 
-
-
 @media screen and (min-width: 700px) {
     .cards-wrapper {
         display: flex;
         justify-content: space-between;
+    }
+    .tip-card {
+        margin-bottom: 0;
     }
     .tip-card,
     .question-card {
@@ -222,8 +225,6 @@ h2, h3 {
     justify-content: space-between;
     gap: 1rem;
 }
-
-
 
 .upVoteButton, .voteButton {
     background:none;
