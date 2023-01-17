@@ -72,6 +72,9 @@ public class VenueController {
 
             List<Questions> answered = QuestionsDao.findQuestionsByAnsweredEqualsAndVenue(1, venue.get());
             model.addAttribute("answered", answered);
+
+            List<Questions> unanswered = QuestionsDao.findQuestionsByAnsweredEqualsAndVenue(0, venue.get());
+            model.addAttribute("unanswered", unanswered);
         }
         return "venue";
     }
