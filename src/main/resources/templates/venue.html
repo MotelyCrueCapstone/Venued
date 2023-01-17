@@ -304,7 +304,7 @@
 				<section class="wrapper answered-questions">
 					<h1 class="answered-question-title">Answered Questions</h1>
 	            <!--    ANSWERED QUESTIONS DIV-->
-                    <div th:if="${answered.}" class="empty">
+                    <div th:if="${answered.isEmpty()}" class="empty">
                         <p class="nothingHere">Looks like no questions have been answered yet! <br>Be the first to
                             answer a question</p>
                     </div>
