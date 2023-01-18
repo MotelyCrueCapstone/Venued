@@ -13,7 +13,7 @@
     function search(query) {
          
          //fetching api data from yelp
-         fetch(`https:venued.us/yelp/${query.trimEnd()}?location=${searchLocation.val()}`)
+         fetch(`${window.location.protocol}//${window.location.host}/yelp/${query.trimEnd()}?location=${searchLocation.val()}`)
                .then(response => response.json())
                .then(venuesJson => {
                     venuesJson.forEach(currentVenue =>{

@@ -41,9 +41,15 @@ public class UserController {
 
 
     @GetMapping("/login")
-    public String showLogin(){
+    public String showLogin(HttpServletRequest request) {
+        String url = request.getHeader("referer");
+        request.getSession().setAttribute("url_prior_login", url);
+
+        System.out.println(url);
         return "users/login";
     }
+
+
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
