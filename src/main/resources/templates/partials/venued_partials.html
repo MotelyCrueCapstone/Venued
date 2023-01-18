@@ -108,9 +108,9 @@
 					</form>
 				</div>
 				<div class="user-wrapper text-center" sec:authorize="isAuthenticated()">
-					<button class="profile" th:action='@{/profile}'>
+					<a class="profile" th:href="@{/profile}">
 						<img th:src="${#authentication.principal.getImgPath()}" alt="" class="nav-user-image">
-					</button>
+					</a>
 				</div>
 			</ul>
 	</nav>
