@@ -176,6 +176,7 @@ h1 {
 .username-formatting {
     margin-top: 0;
     margin-bottom: 0rem;
+    text-align: center;
 }
 
 .user-image {
@@ -226,6 +227,18 @@ h1 {
     .question-card {
         flex-basis: 48%;
     }
+}
+
+@media screen and (max-width: 500px) {
+    .list-tips li, .list-questions li{
+        gap: 1rem;
+    }
+
+    .hero-image {
+        width: 300px;
+        height: auto;
+    }
+
 }
 
 

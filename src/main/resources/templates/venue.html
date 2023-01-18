@@ -113,7 +113,7 @@
                                 <li>
                                     <div class="user-wrapper">
                                         <img th:src="${tip.getUser().imgPath}" class="user-image">
-                                        <div th:text="${tip.getUser().getUsername()}"></div>
+                                        <div th:text="${tip.getUser().getUsername()}" class="username-formatting"></div>
                                     </div>
 
                                     <div class="thumbs-icon-wrapper">
@@ -239,7 +239,7 @@
                                 <li>
                                     <div class="user-wrapper">
                                         <span><img th:src="${question.getUser().getImgPath()}" alt="" class="user-image"></span>
-                                        <div th:text="${question.getUser().getUsername()}">username</div>
+                                        <div th:text="${question.getUser().getUsername()}" class="username-formatting">username</div>
                                     </div>
 
                                     <div class="question-wrapper">
