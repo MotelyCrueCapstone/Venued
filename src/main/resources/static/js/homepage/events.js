@@ -23,17 +23,17 @@
           `
      }
      
-     navigator.geolocation.getCurrentPosition((position) => {
-          
-          //getting the latitude longitude from the doms geolocation api
-          //and setting the decimal length to be fixed at 2 so we dont get any
-          //super long decimal numbers
-          let latitude = position.coords.latitude.toFixed(2);
-          let longitude = position.coords.longitude.toFixed(2);
-          
-          //fetching clients local events with our internal api grabbing them from predicthq
-          fetch(`http://localhost:8085/event?latitude=${latitude}&longitude=${longitude}`, {method: "GET"})
-               .then(response  => response.json())
-               .then(json => (console.log(json)))
-          })
+     // navigator.geolocation.getCurrentPosition((position) => {
+     //
+     //      //getting the latitude longitude from the doms geolocation api
+     //      //and setting the decimal length to be fixed at 2 so we dont get any
+     //      //super long decimal numbers
+     //      let latitude = position.coords.latitude.toFixed(2);
+     //      let longitude = position.coords.longitude.toFixed(2);
+     //
+     //      //fetching clients local events with our internal api grabbing them from predicthq
+     //      fetch(`http://localhost:8085/event?latitude=${latitude}&longitude=${longitude}`, {method: "GET"})
+     //           .then(response  => response.json())
+     //           .then(json => (console.log(json)))
+     //      })
      })();
