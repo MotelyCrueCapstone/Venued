@@ -147,7 +147,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 .contact-input{
     display: flex;
@@ -275,6 +274,7 @@ dialog {
     .col-sm-4.input-container{
         width: unset;
         margin-right: 20px;
+        margin-bottom: 5px;
     }
     .input-container{
         display: grid;
@@ -301,7 +301,7 @@ dialog {
         border-radius: 15px;
         width: 200px;
         height: 50px;
-        margin: auto;
+        margin:  30px auto;
     }
     .row.circles{
         width: 100vw;
