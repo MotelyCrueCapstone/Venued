@@ -7,6 +7,7 @@ import com.motelycrue.venued.questions.QuestionsRepository;
 import com.motelycrue.venued.tips.Tips;
 import com.motelycrue.venued.tips.TipsRepository;
 import com.motelycrue.venued.utils.Utils;
+import org.aspectj.weaver.patterns.TypePatternQuestions;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -149,19 +150,25 @@ public class UserController {
 
     @PostMapping("/editUserAnswer")
     public String editUserAnswer(@RequestParam String answer, @RequestParam String answerId){
-        Optional<Answer> answers = answersDao.findById(Long.parseLong(answerId));
-        if(answers.isPresent()){
-            answers.get().setAnswer(answer);
-            answersDao.save(answers.get());
-        }
+//        Optional<Answer> answers = answersDao.findById(Long.parseLong(answerId));
+        Answer answers = answersDao.findById(Long.parseLong(answerId));
+//        if(answers.isPresent()){
+//            answers.get().setAnswer(answer);
+//            answersDao.save(answers.get());
+//        }
         return "redirect:/profile";
     }
 
     @PostMapping("/deleteUserAnswer")
     public String deleteUserAnswer(@RequestParam(name="answerId") String answerId) {
         System.out.println("deleting answer");
-        Optional<Answer> answer = answersDao.findById(Long.parseLong(answerId));
-        answer.ifPresent(answers -> answersDao.delete(answers));
+        Answer answer = answersDao.findById(Long.parseLong(answerId));
+        System.out.println(answer.getId());
+        System.out.println(answer.getAnswer());
+//        Optional<Answer> answer = answersDao.findById(Long.parseLong(answerId));
+//        answer.ifPresent(answers -> answersDao.delete(answers));
+        answer.getQuestion().getAnsweredQuestions().remove(answer);
+        answersDao.delete(answer);
         return "redirect:/profile";
     }
 }
