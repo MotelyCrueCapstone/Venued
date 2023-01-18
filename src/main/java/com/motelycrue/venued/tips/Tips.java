@@ -60,6 +60,7 @@ public class Tips {
                 vote.stream().filter(vote1 ->
                         vote1.getDirection() == 1).count();
     }
+
     public long getDownvotes(){
         return vote == null ? 0 :
                 vote.stream().filter(vote1 ->
