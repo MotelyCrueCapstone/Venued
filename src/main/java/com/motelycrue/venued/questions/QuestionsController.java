@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,7 +70,10 @@ public class QuestionsController {
         questionsDao.findById(Long.parseLong(questionId)).ifPresent(question1 -> {
             newAnswer.setQuestion(question1);
             question1.setAnswered(1);
-            question1.setAnsweredQuestions(newAnswer);
+//            question1.setAnsweredQuestions(newAnswer);
+            List <Answer> answerList = question1.getAnsweredQuestions();
+            answerList.add(newAnswer);
+            question1.setAnsweredQuestions(answerList);
             newAnswer.setUser_Id(userDao.getUserById(Long.parseLong(userId)));
             answersDao.save(newAnswer);
             questionsDao.save(question1);

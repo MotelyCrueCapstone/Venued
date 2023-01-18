@@ -7,6 +7,7 @@ import com.motelycrue.venued.questions.QuestionsRepository;
 import com.motelycrue.venued.tips.Tips;
 import com.motelycrue.venued.tips.TipsRepository;
 import com.motelycrue.venued.utils.Utils;
+import org.aspectj.weaver.patterns.TypePatternQuestions;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,13 +39,17 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
-    public String showLogin(){
+    public String showLogin(HttpServletRequest request) {
+//        String url = request.getHeader("referer");
+//        request.getSession().setAttribute("url_prior_login", url);
+//
+//        System.out.println(url);
         return "users/login";
     }
+
+
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
@@ -100,7 +106,7 @@ public class UserController {
         currentUser.setName(name);
         currentUser.setBio(bio);
         userDao.save(currentUser);
-        return "users/profile";
+        return "redirect:/profile";
     }
 
 
@@ -109,6 +115,55 @@ public class UserController {
         User user = userDao.getUserById(Utils.currentUser().getId());
         user.setImgPath(url);
         userDao.save(user);
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/editUserTip")
+    public String editUserTip(@RequestParam String tipContent, @RequestParam String tipId){
+        Optional<Tips> tip = TipsDao.findById(Long.parseLong(tipId));
+        if(tip.isPresent()){
+            tip.get().setTipContent(tipContent);
+            TipsDao.save(tip.get());
+        }
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/deleteUserTip")
+    public String deleteUserTip(@RequestParam String tipId) {
+        Optional<Tips> tip = TipsDao.findById(Long.parseLong(tipId));
+        tip.ifPresent(tips -> TipsDao.delete(tips));
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/editUserQuestion")
+    public String editUserQuestion(@RequestParam String question, @RequestParam String questionId){
+        Optional<Questions> questions = questionsDao.findById(Long.parseLong(questionId));
+        if(questions.isPresent()){
+            questions.get().setQuestion(question);
+            questionsDao.save(questions.get());
+        }
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/deleteUserQuestion")
+    public String deleteUserQuestion(@RequestParam(name="questionId") String questionId) {
+        Optional<Questions> question = questionsDao.findById(Long.parseLong(questionId));
+        question.ifPresent(questions -> questionsDao.delete(questions));
+        return "redirect:/profile";
+    }
+
+
+    @PostMapping("/editUserAnswer")
+    public String editUserAnswer(@RequestParam String answer, @RequestParam String answerId){
+        Answer answers = answersDao.findById(Long.parseLong(answerId));
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/deleteUserAnswer")
+    public String deleteUserAnswer(@RequestParam(name="answerId") String answerId) {
+        Answer answer = answersDao.findById(Long.parseLong(answerId));
+        answer.getQuestion().getAnsweredQuestions().remove(answer);
+        answersDao.delete(answer);
         return "redirect:/profile";
     }
 }

@@ -107,7 +107,7 @@ button#cancel-btn {
 }
 
 .form-container {
-    display:none;
+    display: none;
     /*border: 2px dashed magenta;*/
     padding: 2rem;
     background-color: rgba(0, 0, 0, 0.5);
@@ -170,11 +170,9 @@ button#cancel-btn {
 }
 
 .list-items div:last-child {
-    display: flex;
-    justify-content: center;
-    gap: 1.2rem;
-    margin-top: 1rem;
+
 }
+
 .list-items  > div button:nth-child(1) {
     padding: 0.3rem 1rem;
     border: none;
@@ -193,6 +191,36 @@ button#cancel-btn {
     letter-spacing: 1.5px;
 }
 
+/*--- modal style ----*/
+.modal-content {
+    background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
+}
+
+.modal-title {
+    color: #fff;
+}
+
+form > div:first-child textarea {
+    background-color: transparent;
+    resize: none;
+}
+
+form > div:first-child textarea:focus {
+    background-color: transparent;
+    color: #fff;
+}
+
+.close {
+    background-color: transparent;
+}
+
+.submit-button {
+    border: none;
+    color: #fff;
+    background: rgba(222, 149, 109, 0.73) linear-gradient(to right, rgba(215, 85, 124, 0.87), rgba(175, 73, 2, 0.87));
+}
+/* modal style end here */
+
 @media screen and (min-width: 700px) {
     .list-items {
         flex-direction: row;
@@ -206,10 +234,6 @@ button#cancel-btn {
         font-size: 1.2rem;
     }
 
-
-    .list-items div:last-child {
-        margin: 0;
-    }
 }
 
 .active {

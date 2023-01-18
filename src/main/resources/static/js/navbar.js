@@ -5,7 +5,7 @@ $(function(){
     //this will work lol
     $(toggleButton).on("click", () => {
         $(navbarLinks).toggleClass('active');
-        // console.log($(navbarLinks).hasClass('active'));
+        $('body').toggleClass('overflow-controller');
         console.log("clicked");
     });
 
@@ -51,20 +51,6 @@ $(function(){
 });
 
 
-// $(function() {
-
-//     $('.profile').on("mouseover",function(e) {
-//         e.preventDefault();
-//         $(this).siblings(".profile-modal").show();
-//         console.log("hovered");
-//     });
-//
-//     $('.profile-modal').on("mouseout",function(e) {
-//         e.preventDefault();
-//         $(this).siblings(".profile-modal").hide();
-//         console.log("hovered");
-//     });
-// });
 
 
 

@@ -69,8 +69,6 @@ h1 {
     font-weight: bolder;
 }
 
-
-
 .venue-address {
     margin-top: 1rem;
 }
@@ -154,8 +152,7 @@ h1 {
 }
 
 .list-tips li,
-.list-questions li,
-.list-answered-questions li{
+.list-questions li {
     color: #fff;
     background-color: rgba(0, 0, 0, 0.5);
     margin: 0.2rem 0;
@@ -164,6 +161,22 @@ h1 {
     gap: 3rem;
     padding: 0.2rem 0.8rem;
     border-radius: 10px;
+}
+
+.list-answered-questions li {
+    color: #fff;
+    margin: 0.2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 0.2rem 0.8rem;
+    border-radius: 10px;
+}
+
+.username-formatting {
+    margin-top: 0;
+    margin-bottom: 0rem;
+    text-align: center;
 }
 
 .user-image {
@@ -216,16 +229,33 @@ h1 {
     }
 }
 
+@media screen and (max-width: 500px) {
+    .list-tips li, .list-questions li{
+        gap: 1rem;
+    }
+
+    .hero-image {
+        width: 300px;
+        height: auto;
+    }
+
+}
+
 
 /*--------Answered questions section style -------*/
 .answered-questions {
     background-color: rgba(0, 0, 0, 0.4);
     padding: 1rem;
     border-radius: 10px;
+    color: white;
 }
 
-.answered.background {
-    background-color: #E74E35; !important;
+.questions-background {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.answered-background {
+    background-color: rgba(101, 39, 189, 0.4);
 }
 
 .answer-wrapper,
@@ -242,14 +272,14 @@ h1 {
     border: none;
 }
 
-
-@media screen and (min-width: 700px) {
-    .answered-question-wrapper {
-        display: flex;
-        justify-content: space-between;
-    }
     .list-answered-questions {
         flex-basis: 48%;
+        margin-bottom: 50px;
+    }
+
+@media screen and (max-width: 700px) {
+    .answered-question-wrapper {
+        margin: 0px;
     }
 }
 
@@ -275,15 +305,6 @@ small {
 }
 
 
-@media screen and (min-width: 700px) {
-    .restaurant-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-gap: 1rem 1rem;
-        width: 100%;
-        max-width: 1280px;
-    }
-}
 
 /*--- modal style ----*/
 .modal-content {
@@ -318,21 +339,10 @@ form > div:first-child textarea:focus {
 }
 
 
-.marquee {
-    width: 100%;
-    color: white;
-    overflow: hidden;
-}
-
 .eventText {
     padding-left: 100%;
     display: contents;
 }
 
-@keyframes animate {
-    100% {
-        transform: translate(-100%, 0);
-    }
-}
 
 

@@ -2,16 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <div th:replace="~{partials/venued_partials :: myheader('Profile')}"></div>
     <link rel="stylesheet" th:href="@{/css/universalStyle.css}">
     <link rel="stylesheet" th:href="@{/css/profile/profile.css}">
+    <div th:replace="~{partials/venued_partials :: myheader('Profile')}"></div>
 </head>
 <body th:object="${user}">
   <div class="page-wrapper">
 
         <nav th:replace="~{partials/venued_partials :: mynav}"></nav>
 
-        <section class="main-wrapper">
+        <section class="main-wrapper" th:object = "${venue}">
             <!----- row wrapper starts here ----->
             <div class="row-wrapper">
 
@@ -96,33 +96,48 @@
                                 <li class="list-items user-tip-list">
                                     <div th:text="${tip.getTipContent()}"></div>
                                     <div>
-<!--                                        <button class="edit-button">edit</button>-->
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#tipModal">
-                                            edit
+
+                                        <button type="button" class="btn" data-bs-toggle="modal" th:data-bs-target="'#tipModal' + ${tip.getId()}">
+                                           edit
                                         </button>
-                                        <button>delete</button>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="tipModal" tabindex="-1" aria-labelledby="tipModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="tipModalLabel">Modal title</h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        ...
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn">Save changes</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- modal end here -->
+                                        <form th:action="@{/deleteUserTip}" th:method="POST">
+                                            <input type="hidden" name="tipId" th:value="${tip.getId()}">
+                                            <button type="submit">delete</button>
+                                        </form>
+
                                     </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" th:id="'tipModal' + ${tip.getId()}" tabindex="-1" aria-labelledby="tipModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header border-bottom-0">
+                                                    <p class="modal-title fs-5" id="tipModalLabel">Edit Tip</p>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <form th:action="@{/editUserTip}" th:method="POST">
+
+                                                        <div>
+                                                            <input type="hidden" name="tipId" th:value="${tip.getId()}">
+                                                            <textarea class="for-control shadow-none" name="tipContent" cols="50" rows="10"></textarea>
+                                                        </div>
+
+                                                        <div class="modal-footer border-top-0">
+                                                            <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
+                                                            <button type="Submit" class="btn submit-button">Submit</button>
+                                                        </div>
+
+                                                    </form>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div><!--- modal end here --->
                                 </li>
                             </ul>
+
                         </div><!---- first tab content card end here ----->
 
                         <!-- second tab content card begins here -->
@@ -131,31 +146,43 @@
                                 <li class="list-items user-question-list">
                                     <div th:text="${question.getQuestion()}"></div>
                                     <div>
-<!--                                        <button class="edit-button">edit</button>-->
+
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#equestionModal">
+                                        <button type="button" class="btn editButton" data-bs-toggle="modal" th:data-bs-target="'#questionModal' + ${question.getId()}">
                                             edit
                                         </button>
-                                        <button>delete</button>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="questionModal" tabindex="-1" aria-labelledby="questionModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="questionModalLabel">Modal title</h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        ...
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn">Save changes</button>
-                                                    </div>
+                                        <form th:action="@{/deleteUserQuestion}" th:method="POST">
+                                            <input type="hidden" name="questionId" th:value="${question.getId()}">
+                                            <button type="submit">delete</button>
+                                        </form>
+                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" th:id="'questionModal' + ${question.getId()}" tabindex="-1" aria-labelledby="questionModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header border-bottom-0">
+                                                    <p class="modal-title fs-5" id="questionModalLabel">Edit Question</p>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <form th:action="@{/editUserQuestion}" method="POST">
+
+                                                        <div>
+                                                            <input type="hidden" name="questionId" th:value="${question.getId()}">
+                                                            <textarea class="form-control shadow-none"  name="question" cols="50" rows="10"></textarea>
+                                                        </div>
+
+                                                        <div class="modal-footer border-top-0">
+                                                            <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
+                                                            <button type="Submit" class="btn submit-button">Submit</button>
+                                                        </div>
+                                                    </form>
+
                                                 </div>
                                             </div>
-                                        </div><!-- modal end here -->
-                                    </div>
+                                        </div>
+                                    </div><!-- modal end here -->
                                 </li>
                             </ul>
                         </div><!--- second tab content card end here --->
@@ -166,31 +193,42 @@
                                 <li class="list-items answered-question-list">
                                     <div th:text="${answer.getAnswer()}"></div>
                                     <div>
-<!--                                        <button class="edit-button">edit</button>-->
+
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#answerModal">
+                                        <button type="button" class="btn editButton" data-bs-toggle="modal" th:data-bs-target="'#answerModal' + ${answer.getId()}">
                                             edit
                                         </button>
-                                        <button>delete</button>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="answerModal" tabindex="-1" aria-labelledby="answerModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="answerModalLabel">Modal title</h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        ...
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn">Save changes</button>
-                                                    </div>
+                                        <form th:action="@{/deleteUserAnswer}" th:method="POST">
+                                            <input type="hidden" name="answerId" th:value="${answer.getId()}">
+                                            <button type="submit">delete</button>
+                                        </form>
+
+                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" th:id="'answerModal' + ${answer.getId()}" tabindex="-1" aria-labelledby="answerModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header border-bottom-0">
+                                                    <p class="modal-title fs-5" id="answerModalLabel">Edit Answer</p>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <form th:action="@{/editUserAnswer}" method="POST">
+                                                        <div>
+                                                            <input type="hidden" name="answerId" th:value="${answer.getId()}">
+                                                            <textarea class="form-control shadow-none"  name="answer" cols="50" rows="10"></textarea>
+                                                        </div>
+                                                        <div class="modal-footer border-top-0">
+                                                            <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
+                                                            <button type="Submit" class="btn submit-button">Submit</button>
+                                                        </div>
+                                                    </form>
+
                                                 </div>
                                             </div>
-                                        </div><!-- modal end here -->
-                                    </div>
+                                        </div>
+                                    </div><!-- modal end here -->
                                 </li>
                             </ul>
                         </div><!--- third tab content card end here ---->

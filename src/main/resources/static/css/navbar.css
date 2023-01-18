@@ -268,7 +268,9 @@
     border-style: none;
     background-color: transparent;
 }
-
+.overflow-controller{
+    overflow: hidden;
+}
 
 @media only screen and (max-width: 1024px){
     .user-container{

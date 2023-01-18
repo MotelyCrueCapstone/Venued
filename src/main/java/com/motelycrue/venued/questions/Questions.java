@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Setter
 @Getter
@@ -34,9 +36,8 @@ public class Questions {
     @JoinColumn(name="venueId")
     private Venue venue;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name="answer_id")
-    private Answer answeredQuestions;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+    private List<Answer> answeredQuestions;
 
     public Questions(String question) {
         this.question = question;
