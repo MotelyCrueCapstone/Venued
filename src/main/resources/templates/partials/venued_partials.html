@@ -109,7 +109,7 @@
 				</div>
 				<div class="user-wrapper text-center" sec:authorize="isAuthenticated()">
 					<button class="profile" onclick="window.location.href='/profile'">
-						<img th:src="${#authentication.principal.getImgPath()}" alt="" class="nav-user-image">
+						<img th:src="${#authentication.principal}" alt="" class="nav-user-image">
 					</button>
 				</div>
 			</ul>
