@@ -11,4 +11,6 @@ public interface AnswersRepository extends JpaRepository<Answer, Long> {
 
     //get all answers by user who posted them
     List<Answer> findAnswersByUser(User user);
+
+    Answer findById(long id);
 }
