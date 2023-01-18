@@ -18,6 +18,28 @@
 }
 
 @media (max-width: 768px) {
+    .results{
+        position: absolute;
+        top: 62px;
+        left: 67px;
+    }
+    .location-results{
+        position: absolute;
+        top: 65px;
+    }
+    .location-results-container{
+        top: 290%;
+    }
+    .results-container{
+        top: 300%;
+    }
+    .nav-user-image{
+        height: 100px;
+        width: 100px;
+        border-radius: 100px;
+        position: absolute;
+        top: 460px;
+        right: 265px;    }
     footer{
         background-color: rgb(0, 0, 0)!important;
     }
@@ -124,6 +146,7 @@
         width: 50%;
         gap: 0;
         margin-left: 30px;
+        margin-top: 250px;
     }
 
     .topNav{

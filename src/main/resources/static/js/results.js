@@ -71,7 +71,7 @@
 
                          //sending retrieved data from the api to be sent to the controller backend to be
                          // checked if venue exist or not if it does it saves it to the database
-                         fetch(`https://venued.us/venues/create/${currentVenueId}?${currentVenueParams.toString()}`,{method: "GET"})
+                         fetch(`${window.location.protocol}//${window.location.host}/venues/create/${currentVenueId}?${currentVenueParams.toString()}`,{method: "GET"})
                              .then(response => console.log(response.status))
                          });
                });
@@ -85,7 +85,7 @@
     });
 
     //on search input click
-    $(searchInput).one("click", ()=>{
+    $(searchInput).on("click", ()=>{
          toggleResults();
     })
 
@@ -97,7 +97,7 @@
     });
 
     //on key up the search box appears
-    $(".search_input").on("keyup", function() {
+    $(searchInput).on("keyup", function() {
         $('.results-container').removeClass('hideme');
     });
 
