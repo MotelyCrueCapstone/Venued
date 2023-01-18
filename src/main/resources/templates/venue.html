@@ -185,7 +185,6 @@
                             </button>
                         </div>
 
-
                         <!-- ASK A QUESTION -->
                         <div class="modal fade" id="questionModal2" tabindex="-1" aria-labelledby="questionModal2" aria-hidden="true">
                             <div class="modal-dialog">
@@ -258,7 +257,7 @@
                                                     <div class="modal-body">
 
 
-                                                        <form form method="post" th:action="@{|/questions/${venueId}/add-answer|}" >
+                                                        <form method="post" th:action="@{|/questions/${venueId}/add-answer|}" >
 
                                                             <div class="mb-3" >
                                                                 <p th:text="${question.getQuestion()}"></p>
