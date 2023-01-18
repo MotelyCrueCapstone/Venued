@@ -3,7 +3,7 @@
 	<head>
 		<div th:replace="~{partials/venued_partials :: myheader('Login')}"></div>
 		<link rel="stylesheet" th:href="@{/css/form.css}">
-		<link rel="stylesheet" th:href="@{/css/venue_pages/universalStyle.css}">
+		<script src="/js/navbar.js"></script>
 	</head>
 
 	<body>
@@ -25,7 +25,8 @@
 					You've logged out :(
 				</div>
 
-				<p class="text-center mb-4 title-format" >Login</p>
+				<p class="text-center mb-4" id="form-title" th:class="title"></p>
+				<p class="text-center mb-4 title-format"></p>
 				<form th:action="@{/login}" th:method="post" class="w-100 mx-auto">
 					<div class="w-100 mb-4">
 						<input id="username" name="username" type="text" class="form-control w-100 shadow-none" autocomplete="off" placeholder="Username">
