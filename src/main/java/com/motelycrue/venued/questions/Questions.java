@@ -34,7 +34,7 @@ public class Questions {
     @JoinColumn(name="venueId")
     private Venue venue;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="answer_id")
     private Answer answeredQuestions;
 

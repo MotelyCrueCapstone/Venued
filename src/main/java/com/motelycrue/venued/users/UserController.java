@@ -113,8 +113,7 @@ public class UserController {
     }
 
     @PostMapping("/editUserTip")
-    public String editUserTip(@RequestParam String tipContent,
-                               @RequestParam String tipId){
+    public String editUserTip(@RequestParam String tipContent, @RequestParam String tipId){
         Optional<Tips> tip = TipsDao.findById(Long.parseLong(tipId));
         if(tip.isPresent()){
             tip.get().setTipContent(tipContent);
@@ -131,8 +130,7 @@ public class UserController {
     }
 
     @PostMapping("/editUserQuestion")
-    public String editUserQuestion(@RequestParam String question,
-                              @RequestParam String questionId){
+    public String editUserQuestion(@RequestParam String question, @RequestParam String questionId){
         Optional<Questions> questions = questionsDao.findById(Long.parseLong(questionId));
         if(questions.isPresent()){
             questions.get().setQuestion(question);
@@ -142,7 +140,7 @@ public class UserController {
     }
 
     @PostMapping("/deleteUserQuestion")
-    public String deleteUserQuestion(@RequestParam String questionId) {
+    public String deleteUserQuestion(@RequestParam(name="questionId") String questionId) {
         Optional<Questions> question = questionsDao.findById(Long.parseLong(questionId));
         question.ifPresent(questions -> questionsDao.delete(questions));
         return "redirect:/profile";
@@ -150,8 +148,7 @@ public class UserController {
 
 
     @PostMapping("/editUserAnswer")
-    public String editUserAnswer(@RequestParam String answer,
-                                   @RequestParam String answerId){
+    public String editUserAnswer(@RequestParam String answer, @RequestParam String answerId){
         Optional<Answer> answers = answersDao.findById(Long.parseLong(answerId));
         if(answers.isPresent()){
             answers.get().setAnswer(answer);
@@ -161,7 +158,8 @@ public class UserController {
     }
 
     @PostMapping("/deleteUserAnswer")
-    public String deleteUserAnswer(@RequestParam String answerId) {
+    public String deleteUserAnswer(@RequestParam(name="answerId") String answerId) {
+        System.out.println("deleting answer");
         Optional<Answer> answer = answersDao.findById(Long.parseLong(answerId));
         answer.ifPresent(answers -> answersDao.delete(answers));
         return "redirect:/profile";
