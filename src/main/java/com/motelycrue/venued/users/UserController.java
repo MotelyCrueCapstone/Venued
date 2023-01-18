@@ -150,23 +150,13 @@ public class UserController {
 
     @PostMapping("/editUserAnswer")
     public String editUserAnswer(@RequestParam String answer, @RequestParam String answerId){
-//        Optional<Answer> answers = answersDao.findById(Long.parseLong(answerId));
         Answer answers = answersDao.findById(Long.parseLong(answerId));
-//        if(answers.isPresent()){
-//            answers.get().setAnswer(answer);
-//            answersDao.save(answers.get());
-//        }
         return "redirect:/profile";
     }
 
     @PostMapping("/deleteUserAnswer")
     public String deleteUserAnswer(@RequestParam(name="answerId") String answerId) {
-        System.out.println("deleting answer");
         Answer answer = answersDao.findById(Long.parseLong(answerId));
-        System.out.println(answer.getId());
-        System.out.println(answer.getAnswer());
-//        Optional<Answer> answer = answersDao.findById(Long.parseLong(answerId));
-//        answer.ifPresent(answers -> answersDao.delete(answers));
         answer.getQuestion().getAnsweredQuestions().remove(answer);
         answersDao.delete(answer);
         return "redirect:/profile";
