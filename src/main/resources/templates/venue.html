@@ -319,14 +319,6 @@
                             answer a question</p>
                     </div>
 
-
-                    <div th:if="${!questions.isEmpty()}">
-                        <div class="row ">
-                            <div class="col-6 d-flex justify-content-center">Question</div>
-                            <div class="col-6 d-flex justify-content-center">Answer</div>
-                        </div>
-                    </div>
-
                         <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
 
 
@@ -336,33 +328,33 @@
 
                     <!--        QUESTION ASKED-->
                             <ul class="list-answered-questions">
-
                                 <li class="questions-background">
                                     <div class="user-wrapper text-center">
                                         <span><img th:src="${question.getUser().getImgPath()}" alt="" class="user-image"></span>
-                                        <p th:text="${question.getUser().getUsername()}">username</p>
+                                        <p th:text="${question.getUser().getUsername()}" class="username-formatting">username
+                                        </p>
                                     </div>
                                     <div class="answer-wrapper">
                                         <span th:text="${question.getQuestion()}"></span>
                                     </div>
                                 </li>
 
-                            </ul>
-    <!--        ANSWER GIVEN-->
-                                <ul class="list-answered-questions">
-                                    <li class="answered-background">
-                                        <div class="user-wrapper">
+            <!--ANSWER GIVEN-->
+                                <li class="answered-background">
+                                    <div class="user-wrapper">
                                             <span><img th:src="${question.answeredQuestions.getUser().getImgPath()}" alt=""
                                                        class="user-image"></span>
-                                            <p th:text="${question.answeredQuestions.getUser().getUsername()}"></p>
-                                        </div>
-                                        <div class="answer-wrapper">
-                                            <span th:text="${question.answeredQuestions.getAnswer()}"></span>
+                                        <p th:text="${question.answeredQuestions.getUser().getUsername()}"
+                                           class="username-formatting"></p>
+                                    </div>
+                                    <div class="answer-wrapper">
+                                        <span th:text="${question.answeredQuestions.getAnswer()}"></span>
 
-                                            <span th:class="small-number" text=""></span>
-                                        </div>
-                                    </li>
-                                 </ul>
+                                        <span th:class="small-number" text=""></span>
+                                    </div>
+                                </li>
+                            </ul>
+
                             </th:block>
                         </div>
                     </div>

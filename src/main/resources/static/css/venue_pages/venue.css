@@ -69,8 +69,6 @@ h1 {
     font-weight: bolder;
 }
 
-
-
 .venue-address {
     margin-top: 1rem;
 }
@@ -175,7 +173,10 @@ h1 {
     border-radius: 10px;
 }
 
-
+.username-formatting {
+    margin-top: 0;
+    margin-bottom: 0rem;
+}
 
 .user-image {
     display: inline-block;
@@ -258,16 +259,14 @@ h1 {
     border: none;
 }
 
-
-
-
-@media screen and (min-width: 700px) {
-    .answered-question-wrapper {
-        display: flex;
-        justify-content: center;
-    }
     .list-answered-questions {
         flex-basis: 48%;
+        margin-bottom: 50px;
+    }
+
+@media screen and (max-width: 700px) {
+    .answered-question-wrapper {
+        margin: 0px;
     }
 }
 
