@@ -22,6 +22,7 @@
     }
 }
 
+
 /* Small screens (e.g. phones) */
 @media only screen and (max-width: 600px) {
     .recent-card {
