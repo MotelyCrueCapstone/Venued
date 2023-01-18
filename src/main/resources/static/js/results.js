@@ -11,16 +11,16 @@
     }
 
     function search(query) {
+         
          //fetching api data from yelp
-
-         fetch(`http://localhost:8085/yelp/${query.trimEnd()}?location=${searchLocation.val()}`)
+         fetch(`https:venued.us/yelp/${query.trimEnd()}?location=${searchLocation.val()}`)
                .then(response => response.json())
                .then(venuesJson => {
                     venuesJson.forEach(currentVenue =>{
                          //getting the current venue id to checkout existence in the database later
                          let currentVenueId = currentVenue.id;
                          let currentVenueAlias = currentVenue.alias;
-                         let urlString =     `"http://localhost:8085/venues/id/${currentVenue.id}"`;
+                         let urlString =     `"/venues/id/${currentVenue.id}"`;
 
                          $(".results").append($(`<li class="result">
 
@@ -28,7 +28,7 @@
                                             <img src="${currentVenue.image_url}" alt="resultImage">
                                            
                                         </div>
-
+<!--                                        results container goes here-->
                                         <div class="result-body">
                        
                                             <div class="result-name-container">
@@ -40,7 +40,7 @@
                                             <p class="result-address">${currentVenue.location.address1} ${currentVenue.location.city}</p>
                                      
                                         </div>
-                                       
+<!--                                       -->
                                         <div class="result-rating">
                                             <p>${currentVenue.rating} </p>
                                         </div>
@@ -61,7 +61,7 @@
 
                          //sending retrieved data from the api to be sent to the controller backend to be
                          // checked if venue exist or not if it does it saves it to the database
-                         fetch(`http://localhost:8085/venues/create/${currentVenueId}?${currentVenueParams.toString()}`,{method: "GET"})
+                         fetch(`https://venued.us/venues/create/${currentVenueId}?${currentVenueParams.toString()}`,{method: "GET"})
                              .then(response => console.log(response.status))
                          });
                });
@@ -73,17 +73,20 @@
              search($(searchInput).val());
           }
     });
-    
+   
+    //on search input click
     $(searchInput).one("click", ()=>{
          toggleResults();
     })
-
+     
+     //on search button click test
     $(searchButton).on("click", () => {
          search($(searchInput).val());
          $('.location-results-container').addClass('hide');
          toggleResults();
     });
-
+    
+    //on key up the search box appears
     $(".search_input").on("keyup", function() {
         $('.results-container').removeClass('hideme');
     });

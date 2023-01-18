@@ -23,5 +23,8 @@ public interface QuestionsRepository extends JpaRepository<Questions, Long> {
 
     List<Questions> findFirst30ByOrderByIdDesc();
 
+    List<Questions> findQuestionsByAnsweredEqualsAndVenue(int answered, Venue venue);
+
+    List<Questions> findQuestionsByAnsweredEquals(int answered);
 
 }

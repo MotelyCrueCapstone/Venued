@@ -27,17 +27,21 @@
 				</div>
 
 				<div class="event-card">
-					<h1 class="event-title" th:text="${venue.getVenueName()}"></h1>
+					<p class="event-title title-format" th:text="${venue.getVenueName()}"></p>
+                    <p class="desc venue-address" th:text="${venue.getAddress()}"></p>
 
-					<div class="event-container marquee" id="event-container">
-						<div>
-							<p class="title-info eventText"></p>
+					<div class="event-container" id="event-container">
+
+                        <div class="events-card">
+                            <p class="events-card-title">EVENTS NEARBY:</p><br>
+							<p class="title-info eventText"></p><br>
 							<p class="desc-info event-desc eventText"></p>
-                            <p class="event-date"></p>
+                            <p class="event-date"></p><br>
+                            <p class="event-venue"></p>
 						</div>
 					</div>
 
-					<p class="desc venue-address" th:text="${venue.getAddress()}"></p>
+
 				</div>
 
 			</header>
@@ -52,14 +56,15 @@
                     <!--------- Tips card ---------->
                     <div class="tip-card">
                         <div class="card-wrapper">
-                            <h1 class="tip-title card-heading">Tips</h1>
+                            <p class="tip-title card-heading title-format">Tips</p>
 
                             <div sec:authorize="isAuthenticated()">
                                 <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#tipModal1">Add A Tip</button>
                             </div>
 
                             <div class="user-container" sec:authorize="isAnonymous()">
-                                <button type="button" class="cta-button" onclick="window.location='/login'">Add a Tip</button>
+                                <button type="button" class="cta-button" onclick="window.location='/login'">Login to
+                                    Add a Tip</button>
                             </div>
 
                             <!-- Modal -->
@@ -171,9 +176,9 @@
                     </div> <!--- tip card end here --->
 
                 <!------ Questions card ------->
-                <div class="question-card">
+                    <div class="question-card">
                     <div class="card-wrapper">
-                        <h1 class="question-title card-heading">Questions</h1>
+                        <p class="question-title card-heading title-format">Questions</p>
                         <div sec:authorize="isAuthenticated()">
                             <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#questionModal2">
                                 Ask a Question
@@ -217,8 +222,12 @@
 
                     <div th:if="${questions.isEmpty()}" class="empty">
                         <p class="nothingHere">Looks like no questions have been asked yet! <br>Be the first to ask a
-                            question</p>
+                            question.</p>
                     </div>
+                        <div th:if="${unanswered.isEmpty() && !questions.isEmpty()}" class="empty">
+                            <p class="nothingHere">Looks like there are no unanswered questions! <br>ask a new
+                                question</p>
+                        </div>
 
                     <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
 
@@ -228,7 +237,6 @@
 
                                 <li>
                                     <div class="user-wrapper">
-<!--!!!!!!UNCOMMENT LATER AFTER MODAL IS FIXED!!!!-->
                                         <span><img th:src="${question.getUser().getImgPath()}" alt="" class="user-image"></span>
                                         <div th:text="${question.getUser().getUsername()}">username</div>
                                     </div>
@@ -241,7 +249,7 @@
                                         </div>
                                         <div sec:authorize="isAnonymous()">
                                             <button type="button" class="cta-button" data-bs-toggle="modal" onclick="window.location='/login'">
-                                                Answer</button>
+                                                Login to Answer</button>
                                         </div>
 
                                         <div class="modal fade" th:id="'Modal' + ${question.getId()}" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
@@ -301,21 +309,34 @@
 
 <!------- Answered section -------->
 				<section class="wrapper answered-questions">
-					<h1 class="answered-question-title">Answered Questions</h1>
+					<p class="answered-question-title title-format">Answered Questions</p>
+
+
 	            <!--    ANSWERED QUESTIONS DIV-->
-                    <div th:if="${questions.isEmpty()}" class="empty">
+                    <div th:if="${answered.isEmpty()}" class="empty">
                         <p class="nothingHere">Looks like no questions have been answered yet! <br>Be the first to
-                            answer a
-                            question</p>
+                            answer a question</p>
+                    </div>
+
+
+                    <div th:if="${!questions.isEmpty()}">
+                        <div class="row ">
+                            <div class="col-6 d-flex justify-content-center">Question</div>
+                            <div class="col-6 d-flex justify-content-center">Answer</div>
+                        </div>
                     </div>
 
                         <div th:if="${!questions.isEmpty()}" th:each="question : ${questions}">
-                        <div class="answered-question-wrapper" th:each="question : ${questions}">
+
+
+                        <div class="answered-question-wrapper">
                             <th:block th:if="${question.answered == 1}">
+
+
                     <!--        QUESTION ASKED-->
                             <ul class="list-answered-questions">
 
-                                <li>
+                                <li class="questions-background">
                                     <div class="user-wrapper text-center">
                                         <span><img th:src="${question.getUser().getImgPath()}" alt="" class="user-image"></span>
                                         <p th:text="${question.getUser().getUsername()}">username</p>
@@ -336,16 +357,7 @@
                                         </div>
                                         <div class="answer-wrapper">
                                             <span th:text="${question.answeredQuestions.getAnswer()}"></span>
-                                            <a href="#">
-                                                    <span class="fa-solid fa-thumbs-up text-primary">
-                                                        <span th:class="small-number"
-                                                              text="">
-                                                        </span>
-                                                    </span>
-                                            </a>
-                                            <a href="#">
-                                                    <span class="fa-solid fa-thumbs-down text-primary"></span>
-                                            </a>
+
                                             <span th:class="small-number" text=""></span>
                                         </div>
                                     </li>
