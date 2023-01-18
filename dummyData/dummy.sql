@@ -18,7 +18,7 @@ INSERT INTO answer(id, answer, user_id, up_votes, down_votes) VALUES
     (3, "They don't patdown men or women at this venue", 2, 80, 10),
     (4, "They do. They also make you go through a metal detector", 3, 45, 0 );
 
-INSERT INTO questions(id, question, user_id, venue_id, answered, answer_id) VALUES
+INSERT INTO questions(id, question, user_id, venue_id, answered) VALUES
    (1, "Does anyone know if this place has a ChickFilA?", 1, 1,0, NULL),
    (2, "How much is the parking right in front of the stadium??", 4, 1, 0, NULL),
    (3, "Do they card/id ppl under 18 after 10PM?", 3, 1, 1, 1),

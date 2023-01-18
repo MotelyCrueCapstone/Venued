@@ -340,11 +340,19 @@
 
             <!--ANSWER GIVEN-->
                                 <li class="answered-background">
-                                    <div class="user-wrapper">
-                                            <span><img th:src="${question.answeredQuestions.getUser().getImgPath()}" alt=""
-                                                       class="user-image"></span>
-                                        <p th:text="${question.answeredQuestions.getUser().getUsername()}"
-                                           class="username-formatting"></p>
+                                    <div class="user-wrapper" th:if="${question}" >
+
+                                            <span th:if="${question.answeredQuestions != null}">
+
+                                                <img th:src="${question.answeredQuestions.getUser().getImgPath()}" alt=""
+                                                       class="user-image">
+                                            </span>
+                                        <div th:if = "${question.getAnsweredQuestions() != null}">
+                                            <p th:text="${question.getAnsweredQuestions().getUser().getUsername()}"
+                                               class="username-formatting"></p>
+                                        </div>
+
+
                                     </div>
                                     <div class="answer-wrapper">
                                         <span th:text="${question.answeredQuestions.getAnswer()}"></span>

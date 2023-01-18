@@ -141,7 +141,7 @@ button#cancel-btn {
     border: none;
     border-radius: 10px;
 }
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 800px) {
     .lists-wrapper {
         gap: 2rem;
     }
@@ -221,7 +221,7 @@ form > div:first-child textarea:focus {
 }
 /* modal style end here */
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 800px) {
     .list-items {
         flex-direction: row;
         align-items: center;
@@ -254,7 +254,7 @@ form > div:first-child textarea:focus {
     display: block;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 800px) {
     .row-wrapper {
         display:flex;
         gap: 2rem;
