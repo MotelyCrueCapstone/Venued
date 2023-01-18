@@ -33,6 +33,14 @@ body {
     margin-top: 20px;
 }
 
+.title-format {
+    font-family: 'Thasadith', sans-serif;
+    font-size: 40px;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
 .smallLine {
     color: white;
     width: 600px;

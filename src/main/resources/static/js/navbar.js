@@ -12,7 +12,7 @@ $(function(){
 
 
     // Retrieve and parse the JSON file
-    $.getJSON('./json/cities.json', function(data) {
+    $.getJSON('/json/cities.json', function(data) {
         // When the user clicks on the search bar, show the search results container
         $("#search_location_input").on("keyup", function() {
             $('.location-results-container').removeClass('hide');
@@ -52,7 +52,7 @@ $(function(){
 
 
 // $(function() {
-//
+
 //     $('.profile').on("mouseover",function(e) {
 //         e.preventDefault();
 //         $(this).siblings(".profile-modal").show();
