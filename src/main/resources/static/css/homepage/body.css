@@ -1,3 +1,8 @@
+img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
 .bar-divider{
     /*background: linear-gradient(#000000a3, #00000066, #00000055, #00000033, #00000000);*/
     background-color: transparent;
@@ -45,7 +50,7 @@
     justify-content: center;
     text-align: center;
     font-size: 1.4rem;
-    max-width: 40vw;
+    max-width: 500px;
 }
 
 
