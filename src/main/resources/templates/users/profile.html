@@ -118,9 +118,9 @@
 
                                                     <form th:action="@{/editUserTip}" th:method="POST">
 
-                                                        <div>
+                                                        <div class="edit-tip-wrapper">
                                                             <input type="hidden" name="tipId" th:value="${tip.getId()}">
-                                                            <textarea class="for-control shadow-none" name="tipContent" cols="50" rows="10"></textarea>
+                                                            <textarea class="for-control shadow-none" name="tipContent" cols="20" rows="8"></textarea>
                                                         </div>
 
                                                         <div class="modal-footer border-top-0">
@@ -168,9 +168,9 @@
 
                                                     <form th:action="@{/editUserQuestion}" method="POST">
 
-                                                        <div>
+                                                        <div class="edit-tip-wrapper">
                                                             <input type="hidden" name="questionId" th:value="${question.getId()}">
-                                                            <textarea class="form-control shadow-none"  name="question" cols="50" rows="10"></textarea>
+                                                            <textarea class="form-control shadow-none"  name="question" cols="20" rows="8"></textarea>
                                                         </div>
 
                                                         <div class="modal-footer border-top-0">
@@ -215,9 +215,9 @@
                                                 <div class="modal-body">
 
                                                     <form th:action="@{/editUserAnswer}" method="POST">
-                                                        <div>
+                                                        <div class="edit-tip-wrapper">
                                                             <input type="hidden" name="answerId" th:value="${answer.getId()}">
-                                                            <textarea class="form-control shadow-none"  name="answer" cols="50" rows="10"></textarea>
+                                                            <textarea class="form-control shadow-none "  name="answer" cols="20" rows="8"></textarea>
                                                         </div>
                                                         <div class="modal-footer border-top-0">
                                                             <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>

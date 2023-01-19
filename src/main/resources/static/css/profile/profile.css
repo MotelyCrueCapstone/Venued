@@ -92,6 +92,7 @@ textarea#bio {
     margin-bottom: 1rem;
 }
 
+
 input#submit-btn {
     padding: 0.3rem 1rem;
     background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
@@ -202,14 +203,16 @@ button#cancel-btn {
     color: #fff;
 }
 
-form > div:first-child textarea {
-    background-color: transparent;
+.edit-tip-wrapper textarea {
+    background-color: #fff;
     resize: none;
+    width: 100%;
+    color: #000;
+    border-radius: 10px;
 }
 
-form > div:first-child textarea:focus {
-    background-color: transparent;
-    color: #fff;
+.edit-tip-wrapper textarea:focus {
+    outline: none;
 }
 
 .close {
@@ -231,7 +234,7 @@ form > div:first-child textarea:focus {
     }
 
     .list-items div:first-child {
-        margin-right: auto;
+        /*margin-right: auto;*/
         flex: 1;
         font-size: 1.2rem;
     }
