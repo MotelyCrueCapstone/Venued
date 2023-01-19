@@ -27,15 +27,19 @@
 }
 /* profile image wrapper */
 #profile-info-container {
-    /*position: relative;*/
     margin-bottom: 1rem;
 }
 
 /* profile image upload button */
 .avatar-container div:first-child > p {
-    /*display: none;*/
+
 }
 
+#profilePicChangeButton {
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 1.1rem;
+}
 .avatar-container div:first-child > img {
     display: block;
     margin: 0 auto;

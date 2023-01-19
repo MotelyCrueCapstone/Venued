@@ -340,10 +340,9 @@
 
             <!--ANSWER GIVEN-->
                                 <li class="answered-background">
+
                                     <div class="user-wrapper" th:if="${question}" >
-
                                             <span th:if="${question.answeredQuestions != null}">
-
                                                 <img th:src="${question.answeredQuestions.getUser().getImgPath()}" alt=""
                                                        class="user-image">
                                             </span>
