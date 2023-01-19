@@ -116,11 +116,11 @@
                                         <div th:text="${tip.getUser().getUsername()}" class="username-formatting"></div>
                                     </div>
 
-                                    <div class="thumbs-icon-wrapper">
+                                    <div>
 
-                                        <span th:class="tipName" th:text="${tip.getTipName()}"></span>
+                                        <span th:class="tipName" th:text="${tip.getTipName()}"></span><br>
                                         <span th:text="${tip.getTipContent()}"></span>
-                                        <div >
+                                        <div class="thumbs-icon-wrapper">
                                         <form th:method="POST" th:action="@{|/tips/vote/1|}">
 
                                             <div sec:authorize="isAuthenticated()"> <!-- if user is logged in -->
@@ -352,7 +352,7 @@
                                     </div>
 
 
-                                    </div>
+
 
                                     <div class="answer-wrapper" th:if="${question.answeredQuestion != null}">
 
