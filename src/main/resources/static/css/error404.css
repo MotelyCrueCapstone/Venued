@@ -1,0 +1,9 @@
+.errorimg {
+    width:600px;
+    height: auto;
+}
+
+.imgCenter {
+    display: flex;
+    justify-content: center;
+}
