@@ -27,6 +27,7 @@ body {
 .row.circles{
     flex-direction: row;
     justify-content: center;
+    width: 100vw;
 }
 /*Positions circles in a offset and adds border bottom*/
 .row.circles .col-sm{

@@ -15,7 +15,7 @@
 	    </section>
         <main>
             <div class="form-wrapper">
-                <p class="text-center mb-4" id="form-title" th:class="title">Sign Up</p>
+                <p class="text-center mb-4 title-format" >Sign Up</p>
                 <form th:action="@{/register}" th:method="post" class="w-100 mx-auto" th:object="${user}">
                     <div class="w-100 mb-4">
                         <input id="username" name="username" type="text" class="form-control w-100 shadow-none" autocomplete="off" placeholder="Username" th:field="*{username}">

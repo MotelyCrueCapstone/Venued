@@ -5,7 +5,7 @@ $(function(){
     //this will work lol
     $(toggleButton).on("click", () => {
         $(navbarLinks).toggleClass('active');
-        // console.log($(navbarLinks).hasClass('active'));
+        $('body').toggleClass('overflow-controller');
         console.log("clicked");
     });
 
