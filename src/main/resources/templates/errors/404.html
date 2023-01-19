@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!--
-    Creator: Deshawn Marquis, Williams
-    Github Profile: https://github.com/MarquisTheCoder
-    Date Created: 1/19/23
-    Time Created: 2:44 PM
-    File Name: 404.html
-    -->
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-	
-	<title>Venued</title>
-	
-	<meta charset="UTF-8">
-	<meta name="viewport" content="initial-scale=1, width=device-width">
-
+	<div th:replace="~{partials/venued_partials :: myheader('404')}"></div>
+	<link rel="stylesheet" href="/css/error404.css">
+	<script src="/js/navbar.js"></script>
 </head>
-<body>
 
+<body>
+<div class="page-wrapper">
+
+	<section class="navSection">
+		<div class="set-tone"></div>
+		<nav th:replace="~{partials/venued_partials :: mynav}"></nav>
+	</section>
+
+	<div class="imgCenter">
+		<img class="errorimg" src="/imgs/Error404.png" alt="Error404 Image">
+	</div>
+
+
+</div>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="/js/results.js"></script>
+<script src="/js/navbar.js"></script>
 </body>
 </html>
+
