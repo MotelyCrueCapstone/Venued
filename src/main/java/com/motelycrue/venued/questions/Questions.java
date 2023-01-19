@@ -36,8 +36,8 @@ public class Questions {
     @JoinColumn(name="venueId")
     private Venue venue;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
-    private List<Answer> answeredQuestions;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private Answer answeredQuestion;
 
     public Questions(String question) {
         this.question = question;
