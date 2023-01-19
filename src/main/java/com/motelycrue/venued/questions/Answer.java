@@ -33,8 +33,7 @@ public class Answer {
     @JoinColumn(name="user_id")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name="question_id")
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Questions question;
 
     public Answer(String answer) {
