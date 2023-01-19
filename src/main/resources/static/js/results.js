@@ -3,6 +3,16 @@
 (function () {
     let searchInput = $(".search_input");
     let searchButton = $(".search_icon");
+
+    searchButton.on("click", function() {
+        if (searchLocation.val() === "") {
+            alert("Please enter a location before searching.");
+        } else {
+            toggleResults();
+            search(searchInput.val());
+        }
+    });
+
     let searchLocation = $("#search_location_input");
 
     function toggleResults(){
@@ -11,7 +21,7 @@
     }
 
     function search(query) {
-         
+
          //fetching api data from yelp
          fetch(`${window.location.protocol}//${window.location.host}/yelp/${query.trimEnd()}?location=${searchLocation.val()}`)
                .then(response => response.json())
@@ -73,24 +83,24 @@
              search($(searchInput).val());
           }
     });
-   
+
     //on search input click
     $(searchInput).one("click", ()=>{
          toggleResults();
     })
-     
+
      //on search button click test
     $(searchButton).on("click", () => {
          search($(searchInput).val());
          $('.location-results-container').addClass('hide');
          toggleResults();
     });
-    
+
     //on key up the search box appears
     $(".search_input").on("keyup", function() {
         $('.results-container').removeClass('hideme');
     });
-    
+
 // When the user clicks outside of the search bar, hide the search results container
     $(document).on('click', function(event) {
         if (!$(event.target).closest('.searchbar').length) {

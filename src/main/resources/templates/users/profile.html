@@ -95,14 +95,14 @@
                             <ul class="list-tips" th:each="tip : ${allTips}">
                                 <li class="list-items user-tip-list">
                                     <div th:text="${tip.getTipContent()}"></div>
-                                    <div>
+                                    <div class="modal-button-wrapper">
 
                                         <button type="button" class="btn" data-bs-toggle="modal" th:data-bs-target="'#tipModal' + ${tip.getId()}">
                                            edit
                                         </button>
                                         <form th:action="@{/deleteUserTip}" th:method="POST">
                                             <input type="hidden" name="tipId" th:value="${tip.getId()}">
-                                            <button type="submit">delete</button>
+                                            <button type="submit" class="delete-button">delete</button>
                                         </form>
 
                                     </div>
@@ -145,7 +145,7 @@
                             <ul class="list-questions" th:each="question : ${allQuestions}">
                                 <li class="list-items user-question-list">
                                     <div th:text="${question.getQuestion()}"></div>
-                                    <div>
+                                    <div class="modal-button-wrapper">
 
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn editButton" data-bs-toggle="modal" th:data-bs-target="'#questionModal' + ${question.getId()}">
@@ -153,7 +153,7 @@
                                         </button>
                                         <form th:action="@{/deleteUserQuestion}" th:method="POST">
                                             <input type="hidden" name="questionId" th:value="${question.getId()}">
-                                            <button type="submit">delete</button>
+                                            <button type="submit" class="delete-button">delete</button>
                                         </form>
                                     </div>
                                     <!-- Modal -->
@@ -192,7 +192,7 @@
                             <ul class="answered-question" th:each="answer : ${allAnswers}">
                                 <li class="list-items answered-question-list">
                                     <div th:text="${answer.getAnswer()}"></div>
-                                    <div>
+                                    <div class="modal-button-wrapper">
 
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn editButton" data-bs-toggle="modal" th:data-bs-target="'#answerModal' + ${answer.getId()}">
@@ -200,7 +200,7 @@
                                         </button>
                                         <form th:action="@{/deleteUserAnswer}" th:method="POST">
                                             <input type="hidden" name="answerId" th:value="${answer.getId()}">
-                                            <button type="submit">delete</button>
+                                            <button type="submit" class="delete-button">delete</button>
                                         </form>
 
                                     </div>

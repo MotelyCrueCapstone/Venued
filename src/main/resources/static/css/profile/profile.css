@@ -177,7 +177,7 @@ button#cancel-btn {
 
 }
 
-.list-items  > div button:nth-child(1) {
+.modal-button-wrapper button {
     padding: 0.3rem 1rem;
     border: none;
     background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
