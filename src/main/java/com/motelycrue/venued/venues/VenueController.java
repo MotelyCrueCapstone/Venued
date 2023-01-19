@@ -133,6 +133,7 @@ public class VenueController {
                     .user(currentUser.get())
                     .venue(venue.get())
                     .build();
+
             QuestionsDao.save(newQuestion);
         }
         return "redirect:/venues/{venueId}";

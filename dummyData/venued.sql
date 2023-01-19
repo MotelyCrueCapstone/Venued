@@ -3,7 +3,7 @@
 -- Host: localhost    Database: venued_db
 -- ------------------------------------------------------
 -- Server version	8.0.30
-use venued_db;
+
 
 USE venued_db;
 
@@ -21,7 +21,6 @@ USE venued_db;
 --
 -- Table structure for table `answer`
 --
-
 
 
 DROP TABLE IF EXISTS `answer`;

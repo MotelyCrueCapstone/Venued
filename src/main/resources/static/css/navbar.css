@@ -317,10 +317,6 @@
         border-radius: 10px;
     }
 
-    .search_icon{
-        display: none;
-    }
-
     .search_input{
         border: white 1px solid;
         background-color: white;

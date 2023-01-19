@@ -116,11 +116,11 @@
                                         <div th:text="${tip.getUser().getUsername()}" class="username-formatting"></div>
                                     </div>
 
-                                    <div class="thumbs-icon-wrapper">
+                                    <div>
 
-                                        <span th:class="tipName" th:text="${tip.getTipName()}"></span>
+                                        <span th:class="tipName" th:text="${tip.getTipName()}"></span><br>
                                         <span th:text="${tip.getTipContent()}"></span>
-                                        <div >
+                                        <div class="thumbs-icon-wrapper">
                                         <form th:method="POST" th:action="@{|/tips/vote/1|}">
 
                                             <div sec:authorize="isAuthenticated()"> <!-- if user is logged in -->
@@ -340,14 +340,23 @@
 
             <!--ANSWER GIVEN-->
                                 <li class="answered-background">
-                                    <div class="user-wrapper">
-                                            <span><img th:src="${question.answeredQuestions.getUser().getImgPath()}" alt=""
-                                                       class="user-image"></span>
-                                        <p th:text="${question.answeredQuestions.getUser().getUsername()}"
-                                           class="username-formatting"></p>
+
+                                    <div class="user-wrapper" th:if="${question}" >
+
+                                                <img th:src="${question.getAnsweredQuestion().getUser().getImgPath()}" alt=""
+                                                       class="user-image">
+                                            </span>
+
+                                            <p th:text="${question.getAnsweredQuestion().getUser().getUsername()}"
+                                               class="username-formatting"></p>
                                     </div>
-                                    <div class="answer-wrapper">
-                                        <span th:text="${question.answeredQuestions.getAnswer()}"></span>
+
+
+
+
+                                    <div class="answer-wrapper" th:if="${question.answeredQuestion != null}">
+
+                                        <span th:text="${question.answeredQuestion.getAnswer()}"></span>
 
                                         <span th:class="small-number" text=""></span>
                                     </div>

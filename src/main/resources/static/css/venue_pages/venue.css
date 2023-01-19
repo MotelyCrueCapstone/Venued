@@ -259,12 +259,20 @@ h1 {
 }
 
 .answer-wrapper,
-.thumbs-icon-wrapper,
 .question-wrapper{
-    display: flex;
+    display: table-column;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+}
+
+.thumbs-icon-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.fa-thumbs-down {
+    margin-left: 20px;
 }
 
 .upVoteButton, .voteButton {
@@ -282,6 +290,16 @@ h1 {
         margin: 0px;
     }
 }
+
+/*@media screen and (max-width: 1000px) {*/
+/*    .answer-wrapper, .thumbs-icon-wrapper, .question-wrapper {*/
+/*        display: table-column;*/
+/*        align-items: center;*/
+/*        justify-content: space-between;*/
+/*        gap: 1rem;*/
+/*    }*/
+/*}*/
+
 
 /*Nothing asked yet!*/
 .nothingHere{

@@ -41,15 +41,9 @@ public class UserController {
 
 
     @GetMapping("/login")
-    public String showLogin(HttpServletRequest request) {
-//        String url = request.getHeader("referer");
-//        request.getSession().setAttribute("url_prior_login", url);
-//
-//        System.out.println(url);
+    public String showLogin(){
         return "users/login";
     }
-
-
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
@@ -152,18 +146,18 @@ public class UserController {
         return "redirect:/profile";
     }
 
-
     @PostMapping("/editUserAnswer")
     public String editUserAnswer(@RequestParam String answer, @RequestParam String answerId){
         Answer answers = answersDao.findById(Long.parseLong(answerId));
+        answers.setAnswer(answer);
         return "redirect:/profile";
     }
 
     @PostMapping("/deleteUserAnswer")
     public String deleteUserAnswer(@RequestParam(name="answerId") String answerId) {
-        Answer answer = answersDao.findById(Long.parseLong(answerId));
-        answer.getQuestion().getAnsweredQuestions().remove(answer);
-        answersDao.delete(answer);
+        Optional<Answer> answer = Optional.ofNullable(answersDao.findById(Long.parseLong(answerId)));
+        answer.ifPresent(answers -> answersDao.delete(answers));
         return "redirect:/profile";
+
     }
 }
