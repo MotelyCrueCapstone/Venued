@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class WebFilter {
-
     //trying to prevent cors error by
     //allowing request form localhost on the running
     //port to the server on 8085
@@ -28,5 +27,4 @@ public class WebFilter {
 
         return new CorsWebFilter(source);
     }
-
 }
