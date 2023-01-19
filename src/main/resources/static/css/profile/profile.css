@@ -37,7 +37,7 @@
 
 #profilePicChangeButton {
     text-align: center;
-    padding: 1rem 0;
+    padding: 1rem 0 0;
     font-size: 1.1rem;
 }
 .avatar-container div:first-child > img {
@@ -177,6 +177,12 @@ button#cancel-btn {
 
 }
 
+.modal-button-wrapper {
+    display: flex;
+    gap: 1rem;
+    margin: 0.8rem auto 0;
+}
+
 .modal-button-wrapper button {
     padding: 0.3rem 1rem;
     border: none;
@@ -186,14 +192,6 @@ button#cancel-btn {
     letter-spacing: 1.5px;
 }
 
-.list-items > div button:nth-child(2) {
-    padding: 0.3rem 0.8rem;
-    border: none;
-    background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
-    color: #fff;
-    border-radius: 10px;
-    letter-spacing: 1.5px;
-}
 
 /*--- modal style ----*/
 .modal-content {
