@@ -40,6 +40,12 @@
     padding: 1rem 0 0;
     font-size: 1.1rem;
 }
+
+#profilePicChangeButton:hover {
+    color: #be74fd;
+    cursor: pointer;
+}
+
 .avatar-container div:first-child > img {
     display: block;
     margin: 0 auto;
@@ -64,6 +70,11 @@
     border-radius: 10px;
     color: #fff;
     letter-spacing: 1.5px;
+}
+
+.avatar-container div:last-child button:hover {
+    background: linear-gradient(35deg, #ea7329 10%, #eec320 90%);
+
 }
 
 label {
@@ -145,6 +156,11 @@ button#cancel-btn {
     border: none;
     border-radius: 10px;
 }
+
+.tab-btn:hover{
+    background: linear-gradient(35deg, #ea7329 10%, #eec320 90%);
+}
+
 @media screen and (min-width: 800px) {
     .lists-wrapper {
         gap: 2rem;

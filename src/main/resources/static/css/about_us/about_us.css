@@ -12,6 +12,11 @@ body {
 }
 
 /*Circles with images*/
+.center-circles {
+    display: flex;
+    justify-content: center;
+}
+
 .dot{
     height: auto;
     width: 150px;
@@ -33,13 +38,13 @@ body {
 .row.circles .col-sm{
     display: flex;
     flex-shrink: 1;
-    flex: unset;
+    /*flex: unset;*/
     width: 250px;
     height: 350px;
-    margin-left: -20px;
-    margin-right: -20px;
+    /*margin-left: -20px;*/
+    /*margin-right: -20px;*/
     border-bottom: 1px solid #fff;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 }
 .arrow-one{
     position: absolute;
@@ -88,8 +93,6 @@ body {
 
 .img_overlay_bottom{
     position: absolute;
-    right: 88px;
-    bottom: 50px;
 }
 .img_overlay:hover, .img_overlay_bottom:hover{
     opacity: 1;
@@ -306,9 +309,7 @@ dialog {
     .row.circles{
         width: 100vw;
     }
-    .img_overlay_bottom{
-        right: 70px;
-    }
+
 }
 @media (max-width: 428px){
     :root {
