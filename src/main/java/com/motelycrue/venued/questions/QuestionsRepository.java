@@ -1,5 +1,6 @@
 package com.motelycrue.venued.questions;
 
+import com.motelycrue.venued.questions.Questions;
 import com.motelycrue.venued.users.User;
 import com.motelycrue.venued.venues.Venue;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,12 +1,11 @@
 package com.motelycrue.venued.questions;
 
+import com.motelycrue.venued.answer.Answer;
 import com.motelycrue.venued.users.User;
 import com.motelycrue.venued.venues.Venue;
 import javax.persistence.*;
 
 import lombok.*;
-
-import java.util.List;
 
 @Entity
 @Setter
