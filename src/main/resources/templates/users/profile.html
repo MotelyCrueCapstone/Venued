@@ -1,11 +1,14 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org" lang="en"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <link rel="stylesheet" th:href="@{/css/universalStyle.css}">
     <link rel="stylesheet" th:href="@{/css/profile/profile.css}">
     <div th:replace="~{partials/venued_partials :: myheader('Profile')}"></div>
 </head>
+
 <body th:object="${user}">
   <div class="page-wrapper">
 
@@ -24,9 +27,11 @@
                             <form id="profilePicForm" th:method="Post" th:action="@{/profilePic}" style="display: none">
                                 <input name="profilePicInput" id="profilePicInput" type="text">
                             </form>
+	                        
                             <img th:if="${user.getImgPath() != null}"
                                  th:src="${user.getImgPath()}" alt="Profile Picture"
                                  class="profileImg"/>
+	                        
                             <img th:if="${user.getImgPath() == null}"
                                  th:src="@{/imgs/avatar-image.png}" alt="Profile Picture"
                                  class="profileImg"/>
@@ -89,7 +94,6 @@
 
                     <!------ tab content wrapper start here ---->
                     <div id="TabContents">
-
                         <!-- first tab content card begins here -->
                         <div class="tab-content show-content" data-content="1">
                             <ul class="list-tips" th:each="tip : ${allTips}">
@@ -187,7 +191,8 @@
                                     </div><!-- modal end here -->
                                 </li>
                             </ul>
-                        </div><!--- second tab content card end here --->
+                        </div>
+                        <!--- second tab content card end here --->
                         <!-- third tab content card begins here -->
                         <div class="tab-content" data-content="3">
                             <ul class="answered-question" th:each="answer : ${allAnswers}">
@@ -241,5 +246,10 @@
   </div>
   <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
   <script src="/js/profile.js"></script>
+  
+  <script th:inline="javascript">
+	  let userProfileLink = [[${user.getImgPath()}]];
+	  $(".nav-user-image").attr("src", userProfileLink);
+  </script>
 </body>
 </html>
