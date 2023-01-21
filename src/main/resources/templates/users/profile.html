@@ -246,12 +246,10 @@
   </div>
   <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
   <script src="/js/profile.js"></script>
-
   <script th:inline="javascript">
 	  //using user object to full the image path variable
 	  let userProfileLink = [[${user.getImgPath()}]];
 	  $(".nav-user-image").attr("src", userProfileLink);
   </script>
- 
 </body>
 </html>
