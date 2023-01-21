@@ -186,7 +186,6 @@
                                 </li>
                             </ul>
                         </div><!--- second tab content card end here --->
-
                         <!-- third tab content card begins here -->
                         <div class="tab-content" data-content="3">
                             <ul class="answered-question" th:each="answer : ${allAnswers}">
@@ -202,7 +201,6 @@
                                             <input type="hidden" name="answerId" th:value="${answer.getId()}">
                                             <button type="submit" class="delete-button">delete</button>
                                         </form>
-
                                     </div>
                                     <!-- Modal -->
                                     <div class="modal fade" th:id="'answerModal' + ${answer.getId()}" tabindex="-1" aria-labelledby="answerModalLabel" aria-hidden="true">
@@ -232,7 +230,6 @@
                                 </li>
                             </ul>
                         </div><!--- third tab content card end here ---->
-
                     </div><!---- tab content wrapper end here ----->
                 </div><!--- second column wrapper end here -->
             </div><!--- row wrapper end here --->
