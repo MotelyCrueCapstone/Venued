@@ -120,6 +120,7 @@
 
                                                         <div class="edit-tip-wrapper">
                                                             <input type="hidden" name="tipId" th:value="${tip.getId()}">
+                                                            <p th:text="${tip.getTipContent()}"></p>
                                                             <textarea class="for-control shadow-none" name="tipContent" cols="20" rows="8"></textarea>
                                                         </div>
 
@@ -170,6 +171,7 @@
 
                                                         <div class="edit-tip-wrapper">
                                                             <input type="hidden" name="questionId" th:value="${question.getId()}">
+                                                            <p th:text="${question.getQuestion()}"></p>
                                                             <textarea class="form-control shadow-none"  name="question" cols="20" rows="8"></textarea>
                                                         </div>
 
@@ -217,6 +219,7 @@
                                                     <form th:action="@{/editUserAnswer}" method="POST">
                                                         <div class="edit-tip-wrapper">
                                                             <input type="hidden" name="answerId" th:value="${answer.getId()}">
+                                                            <p th:text="${answer.getAnswer()}"></p>
                                                             <textarea class="form-control shadow-none "  name="answer" cols="20" rows="8"></textarea>
                                                         </div>
                                                         <div class="modal-footer border-top-0">

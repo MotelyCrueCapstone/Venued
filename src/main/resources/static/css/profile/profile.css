@@ -92,7 +92,6 @@ textarea#bio {
     margin-bottom: 1rem;
 }
 
-
 input#submit-btn {
     padding: 0.3rem 1rem;
     background: rgba(166, 67, 98, 0.73) linear-gradient(to right, rgba(121, 47, 69, 0.87), rgba(72, 38, 147, 0.87));
@@ -154,6 +153,7 @@ button#cancel-btn {
         padding: 0.5rem 1.2rem;
     }
 }
+
 .answered-question,
 .list-questions,
 .list-tips {
@@ -172,10 +172,6 @@ button#cancel-btn {
 
 .list-items div:first-child {
     font-size: 1rem;
-}
-
-.list-items div:last-child {
-
 }
 
 .modal-button-wrapper {
