@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/error")
 public class ErrorControllers {
-
     @GetMapping("/404")
     public String notFound(){
         return "errors/404";
