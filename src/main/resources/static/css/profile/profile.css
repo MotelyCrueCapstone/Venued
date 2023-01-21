@@ -43,7 +43,6 @@
 
 #profilePicChangeButton:hover {
     color: #be74fd;
-    text-decoration: underline;
     cursor: pointer;
 }
 
@@ -71,6 +70,11 @@
     border-radius: 10px;
     color: #fff;
     letter-spacing: 1.5px;
+}
+
+.avatar-container div:last-child button:hover {
+    background: linear-gradient(35deg, #ea7329 10%, #eec320 90%);
+
 }
 
 label {
