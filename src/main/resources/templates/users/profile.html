@@ -248,6 +248,7 @@
   <script src="/js/profile.js"></script>
   
   <script th:inline="javascript">
+	  //using user object to full the image path variable
 	  let userProfileLink = [[${user.getImgPath()}]];
 	  $(".nav-user-image").attr("src", userProfileLink);
   </script>
