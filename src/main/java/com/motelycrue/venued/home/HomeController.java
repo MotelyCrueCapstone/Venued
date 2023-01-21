@@ -39,9 +39,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String homepage(Model model){
-
-        List<Questions> questions = QuestionsDao.findFirst30ByOrderByIdDesc();
-        List<Questions> allQuestions = QuestionsDao.findAll();
+        List<Questions> questions = QuestionsDao.findFirst30ByAnsweredEqualsOrderByIdDesc(0);
         model.addAttribute("questions", questions);
         return "index";
     }

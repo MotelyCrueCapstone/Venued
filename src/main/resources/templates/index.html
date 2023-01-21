@@ -63,10 +63,11 @@
 					<p class="title-format">Recent Activity<p>
 					<div class="recent-cards" id="recent-cards">
 
-						<div class="recent-card" th:each="question : ${questions}">
+					<div class="recent-card" th:each="question : ${questions}">
+						<th:block th:unless="${question.getAnswered() == 1}">
 
 
-							<figure>
+						<figure>
 								<div class="userVenuecontainer">
 									<img th:src="${question.getUser().getImgPath()}" alt="" class="user-image">
 								</div>
@@ -86,6 +87,7 @@
 											 class="venueImage">
 									</div>
 								</div>
+
 <!--Only show if logged in-->
 								<div class="user-container" sec:authorize="isAuthenticated()">
 									<a class="answerLink"
@@ -100,6 +102,8 @@
 									</a>
 								</div>
 							</div>
+							</th:block>
+
 						</div>
 
 
