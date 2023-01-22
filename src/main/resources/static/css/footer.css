@@ -24,6 +24,12 @@
     border: 1px solid grey;
     font-weight: bold;
     padding: 5px 10px;
+    background-color: transparent;
+    color: #fff;
+}
+
+.email:focus {
+    outline: none;
 }
 
 .subscribe form {
