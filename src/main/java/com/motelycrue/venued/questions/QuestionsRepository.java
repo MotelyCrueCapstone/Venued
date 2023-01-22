@@ -1,5 +1,6 @@
 package com.motelycrue.venued.questions;
 
+import com.motelycrue.venued.questions.Questions;
 import com.motelycrue.venued.users.User;
 import com.motelycrue.venued.venues.Venue;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,6 +26,9 @@ public interface QuestionsRepository extends JpaRepository<Questions, Long> {
 
     List<Questions> findQuestionsByAnsweredEqualsAndVenue(int answered, Venue venue);
 
-    List<Questions> findQuestionsByAnsweredEquals(int answered);
+
+    List<Questions> findFirst30ByAnsweredEqualsOrderByIdDesc(int answered);
+
+
 
 }

@@ -260,7 +260,7 @@ h1 {
 
 .answer-wrapper,
 .question-wrapper{
-    display: table-column;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;

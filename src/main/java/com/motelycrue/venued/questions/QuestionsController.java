@@ -1,6 +1,8 @@
 package com.motelycrue.venued.questions;
 
 
+import com.motelycrue.venued.answer.Answer;
+import com.motelycrue.venued.answer.AnswersRepository;
 import com.motelycrue.venued.users.User;
 import com.motelycrue.venued.users.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,31 +11,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/questions")
 public class QuestionsController {
 
     @Autowired
     private QuestionsRepository questionsDao;
 
     @Autowired
-    private final UserRepository userDao;
+    private UserRepository userDao;
 
     @Autowired
-    private final AnswersRepository answersDao;
+    private AnswersRepository answersDao;
 
-    public QuestionsController(UserRepository userDao, QuestionsRepository questionsDao, AnswersRepository answersDao) {
-        this.questionsDao = questionsDao;
-        this.userDao = userDao;
-        this.answersDao = answersDao;
-    }
-
-
-    @GetMapping()
+    @GetMapping("/questions")
     public String createController(Model model){
 
         List<Questions> questions = questionsDao.findAll();
@@ -44,7 +37,7 @@ public class QuestionsController {
         return "questions";
     }
 
-    @PostMapping()
+    @PostMapping("/questions")
     public String createQuestions(@ModelAttribute Questions question){
         User currentUserPrincipal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<User> currentUser = userDao.findById(currentUserPrincipal.getId());
@@ -56,7 +49,7 @@ public class QuestionsController {
         return "redirect:/questions";
     }
 
-    @PostMapping("/{venueId}/add-answer")
+    @PostMapping("/questions/{venueId}/add-answer")
     public String answerQuestion(@PathVariable String venueId,
                                  @RequestParam(name = "answer") String answer,
                                  @RequestParam(name = "questionId") String questionId,
@@ -82,5 +75,22 @@ public class QuestionsController {
         });
 
         return "redirect:/venues/" + venueId;
+    }
+    @PostMapping("/editUserQuestion")
+    public String editUserQuestion(@RequestParam String question, @RequestParam String questionId){
+        Optional<Questions> questions = questionsDao.findById(Long.parseLong(questionId));
+        if(questions.isPresent()){
+            questions.get().setQuestion(question);
+            questionsDao.save(questions.get());
+        }
+
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/deleteUserQuestion")
+    public String deleteUserQuestion(@RequestParam(name="questionId") String questionId) {
+        Optional<Questions> question = questionsDao.findById(Long.parseLong(questionId));
+        question.ifPresent(questions -> questionsDao.delete(questions));
+        return "redirect:/profile";
     }
 }

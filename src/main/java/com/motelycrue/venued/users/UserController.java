@@ -1,13 +1,12 @@
 package com.motelycrue.venued.users;
 
-import com.motelycrue.venued.questions.Answer;
-import com.motelycrue.venued.questions.AnswersRepository;
+import com.motelycrue.venued.answer.Answer;
+import com.motelycrue.venued.answer.AnswersRepository;
 import com.motelycrue.venued.questions.Questions;
 import com.motelycrue.venued.questions.QuestionsRepository;
 import com.motelycrue.venued.tips.Tips;
 import com.motelycrue.venued.tips.TipsRepository;
 import com.motelycrue.venued.utils.Utils;
-import org.aspectj.weaver.patterns.TypePatternQuestions;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +32,6 @@ public class UserController {
 
     @Autowired
     private AnswersRepository answersDao;
-
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -129,30 +126,6 @@ public class UserController {
         return "redirect:/profile";
     }
 
-    @PostMapping("/editUserQuestion")
-    public String editUserQuestion(@RequestParam String question, @RequestParam String questionId){
-        Optional<Questions> questions = questionsDao.findById(Long.parseLong(questionId));
-        if(questions.isPresent()){
-            questions.get().setQuestion(question);
-            questionsDao.save(questions.get());
-        }
-        return "redirect:/profile";
-    }
-
-    @PostMapping("/deleteUserQuestion")
-    public String deleteUserQuestion(@RequestParam(name="questionId") String questionId) {
-        Optional<Questions> question = questionsDao.findById(Long.parseLong(questionId));
-        question.ifPresent(questions -> questionsDao.delete(questions));
-        return "redirect:/profile";
-    }
-
-    @PostMapping("/editUserAnswer")
-    public String editUserAnswer(@RequestParam String answer, @RequestParam String answerId){
-        Answer answers = answersDao.findById(Long.parseLong(answerId));
-        answers.setAnswer(answer);
-        return "redirect:/profile";
-    }
-
 
     @PostMapping("/deleteUserAnswer")
     public String deleteUserAnswer(@RequestParam(name="answerId") String answerId) {
@@ -160,4 +133,5 @@ public class UserController {
         answer.ifPresent(answers -> answersDao.delete(answer.get()));
         return "redirect:/profile";
     }
+
 }

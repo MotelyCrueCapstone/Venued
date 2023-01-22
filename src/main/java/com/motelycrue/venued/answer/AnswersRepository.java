@@ -1,4 +1,4 @@
-package com.motelycrue.venued.questions;
+package com.motelycrue.venued.answer;
 
 import com.motelycrue.venued.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;

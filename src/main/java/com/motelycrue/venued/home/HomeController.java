@@ -4,21 +4,14 @@ package com.motelycrue.venued.home;
 import com.motelycrue.venued.questions.Questions;
 import com.motelycrue.venued.questions.QuestionsRepository;
 
-import com.motelycrue.venued.tips.Tips;
-import com.motelycrue.venued.tips.TipsRepository;
-
 import com.motelycrue.venued.yelp_api.YelpApiService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -39,9 +32,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String homepage(Model model){
-
-        List<Questions> questions = QuestionsDao.findFirst30ByOrderByIdDesc();
-        List<Questions> allQuestions = QuestionsDao.findAll();
+        List<Questions> questions = QuestionsDao.findFirst30ByAnsweredEqualsOrderByIdDesc(0);
         model.addAttribute("questions", questions);
         return "index";
     }

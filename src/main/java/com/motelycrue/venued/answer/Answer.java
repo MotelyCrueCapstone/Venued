@@ -1,5 +1,6 @@
-package com.motelycrue.venued.questions;
+package com.motelycrue.venued.answer;
 
+import com.motelycrue.venued.questions.Questions;
 import com.motelycrue.venued.users.User;
 import com.motelycrue.venued.venues.Venue;
 import javax.persistence.*;
@@ -33,7 +34,8 @@ public class Answer {
     @JoinColumn(name="user_id")
     private User user;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name="question_id")
     private Questions question;
 
     public Answer(String answer) {
