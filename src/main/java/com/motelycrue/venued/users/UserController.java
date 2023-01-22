@@ -33,7 +33,6 @@ public class UserController {
     @Autowired
     private AnswersRepository answersDao;
 
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 

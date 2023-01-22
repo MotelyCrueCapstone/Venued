@@ -35,7 +35,8 @@
 .footer_content{
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    align-items: center;
+    padding: 20px;
 }
 .about_us{
     text-decoration: none;
