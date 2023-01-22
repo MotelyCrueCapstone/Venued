@@ -4,33 +4,39 @@
 }
 
 .socials{
+    display: flex;
+    justify-content: center;
     gap: 10px;
     max-width: 200px!important;
-    margin-left: 35px;
+    margin-bottom: 0.5rem;
+}
+.socials span {
+    font-size: 20px;
 }
 
 .address{
     max-width: 400px!important;
-    color: grey;
+    color: #808080;
 }
 
 .email{
     border-radius: 10px;
     border: 1px solid grey;
-    margin-bottom: 5px;
     font-weight: bold;
+    padding: 5px 10px;
 }
 
-.subscribe-form{
+.subscribe form {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 5px;
 }
+
 .subscribe_btn{
     border: none;
     background: orangered linear-gradient(to right, orangered, orange);
+    border-radius: 10px;
 }
-
-
 
 .footer_content{
     display: flex;
@@ -55,9 +61,9 @@
 
 .about_us_container{
     display: flex;
-    align-self: end;
-    gap: 10px;
+    gap: 15px;
 }
+
 textarea{
     padding: 5px;
 }
@@ -69,8 +75,7 @@ textarea{
     color: white;
 }
 
-
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .black-logo{
         margin-bottom: -10px
     }
@@ -86,7 +91,7 @@ textarea{
         text-align: center;
     }
     .socials{
-        margin-left: 0;
+        /*margin-left: 0;*/
     }
     .about_us_container{
         margin-top: 20px;
@@ -102,7 +107,7 @@ textarea{
 
 }
 
-@media (max-width: 400px){
+@media screen and (max-width: 400px){
     #mobile_subscribe    {
             vertical-align:middle;
         }

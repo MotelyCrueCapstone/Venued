@@ -127,11 +127,4 @@ public class UserController {
     }
 
 
-    @PostMapping("/deleteUserAnswer")
-    public String deleteUserAnswer(@RequestParam(name="answerId") String answerId) {
-        Optional<Answer> answer = Optional.ofNullable(answersDao.findById(Long.parseLong(answerId)));
-        answer.ifPresent(answers -> answersDao.delete(answer.get()));
-        return "redirect:/profile";
-    }
-
 }
