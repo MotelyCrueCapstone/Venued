@@ -84,7 +84,8 @@
          $('.location-results-container').addClass('hide');
          toggleResults();
     });
-
+    
+    //on key up the search box appears
     $(".search_input").on("keyup", function() {
         $('.results-container').removeClass('hideme');
     });
