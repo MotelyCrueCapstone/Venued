@@ -2,6 +2,7 @@ const tips = document.querySelectorAll('.tip');
 
 tips.forEach(tip => {
     const tipId = tip.dataset.id;
+    //selecting the vote button elements to initiate the requests
     const upVoteButton = tip.querySelector('.upVoteButton');
     const downVoteButton = tip.querySelector('.downVoteButton');
     upVoteButton.addEventListener("click", () => handleVote("up"));
