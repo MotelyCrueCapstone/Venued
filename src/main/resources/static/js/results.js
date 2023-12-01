@@ -28,7 +28,7 @@
                                             <img src="${currentVenue.image_url}" alt="resultImage">
                                            
                                         </div>
-
+<!--                                        results container goes here-->
                                         <div class="result-body">
                        
                                             <div class="result-name-container">
